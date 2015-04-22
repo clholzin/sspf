@@ -1,0 +1,44 @@
+body {
+  padding-top: 110px; /* 60px to make the container make room for the navigation bar */
+}
+
+/**          Nav           **/
+#main-region {
+    position:relative;
+}
+/**Brand Image**/
+#brandImg{
+    width:90px;
+}
+/**Brand link attribute**/
+a#headerId{
+    padding:4px 0 2px 10px;
+    height:auto;
+}
+.navbar-default .navbar-nav > li > a {
+    color: white; /*Change active text color here*/
+}
+div.mainNavid{
+    background-color:#3585ba;
+    padding-right:20px;
+}
+
+/**#navbar #mainNav**/
+.nav.dropdown li{
+    color:#ffffff;
+}
+ul.ulNavBarId li{
+    color:#FFF;
+}
+ul.ulNavBarId li.active a{
+    color:#FFF;
+}
+ul.ulNavBarId li a:hover{
+    color:#000;
+}
+
+#spinner{
+
+}
+
+/**          Views           **/

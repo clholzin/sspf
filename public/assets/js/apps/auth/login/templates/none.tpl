@@ -1,0 +1,1 @@
+<div class="alert alert-warning">Please Login. <a href="/#auth"><button class="btn btn-default">Login</button></div>
