@@ -16,7 +16,8 @@ define(["app", "tpl!apps/contacts/common/templates/form.tpl", "backbone.syphon"]
       submitClicked: function(e){
         e.preventDefault();
         var data = Backbone.Syphon.serialize(this);
-        this.trigger("form:submit", data);
+          console.log('Submited role data: '+JSON.stringify(data));
+        this.trigger("form:submit", JSON.stringify(data));
       },
 
       onFormDataInvalid: function(errors){
@@ -30,13 +31,13 @@ define(["app", "tpl!apps/contacts/common/templates/form.tpl", "backbone.syphon"]
           $form.find(".control-group.error").each(function(){
             $(this).removeClass("error");
           });
-        }
+        };
 
         var markErrors = function(value, key){
           var $controlGroup = $view.find("#contact-" + key).parent();
           var $errorEl = $("<span>", { class: "help-inline error", text: value });
           $controlGroup.append($errorEl).addClass("error");
-        }
+        };
 
         clearFormErrors();
         _.each(errors, markErrors);
