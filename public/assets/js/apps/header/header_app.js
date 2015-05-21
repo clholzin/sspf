@@ -1,30 +1,37 @@
-define(["app", "apps/header/list/list_controller"], function(ContactManager, ListController){
-  ContactManager.module("HeaderApp", function(Header, ContactManager, Backbone, Marionette, $, _){
+define(["app", "apps/header/list/list_controller"],
+    function(AppManager, ListController,polyglot){
+  AppManager.module("HeaderApp", function(Header, AppManager, Backbone, Marionette, $, _){
     var API = {
       listHeader: function(){
         ListController.listHeader();
       }
     };
-
-    ContactManager.commands.setHandler("set:active:header", function(name){
+    AppManager.commands.setHandler("set:active:header", function(name){
           ListController.setActiveHeader(name);
     });
-    ContactManager.commands.setHandler("set:user", function(name){
+    AppManager.commands.setHandler("set:user", function(name){
           ListController.setActiveUser(name);
      });
-    ContactManager.commands.setHandler("Reset:user", function(){
+    AppManager.commands.setHandler("Reset:user", function(){
           ListController.ResetActiveHeader();
      });
-      ContactManager.commands.setHandler("alert:show", function(object){
+    AppManager.commands.setHandler("alert:show", function(object){
           ListController.showAlert(object);
-      });
+     });
 
 
     Header.on("start", function(){
         console.log('header started');
       API.listHeader();
     });
+      AppManager.on("language:changed", function(lang){
+          console.log('changed language: '+lang);
+          //this is the primary trigger to change languages
+          //AppManager.request("language:change", lang);
+
+          API.listHeader();
+      });
   });
 
-  return ContactManager.HeaderApp;
+  return AppManager.HeaderApp;
 });

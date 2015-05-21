@@ -10,11 +10,11 @@ define(["app",
     "apps/auth/common/views",
     "tpl!apps/auth/login/templates/login.html",
     "tpl!apps/auth/login/templates/change.html",
-    "tpl!apps/auth/login/templates/view.tpl"],
-    function(ContactManager,
+    "tpl!apps/auth/login/templates/view.html"],
+    function(AppManager,
     layoutTpl, panelTpl, noneTpl, listTpl, listItemTpl,
     CommonViews,loginForm,viewChange,viewTpl){
-    ContactManager.module("AuthApp.Auth.View", function(View, ContactManager, Backbone, Marionette, $, _){
+    AppManager.module("AuthApp.Auth.View", function(View, AppManager, Backbone, Marionette, $, _){
 
         View.Layout = Marionette.LayoutView.extend({
             template: layoutTpl,
@@ -193,5 +193,5 @@ define(["app",
 
     });
 
-    return ContactManager.AuthApp.Auth.View;
+    return AppManager.AuthApp.Auth.View;
 });

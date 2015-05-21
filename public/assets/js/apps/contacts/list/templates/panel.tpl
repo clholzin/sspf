@@ -1,9 +1,13 @@
 <!--<button class="btn btn-primary js-new">New contact</button>-->
-<a href="#auth/login"><button class="btn btn-primary">
-Register new user</button></a>
+<button class="btn btn-primary js-new">Register new user</button>
+
 <form id="filter-form" class="form-search form-inline pull-right">
-  <div class="form-group">
-    <input type="text" class="span2 form-control search-query js-filter-criterion" placeholder="Filter by name">
-  </div>
-     <button type="submit" class="btn btn-default">Filter</button>
+ <div class="input-group">
+       <input type="text" class="span2 form-control search-query js-filter-criterion" placeholder="Filter by name">
+       <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">Filter</button>
+       </span>
+     </div><!-- /input-group -->
+
+
 </form>

@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<form class="form">
+    <div class="form-group form-group-sm">
+        <label for="contractType">Report</label>
+        <select class="form-control" id="contractType" name="contractType">
+            <option value="">Select Report Type</option>
+            <option value="cnr">cnr</option>
+            <option value="crp">crp</option>
+            <option value="qcr">qcr</option>
+            <option value="icr">icr</option>
+            <option value="ccr">ccr</option>
+            <option value="ccs">ccs</option>
+        </select>
+        <input type="hidden" class="form-control" id="contractId" name="contractId" value="<%-contractId %>" required="required"/>
+    </div>
+    <div class="form-group form-group-sm">
+        <label for="username">User Assigned</label>
+        <input type="text" class="form-control" name="user[username]" id="username" value="<%-user.username%>" required="required"/>
+    </div>
+    <div class="form-group form-group-sm">
+        <label for="dateNotify">Notification Date</label>
+        <input type="date" class="form-control" name="dateNotify" id="dateNotify" value="<%-dateNotify%>" required="required"/>
+    </div>
+    <div class="form-group form-group-sm">
+        <label for="year">Year</label>
+        <input type="number" class="form-control" name="year" id="year" placeholder="Year ex:2010" value="<%-year%>" required="required"/>
+    </div>
+    <button class="btn btn-default js-close">Close</button> <button type="submit" class="btn btn-success js-submit">Create</button>
+</form>

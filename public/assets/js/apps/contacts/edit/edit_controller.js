@@ -1,5 +1,5 @@
-define(["app", "apps/contacts/edit/edit_view"], function(ContactManager, View){
-  ContactManager.module("ContactsApp.Edit", function(Edit, ContactManager, Backbone, Marionette, $, _){
+define(["app", "apps/contacts/edit/edit_view"], function(AppManager, View){
+  AppManager.module("ContactsApp.Edit", function(Edit, AppManager, Backbone, Marionette, $, _){
     Edit.Controller = {
       editContact: function(id){
         require(["common/views", "entities/contact"], function(CommonViews){
@@ -7,9 +7,9 @@ define(["app", "apps/contacts/edit/edit_view"], function(ContactManager, View){
             title: "Edit Data",
             message: "Loading"
           });
-          ContactManager.mainRegion.show(loadingView);
+          AppManager.mainRegion.show(loadingView);
 
-          var fetchingContact = ContactManager.request("contact:entity", id);
+          var fetchingContact = AppManager.request("contact:entity", id);
           $.when(fetchingContact).done(function(contact){
             var view;
             if(contact !== undefined){
@@ -20,7 +20,7 @@ define(["app", "apps/contacts/edit/edit_view"], function(ContactManager, View){
 
               view.on("form:submit", function(data){
                 if(contact.save(data)){
-                  ContactManager.trigger("contact:show", contact.get('id'));
+                  AppManager.trigger("contact:show", contact.get('_id'));
                 }
                 else{
                   view.triggerMethod("form:data:invalid", contact.validationError);
@@ -28,15 +28,15 @@ define(["app", "apps/contacts/edit/edit_view"], function(ContactManager, View){
               });
             }
             else{
-              view = new ContactManager.ContactsApp.Show.MissingContact();
+              view = new AppManager.ContactsApp.Show.MissingContact();
             }
 
-            ContactManager.mainRegion.show(view);
+            AppManager.mainRegion.show(view);
           });
         });
       }
     };
   });
 
-  return ContactManager.ContactsApp.Edit.Controller;
+  return AppManager.ContactsApp.Edit.Controller;
 });

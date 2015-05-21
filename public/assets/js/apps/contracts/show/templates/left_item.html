@@ -1,3 +1,8 @@
-<li class="list-group-item">
-    <%- item %>
-</li>
+<a id="infotoshow" data-toggle="tooltip" data-placement="right" title="Notification Date: <%-dateNotify%>">
+<div class="h5 center-block"><%-contractType.toUpperCase()%>
+    <button id="btnPopover" tabindex="0" data-placement="left" data-trigger="focus" class="pull-right btn btn-xs btn-default" data-toggle="popover" title="Actions" data-content="">
+        <i class="glyphicon glyphicon-option-horizontal"></i></button>
+</div>
+<small>Due: <%-timeTill%></small></a>
+
+

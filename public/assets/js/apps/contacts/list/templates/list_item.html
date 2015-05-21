@@ -1,12 +1,13 @@
 <td><%- username %></td>
-<td style="inline-block">
-Admin: <i class="<%- roles.admin %>"></i>
-Creator: <i class="<%- roles.creator %>"></i>
-Reviewer: <i class="<%- roles.review %>"></i>
-Approver: <i class="<%- roles.approve %>"></i>
-Supervisor: <i class="<%- roles.supervisor %>"></i>
+<td style="display:inline-block;">
+Admin: <i class="<%- admin %>"></i>
+Creator: <i class="<%- creator %>"></i>
+Reviewer: <i class="<%- review %>"></i>
+Approver: <i class="<%- approve %>"></i>
+Supervisor: <i class="<%- supervisor %>"></i>
 </td>
 <td>
+    <div class="btn-group btn-group-sm" role="group" aria-label="...">
   <a href="#contacts/<%- _id %>" class="btn btn-sm btn-default js-show">
     <i class="glyphicon glyphicon-eye-open"></i>
     Show
@@ -19,4 +20,5 @@ Supervisor: <i class="<%- roles.supervisor %>"></i>
     <i class="glyphicon glyphicon-remove-circle"></i>
     Delete
   </button>
+        </div>
 </td>

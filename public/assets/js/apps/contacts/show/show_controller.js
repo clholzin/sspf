@@ -1,36 +1,37 @@
-define(["app", "apps/contacts/show/show_view"], function(ContactManager, View){
-  ContactManager.module("ContactsApp.Show", function(Show, ContactManager, Backbone, Marionette, $, _){
+define(["app", "apps/contacts/show/show_view"], function(AppManager, View){
+  AppManager.module("ContactsApp.Show", function(Show, AppManager, Backbone, Marionette, $, _){
     Show.Controller = {
       showContact: function(id){
         require(["common/views", "entities/contact"], function(CommonViews){
           var loadingView = new CommonViews.Loading({
-            title: "Showing Data",
-            message: "Loading..."
+            title: t("contact.showContact"),
+            message: t("loading.message")
           });
-          ContactManager.mainRegion.show(loadingView);
+          AppManager.mainRegion.show(loadingView);
 
-          var fetchingContact = ContactManager.request("contact:entity", id);
+          var fetchingContact = AppManager.request("contact:entity", id);
           $.when(fetchingContact).done(function(contact){
+              console.log('Show Contact:' +JSON.stringify(contact));
             var contactView;
-            if(contact !== undefined){
+            if(contact != undefined){
               contactView = new View.Contact({
                 model: contact
               });
 
               contactView.on("contact:edit", function(contact){
-                ContactManager.trigger("contact:edit", contact.get("id"));
+                AppManager.trigger("contact:edit", contact.get("_id"));
               });
             }
             else{
               contactView = new View.MissingContact();
             }
 
-            ContactManager.mainRegion.show(contactView);
+            AppManager.mainRegion.show(contactView);
           });
         });
       }
     }
   });
 
-  return ContactManager.ContactsApp.Show.Controller;
+  return AppManager.ContactsApp.Show.Controller;
 });

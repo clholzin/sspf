@@ -1,5 +1,5 @@
-define(["app", "apps/config/storage/localstorage"], function(ContactManager){
-  ContactManager.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
+define(["app", "apps/config/storage/localstorage"], function(AppManager){
+  AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
     Entities.Contact = Backbone.Model.extend({
       urlRoot: "http://localhost:8000/admin/users",
         idAttribute: "_id"
@@ -89,15 +89,15 @@ define(["app", "apps/config/storage/localstorage"], function(ContactManager){
       }
     };
 
-    ContactManager.reqres.setHandler("contact:entities", function(){
+    AppManager.reqres.setHandler("contact:entities", function(){
       return API.getContactEntities();
     });
 
-    ContactManager.reqres.setHandler("contact:entity", function(id){
+    AppManager.reqres.setHandler("contact:entity", function(id){
       return API.getContactEntity(id);
     });
 
-    ContactManager.reqres.setHandler("contact:entity:new", function(id){
+    AppManager.reqres.setHandler("contact:entity:new", function(id){
       return new Entities.Contact();
     });
   });

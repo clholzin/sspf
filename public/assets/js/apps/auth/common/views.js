@@ -1,6 +1,6 @@
 define(["app", "tpl!apps/auth/login/templates/login.html", "backbone.syphon"],
-       function(ContactManager, formTpl){
-  ContactManager.module("AuthApp.Common.Views", function(Views, ContactManager, Backbone, Marionette, $, _){
+       function(AppManager, formTpl){
+  AppManager.module("AuthApp.Common.Views", function(Views, AppManager, Backbone, Marionette, $, _){
     Views.Form = Marionette.ItemView.extend({
       template: formTpl,
 
@@ -67,5 +67,5 @@ define(["app", "tpl!apps/auth/login/templates/login.html", "backbone.syphon"],
     });
   });
 
-  return ContactManager.AuthApp.Common.Views;
+  return AppManager.AuthApp.Common.Views;
 });

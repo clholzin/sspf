@@ -1,1 +1,1 @@
-<td colspan="3">No contacts to display.</td>
+<td colspan="3">No contracts to display.</td>

@@ -1,23 +1,38 @@
-<div class="container">
+<div class="container col-lg-9 col-md-10">
     <form>
         <div class="form-group">
             <label for="contractTitle">Title</label>
-            <input type="text" class="form-control" name="title" id="contractTitle" value="">
+            <input type="text" class="form-control" name="title" id="contractTitle" value="<%-title%>">
+        </div>
+        <div class="form-group">
+            <label for="contractValue" class="control-label">Contract Value</label>
+            <input type="number" class="form-control" name="contract[amount]" id="contractValue" value="<%-contract.amount%>">
         </div>
         <div class="form-group">
             <label for="startDate">Start Date</label>
-            <input type="date" class="form-control" name="startDate" id="startDate" placeholder="">
+            <input type="date" class="form-control" name="startDate" id="startDate" value="<%-startDate%>">
+            <p class="help-block">Original Date: <%-startDate%></p>
         </div>
         <div class="form-group">
             <label for="endDate">End Date</label>
-            <input type="date" class="form-control" name="endDate" id="endDate" placeholder="">
-            <p class="help-block">Example block-level help text here.</p>
+            <input type="date" class="form-control" name="endDate" id="endDate" value="<%-endDate%>">
+            <p class="help-block">Original Date: <%-endDate%></p>
+        </div>
+        <div class="form-group">
+            <label for="username">Assign User</label>
+            <input type="text" class="form-control" name="user[username]" id="username" value="<%-user.username%>">
+            <p class="help-block">Assigned user: <%-user.username%></p>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" name="primary" checked=""> Primary
+                <input type="checkbox" name="primary" checked="<%-primary%>"> Primary
             </label>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+
+        <input type="hidden"  name="isNew" id="isNew" value="0">
+        <input type="hidden"  name="updated_at" id="updated_at" value="<%-updated_at%>">
+
+
+         <button type="submit" class="btn btn-success js-submit">Submit</button>
     </form>
 </div>

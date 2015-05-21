@@ -6,20 +6,24 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
           var loadingView = new CommonViews.Loading();
           AppManager.mainRegion.show(loadingView);
 
-          var fetchingContracts = AppManager.request("contracts:entities");
+          var fetchingContracts = AppManager.request("contract:entities");
 
           var contractsListLayout = new View.Layout();
           var contractsListPanel = new View.Panel();
 
           require(["entities/common"], function(FilteredCollection){
             $.when(fetchingContracts).done(function(contracts){
+               // console.log(contracts);
+                _.sortBy(contracts, function(num) {
+                    return Math.sin(num)*-1;
+                });
               var filteredContracts = AppManager.Entities.FilteredCollection({
                 collection: contracts,
                 filterFunction: function(filterCriterion){
                   var criterion = filterCriterion.toLowerCase();
                   return function(contract){
-                    if(contract.get('name').toLowerCase().indexOf(criterion) !== -1
-                      || contract.get('date').toLowerCase().indexOf(criterion) !== -1
+                    if(contract.get('user').username.toLowerCase().indexOf(criterion) !== -1
+                      || contract.get('title').toLowerCase().indexOf(criterion) !== -1
                     ){
                         return contract;
                     }
@@ -55,23 +59,30 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
                   var view = new NewView.Contract({
                     model: newContract
                   });
-
                   view.on("form:submit", function(data){
-                    if(contracts.length > 0){
-                      var highestId = contracts.max(function(c){ return c.id; }).get("_id");
+                      /**   if(contracts.length > 0){
+                var highestId = _.max(contracts,function(c){ return c.id; }).get("id");
+                      console.log(JSON.stringify(highestId));
                       data.id = highestId + 1;
                     }else{
-                      data.id = 1;
-                    }
-                    if(newContract.save(data)){
+                      data.id = contracts.length + 1;
+                    }**/
+                    data.id = 1;
+                      console.log('New form data: '+data);
+                      newContract.set(data);
+                    if(newContract.save(data,{wait:true})){
                       contracts.add(newContract);
+                        contractsListView.render();
                       view.trigger("dialog:close");
                       var newContractView = contractsListView.children.findByModel(newContract);
+                        contractsListView.render();
                       // check whether the new contract view is displayed (it could be
                       // invisible due to the current filter criterion)
                       if(newContractView){
-                        newContractView.flash("success");
+                        newContractView.flash("bg-success");
+                          AppManager.execute("alert:show",({type:"success",message:"Contract Added."}));
                       }
+
                     }
                     else{
                       view.triggerMethod("form:data:invalid", newContract.validationError);
@@ -88,14 +99,15 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
               });
 
               contractsListView.on("childview:contract:edit", function(childView, args){
-                require(["apps/contracts/edit/edit_view"], function(EditView){
+                  AppManager.trigger("contract:edit", args.model.get("_id"));
+                  /**require(["apps/contracts/edit/edit_view"], function(EditView){
                   var model = args.model;
-                  var view = new EditView.Contract({
+                  var view = new EditView.Edit({
                     model: model
                   });
 
                   view.on("form:submit", function(data){
-                      console.log('submitte data event: '+ JSON.stringify(data));
+                      console.log('submit data event: '+ JSON.stringify(data));
                     if(model.save(data,{wait:true})){
                          //  console.log(view);
                         model.set(data);
@@ -111,16 +123,23 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
                     }
                   });
                   AppManager.dialogRegion.show(view);
-                });
+                });**/
               });
 
               contractsListView.on("childview:contract:delete", function(childView, args){
                   console.log(args.model.get('_id'));
+                  if(confirm('Are you sure you want to '+args.model.attributes.title+' Delete')){
+                      childView.flash("bg-danger");
+                      args.model.destroy();
+                      AppManager.execute("alert:show",({type:"info",message:'Deleted '+args.model.attributes.title}));
+                   }
+
                /**
                 * Not Currently Working  **/
-                    confirm('Are you sure you want to Delete',function(){
+                  /**  confirm('Are you sure you want to Delete',function(){
                         //contract:entities
-                        args.model.destroy({
+
+                      args.model.destroy({
                             success: function(model, response) {
                                 console.log(JSON.stringify(response));
                                 AppManager.execute("alert:show",({type:"success",message:JSON.stringify(response)}));
@@ -129,7 +148,7 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
                                 AppManager.execute("alert:show",({type:"danger",message:JSON.stringify(response)}));
                             }
                         });
-                    });
+                    });**/
 
               });
 

@@ -1,5 +1,5 @@
-define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
-    ContactManager.module("AuthApp.Login", function(Login, ContactManager, Backbone, Marionette, $, _){
+define(["app", "apps/auth/login/login_view"], function(AppManager, View){
+    AppManager.module("AuthApp.Login", function(Login, AppManager, Backbone, Marionette, $, _){
         Login.Controller = {
             authUsers: function(id){
                 require(["common/views", "entities/auth"], function(CommonViews){
@@ -7,25 +7,27 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
                         title: "Login",
                         message: "One sec..."
                     });
-                    ContactManager.mainRegion.show(loadingView);
+                    AppManager.mainRegion.show(loadingView);
                     //var loginView;
-                   var fetchingUser = ContactManager.request("login:entity");
+                   var fetchingUser = AppManager.request("login:entity");
                     $.when(fetchingUser).done(function(loginUser) {
                         if (loginUser.attributes.loggedIn === 1) {
                             loginView = new View.Show({
                                 model: loginUser
                             });
-                            if(ContactManager.user.loggedIn === undefined){
-                                ContactManager.user.loggedIn = loginUser.get('loggedIn');
+                            if(AppManager.user.loggedIn === undefined){
+                                AppManager.user.loggedIn = loginUser.get('loggedIn');
                             }
-                            ContactManager.execute("set:user", loginUser.get("username"));
+
+                            AppManager.execute("set:user", loginUser.get("username"));
                             loginView.on("auth:edit", function (loginUser) {
-                                ContactManager.trigger("auth:edit", loginUser.get("id"));
+                                AppManager.trigger("auth:edit", loginUser.get("id"));
                             });
                         }
                         else {
                             loginView = new View.LoginForm();
-                            ContactManager.user.loggedIn = 0;
+                            AppManager.user.loggedIn = 0;
+                            console.log('Logout Global Class '+JSON.stringify(AppManager.user.loggedIn));
                         }
 
                         loginView.on("form:submit", function(data){
@@ -37,21 +39,25 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
                                     if(model.attributes.loggedIn === 1){
                                         model.set(response);
                                         loginView.model = model;
-                                        ContactManager.user.loggedIn = model.get('loggedIn');
-                                        //console.log('Logined Global User attr '+ JSON.stringify(ContactManager.user));
-                                        ContactManager.execute("alert:show",({type:"success",message:"Welcome"}));
-                                        ContactManager.execute("set:user", model.get("username"));
-                                        ContactManager.trigger("auth:show", model.get("username"));
+                                        AppManager.user.loggedIn = model.get('loggedIn');
+                                        //console.log('Logined Global User attr '+ JSON.stringify(AppManager.user));
+                                        AppManager.execute("alert:show",({type:"success",message:"Welcome"}));
+                                        AppManager.execute("set:user", model.get("username"));
+                                        AppManager.trigger("auth:show", model.get("username"));
                                     }else{
-                                        ContactManager.execute("alert:show",({type:"warning",message:JSON.stringify(model.attributes.info)}));
-                                        ContactManager.triggerMethod("form:data:invalid", loginView.validationError);
+                                        AppManager.execute("alert:show",({type:"warning",message:JSON.stringify(model.attributes.info)}));
+                                        AppManager.triggerMethod("form:data:invalid", loginView.validationError);
                                     }
                                 },
                                 error: function (model, response) {
-                                    console.log("error");
-                                    if(response.statusText === 'Unauthorized'){
-                                        ContactManager.triggerMethod("form:data:invalid", loginView.validationError);
-                                        ContactManager.execute("alert:show",({type:"warning",message:JSON.stringify(model.attributes.info)}));
+                                    console.log("error:"+JSON.stringify(response));
+                                    if(response.status === 400){
+                                       // AppManager.triggerMethod("form:data:invalid", loginView.validationError);
+                                        AppManager.execute("alert:show",({type:"warning",message:JSON.stringify('Please enter username and password.')}));
+                                    }
+                                    if(response.status === 401){
+                                        //AppManager.triggerMethod("form:data:invalid", loginView.validationError);
+                                        AppManager.execute("alert:show",({type:"info",message:JSON.stringify('Username or Password incorrect.')}));
                                     }
                                 }
                             });
@@ -60,7 +66,7 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
 
                         loginView.on("form:register", function(data){
                             console.log('hit register form: '+ data.username);
-                            var registerUser = ContactManager.request("login:entity:new");
+                            var registerUser = AppManager.request("login:entity:new");
                             //console.log(registerUser);
                             var self = this;
                             registerUser.save(data,{
@@ -68,27 +74,27 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
                                     if(model.attributes.loggedIn === 1){
                                         //loginUser.add(loginUser);
                                         loginView.model = model;
-                                        ContactManager.user.loggedIn = model.get('loggedIn');
-                                        ContactManager.execute("alert:show",({type:"success",message:"Welcome"}));
-                                        ContactManager.execute("set:user", model.get("username"));
-                                        ContactManager.trigger("auth:show", model.get("username"));
+                                        AppManager.user.loggedIn = model.get('loggedIn');
+                                        AppManager.execute("alert:show",({type:"success",message:"Welcome"}));
+                                        AppManager.execute("set:user", model.get("username"));
+                                        AppManager.trigger("auth:show", model.get("username"));
                                     }else{
-                                        ContactManager.execute("alert:show",({type:"warning",message:JSON.stringify(model.attributes.info)}));
-                                        ContactManager.triggerMethod("form:data:invalid", loginView.validationError);
+                                        AppManager.execute("alert:show",({type:"warning",message:JSON.stringify(model.attributes.info)}));
+                                        AppManager.triggerMethod("form:data:invalid", registerUser.validationError);
                                     }
                                 },
                                 error: function (model, response) {
                                     console.log("error");
                                     if(response.statusText === 'Unauthorized'){
-                                        ContactManager.triggerMethod("form:data:invalid", loginView.validationError);
-                                        ContactManager.execute("alert:show",({type:"warning",message:JSON.stringify(model.attributes.info)}));
+                                        AppManager.triggerMethod("form:data:invalid", registerUser.validationError);
+                                        AppManager.execute("alert:show",({type:"warning",message:JSON.stringify(model.attributes.info)}));
                                     }
                                    //alert(JSON.stringify(response.statusText));
                                 }
                             });
                         });
 
-                        ContactManager.mainRegion.show(loginView);
+                        AppManager.mainRegion.show(loginView);
                     });
                 });
             },
@@ -99,8 +105,8 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
                         title: "Edit User",
                         message: "loading..."
                     });
-                    ContactManager.mainRegion.show(loadingView);
-                    var fetchingUser = ContactManager.request("login:entity");
+                    AppManager.mainRegion.show(loadingView);
+                    var fetchingUser = AppManager.request("login:entity");
                     $.when(fetchingUser).done(function(user){
                         var view;
                         if(user.get('loggedIn') != 0){
@@ -111,7 +117,7 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
 
                             view.on("form:change", function(data){
                                 if(user.save(data)){
-                                    ContactManager.trigger("auth:show", user.get('username'));
+                                    AppManager.trigger("auth:show", user.get('username'));
                                 }
                                 else{
                                     view.triggerMethod("form:data:invalid", user.validationError);
@@ -122,7 +128,7 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
                             view = new View.NoAuthView();
                         }
 
-                        ContactManager.mainRegion.show(view);
+                        AppManager.mainRegion.show(view);
                     });
                 });
             },
@@ -133,8 +139,8 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
                         title: "Display User",
                         message: "loading..."
                     });
-                    ContactManager.mainRegion.show(loadingView);
-                    var fetchingUser = ContactManager.request("login:entity");
+                    AppManager.mainRegion.show(loadingView);
+                    var fetchingUser = AppManager.request("login:entity");
                     $.when(fetchingUser).done(function(user){
                         var authView;
                         console.log(user.attributes.loggedIn);
@@ -144,14 +150,14 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
                                 model: user
                             });
                             authView.on("auth:edit", function(user){
-                                ContactManager.trigger("auth:edit", user.get("id"));
+                                AppManager.trigger("auth:edit", user.get("id"));
                             });
                         }
                         else{
                             authView = new View.NoAuthView();
                         }
 
-                        ContactManager.mainRegion.show(authView);
+                        AppManager.mainRegion.show(authView);
                     });
                 });
             },
@@ -162,22 +168,28 @@ define(["app", "apps/auth/login/login_view"], function(ContactManager, View){
                         title: "Logout User",
                         message: "loading..."
                     });
-                    ContactManager.execute("alert:show",({type:"info",message:"Logging out"}));
-                    ContactManager.execute("Reset:user");
-                    ContactManager.execute("set:active:header", "auth/logout");
-                    ContactManager.mainRegion.show(loadingView);
-                    var logout = ContactManager.request("login:logout");
+                    AppManager.execute("alert:show",({type:"info",message:"Logging out"}));
+                    AppManager.execute("Reset:user");
+                    AppManager.execute("set:active:header", "auth/logout");
+                    AppManager.mainRegion.show(loadingView);
+                    var logout = AppManager.request("login:logout");
                     $.when(logout).done(function(data){
                        // console.log(data);
-                    authView = new View.NoAuthView();
-                         ContactManager.user.loggedIn = data.attributes.loggedIn;
-                        console.log('logout delete attribute:' + JSON.stringify(ContactManager.user));
-                            ContactManager.mainRegion.show(authView);
+                         authView = new View.NoAuthView();
+                         AppManager.user.loggedIn = data.attributes.loggedIn;
+                        console.log('logout delete attribute:' + JSON.stringify(AppManager.user));
+                            AppManager.mainRegion.show(authView);
+                        setTimeout(function(){
+                            AppManager.trigger("auth:login");
+                        },4000);
+
                     });
-                });
+                });//end LogoutUser function
+
+
             }
         }
     });
 
-    return ContactManager.AuthApp.Login.Controller;
+    return AppManager.AuthApp.Login.Controller;
 });

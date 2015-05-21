@@ -1,2 +1,27 @@
-<div class="well">Right Side menu</div>
-<div class="panel"></div>
+<form>
+<div class="input-group">
+    <input type="text" class="form-control" id="comments-body" name="body" placeholder="Add Comment">
+    <input type="hidden" class="form-control" id="comments-date" name="date_created" value="<%-date_created%>">
+    <input type="hidden" class="form-control" id="comments-username" name="username" value="<%-username%>">
+      <span class="input-group-btn">
+        <button class="btn btn-success btn-sm js-new" type="submit">Add</button>
+      </span>
+</div><!-- /input-group -->
+</form>
+
+<div class="well well-sm"><%-count%></div>
+<% if(comments){%>
+<div style="height:30vh;overflow-y: scroll;border-bottom:thin solid #555;">
+    <%  _.each(comments,function(value,key){  %>
+<div class="panel panel-default" data-id="<%-key%>">
+<div class="panel-body">
+   <small><%-value.body%></small><br>
+    <small>Date: <%-value.date_created%></small>
+</div>
+    <div class="panel-footer"><small>By: <%-value.username%></small>  <button data-id="<%-key%>" class="pull-right btn btn-danger btn-sm js-delete" type="button">X</button></div>
+    </div>
+<% }); %>
+</div>
+<% }else{ %>
+<div class="well well-sm">No Comments</div>
+<% } %>

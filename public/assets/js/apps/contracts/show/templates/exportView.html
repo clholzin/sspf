@@ -1,42 +1,4 @@
-<div class="well bkg-main">
-
-    <h2><%- title %></h2>
-    <h5><%- description.body%></h5>
-    <p>Assigned to: <%- user.username %></p>
-    <p class="text-primary">Created: <%- date_created %><br>
-    Last Updated: <%- updated_at %></p>
-        <ul class="list-group">
-            <li class="list-group-item">startDate: <%- startDate%></li>
-            <li class="list-group-item">endDate: <%- endDate%></li>
-        </ul>
-    <div class="btn-group-justified" role="group" aria-label="...">
-        <a href="#" title="Back" class="btn btn-default btn-sm js-back">
-            <i class="glyphicon glyphicon-arrow-left"></i></a>
-
-        <a href="#contracts/<%- _id %>/edit" class="btn btn-primary btn-sm js-edit">
-            <i class="glyphicon glyphicon-edit"></i> Edit </a>
-        <a href="#" class="btn btn-default btn-sm js-export">
-            <i class="glyphicon glyphicon-export"></i> Export </a>
-    </div>
-</div>
-<div class="well well-sm" style="padding:0;margin:0;">
-    <ul class="list-group">
-        <li class="list-group-item">fixedPricing: $<%-fixedPricing%></li>
-        <li class="list-group-item">estBasedFee: $<%-estBasedFee%></li>
-        <li class="list-group-item">targetPricing: $<%-targetPricing%></li>
-        <li class="list-group-item">costPlusPricing: $<%- costPlusPricing%></li>
-        <li class="list-group-item">firmPricing: $<%-firmPricing%></li>
-    </ul>
-<div class="well">Business Units:
-    <ul class="list-group">
-        <% $.each(businessUnitNames,function(key,value){ %>
-            <li class="list-group-item"><%-value.name%></li>
-        <% }); %>
-    </ul>
-</div>
-
-</div>
-
+<div class="well well-sm"><button class="btn btn-default js-back">Back</button></div>
 
 
 

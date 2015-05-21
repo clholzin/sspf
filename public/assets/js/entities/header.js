@@ -1,5 +1,5 @@
-define(["app", "backbone.picky"], function(ContactManager){
-  ContactManager.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
+define(["app", "backbone.picky","vendor/kendoUI/kendo.all.min"], function(AppManager){
+  AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
     Entities.Header = Backbone.Model.extend({
 
       initialize: function(){
@@ -22,6 +22,7 @@ define(["app", "backbone.picky"], function(ContactManager){
       Entities.headers = new Entities.HeaderCollection([
         { name: "Contacts", url: "contacts", navigationTrigger: "contacts:list" },
           { name: "About", url: "about", navigationTrigger: "about:show"},
+          { name: "Contracts", url: "contracts", navigationTrigger: "contracts:list" },
         { name: "Login", url: "auth", navigationTrigger: "auth:login" },
           { name: "Logout", url: "auth/logout", navigationTrigger: "auth:logout" }
       ]);
@@ -40,7 +41,7 @@ define(["app", "backbone.picky"], function(ContactManager){
     };
 
 
-    ContactManager.reqres.setHandler("header:entities", function(){
+    AppManager.reqres.setHandler("header:entities", function(){
       return API.getHeaders();
     });
 

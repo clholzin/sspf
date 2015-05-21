@@ -22,6 +22,7 @@ polyglot.extend({
     "contact.attributes.phoneNumber": "Phone number",
     "contact.attributes.acquaintances": "Acquaintances",
     "contact.attributes.strangers": "Strangers",
+    "contact.showContact": "Show User",
     "contact.newContact": "New contact",
     "contact.editContact": "Edit this contact",
     "contact.filterContacts": "Filter contacts",
@@ -30,3 +31,7 @@ polyglot.extend({
     "loading.title": "Loading Data",
     "loading.message": "Please wait, data is loading."
 });
+
+
+
+

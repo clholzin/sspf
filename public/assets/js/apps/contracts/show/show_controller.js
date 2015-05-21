@@ -16,100 +16,194 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                     $.when(fetchingContract).done(function(contract){
                         $.when(fetchingNotify).done(function(notifications) {
                    //console.log('Show Contract:' +JSON.stringify(contract));
-                        var contractView;
-                            var LeftView;
-                            var RightView;
-                            var TopLeftView;
+                         var contractView,
+                             LeftView,
+                             RightView,
+                             RightList,
+                             MainExport,
+                             TopLeftView;
                         if(contract instanceof Object){
 
                                 contractView = new View.Contract({
                                     model: contract
                                     });
 
-                                TopLeftView = new View.TopLeftView({
-                                    //  model: contract
+                            contractView.on("contract:edit", function(model){
+                                AppManager.trigger("contract:edit", model.get("_id"));
+                            });
+                            contractView.on("contract:list", function(){
+                                AppManager.trigger("contracts:list");
+                            });
+                            contractView.on("contract:export", function(contract){
+                                var fetchingUsrSets = AppManager.request("urs:entities");
+                                $.when(fetchingUsrSets).done(function(ursSets) {
+                                    MainExport = new View.ContractExport({
+                                        collection: ursSets
                                     });
-
-                              //  console.log('Notifications: '+JSON.stringify(notifications));
-                                LeftView = new View.LeftMenu({
-                                    collection: notifications,
-                                    contractId: contract.get("_id")
+                                    MainExport.on("back:clicked",function(){
+                                        AppManager.trigger("contract:show", contract.get("_id"));
                                     });
+                                    //console.log(JSON.stringify(ursSets));
+                                sideAndMainLayout.mainRegion.show(MainExport);
+                                });
+                            });
 
-                            TopLeftView.on("notify:new", function(){
-                                console.log('hit topleftView on event');
-                                        var newNotify = AppManager.request("notify:entity:new");
-                                        var view = new View.NotifyNew({
-                                            model: newNotify,
-                                            templateHelpers:function() {
-                                                return {
-                                                    "contractId": contract.get("_id"),
-                                                    "contractType":'',
-                                                    "year": Moment().get('year'),
-                                                    "dateNotify": Moment().format('YYYY-MM-DD'),
-                                                    "user":''
-                                                }
-                                            }
+                            contractView.on("price:update",function(data){
+                                    var savingModel = contract.save(data);
+                                    if(savingModel){
+                                        $.when(savingModel).done(function() {
+                                            // console.log('submit data event: ' + JSON.stringify(model));
+                                            contract.set(data);
+                                            contractView.render();
+                                            contractView.flash("animated fadeIn bg-success");
+                                            AppManager.execute("alert:show",({
+                                                type: "success",
+                                                message: "Saved"
+                                            }));
+                                            // notifications.reset(notifications.models);
+                                            //view.trigger("dialog:close");
                                         });
-                                        view.on("form:submit", function(data){
-                                            if(notifications.length > 0){
-                                                //var highestId = _.max(contracts,function(c){ return c.id; }).get("id");
-                                                data.id = + 1;
-                                            }else{
-                                                data.id = 1;
-                                            }
-                                            console.log('New form data: '+data);
-                                            if(newNotify.save(data)){
-                                                notifications.add(newNotify);
-                                                view.trigger("dialog:close");
-                                                var newNotifyView = LeftView.children.findByModel(newNotify);
-                                                // check whether the new contract view is displayed (it could be
-                                                // invisible due to the current filter criterion)
-                                                if(newNotifyView){
-                                                    newNotifyView.flash("animated fadeInRight bg-success");
-                                                    AppManager.execute("alert:show",({type:"success",message:"Notification Added."}));
-                                                }
-                                            }
-                                            else{
-                                                view.triggerMethod("form:data:invalid", newContract.validationError);
-                                            }
-                                        });
-                                        AppManager.dialogRegion.show(view);
+                                    }
+                                    else{
+                                        contractView.triggerMethod("form:data:invalid", contract.validationError);
+                                        AppManager.execute("alert:show",({type:"danger",message:"Check fields for errors."}));
+                                    }
+
+                            });
+
+                            RightView = new View.Right({
+                                model: contract
+                            });
+
+                          RightView.on('comment:add',function(data){
+                              var objData = $.grep(contract.get('comments'), function(item) {
+                                  return item;
+                              });
+                              console.log(JSON.stringify(objData));
+                              objData.push(data);
+                              console.log(JSON.stringify(objData));
+                              //contract.attributes.comments.push(data);
+                              contract.set({'comments':objData});
+                              var savingModel = contract.save({"comments":contract.get('comments')});
+                              if(savingModel){
+                                      // console.log('submit data event: ' + JSON.stringify(model));
+                                      contract.fetch();
+                                      RightView.render();
+                                     // RightView.flash("animated fadeIn bg-success");
+                                      AppManager.execute("alert:show",({
+                                          type: "success",
+                                          message: "Saved"
+                                      }));
+                              }
+                              else{
+                                  RightView.triggerMethod("form:data:invalid", model.validationError);
+                                  AppManager.execute("alert:show",({type:"danger",message:"Check fields for errors."}));
+                              }
+                          });
+
+
+                TopLeftView = new View.TopLeftView({
+                //  model: contract
+                });
+
+                          //  console.log('Notifications: '+JSON.stringify(notifications));
+                LeftView = new View.LeftMenu({
+                    collection: notifications,
+                    contractId: contract.get("_id")
+                    });
+
+                TopLeftView.on("notify:new", function(){
+                    console.log('hit topleftView on event');
+                            var newNotify = AppManager.request("notify:entity:new");
+                            var view = new View.NotifyNew({
+                                model: newNotify,
+                                templateHelpers:function() {
+                                    return {
+                                        "contractId": contract.get("_id"),
+                                        "contractType":'',
+                                        "year": Moment().get('year'),
+                                        "dateNotify": Moment().format('YYYY-MM-DD'),
+                                        "user":{ username:''}
+                                    }
+                                }
+                            });
+                            view.on("form:submit", function(data){
+                                if(notifications.length > 0){
+                                     //var highestId = _.max(notifications,function(c){ return c.id; }).get("id");
+                                    data.id =  + 1;
+                                }else{
+                                    data.id = 1;
+                                }
+                                console.log('New form data: '+data);
+                                var savingNotify = newNotify.save(data);
+                                if(savingNotify){
+                                    $.when(savingNotify).done(function() {
+                                        notifications.add(newNotify);
+                                        //notifications.reset(notifications.models);
+                                        _.sortBy(notifications.models, 'dateNotify');
+                                        view.trigger("dialog:close");
+                                        var newNotifyView = LeftView.children.findByModel(newNotify);
+                                        // check whether the new view is displayed (it could be
+                                        // invisible due to the current filter criterion)
+                                        if (newNotifyView) {
+                                            newNotifyView.flash("animated fadeInRight bg-success");
+                                            AppManager.execute("alert:show", ({
+                                                type: "success",
+                                                message: "Notification Added."
+                                            }));
+                                        }
                                     });
+                                }
+                                else{
+                                    view.triggerMethod("form:data:invalid", newNotify.validationError);
+                                    AppManager.execute("alert:show",({type:"danger",message:"Check fields for errors."}));
+                                }
+                            });
+                            AppManager.dialogRegion.show(view);
+                        });
 
 
-                                LeftView.on("childview:notify:edit", function(childview,args){
-                                        var model = args.model;
-                                        var view = new View.NotifyEdit({
-                                            model: model,
-                                            templateHelpers:function() {
-                                                return {
-                                                    "contractId": args.model.get('contractId'),
-                                                    "contractType":args.model.get('contractType'),
-                                                    "year": args.model.get('year'),
-                                                    "dateNotify": Moment(args.model.get('dateNotify')).format('YYYY-MM-DD'),
-                                                    "user":args.model.get('user').username
-                                                }
-                                            }
+                    LeftView.on("childview:notify:edit", function(childView,args){
+                           var model = args.model;
+                            //console.log(model);
+                            var view = new View.NotifyEdit({
+                                model: model,
+                                templateHelpers:function() {
+                                    return {
+                                        "contractId": args.model.get('contractId'),
+                                        "contractType":args.model.get('contractType'),
+                                        "year": args.model.get('year'),
+                                        "dateNotify": Moment(args.model.get('dateNotify')).format('YYYY-MM-DD'),
+                                        "user":{ username:args.model.get('user').username}
+                                    }
+                                }
+                            });
+                            view.on("form:submit", function(data){
+                                var savingModel = model.save(data);
+                                    if(savingModel){
+                                        $.when(savingModel).done(function() {
+                                           // console.log('submit data event: ' + JSON.stringify(model));
+                                            model.set(data);
+                                            childView.render();
+                                            childView.flash("animated fadeInRight bg-success");
+                                            AppManager.execute("alert:show",({
+                                                type: "success",
+                                                message: "Saved"
+                                            }));
+                                            // notifications.reset(notifications.models);
+                                            view.trigger("dialog:close");
+
                                         });
-                                        view.on("form:submit", function(data){
-                                            console.log('submit data event: '+ JSON.stringify(data));
-                                            if(model.save(data,{wait:true})){
-                                                //  console.log(view);
-                                                model.set(data);
-                                                //view.triggerMethod("initialize");
-                                                childview.render();
-                                                AppManager.execute("alert:show",({type:"success",message:"Saved"}));
-                                                view.trigger("dialog:close");
-                                                childview.flash("animated fadeInRight bg-success");
-                                            }
-                                            else{
-                                                AppManager.execute("alert:show",({type:"danger",message:"Error trying to update."}));
-                                                view.triggerMethod("form:data:invalid", model.validationError);
-                                            }
-                                        });
-                                        AppManager.dialogRegion.show(view);
-                                    });
+                                    }
+                                    else{
+                                        view.triggerMethod("form:data:invalid", model.validationError);
+                                        AppManager.execute("alert:show",({type:"danger",message:"Check fields for errors."}));
+                                    }
+                                });
+
+                            AppManager.dialogRegion.show(view);
+                            //  });
+                            });
                             LeftView.on("childview:action:popover", function(childview,args){
                                 // this.$('[data-toggle="popover"]').popover();
                                 var options = {html:true,placement:'left'};
@@ -127,14 +221,13 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                                 }
                             });
 
-                                RightView = new View.RightMenu({
-                                    //  model: contract
-                                });
 
 
-                            contractView.on("contract:edit", function(contract){
-                                AppManager.trigger("contract:edit", contract.get("_id"));
-                            });
+
+
+
+
+
 
                             sideAndMainLayout.on("show", function(){
                                 sideAndMainLayout.leftRegion.show(LeftView);

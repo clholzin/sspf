@@ -1,8 +1,8 @@
-define(["app", "apps/about/show/show_view"], function(ContactManager, View){
+define(["app", "apps/about/show/show_view"], function(AppManager, View){
   return {
     showAbout: function(){
       var view = new View.Message();
-      ContactManager.mainRegion.show(view);
+      AppManager.mainRegion.show(view);
     }
   };
 });

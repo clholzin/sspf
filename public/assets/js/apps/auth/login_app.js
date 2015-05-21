@@ -1,5 +1,5 @@
-define(["app"], function(ContactManager){
-  ContactManager.module("AuthApp", function(AuthApp, ContactManager, Backbone, Marionette, $, _){
+define(["app"], function(AppManager){
+  AppManager.module("AuthApp", function(AuthApp, AppManager, Backbone, Marionette, $, _){
       AuthApp.startWithParent = false;
 
       AuthApp.onStart = function(){
@@ -11,21 +11,23 @@ define(["app"], function(ContactManager){
     };
   });
 
-  ContactManager.module("Routers.AuthApp", function(AuthAppRouter, ContactManager, Backbone, Marionette, $, _){
+  AppManager.module("Routers.AuthApp", function(AuthAppRouter, AppManager, Backbone, Marionette, $, _){
       AuthAppRouter.Router = Marionette.AppRouter.extend({
       appRoutes: {
-        "auth": "LoginAuthorized",
-        "auth/:id": "showAuthorized",
-        "auth/:id/edit": "editAuthorized",
-        "auth/logout": "logoutAuthorized"
+        ":lang/auth": "LoginAuthorized",
+        ":lang/auth/:id": "showAuthorized",
+        ":lang/auth/:id/edit": "editAuthorized",
+        ":lang/auth/logout": "logoutAuthorized"
       }
     });
 
-    var executeAction = function(action, arg){
-      ContactManager.startSubApp("AuthApp");
-      //console.log(action(arg));
-       // action(arg);
-      ContactManager.execute("set:active:header", "auth");
+    var executeAction = function(action, arg,lang){
+        AppManager.request("language:change", lang).always(function() {
+            AppManager.startSubApp("AuthApp");
+            //console.log(action(arg));
+            // action(arg);
+            AppManager.execute("set:active:header", "auth");
+        });
     };
 
     var API = {
@@ -54,35 +56,35 @@ define(["app"], function(ContactManager){
       }
     };
 
-    ContactManager.on("auth:login", function(){
-      ContactManager.navigate("auth");
+    AppManager.on("auth:login", function(){
+      AppManager.navigate("auth");
       API.LoginAuthorized();
     });
-    ContactManager.on("auth:logout", function(){
-      ContactManager.navigate("auth/logout");
+    AppManager.on("auth:logout", function(){
+      AppManager.navigate("auth/logout");
       API.logoutAuthorized();
     });
 
-    ContactManager.on("auth:show", function(id){
+    AppManager.on("auth:show", function(id){
         if(id === undefined){
-            ContactManager.navigate("auth/");
+            AppManager.navigate("auth");
         }else{
-            ContactManager.navigate("auth/"+id);
+            AppManager.navigate("auth/"+id);
         }
        API.showAuthorized(id);
     });
 
-    ContactManager.on("auth:edit", function(id){
-      ContactManager.navigate("auth/" + id + "/edit");
+    AppManager.on("auth:edit", function(id){
+      AppManager.navigate("auth/" + id + "/edit");
       API.editAuthorized(id);
     });
 
-    ContactManager.addInitializer(function(){
+    AppManager.addInitializer(function(){
       new AuthAppRouter.Router({
         controller: API
       });
     });
   });
 
-  return ContactManager.AuthAppRouter;
+  return AppManager.AuthAppRouter;
 });

@@ -1,7 +1,10 @@
-<h1><%- firstName %> <%- lastName %></h1>
-<a href="#contacts/<%- id %>/edit" class="btn btn-primary js-edit">
+<h1><%- username %></h1>
+<a href="#lang/contacts" title="Back" class="btn btn-default">
+<i class="glyphicon glyphicon-arrow-left"></i></a>
+
+<a href="#lang/contacts/<%- _id %>/edit" class="btn btn-primary js-edit">
   <i class="glyphicon glyphicon-pencil"></i>
-  Edit this contact
+   Edit
 </a>
 <br>
-<p><strong>Phone number:</strong> <%- phoneNumber %></p>
+

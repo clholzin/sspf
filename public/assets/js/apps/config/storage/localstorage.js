@@ -1,5 +1,5 @@
-define(["app", "localstorage"], function(ContactManager){
-  ContactManager.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
+define(["app", "localstorage"], function(AppManager){
+  AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
     var findStorageKey = function(entity){
       // use a model's urlRoot value
       if(entity.urlRoot){
@@ -28,5 +28,5 @@ define(["app", "localstorage"], function(ContactManager){
     };
   });
 
-  return ContactManager.Entities.configureStorage;
+  return AppManager.Entities.configureStorage;
 });

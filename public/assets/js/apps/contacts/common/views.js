@@ -1,6 +1,6 @@
-define(["app", "tpl!apps/contacts/common/templates/form.tpl", "backbone.syphon"],
-       function(ContactManager, formTpl){
-  ContactManager.module("ContactsApp.Common.Views", function(Views, ContactManager, Backbone, Marionette, $, _){
+define(["app", "tpl!apps/contacts/common/templates/form.html","tpl!apps/contacts/common/templates/register.html", "backbone.syphon"],
+       function(AppManager, formTpl, loginTpl){
+  AppManager.module("ContactsApp.Common.Views", function(Views, AppManager, Backbone, Marionette, $, _){
     Views.Form = Marionette.ItemView.extend({
       template: formTpl,
 
@@ -17,7 +17,7 @@ define(["app", "tpl!apps/contacts/common/templates/form.tpl", "backbone.syphon"]
         e.preventDefault();
         var data = Backbone.Syphon.serialize(this);
           console.log('Submited role data: '+JSON.stringify(data));
-        this.trigger("form:submit", JSON.stringify(data));
+        this.trigger("form:submit",data);
       },
 
       onFormDataInvalid: function(errors){
@@ -25,25 +25,36 @@ define(["app", "tpl!apps/contacts/common/templates/form.tpl", "backbone.syphon"]
 
         var clearFormErrors = function(){
           var $form = $view.find("form");
-          $form.find(".help-inline.error").each(function(){
+          $form.find(".help-inline.has-error").each(function(){
             $(this).remove();
           });
-          $form.find(".control-group.error").each(function(){
-            $(this).removeClass("error");
+          $form.find(".form-control.error").each(function(){
+            $(this).removeClass("has-error");
           });
         };
 
         var markErrors = function(value, key){
-          var $controlGroup = $view.find("#contact-" + key).parent();
+          var $controlGroup = $view.find("#" + key).parent();
           var $errorEl = $("<span>", { class: "help-inline error", text: value });
-          $controlGroup.append($errorEl).addClass("error");
+          $controlGroup.append($errorEl).addClass("has-error");
         };
 
         clearFormErrors();
         _.each(errors, markErrors);
       }
     });
+
+    Views.CreateUser =  Views.Form.extend({
+       template:loginTpl,
+        events: {
+            "click button.js-register": "submitClicked"
+        }
+
+    });
+
+
+
   });
 
-  return ContactManager.ContactsApp.Common.Views;
+  return AppManager.ContactsApp.Common.Views;
 });

@@ -1,22 +1,22 @@
-<td><%- username %></td>
-<td style="display:inline-block;">
-Admin: <i class="<%- admin %>"></i>
-Creator: <i class="<%- creator %>"></i>
-Reviewer: <i class="<%- review %>"></i>
-Approver: <i class="<%- approve %>"></i>
-Supervisor: <i class="<%- supervisor %>"></i>
-</td>
-<td>
-  <a href="#contacts/<%- _id %>" class="btn btn-sm btn-default js-show">
-    <i class="glyphicon glyphicon-eye-open"></i>
-    Show
-  </a>
-  <a href="#contacts/<%- _id %>/edit" class="btn btn-sm btn-default js-edit">
-    <i class="glyphicon glyphicon-pencil"></i>
-      Edit
-  </a>
-  <button class="btn btn-sm btn-danger js-delete">
-    <i class="glyphicon glyphicon-remove-circle"></i>
-    Delete
-  </button>
-</td>
+<!--col-sm-6 col-md-4-->
+<div  class="col-sm-6 col-md-4 clearfix">
+    <div class="btn-group top-right" role="group" aria-label="...">
+    <a href="#en/contracts/<%-_id %>" class="btn btn-sm btn-default js-show">
+        <i class="glyphicon glyphicon-eye-open"></i></a>
+    <a href="#en/contracts/<%-_id %>/edit" class="btn btn-sm btn-default js-edit">
+        <span class="text-success"><i class="glyphicon glyphicon-pencil"></i></span></a>
+    <button class="btn btn-sm btn-default js-delete">
+        <span class="text-danger"><i class="glyphicon glyphicon-remove-circle"></i></span></button>
+        <button class="btn btn-sm btn-info js-chart">
+            <span class="text-info"><i class="glyphicon glyphicon-adjust"></i></span></button>
+</div>
+<div class="thumbnail">
+   <div id="chart" style="width:275px;height:275px;max-width:350px;max-height:350px;"></div>
+    <div class="caption">
+        <h2><%- title %></h2>
+        <div class="small"><%-description.body%></div>
+        <small><%- user.username %></small>
+
+    </div>
+</div>
+</div>

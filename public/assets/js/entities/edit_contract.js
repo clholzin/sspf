@@ -1,6 +1,6 @@
 define(["app", "backbone.picky","vendor/kendoUI/kendo.all.min"], function(AppManager){
   AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
-    Entities.Header = Backbone.Model.extend({
+    Entities.EditContract = Backbone.Model.extend({
 
       initialize: function(){
         var selectable = new Backbone.Picky.Selectable(this);
@@ -9,8 +9,8 @@ define(["app", "backbone.picky","vendor/kendoUI/kendo.all.min"], function(AppMan
     });
 
 
-    Entities.HeaderCollection = Backbone.Collection.extend({
-      model: Entities.Header,
+    Entities.EditContractController = Backbone.Collection.extend({
+      model: Entities.EditContract,
 
       initialize: function(){
         var singleSelect = new Backbone.Picky.SingleSelect(this);
@@ -18,31 +18,35 @@ define(["app", "backbone.picky","vendor/kendoUI/kendo.all.min"], function(AppMan
       }
     });
 
-    var initializeHeaders = function(){
-      Entities.headers = new Entities.HeaderCollection([
-        { name: "Contacts", url: "contacts", navigationTrigger: "contacts:list" },
-          { name: "About", url: "about", navigationTrigger: "about:show"},
-          { name: "Contracts", url: "contracts", navigationTrigger: "contracts:list" },
-        { name: "Login", url: "auth", navigationTrigger: "auth:login" },
-          { name: "Logout", url: "auth/logout", navigationTrigger: "auth:logout" }
+    var initializeEditContracts = function(){
+      Entities.panelMenu = new Entities.EditContractController([
+        { name: "Contract", url: "#", navigationTrigger: "contacts:show" },
+          { name: "Reporting Dates", url: "#", navigationTrigger: "reporting:show"},
+          { name: "Pricing", url: "#", navigationTrigger: "pricing:show" },
+        { name: "Deliverables", url: "#", navigationTrigger: "deliverables:show" },
+          { name: "Metrics", url: "#", navigationTrigger: "metrics:show" },
+          { name: "Recover Bases", url: "#", navigationTrigger: "recoverBases:show" },
+          { name: "Payments", url: "#", navigationTrigger: "payments:show" },
+          { name: "Milestones", url: "#", navigationTrigger: "milestones:show" },
+          { name: "SubContractors", url: "#", navigationTrigger: "subcontractors:show" }
       ]);
     };
 
     var API = {
-      getHeaders: function(){
-        if(Entities.headers === undefined){
-          initializeHeaders();
-            console.log('getting headers links');
+      getEditContractsMenu: function(){
+        if(Entities.panelMenu === undefined){
+          initializeEditContracts();
+            console.log('getting panelMenu links');
         }
-        return Entities.headers;
+        return Entities.panelMenu;
       }
 
 
     };
 
 
-    AppManager.reqres.setHandler("header:entities", function(){
-      return API.getHeaders();
+    AppManager.reqres.setHandler("editMenu:entities", function(){
+      return API.getEditContractsMenu();
     });
 
   });

@@ -1,11 +1,91 @@
-<h1><%- user.username %></h1>
-<p><%-_id%></p>
-<a href="#contracts" title="Back" class="btn btn-default">
-<i class="glyphicon glyphicon-arrow-left"></i></a>
+<div class="well bkg-main">
 
-<a href="#contracts/<%- _id %>/edit" class="btn btn-primary js-edit">
-  <i class="glyphicon glyphicon-pencil"></i>
-   Edit
-</a>
-<br>
+    <h2><%- title %></h2>
+    <h5><%- description.body%></h5>
+    <h5>Contract Value: $<%-contract.amount%></h5>
+    <p>Assigned to: <%- user.username %></p>
+    <p class="text-primary">Created: <%- date_created %><br>
+    Last Updated: <%- updated_at %></p>
+        <ul class="list-group">
+            <li class="list-group-item">startDate: <%- startDate%></li>
+            <li class="list-group-item">endDate: <%- endDate%></li>
+        </ul>
+    <div class="btn-group-justified" role="group" aria-label="...">
+        <a href="#" title="Back" class="btn btn-default btn-sm js-back">
+            <i class="glyphicon glyphicon-arrow-left"></i></a>
+
+        <a href="#contracts/<%- _id %>/edit" class="btn btn-primary btn-sm js-edit">
+            <i class="glyphicon glyphicon-edit"></i> Edit </a>
+        <a href="#" class="btn btn-default btn-sm js-export">
+            <i class="glyphicon glyphicon-export"></i> Export </a>
+    </div>
+</div>
+<div class="well well-sm" style="padding:0;margin:0;">
+    <ul class="list-group js-dbclick">
+        <li class="list-group-item">Fixed Pricing: $<%-fixedPricing%></li>
+        <li class="list-group-item">Estimated Based Fee: $<%-estBasedFee%></li>
+        <li class="list-group-item">Target Pricing: $<%-targetPricing%></li>
+        <li class="list-group-item">Cost Plus Pricing: $<%- costPlusPricing%></li>
+        <li class="list-group-item">Firm Pricing: $<%-firmPricing%></li>
+        <li class="list-group-item">Volume Driven Pricing: $<%-volDrivenPricing%></li>
+    </ul>
+
+    <form class="form hidden">
+        <div class="btn-group btn-group-horizontal top-right" role="group" aria-label="..." >
+            <div class="btn-group" role="group">
+                <button class="btn btn-warning btn-sm js-cancel " title="cancel" type="button">
+                    <i class="glyphicon glyphicon-remove-circle"></i></button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="submit" class="btn btn-success btn-sm js-submit" title="save"><i class="glyphicon glyphicon-save"></i></button>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+        <div class="form-group">
+        <label for="fixedPricing" class="control-label">Fixed Pricing</label>
+        <input type="number" class="form-control input-sm" name="pricing[fixedPricing]" id="fixedPricing" value="<%-fixedPricing%>"/>
+        </div>
+
+        <div class="form-group">
+        <label for="estBasedFee" class="control-label">Estimated Based Fee</label>
+        <input type="number" class="form-control input-sm" name="pricing[estBasedFee]" id="estBasedFee" value="<%-estBasedFee%>"/>
+        </div>
+
+        <div class="form-group">
+        <label for="targetPricing" class="control-label">Target Pricing</label>
+        <input type="number" class="form-control input-sm" name="pricing[targetPricing]" id="targetPricing" value="<%-targetPricing%>"/>
+        </div>
+
+        <div class="form-group">
+        <label for="costPlusPricing" class="control-label">Cost Plus Pricing</label>
+        <input type="number" class="form-control input-sm" name="pricing[costPlusPricing]" id="costPlusPricing" value="<%-costPlusPricing%>"/>
+        </div>
+
+        <div class="form-group">
+        <label for="firmPricing" class="control-label">Firm Pricing</label>
+        <input type="number" class="form-control input-sm" name="pricing[firmPricing]" id="firmPricing" value="<%-firmPricing%>"/>
+        </div>
+        <div class="form-group">
+            <label for="volDrivenPricing" class="control-label">volDrivenPricing</label>
+            <input type="number" class="form-control input-sm" name="pricing[volDrivenPricing]" id="volDrivenPricing" value="<%-volDrivenPricing%>"/>
+        </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="well">Business Units:
+    <ul class="list-group">
+        <% $.each(businessUnitNames,function(key,value){ %>
+            <li class="list-group-item"><%-value.name%></li>
+        <% }); %>
+    </ul>
+</div>
+
+</div>
+
+
+
+
+
 

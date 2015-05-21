@@ -1,13 +1,25 @@
-define(["app", "apps/contacts/common/views"], function(ContactManager, CommonViews){
-  ContactManager.module("ContactsApp.New.View", function(View, ContactManager, Backbone, Marionette, $, _){
-    View.Contact = CommonViews.Form.extend({
-      title: "Login",
-
+define(["app", "apps/contacts/common/views"], function(AppManager, CommonViews){
+  AppManager.module("ContactsApp.New.View", function(View, AppManager, Backbone, Marionette, $, _){
+    View.Contact = CommonViews.CreateUser.extend({
+     // title: "Login",
+        initialize: function(){
+            this.title = "Register ";
+        },
+        templateHelpers:function(){
+            return {
+                title:this.title
+            }
+        },
       onRender: function(){
-        this.$(".js-submit").text("Create contact");
+          if(this.options.generateTitle){
+              var $title = $("<h3>", { text: this.title });
+              this.$el.prepend($title);
+          }
+        this.$(".js-submit").hide();
+          this.$(".js-register").text("Create contact");
       }
     });
   });
 
-  return ContactManager.ContactsApp.New.View;
+  return AppManager.ContactsApp.New.View;
 });

@@ -1,10 +1,122 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
 
-</body>
-</html>
+<div class="well well-sm" style="padding:0;margin:0;">
+    <div class="btn-group btn-group-vertical top-left" role="group" aria-label="..." >
+        <div class="btn-group" role="group">
+    <button class="btn btn-default btn-sm js-edit" title="edit"><i class="glyphicon glyphicon-edit"></i></button>
+        </div>
+        </div>
+    <ul class="list-group js-dbclick">
+        <li class="list-group-item">fixedPricing: $<%-fixedPricing%></li>
+        <li class="list-group-item">estBasedFee: $<%-estBasedFee%></li>
+        <li class="list-group-item">targetPricing: $<%-targetPricing%></li>
+        <li class="list-group-item">costPlusPricing: $<%- costPlusPricing%></li>
+        <li class="list-group-item">firmPricing: $<%-firmPricing%></li>
+        <li class="list-group-item">volDrivenPricing: $<%-volDrivenPricing%></li>
+    </ul>
+
+</div>
+    <form class="form hidden" id="pricing">
+    <div class="btn-group btn-group-vertical top-left" role="group" aria-label="..." >
+        <div class="btn-group" role="group">
+            <button class="btn btn-warning btn-sm js-cancel " title="cancel" type="button">
+                <i class="glyphicon glyphicon-remove-circle"></i></button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-success btn-sm js-submit" title="save"><i class="glyphicon glyphicon-save"></i></button>
+        </div>
+    </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="fixedPricing" class="control-label">fixedPricing</label>
+                    <input type="number" class="form-control input-sm" name="pricing[fixedPricing]" id="fixedPricing" value="<%-fixedPricing%>"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="estBasedFee" class="control-label">estBasedFee</label>
+                    <input type="number" class="form-control input-sm" name="pricing[estBasedFee]" id="estBasedFee" value="<%-estBasedFee%>"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="targetPricing" class="control-label">targetPricing</label>
+                    <input type="number" class="form-control input-sm" name="pricing[targetPricing]" id="targetPricing" value="<%-targetPricing%>"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="costPlusPricing" class="control-label">costPlusPricing</label>
+                    <input type="number" class="form-control input-sm" name="pricing[costPlusPricing]" id="costPlusPricing" value="<%- costPlusPricing%>"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="firmPricing" class="control-label">firmPricing</label>
+                    <input type="number" class="form-control input-sm" name="pricing[firmPricing]" id="firmPricing" value="<%-firmPricing%>"/>
+                </div>
+                <div class="form-group">
+                    <label for="volDrivenPricing" class="control-label">volDrivenPricing</label>
+                    <input type="number" class="form-control input-sm" name="pricing[volDrivenPricing]" id="volDrivenPricing" value="<%-volDrivenPricing%>"/>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+
+<br><br>
+
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#Obligations" aria-controls="Obligations" role="tab" data-toggle="tab">Obligations</a></li>
+        <li role="presentation"><a href="#Profit" aria-controls="Profit" role="tab" data-toggle="tab">Profit</a></li>
+        <li role="presentation"><a href="#MainAssumptions" aria-controls="MainAssumptions" role="tab" data-toggle="tab">Main Assumptions</a></li>
+        <li role="presentation"><a href="#Cost" aria-controls="Cost" role="tab" data-toggle="tab">Cost</a></li>
+        <li role="presentation"><a href="#Costcalcs" aria-controls="Costcalcs" role="tab" data-toggle="tab">Cost Calcs</a></li>
+        <li role="presentation"><a href="#Risk" aria-controls="Risk" role="tab" data-toggle="tab">Risk</a></li>
+        <li role="presentation"><a href="#Riskcalcs" aria-controls="Riskcalcs" role="tab" data-toggle="tab">Risk Calcs</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="Obligations">
+           <form id="obligation">
+                <div class="btn-group btn-group-vertical top-left" role="group" aria-label="..." >
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-success btn-sm js-obligations" title="edit"><i class="glyphicon glyphicon-save"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-12">
+                <div class="form-group">
+                    <label for="version" class="control-label">Version Reference</label>
+                    <input type="number" class="form-control input-sm" name="obligations[version]" id="version" value="<%-obligations.version%>"/>
+                </div>
+                <div class="form-group">
+                    <label for="changeDate" class="control-label">Publication Date</label>
+                    <input type="date" class="form-control input-sm" name="obligations[changeDate]" id="changeDate" value="<%-obligations.changeDate%>" required/>
+                </div>
+                <div class="form-group">
+                    <label for="allowable" class="control-label">Total Allowable Costs</label>
+                    <input type="number" class="form-control input-sm" name="obligations[allowable]" id="allowable" value="<%-obligations.allowable%>"/>
+                </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="comment" class="control-label">Comment</label>
+                        <input type="text" class="form-control input-sm" name="obligations[comment]" id="comment" value="<%-obligations.comment%>"/>
+                    </div>
+
+                </div>
+            </form>
+        </div><!--end opblications-->
+        <div role="tabpanel" class="tab-pane" id="Profit">Profit Tab</div><!--end Profit-->
+        <div role="tabpanel" class="tab-pane" id="MainAssumptions">Main Assumptions Tab</div><!--end Assumptions-->
+        <div role="tabpanel" class="tab-pane" id="Cost">Cost Tab</div><!--end Cost-->
+        <div role="tabpanel" class="tab-pane" id="Costcalcs">Cost Calc Tab</div><!--end Cost-->
+        <div role="tabpanel" class="tab-pane" id="Risk">Risk Tab</div><!--end Risk-->
+        <div role="tabpanel" class="tab-pane" id="Riskcalcs">Risk Calc Tab</div><!--end Risk-->
+    </div>
+
+</div>

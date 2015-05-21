@@ -1,41 +1,39 @@
 /**
  * Created by craig on 4/13/2015.
  */
-define(["app", "backbone.picky"], function(ContactManager){
-    ContactManager.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
+define(["app", "backbone.picky"], function(AppManager){
+    AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
         Entities.Login = Backbone.Model.extend({
-            urlRoot:'http://localhost:8000/login',
-            initialize: function(){
-                var selectable = new Backbone.Picky.Selectable(this);
-               // console.log(this);
-                _.extend(this, selectable);
-            }
+            urlRoot:'http://localhost:8000/login'
+            //idAttribute: "_id",
+
         });
         Entities.Logout = Backbone.Model.extend({
-            urlRoot:'http://localhost:8000/logout',
-            initialize: function(){
-                var selectable = new Backbone.Picky.Selectable(this);
-                _.extend(this, selectable);
-            }
+            urlRoot:'http://localhost:8000/logout'
+
         });
         Entities.Register = Backbone.Model.extend({
             urlRoot:'http://localhost:8000/register',
-            initialize: function(){
-                var selectable = new Backbone.Picky.Selectable(this);
-                //console.log(this);
-                _.extend(this, selectable);
+            validate: function(attrs, options) {
+                var errors = {};
+                if (! attrs.username) {
+                    errors.username = "Must provide a username";
+                }
+                if (! attrs.password) {
+                    errors.password = "Please add a password.";
+                }
+
+                if( ! _.isEmpty(errors)){
+                    return errors;
+                }
             }
+
         });
 
         Entities.LoginCollection = Backbone.Collection.extend({
             url:'http://localhost:8000/login',
-            model: Entities.Login,
+            model: Entities.Login
 
-            initialize: function(){
-                var singleSelect = new Backbone.Picky.SingleSelect(this);
-                _.extend(this, singleSelect);
-               // console.log(this);
-            }
         });
 
         var initializeLogin = function(){
@@ -128,19 +126,19 @@ define(["app", "backbone.picky"], function(ContactManager){
             }
         };
 
-        ContactManager.reqres.setHandler("login:entity", function(){
+        AppManager.reqres.setHandler("login:entity", function(){
             return API.getLoginEntity();
         });
-        ContactManager.reqres.setHandler("login:logout", function(){
+        AppManager.reqres.setHandler("login:logout", function(){
             return API.getLogout();
         });
-        ContactManager.reqres.setHandler("login:entity:id", function(id){
+        AppManager.reqres.setHandler("login:entity:id", function(id){
             return API.getLoginEntityId(id);
         });
-        ContactManager.reqres.setHandler("login:entities", function(){
+        AppManager.reqres.setHandler("login:entities", function(){
             return API.getLoginEntities();
         });
-        ContactManager.reqres.setHandler("login:entity:new", function(id){
+        AppManager.reqres.setHandler("login:entity:new", function(id){
             return new Entities.Register();
         });
     });

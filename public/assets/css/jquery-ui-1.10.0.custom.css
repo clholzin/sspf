@@ -910,8 +910,8 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
   top: 0; 
   left: 0; 
   padding: .2em; 
-  width: 300px; 
-  overflow: hidden; 
+  width: 300px;
+  /**overflow: hidden; **/
   outline: 0; 
   background-clip: padding-box;
   background-color: #FFFFFF;
@@ -965,12 +965,12 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
   height: 18px;
   font-size: 20px;
   font-weight: bold;
-  line-height: 13.5px;
-  text-shadow: 0 1px 0 #ffffff;
-  filter: alpha(opacity=25);
-  -khtml-opacity: 0.25;
-  -moz-opacity: 0.25;
-  opacity: 0.25;
+  line-height: 11.5px;
+  text-shadow: 0 1px 0 #EEEEEE;
+  filter: alpha(opacity=65);
+  -khtml-opacity: 0.65;
+  -moz-opacity: 0.65;
+  opacity: 0.65;
   background:none;
   border-width: 0;
   border:none;

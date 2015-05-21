@@ -1,8 +1,8 @@
 define(["app",
         "tpl!apps/contacts/show/templates/missing.tpl",
         "tpl!apps/contacts/show/templates/view.tpl"],
-       function(ContactManager, missingTpl, viewTpl){
-  ContactManager.module("ContactsApp.Show.View", function(View, ContactManager, Backbone, Marionette, $, _){
+       function(AppManager, missingTpl, viewTpl){
+  AppManager.module("ContactsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
     View.MissingContact = Marionette.ItemView.extend({
       template: missingTpl
     });
@@ -21,5 +21,5 @@ define(["app",
     });
   });
 
-  return ContactManager.ContactsApp.Show.View;
+  return AppManager.ContactsApp.Show.View;
 });

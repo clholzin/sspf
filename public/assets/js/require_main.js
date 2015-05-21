@@ -2,9 +2,13 @@ requirejs.config({
   baseUrl: "assets/js",
   paths: {
     backbone: "vendor/backbone",
+    "kendo.backbone":'vendor/kendo.backbone',
+      "kendo":"vendor/kendoUI/kendo.all.min",
+      "jszip":"vendor/jszip",
     "backbone.role":'vendor/role',
     "backbone.picky": "vendor/backbone.picky",
     "backbone.syphon": "vendor/backbone.syphon",
+    "backbone.deep.model":"vendor/backbone.deep.model",
     jquery: "vendor/jquery",
     "jquery-ui": "vendor/jquery-ui",
     json2: "vendor/json2",
@@ -15,15 +19,31 @@ requirejs.config({
     text: "vendor/text",
     tpl: "vendor/underscore-tpl",
     handlebars:'vendor/handlebars-v3.0.1',
-      marionetteHandlebars:'vendor/marionette.handlebars',
-      "hbs":"vendor/hbs",
-      "i18nprecompile":"vendor/i18nprecompile",
+    marionetteHandlebars:'vendor/marionette.handlebars',
+    "hbs":"vendor/hbs",
+    "i18nprecompile":"vendor/i18nprecompile",
     underscore: "vendor/underscore",
     bootstrap: "vendor/bootstrap.min.3.3.4",
-    nprogress:"vendor/nprogress"
+    nprogress:"vendor/nprogress",
+    moment:"vendor/moment",
+    "moment-fquarter":"vendor/moment-fquarter",
+    "precise-range":"vendor/precise-range",
+    "polyglot":"vendor/polyglot",
+    "polyglotText":"apps/config/marionette/polyglot_configText"
   },
 
   shim: {
+      "polyglotText": {
+          deps: ["polyglot"],
+          exports: "polyglotText"
+      },
+      "jszip": {
+          exports: "jszip"
+      },
+    "kendo": {
+      deps: ["jquery","jszip"],
+      exports: "kendo"
+    },
     handlebars:{
       exports:"Handlebars"
     },
@@ -34,6 +54,15 @@ requirejs.config({
         deps: ["jquery"],
       exports: "NProgress"
     },
+      moment: {
+          exports: "Moment"
+      },
+      "moment-fquarter": {
+          exports: "MomentFquarter"
+      },
+      "precise-range": {
+          exports: "MomentRange"
+      },
       bootstrap: {
       deps: ["jquery"],
       exports: "Bootstrap"
@@ -43,8 +72,10 @@ requirejs.config({
       exports: "Backbone"
     },
     "backbone.picky": ["backbone"],
+    "backbone.deep.model": ["backbone"],
     "backbone.syphon": ["backbone"],
     "backbone.role": ["backbone"],
+    "kendo.backbone":["backbone"],
     marionette: {
       deps: ["backbone","bootstrap","backbone.role"],
       exports: "Marionette"
@@ -64,6 +95,8 @@ requirejs.config({
     }
 });
 
-require(["app","apps/header/header_app"], function(ContactManager){
-  ContactManager.start();
+require(["app","apps/header/header_app"], function(AppManager){
+    AppManager.start({
+      acceptedLanguages: ["en", "fr","rs"]
+  });
 });

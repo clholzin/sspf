@@ -1,26 +1,28 @@
-define(["app", "marionette"], function(ContactManager, Marionette){
+define(["app", "marionette"], function(AppManager, Marionette){
   var Router = Marionette.AppRouter.extend({
     appRoutes: {
-      "about" : "showAbout"
+      ":lang/about" : "showAbout"
     }
   });
 
   var API = {
-    showAbout: function(){
+    showAbout: function(lang){
       require(["apps/about/show/show_controller"], function(ShowController){
-        ContactManager.startSubApp(null);
+     AppManager.request("language:change", lang).always(function() {
+        AppManager.startSubApp(null);
         ShowController.showAbout();
-        ContactManager.execute("set:active:header", "about");
+        AppManager.execute("set:active:header", "about");
       });
+    });
     }
   };
 
-  ContactManager.on("about:show", function(){
-    ContactManager.navigate("about");
+  AppManager.on("about:show", function(){
+    AppManager.navigate("about");
     API.showAbout();
   });
 
-  ContactManager.addInitializer(function(){
+  AppManager.addInitializer(function(){
     new Router({
       controller: API
     });
