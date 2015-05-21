@@ -64,7 +64,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
-var routes = require('./../routes');
+var routes = require('./../routes/routes');
 app.use('/',routes);
 mongoose.connect('mongodb://localhost/passport_local_mongoose');
 // passport config

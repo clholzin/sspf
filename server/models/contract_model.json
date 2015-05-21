@@ -1,0 +1,58 @@
+{
+  "user": {
+    "username": "cholzinger",
+    "role": {
+      "admin": true,
+      "creator": true,
+      "review": true,
+      "approve": true,
+      "supervisor": true
+    }
+  },
+  "title": "Another Contract",
+  "startDate": "05/04/2015",
+  "endDate": "01/05/2017",
+  "primary": true,
+  "comments": [{
+    "body": "First Comment",
+    "date": "05/04/2015",
+    "username": "clholzin"
+  }],
+  "description": {
+    "body": "First Contract Description",
+    "date": "12/27/2015 5:42:40 PM"
+  },
+  "meta": {
+    "date_created": "05/04/2015"
+  },
+  "businessUnit": [{"name":"Pratt"}],
+  "pricing" : {
+    "firmPricing" : 235002,
+    "fixedPricing" : 20000,
+    "costPlusPricing" : 275000,
+    "extBasedFee" : 125000,
+    "volDrivenPricing" : 75000,
+    "targetPricing" : 235000
+  },
+  "reports": {
+    "icr": {
+      "occurs": [
+              {"type": "quarterly","year":"2015", "date": "12/27/2015 5:42:40 PM"},
+              {"type": "quarterly","year":"2015", "date": "4/27/2015 5:42:40 PM"},
+              {"type": "quarterly","year":"2015", "date": "9/27/2015 5:42:40 PM"},
+              {"type": "annually","year":"2015", "date": "11/27/2015 5:42:40 PM"},
+              {"type": "monthly","year":"2015", "date": "11/27/2015 5:42:40 PM"},
+
+              {"type": "quarterly","year":"2016", "date": "11/27/2016 5:42:40 PM"},
+              {"type": "annually","year":"2016", "date": "11/27/2016 5:42:40 PM"},
+              {"type": "monthly","year":"2016", "date": "11/27/2016 5:42:40 PM"}
+        ]
+    },
+    "crp": "",
+    "qcr": "",
+    "cnr": "",
+    "ccr":"",
+    "ccs": ""
+  }
+
+}

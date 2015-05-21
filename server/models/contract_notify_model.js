@@ -8,14 +8,12 @@ var db = mongoose.createConnection(uri, { server: { poolSize: 4 }});
 
 
 var ContNotify = new Schema({
-    "user" : {
-        "username" : String
-    },
-    "contractId" : ObjectId,
+    "user" : {"username" : String},
+    "contractId" : {type:String},
     "contractType" : String,
-    "dateCreated" : Date.now,
+    "dateCreated" : {type:Date,default:Date.now},
     "dateNotify" : Date,
     "year" : Number
 });
 
-module.exports = db.model('ContNotify', ContNotify);
+module.exports = db.model('contNotify', ContNotify);

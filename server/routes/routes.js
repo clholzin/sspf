@@ -22,15 +22,15 @@ routes.all(function timeLog(req, res, next) {
                 //return res.render("register", {info: "Sorry. That username already exists. Try again."});
                 return res.json({info: err.message, loggedIn: 0});
             }
-
-            passport.authenticate('local')(req, res, function () {
+            res.json({id:1,username: req.body.username,roles:''});
+            /**passport.authenticate('local')(req, res, function () {
                 if (req.user.id === undefined || null) {
                     console.log('error');
                     res.json({info: "There was an issue authenticating.", loggedIn: 0});
                 }
                 res.json({id: req.user.id, username: req.user.username, loggedIn: 1});
                 console.log('registered user');
-            });
+            });**/
         });
 
     });

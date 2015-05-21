@@ -1,62 +1,67 @@
 var express = require('express');
 var router = express.Router();
 var moment = require('moment');
-var Contract = require('./../models/contract');
-var ContNotify = require('./../models/contract_notify');
+var ContNotify = require('./../models/contract_notify_model');//contract_notify_model.js
 // middleware specific to this router
-console.log('hit contract routes');
-/**router.use(function timeLog(req, res, next) {
-    console.log('Time: ', Date.now());
-    next();
-});**/
-/**
-router.get('index', function (req, res) {
-//  res.json({ id : req.contract.id,contractname:req.contract.contractname,loggedIn:1});
-    console.log('hit index');
-});
-**/
+console.log('hit ContNotify routes');
+
 router.param('id', function (req, res, next, id) {
-    console.log('CALLED ONLY ONCE: '+id);
-    console.log(req.params);
+    console.log('Contract Notify: '+id);
+    //console.log(req.params);
     next();
 });
 
-router.get('/contract',function(req, res){
-    console.log('get collection from mongo /contract');
-    Contract.find(function(err,contract) {
+
+/**
+{
+contractId:"5547a50b150b7ba823cb222e",
+dateNotify:"2015-05-05",
+year:2015,
+contractType:"icr",
+dateCreated:"2015-05-04",
+user:{username:"cholzin"}
+}
+ * **/
+router.get('/notify',function(req, res){
+    console.log('get collection from mongo /notify');
+    console.log('request params notify id '+req.params.id);
+    ContNotify.find(function(err,contractNotify) {
        if(err){
             console.log(err);
         }
-        res.json(contract);
+        res.json(contractNotify);
     });
 });
-router.post('/contract',function(req, res){
+router.post('/notify',function(req, res){
     console.log(req.body);
-    console.log('put collection by id to mongo');
-    var contract = new Contract(req.body);
-    contract.save( function(err, contract) {
-        res.status(200).json(contract);
+    console.log('post collection to mongo');
+    var notify = new ContNotify(req.body);
+    notify.save( function(err, contractNotify) {
+        res.status(200).json(contractNotify);
     });
 });
-router.get('/contract/:id',function(req, res){
+router.get('/notify/:id',function(req, res){
     console.log('get collection from mongo by id');
-    Contract.findOne( {"_id": req.params.id}, function(err, contract) {
-       console.log(err);
-      res.json(contract);
+    console.log('id for notify '+req.params.id);//.where('contractId').equals(req.params.id)
+    ContNotify.find({"contractId":req.params.id}, function(err, contractNotify) {
+        if(err){
+            console.log(err);
+        }
+      res.json(contractNotify);
     });
 });
 
-router.put('/contract/:id',function(req, res){
-    console.log(req.params.id);
+router.put('/notify/:id',function(req, res){
+    console.log(req.body);
     console.log('put collection by id to mongo');
-    Contract.where({"_id" : req.params.id}).update({ $set: { roles: {admin:true} } }, function(err, contract) {
-        res.status(200).json(contract);
+    ContNotify.where({"_id" : req.params.id}).update({ $set:req.body }, function(err, contractNotify) {
+        res.status(200).json(contractNotify);
     });
 });
-router.delete('/contract/:id',function(req, res){
+router.delete('/notify/:id',function(req, res){
     console.log(req.params.id);
     console.log('delete collection by id from mongo');
-    Contract.where({"_id" : req.params.id}).remove( function(err) {
+    ContNotify.where({"_id" : req.params.id}).remove( function(err) {
         res.status(200);
     });
 });
@@ -65,7 +70,7 @@ router.delete('/contract/:id',function(req, res){
 
 
 
-router.get('/ping', function(req, res){
+router.get('/notify/ping', function(req, res){
     res.status(200).send("pong!");
 });
 
