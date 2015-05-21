@@ -1,8 +1,8 @@
 define(["app", "apps/config/storage/localstorage"], function(ContactManager){
   ContactManager.module("Entities", function(Entities, ContactManager, Backbone, Marionette, $, _){
     Entities.Contact = Backbone.Model.extend({
-      urlRoot: "http://localhost:8000/admin/users"
-
+      urlRoot: "http://localhost:8000/admin/users",
+        idAttribute: "_id"
       /**defaults: {
         firstName: "",
         lastName: "",
@@ -73,7 +73,7 @@ define(["app", "apps/config/storage/localstorage"], function(ContactManager){
       },
 
       getContactEntity: function(contactId){
-        var contact = new Entities.Contact({id: contactId});
+        var contact = new Entities.Contact({_id: contactId});
         var defer = $.Deferred();
         setTimeout(function(){
           contact.fetch({
