@@ -92,23 +92,7 @@ div#alertsRegion{
 
 
 
-#panel-region{
-    position:fixed;
-    top:80px;
-    width:auto;
-    height:65px;
-    padding:0 0 0 0;
-    z-index: 1005;
-    background-color:#FFF;
-}
 
-#top-panel{
-    position:fixed !important;
-    height:55px;
-    width:100%;
-    top:80px;
-    z-index:1005;
-}
 .black  .navbar .navbar-default .editNav{
     padding-right:20px;
     color:#333 !important;
@@ -135,16 +119,35 @@ div#alertsRegion{
 /**
 Main Panel Region
 **/
-
+#panel-region{
+    position:fixed;
+    top:80px;
+    width:auto;
+    height:65px;
+    padding:10px 0 0 0;
+    z-index: 1005;
+    background-color:#FFF;
+}
+#contacts-region{
+    padding:20px 0 0 0;
+    position: relative;
+    top:65px;
+    bottom:100px;
+}
+#top-panel{
+    position:fixed !important;
+    height:55px;
+    width:100%;
+    top:80px;
+    z-index:1005;
+}
 #contracts-region{
     padding:20px 0 0 0;
     position: relative;
     top:65px;
     bottom:100px;
 }
-#panel-region{
-    padding:10px 0 0 0;
-}
+
 #edit-panel{
     top:57px;
     bottom:100px;
