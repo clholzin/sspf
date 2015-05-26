@@ -120,7 +120,7 @@ div#alertsRegion{
 Main Panel Region
 **/
 #panel-region{
-    position:fixed;
+    position:fixed !important;
     top:80px;
     width:auto;
     height:65px;
@@ -128,18 +128,19 @@ Main Panel Region
     z-index: 1005;
     background-color:#FFF;
 }
-#contacts-region{
-    padding:20px 0 0 0;
-    position: relative;
-    top:65px;
-    bottom:100px;
-}
 #top-panel{
     position:fixed !important;
     height:55px;
     width:100%;
     top:80px;
     z-index:1005;
+    background-color:#FFF;
+}
+#contacts-region{
+    padding:20px 0 0 0;
+    position: relative;
+    top:65px;
+    bottom:100px;
 }
 #contracts-region{
     padding:20px 0 0 0;
