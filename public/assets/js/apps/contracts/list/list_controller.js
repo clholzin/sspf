@@ -67,22 +67,21 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
                     }else{
                       data.id = contracts.length + 1;
                     }**/
-                    data.id = 1;
+                   // data.id = 1;
                       console.log('New form data: '+data);
-                      newContract.set(data);
+                    //  newContract.set(data);
                     if(newContract.save(data,{wait:true})){
-                      contracts.add(newContract);
-                        contractsListView.render();
+                     // contracts.add(newContract);
+                        contracts.fetch();
                       view.trigger("dialog:close");
-                      var newContractView = contractsListView.children.findByModel(newContract);
-                        contractsListView.render();
+                      //var newContractView = contractsListView.children.findByModel(newContract);
                       // check whether the new contract view is displayed (it could be
                       // invisible due to the current filter criterion)
-                      if(newContractView){
-                        newContractView.flash("bg-success");
+                     // if(newContractView){
+                     //   newContractView.flash("bg-success");
                           AppManager.execute("alert:show",({type:"success",message:"Contract Added."}));
-                      }
-
+                     // }
+                        contractsListPanel.render();
                     }
                     else{
                       view.triggerMethod("form:data:invalid", newContract.validationError);
