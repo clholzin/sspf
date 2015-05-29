@@ -1,5 +1,5 @@
 define(["app", "apps/contracts/show/show_view",
-    "vendor/moment","backbone.filtered","vendor/KendoUI/kendo.all.min","kendo.backbone"], function(AppManager, View,Moment,FilteredCollection){
+    "vendor/moment","backbone.filtered"], function(AppManager, View,Moment,FilteredCollection){
     AppManager.module("ContractsApp.Show", function(Show, AppManager, Backbone, Marionette, $, _){
         Show.Controller = {
             showContract: function(id){
