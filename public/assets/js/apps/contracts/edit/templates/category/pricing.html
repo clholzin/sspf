@@ -5,17 +5,19 @@
     <button class="btn btn-default btn-sm js-edit" title="edit"><i class="glyphicon glyphicon-edit"></i></button>
         </div>
         </div>
-    <ul class="list-group js-dbclick">
-        <li class="list-group-item">fixedPricing: $<%-fixedPricing%></li>
-        <li class="list-group-item">estBasedFee: $<%-estBasedFee%></li>
-        <li class="list-group-item">targetPricing: $<%-targetPricing%></li>
-        <li class="list-group-item">costPlusPricing: $<%- costPlusPricing%></li>
-        <li class="list-group-item">firmPricing: $<%-firmPricing%></li>
-        <li class="list-group-item">volDrivenPricing: $<%-volDrivenPricing%></li>
-    </ul>
+    <table class="table table-striped table-bordered animated js-dbclick">
+        <tbody>
+        <tr><td>Fixed Pricing:</td><td><%-fixedPricing%></td></tr>
+        <tr><td>Estimated Based Fee:</td><td><%-estBasedFee%></td></tr>
+        <tr><td>Target Pricing:</td><td><%-targetPricing%></td></tr>
+        <tr><td>Cost Plus Pricing:</td><td><%- costPlusPricing%></td></tr>
+        <tr><td>Firm Pricing:</td><td><%-firmPricing%></td></tr>
+        <tr><td>Volume Driven Pricing:</td><td><%-volDrivenPricing%></td></tr>
+        </tbody>
+    </table>
 
 </div>
-    <form class="form hidden" id="pricing">
+    <form class="form hidden animated" id="pricing">
     <div class="btn-group btn-group-vertical top-left" role="group" aria-label="..." >
         <div class="btn-group" role="group">
             <button class="btn btn-warning btn-sm js-cancel " title="cancel" type="button">
@@ -30,31 +32,31 @@
 
                 <div class="form-group">
                     <label for="fixedPricing" class="control-label">fixedPricing</label>
-                    <input type="number" class="form-control input-sm" name="pricing[fixedPricing]" id="fixedPricing" value="<%-fixedPricing%>"/>
+                    <input type="number" class="form-control input-sm" name="pricing[fixedPricing]" id="fixedPricing" value="<%-fixedPricing_edit%>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="estBasedFee" class="control-label">estBasedFee</label>
-                    <input type="number" class="form-control input-sm" name="pricing[estBasedFee]" id="estBasedFee" value="<%-estBasedFee%>"/>
+                    <input type="number" class="form-control input-sm" name="pricing[estBasedFee]" id="estBasedFee" value="<%-estBasedFee_edit%>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="targetPricing" class="control-label">targetPricing</label>
-                    <input type="number" class="form-control input-sm" name="pricing[targetPricing]" id="targetPricing" value="<%-targetPricing%>"/>
+                    <input type="number" class="form-control input-sm" name="pricing[targetPricing]" id="targetPricing" value="<%-targetPricing_edit%>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="costPlusPricing" class="control-label">costPlusPricing</label>
-                    <input type="number" class="form-control input-sm" name="pricing[costPlusPricing]" id="costPlusPricing" value="<%- costPlusPricing%>"/>
+                    <input type="number" class="form-control input-sm" name="pricing[costPlusPricing]" id="costPlusPricing" value="<%- costPlusPricing_edit%>"/>
                 </div>
 
                 <div class="form-group">
                     <label for="firmPricing" class="control-label">firmPricing</label>
-                    <input type="number" class="form-control input-sm" name="pricing[firmPricing]" id="firmPricing" value="<%-firmPricing%>"/>
+                    <input type="number" class="form-control input-sm" name="pricing[firmPricing]" id="firmPricing" value="<%-firmPricing_edit%>"/>
                 </div>
                 <div class="form-group">
                     <label for="volDrivenPricing" class="control-label">volDrivenPricing</label>
-                    <input type="number" class="form-control input-sm" name="pricing[volDrivenPricing]" id="volDrivenPricing" value="<%-volDrivenPricing%>"/>
+                    <input type="number" class="form-control input-sm" name="pricing[volDrivenPricing]" id="volDrivenPricing" value="<%-volDrivenPricing_edit%>"/>
                 </div>
 
             </div>
@@ -98,7 +100,7 @@
                 </div>
                 <div class="form-group">
                     <label for="allowable" class="control-label">Total Allowable Costs</label>
-                    <input type="number" class="form-control input-sm" name="obligations[allowable]" id="allowable" value="<%-obligations.allowable%>"/>
+                    <input type="number" class="form-control input-sm" name="obligations[allowable]" id="allowable" value="<%-obligations.allowable_edit%>"/>
                 </div>
                 </div>
 

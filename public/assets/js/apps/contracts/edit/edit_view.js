@@ -8,10 +8,10 @@ define(["app", "apps/contracts/common/views",
     "tpl!apps/contracts/edit/templates/category/pricing.html",
     "tpl!apps/contracts/edit/templates/category/deliverables.html",
 
-    "vendor/moment"], function(AppManager,
+    "vendor/moment","vendor/Numeral"], function(AppManager,
                    CommonViews, listTpl, listItemTpl,missingTpl,layoutTpl,
                    reportsTpl,pricingTpl,deliverablesTpl,
-           Moment){
+                   Moment,Numeral){
     AppManager.module("ContractsApp.Edit.View", function(View, AppManager, Backbone, Marionette, $, _){
 
         View.Regions = Marionette.LayoutView.extend({
@@ -94,15 +94,16 @@ define(["app", "apps/contracts/common/views",
             var eDate = this.model.get('endDate'),
                 sDate = this.model.get('startDate'),
             //updated_at = this.model.get('updated_at'),
-                test = Moment.utc(eDate).format('YYYY-MM-DD'),
-                endD = Moment.utc(eDate).format('YYYY-MM-DD'),
-                startD = Moment.utc(sDate).format('YYYY-MM-DD');
+                test = Moment.utc().format('YYYY/MM/DD'),
+                endD = Moment.utc(eDate).format('YYYY/MM/DD'),
+                startD = Moment.utc(sDate).format('YYYY/MM/DD');
             console.log(test);
+            var contract = this.model.get('contract');
             return {
-                contract:this.model.get('contract'),
+                value: numeral(contract.amount).format('0.00'),
                 endDate: endD,
                 startDate: startD,
-                updated_at: Moment().format('YYYY-MM-DD, h:mm:ss a')
+                updated_at: Moment().format('YYYY/MM/DD, h:mm:ss a')
             }
         },
         onRender: function(){
@@ -162,10 +163,10 @@ define(["app", "apps/contracts/common/views",
                     this.$el.prepend($title);
                 }
                 this.$list = this.$('.js-dbclick');
-                this.$pricingform = this.$('form#pricing');
-                this.$objlForm =  this.$('form#obligation');
-                this.$el.pricingform = this.$pricingform;
-                this.$el.objlForm = this.$objlForm;
+                this.$pricingform = this.$el.find('form#pricing');
+                this.$objlForm =  this.$el.find('form#obligation');
+               // this.$el.pricingform = this.$pricingform;
+               // this.$el.objlForm = this.$objlForm;
             },
             onBeforeDestroy:function(){
                 this.$el.removeClass('animated fadeIn').toggleClass('animated fadeOutDown');
@@ -175,16 +176,24 @@ define(["app", "apps/contracts/common/views",
                 var obligations = this.model.get('obligations');
                 console.log(JSON.stringify(pricing));
                 return {
-                    "fixedPricing":pricing.fixedPricing,
-                        "estBasedFee":pricing.estBasedFee,
-                        "targetPricing":pricing.targetPricing,
-                        "costPlusPricing":pricing.costPlusPricing,
-                        "firmPricing":pricing.firmPricing,
-                        "volDrivenPricing":pricing.volDrivenPricing,
+                    "fixedPricing":Numeral(pricing.fixedPricing).format('$0,0.00'),
+                    "estBasedFee":Numeral(pricing.estBasedFee).format('$0,0.00'),
+                    "targetPricing":Numeral(pricing.targetPricing).format('$0,0.00'),
+                    "costPlusPricing":Numeral(pricing.costPlusPricing).format('$0,0.00'),
+                    "firmPricing":Numeral(pricing.firmPricing).format('$0,0.00'),
+                    "volDrivenPricing":Numeral(pricing.volDrivenPricing).format('$0,0.00'),
+
+                    "fixedPricing_edit":Numeral(pricing.fixedPricing).format('0.00'),
+                    "estBasedFee_edit":Numeral(pricing.estBasedFee).format('0.00'),
+                    "targetPricing_edit":Numeral(pricing.targetPricing).format('0.00'),
+                    "costPlusPricing_edit":Numeral(pricing.costPlusPricing).format('0.00'),
+                    "firmPricing_edit":Numeral(pricing.firmPricing).format('0.00'),
+                    "volDrivenPricing_edit":Numeral(pricing.volDrivenPricing).format('0.00'),
+
                     "obligations": {
                         "version": obligations.version,
-                        "changeDate":  Moment.utc(obligations.changeDate).format("L"),
-                        "allowable": obligations.allowable,
+                        "changeDate":  Moment.utc(obligations.changeDate).format("YYYY-MM-DD"),
+                        "allowable_edit": Numeral(obligations.allowable).format('0.00'),
                         "comment": obligations.comment
                     }
                 };
@@ -197,25 +206,28 @@ define(["app", "apps/contracts/common/views",
                 this.$pricingform.toggleClass('hidden');
                 // this.$el.addClass('editing');
                 this.$pricingform.find('input#fixedPricing').focus();
-                this.flash("animated fadeIn bg-success");
+                this.flash("animated fadeIn");
             },
             Cancel: function () {
                // this.$cancelBtn.text('Edit').addClass('js-edit').removeClass('js-cancel');
                 this.$list.parent().toggleClass('hidden');
                 this.$pricingform.toggleClass('hidden');
+                 this.flash("animated fadeIn");
             },
             submitPricing: function(e){
                 e.preventDefault();
-                console.log(this);
+                var self = this;
                 var data = Backbone.Syphon.serialize($("form#pricing")[0]);
                 console.log('Submited data: '+JSON.stringify(data));
                 this.trigger("form:submit",data);
+                this.flash("animated fadeIn");
             },
             submitObligations: function(e){
                 e.preventDefault();
                 var data = Backbone.Syphon.serialize($("form#obligation")[0]);
                 console.log('Submited data: '+JSON.stringify(data));
                 this.trigger("form:submit",data);
+                this.$objlForm.toggleClass('animated fadeIn');
             }
 
         });

@@ -100,7 +100,8 @@ define(["app",
                 events: {
                     "click #notify-edit": "editClicked",
                     "click button#btnPopover": "actions",
-                    "hover a#infotoshow": "info"
+                    "hover a#infotoshow": "info",
+                    "click a":"active"
                 },
                 onRender:function(){
                     this.trigger("action:popover",this);
@@ -112,6 +113,10 @@ define(["app",
                         "dateNotify": Moment.utc(this.model.get('dateNotify')).format('YYYY-MM-DD'),
                         "timeTill":Moment.utc(this.model.get('dateNotify')).fromNow()
                     }
+                },
+                active:function(e){
+                    e.preventDefault();
+                    this.$el.toggleClass("active");
                 },
                 info:function(e){
                     e.preventDefault();
