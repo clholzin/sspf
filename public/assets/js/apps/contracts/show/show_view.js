@@ -15,7 +15,7 @@ define(["app",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
              rightItem, missingTpl, mainView,exportView,CommonViews,Moment,
              jszip){
-        AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _,kendo){
+        AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
 
             View.Regions = Marionette.LayoutView.extend({
                 template: layoutTpl,
