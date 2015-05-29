@@ -2,15 +2,16 @@ requirejs.config({
   baseUrl: "assets/js",
   paths: {
     backbone: "vendor/backbone",
-    "kendo.backbone":'vendor/kendo.backbone',
-      "kendo":"vendor/kendoUI/kendo.all.min",
-      "jszip":"vendor/jszip",
     "backbone.role":'vendor/role',
     "backbone.picky": "vendor/backbone.picky",
     "backbone.syphon": "vendor/backbone.syphon",
+      "backbone.filtered": "vendor/backbone-filter-collection",
+      "backbone.genetics": "vendor/backbone.genetics",
     "backbone.deep.model":"vendor/backbone.deep.model",
     jquery: "vendor/jquery",
+      "kendo":"vendor/kendoUI/kendo.all.min",
     "jquery-ui": "vendor/jquery-ui",
+    "jszip":"vendor/jszip",
     json2: "vendor/json2",
     localstorage: "vendor/backbone.localstorage",
     marionette: "vendor/backbone.marionette",
@@ -25,11 +26,14 @@ requirejs.config({
     underscore: "vendor/underscore",
     bootstrap: "vendor/bootstrap.min.3.3.4",
     nprogress:"vendor/nprogress",
+    numeral:"vendor/numeral",
     moment:"vendor/moment",
     "moment-fquarter":"vendor/moment-fquarter",
     "precise-range":"vendor/precise-range",
     "polyglot":"vendor/polyglot",
-    "polyglotText":"apps/config/marionette/polyglot_configText"
+    "polyglotText":"apps/config/marionette/polyglot_configText",
+
+      "kendo.backbone":'vendor/kendo.backbone'
   },
 
   shim: {
@@ -40,10 +44,10 @@ requirejs.config({
       "jszip": {
           exports: "jszip"
       },
-    "kendo": {
-      deps: ["jquery","jszip"],
-      exports: "kendo"
-    },
+      "numeral": {
+          deps: ["jquery"],
+          exports: "Numeral"
+      },
     handlebars:{
       exports:"Handlebars"
     },
@@ -71,17 +75,23 @@ requirejs.config({
       deps: ["jquery", "underscore", "json2"],
       exports: "Backbone"
     },
+    kendo: {
+          deps: ["jquery","jszip"],
+          exports: "kendo"
+    },
+    "kendo.backbone":["backbone"],
     "backbone.picky": ["backbone"],
     "backbone.deep.model": ["backbone"],
     "backbone.syphon": ["backbone"],
     "backbone.role": ["backbone"],
-    "kendo.backbone":["backbone"],
+    "backbone.filtered":["backbone"],
+    "backbone.genetics":["backbone"],
+    localstorage: ["backbone"],
     marionette: {
       deps: ["backbone","bootstrap","backbone.role"],
       exports: "Marionette"
     },
     "jquery-ui": ["jquery"],
-    localstorage: ["backbone"],
     "spin.jquery": ["spin", "jquery"],
      tpl: ["text"]
   },

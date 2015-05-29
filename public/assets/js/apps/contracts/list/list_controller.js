@@ -60,32 +60,16 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
                     model: newContract
                   });
                   view.on("form:submit", function(data){
-                      /**   if(contracts.length > 0){
-                var highestId = _.max(contracts,function(c){ return c.id; }).get("id");
-                      console.log(JSON.stringify(highestId));
-                      data.id = highestId + 1;
-                    }else{
-                      data.id = contracts.length + 1;
-                    }**/
-                   // data.id = 1;
-                      console.log('New form data: '+data);
-                    //  newContract.set(data);
-                    if(newContract.save(data,{wait:true})){
-                     // contracts.add(newContract);
-                        contracts.fetch();
-                      view.trigger("dialog:close");
-                      //var newContractView = contractsListView.children.findByModel(newContract);
-                      // check whether the new contract view is displayed (it could be
-                      // invisible due to the current filter criterion)
-                     // if(newContractView){
-                     //   newContractView.flash("bg-success");
-                          AppManager.execute("alert:show",({type:"success",message:"Contract Added."}));
-                     // }
-                        contractsListPanel.render();
-                    }
-                    else{
-                      view.triggerMethod("form:data:invalid", newContract.validationError);
-                    }
+                      console.log('New form data: ' + data);
+                      if (newContract.save(data, {wait: true})) {
+                          contracts.fetch();
+                          view.trigger("dialog:close");
+                          AppManager.execute("alert:show", ({type: "success", message: "Contract Added."}));
+                          contractsListPanel.render();
+                        } else {
+                          view.triggerMethod("form:data:invalid", newContract.validationError);
+                            }
+
                   });
 
                   AppManager.dialogRegion.show(view);
@@ -99,30 +83,6 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
 
               contractsListView.on("childview:contract:edit", function(childView, args){
                   AppManager.trigger("contract:edit", args.model.get("_id"));
-                  /**require(["apps/contracts/edit/edit_view"], function(EditView){
-                  var model = args.model;
-                  var view = new EditView.Edit({
-                    model: model
-                  });
-
-                  view.on("form:submit", function(data){
-                      console.log('submit data event: '+ JSON.stringify(data));
-                    if(model.save(data,{wait:true})){
-                         //  console.log(view);
-                        model.set(data);
-                        //view.triggerMethod("initialize");
-                        childView.render();
-                            AppManager.execute("alert:show",({type:"success",message:" Saved!!!"}));
-                            view.trigger("dialog:close");
-                            childView.flash("success");
-                    }
-                    else{
-                        AppManager.execute("alert:show",({type:"danger",message:"Error trying to update."}));
-                      view.triggerMethod("form:data:invalid", model.validationError);
-                    }
-                  });
-                  AppManager.dialogRegion.show(view);
-                });**/
               });
 
               contractsListView.on("childview:contract:delete", function(childView, args){
@@ -133,21 +93,6 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
                       AppManager.execute("alert:show",({type:"info",message:'Deleted '+args.model.attributes.title}));
                    }
 
-               /**
-                * Not Currently Working  **/
-                  /**  confirm('Are you sure you want to Delete',function(){
-                        //contract:entities
-
-                      args.model.destroy({
-                            success: function(model, response) {
-                                console.log(JSON.stringify(response));
-                                AppManager.execute("alert:show",({type:"success",message:JSON.stringify(response)}));
-                            },
-                            error:function(model,response){
-                                AppManager.execute("alert:show",({type:"danger",message:JSON.stringify(response)}));
-                            }
-                        });
-                    });**/
 
               });
 

@@ -1,31 +1,53 @@
-<div class="btn-group-justified" role="group" aria-label="...">
-    <a href="#" title="Back" class="btn btn-default btn-sm js-back">
+<div class="row">
+<div class="col-md-4 col-sm-5">
+<div class="btn-group" role="group" aria-label="...">
+    <a href="#" title="Back" class="btn btn-default js-back">
         <i class="glyphicon glyphicon-arrow-left"></i></a>
-
-    <a href="#contracts/<%- _id %>/edit" class="btn btn-primary btn-sm js-edit">
+    <a href="#contracts/<%- _id %>/edit" class="btn btn-primary  js-edit">
         <i class="glyphicon glyphicon-edit"></i> Edit </a>
-    <a href="#" class="btn btn-default btn-sm js-export">
+</div>
+    </div>
+<div class="col-md-6 col-sm-4">
+<div class="btn-group" role="group" aria-label="...">
+    <h4 class="center-block text-muted">Contract View</h4>
+</div>
+    </div>
+
+<div class="col-md-2 col-sm-3">
+<div class="btn-group pull-right" role="group" aria-label="...">
+    <a href="#" class="btn btn-default  js-export">
         <i class="glyphicon glyphicon-export"></i> Export </a>
 </div>
-<div class="well bkg-main">
-    <h2><%- title %></h2>
-    <h5><%- description.body%></h5>
+    </div>
+
+    </div><!--end row-->
+
+<div class="row">
+<div class="well well-lg bg-white">
+    <div class="top-right"><small class="text-muted">Updated <%- updated_at %></small></div>
+
+            <h2><%- title %> <small><%- description.body%></small></h2>
+       <div class="bg-white" style="border:none;"><h3 class="text-muted"><%-value%></h3></div>
 </div>
+    </div>
 
-<br>
 
-    <dl class="dl-horizontal small">
+<div class="row">
+    <div class="well well-lg bg-white">
+    <dl class="dl-horizontal">
         <dt>Value: </dt><dd><%-value%></dd>
-        <dt>Assigned to: </dt><dd><%- user.username %></dd>
-        <dt>Created: </dt><dd><%- date_created %></dd>
-        <dt>Last Updated: </dt><dd><%- updated_at %></dd>
         <dt>Start: </dt><dd><%- startDate%></dd>
         <dt>End: </dt><dd><%- endDate%></dd>
+        <dt>Assigned to: </dt><dd><%- user.username %></dd>
+        <dt>Created: </dt><dd><%- date_created %></dd>
+       <!-- <dt>Last Updated: </dt><dd><%- updated_at %></dd>-->
     </dl>
+        </div>
+</div>
 
 
-
-<div class="well well-sm" style="padding:0;margin:0;">
+<div class="row">
+<div class="well  bg-white">
     <table class="table table-striped table-bordered small js-dbclick">
         <thead><tr><td>Pricing List</td><td></td></tr></thead>
         <tbody>
@@ -83,6 +105,8 @@
         </div>
     </form>
 </div>
+    </div><!--end row-->
+<div class="row">
 <div class="well">Business Units:
     <ul class="list-group">
         <% $.each(businessUnitNames,function(key,value){ %>
@@ -90,6 +114,8 @@
         <% }); %>
     </ul>
 </div>
+</div><!--end row-->
+
 
 </div>
 

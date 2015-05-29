@@ -138,7 +138,7 @@ define(["app", "backbone.picky"], function(AppManager){
         AppManager.reqres.setHandler("login:entities", function(){
             return API.getLoginEntities();
         });
-        AppManager.reqres.setHandler("login:entity:new", function(id){
+        AppManager.reqres.setHandler("login:entity:new", function(){
             return new Entities.Register();
         });
     });

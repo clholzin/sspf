@@ -1,4 +1,4 @@
-define(["app"], function(AppManager){
+define(["app","vendor/moment"], function(AppManager,Moment){
   AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
     Entities.FilteredCollection = function(options){
       var original = options.collection;
@@ -83,7 +83,123 @@ define(["app"], function(AppManager){
       return filtered;
     };
 
+      Entities.CNRdates = function(beginDate){
+          var cnrDate = Moment(beginDate).add(1,'M').format('DD/MM/YYYY');
+          console.log('CNR DUE DATE: '+cnrDate);
+          return cnrDate;
+      };
 
+
+      Entities.QCRdates = function(beginDate,id){
+          var qcrObj = [];
+          var startDate = beginDate;
+          var weekendCheck = function(check){
+              if(check.day() === 0){//sunday
+                  check.subtract(2,'d');
+              }
+
+              if(check.day() === 6){//saturday
+                  check.subtract(1,'d');
+              }
+              return check;
+          };
+          for(var i = 0;i<=1;i++){
+              var qcrFirstQ = Moment(startDate).startOf('quarter').add(i,'y').add(1,'M').subtract(1,"d").endOf('m');
+              var qcrSecondQ = Moment(qcrFirstQ).add(3,'M');
+              var qcrThirdQ = Moment(qcrSecondQ).add(3,'M');
+              var qcrFourthQ = Moment(qcrThirdQ).add(3,'M');
+              if(i === 0){
+                  var quarter = qcrFirstQ.quarter();
+                  console.log('Current quarter:'+ quarter.toString() );
+                  switch(quarter.toString() ){
+                      case '1' :
+                          weekendCheck(qcrSecondQ.endOf('m'));
+                          var second2 = qcrSecondQ;
+                          var second2_year = qcrSecondQ.format('YYYY');
+                          qcrObj.push({contractType:'qcr',contractId:id,dateNotify:second2,
+                              year:second2_year,user:{username:'auto'}});
+                          console.log('year: '+(1+i)+' Second Quarter QCR Report Submit Date: '+ second2 +' day:'+qcrSecondQ.day() );
+
+                          weekendCheck(qcrThirdQ.endOf('m'));
+                          var third3 = qcrThirdQ;
+                          var third3_year = qcrThirdQ.format('YYYY');
+                          console.log('year: '+(1+i)+' Third Quarter QCR Report Submit Date: '+ third3+' day:'+qcrThirdQ.day() );
+                          qcrObj.push({contractType:'qcr',contractId:id,dateNotify:third3,
+                              year:third3_year,user:{username:'auto'}});
+
+                          weekendCheck(qcrFourthQ.endOf('m'));
+                          var fourth4 = qcrFourthQ;
+                          var fourth4_year = qcrFourthQ.format('YYYY');
+                          console.log('year: '+(1+i)+' Fourth Quarter QCR Report Submit Date: '+fourth4+' day:'+qcrFourthQ.day() );
+                          qcrObj.push({contractType:'qcr',contractId:id,dateNotify:fourth4,
+                              year:fourth4_year,user:{username:'auto'}});
+                          break;
+                      case '2' :
+                          weekendCheck(qcrThirdQ.endOf('m'));
+                          var third3_2 = qcrThirdQ;
+                          var third3_year_2 = qcrThirdQ.format('YYYY');
+                          console.log('year: '+(1+i)+' Third Quarter QCR Report Submit Date: '+ third3_2+' day:'+qcrThirdQ.day() );
+                          qcrObj.push({contractType:'qcr',contractId:id,dateNotify:third3_2,
+                              year:third3_year_2,user:{username:'auto'}});
+                          weekendCheck(qcrFourthQ.endOf('m'));
+                          var fourth4_2 = qcrFourthQ;
+                          var fourth4_year_2 = qcrFourthQ.format('YYYY');
+                          console.log('year: '+(1+i)+' Fourth Quarter QCR Report Submit Date: '+ fourth4_2+' day:'+qcrFourthQ.day() );
+                          qcrObj.push({contractType:'qcr',contractId:id,dateNotify:fourth4_2,
+                              year:fourth4_year_2,user:{username:'auto'}});
+                          break;
+                      case '3' :
+                          weekendCheck(qcrFourthQ.endOf('m'));
+                          var fourth4_3 = qcrFourthQ;
+                          var fourth4_year_3 = qcrFourthQ.format('YYYY');
+                          console.log('year: '+(1+i)+' Fourth Quarter QCR Report Submit Date: '+ fourth4_3+' day:'+qcrFourthQ.day() );
+                          qcrObj.push({contractType:'qcr',contractId:id,dateNotify:fourth4_3,
+                              year:fourth4_year_3,user:{username:'auto'}});
+                          break;
+                      case '4' :
+                          weekendCheck(qcrFirstQ.endOf('m'));
+                          var first = qcrFirstQ.add(1,'y');
+                          var first_year = qcrFirstQ.add(1,'y').format('YYYY');
+                          console.log('year: '+(1+i)+' First Quarter QCR Report Submit Date: '+ first+' day:'+qcrFirstQ.day() );
+                          qcrObj.push({contractType:'qcr',contractId:id,dateNotify:first,
+                              year:first_year,user:{username:'auto'}});
+                          break;
+                  }
+
+              }else{
+
+
+                  weekendCheck(qcrFirstQ.endOf('m'));
+                  var reg1 = qcrFirstQ;
+                  var reg1_year = qcrFirstQ.format('YYYY');
+                  console.log('year: '+(1+i)+' First Quarter QCR Report Submit Date: '+ reg1+' day:'+qcrFirstQ.day() );
+                  qcrObj.push({contractType:'qcr',contractId:id,dateNotify:reg1,
+                      year:reg1_year,user:{username:'auto'}});
+                  weekendCheck(qcrSecondQ.endOf('m'));
+                  var reg2 = qcrSecondQ;
+                  var reg2_year = qcrSecondQ.format('YYYY');
+                  console.log('year: '+(1+i)+' Second Quarter QCR Report Submit Date: '+ reg2+' day:'+qcrSecondQ.day() );
+                  qcrObj.push({contractType:'qcr',contractId:id,dateNotify:reg2,
+                      year:reg2_year,user:{username:'auto'}});
+
+                  weekendCheck(qcrThirdQ.endOf('m'));
+                  var reg3 = qcrThirdQ;
+                  var reg3_year = qcrThirdQ.format('YYYY');
+                  console.log('year: '+(1+i)+' Third Quarter QCR Report Submit Date: '+ reg3+' day:'+qcrThirdQ.day() );
+                  qcrObj.push({contractType:'qcr',contractId:id,dateNotify:reg3,
+                      year:reg3_year,user:{username:'auto'}});
+
+                  weekendCheck(qcrFourthQ.endOf('m'));
+                  var reg4 = qcrFourthQ;
+                  var reg4_year = qcrFourthQ.format('YYYY');
+                  console.log('year: '+(1+i)+' Fourth Quarter QCR Report Submit Date: '+ reg4+' day:'+qcrFourthQ.day() );
+                  qcrObj.push({contractType:'qcr',contractId:id,dateNotify:reg4,
+                      year:reg4_year,user:{username:'auto'}});
+              }
+
+          }
+            return qcrObj;
+      };
 
 
     Entities.BaseModel = Backbone.Model.extend({

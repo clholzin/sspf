@@ -9,12 +9,12 @@
 // Distributed under Apache 2.0 license
 //
 // http://kendoui.com
+// add a backbone namespace from which
+    // to hang everything
 
 (function(global, kendo){
     "use strict";
 
-    // add a backbone namespace from which
-    // to hang everything
     kendo.Backbone = kendo.Backbone || {};
 
 // Kendo-Backbone Model

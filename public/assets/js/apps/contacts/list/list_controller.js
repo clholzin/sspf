@@ -48,70 +48,51 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
                 contactsListLayout.contactsRegion.show(contactsListView);
               });
 
-              contactsListPanel.on("contact:new", function(){
-                  require(["apps/contacts/new/new_view"], function(NewView){
-                  var view = new NewView.Contact();
-                  view.on("form:submit", function(data){
-                      var newContact = AppManager.request("login:entity:new");
-                      $.when(newContact).done(function(newUser){
-                      console.log('hit contact:new'+ JSON.stringify(data));
-                          var saved = newUser.save(data,{
-                          success:function(model,response){
-                              if(response.info !== null || undefined){
-                                  AppManager.triggerMethod("form:data:invalid", newUser.validationError);
-                                  AppManager.execute("alert:show",({type:"warning",message:response.info}));
-                              }
-                              if(model.length > 0){
-                                  //var highestId = _.max(contacts,function(contact){ return contact._id; }).get("id");
-                                  model.id = 2;
-                              }
-                              else{
-                                  model.id = 1;
-                              }
-                              contacts.add(model);
-                              view.model = model;
-                              view.trigger("dialog:close");
-                              var newContactView = contactsListView.children.findByModel(model);
-                              if(newContactView){
-                                  newContactView.flash("bg-success animated fadeIn");
-                                  AppManager.execute("alert:show",({type:"success",message:'Added: '+ model.get('username')}));
-                              }else{
-                                  AppManager.triggerMethod("form:data:invalid", newUser.validationError);
-                              }
-                          },
-                          error: function (model, response) {
-                              console.log(JSON.stringify(response));
-                              if(response.statusText !== null || undefined){
-                                  AppManager.triggerMethod("form:data:invalid", newUser.validationError);
-                                  AppManager.execute("alert:show",({type:"warning",message:JSON.stringify(response.info)}));
-                              }
-                              //alert(JSON.stringify(response.statusText));
-                          }
-                      });
+                contactsListPanel.on("contact:new", function(){
+                    require(["apps/contacts/new/new_view","entities/auth"], function(NewView){
+                        var view = new NewView.Contact();
+                        view.on("form:submit", function(data){
 
-                          if(! saved){
-                              view.triggerMethod("form:data:invalid", newUser.validationError);
-                          }
-                 /**  if(newUser.save(data)){
-                      contacts.add(newUser);
-                        view.model = newUser;
-                      view.trigger("dialog:close");
-                      var newContactView = contactsListView.children.findByModel(newUser);
-                      // check whether the new contact view is displayed (it could be
-                      // invisible due to the current filter criterion)
-                      if(newContactView){
-                        newContactView.flash("bg-success animated fadeIn");
-                      }
-                    }
-                    else{
-                      view.triggerMethod("form:data:invalid", newUser.validationError);
-                    }**/
-                      });
-                  });
+                            var newContact = AppManager.request("login:entity:new");
+                              var saveCheck =  newContact.save(data,{wait:true,
+                                    success:function(model,response){
+                                        if(response.info){
+                                            AppManager.triggerMethod("form:data:invalid", model.validationError);
+                                            AppManager.execute("alert:show",({type:"warning",message:response.info}));
+                                        }
+                                       // contacts.add(model,{at:0});
+                                        contacts.fetch();
+                                       // console.log(contacts.models.attributes);
+                                        view.trigger("dialog:close");
+                                        //compView.children.findByModel(collection.get({id: elId}))
+                                        var findModel = contacts.findWhere({'username':response.username});
+                                        var display = contacts.at(findModel);
+                                        console.log(JSON.stringify(display));
+                                        var newContactView = contactsListView.children.findByModel(display);
+                                        newContactView.flash("bg-success animated fadeIn");
+                                        AppManager.execute("alert:show",({type:"success",message:'Added: '+ model.get('username')}));
+                                        //contacts.fetch();
+                                    },
+                                    error: function (model, response) {
+                                        console.log(JSON.stringify(response));
+                                        if(response.statusText !== null || undefined){
+                                            AppManager.triggerMethod("form:data:invalid", model.validationError);
+                                            AppManager.execute("alert:show",({type:"warning",message:JSON.stringify(response.info)}));
+                                        }
+                                        //alert(JSON.stringify(response.statusText));
+                                    }
+                                });
 
-                  AppManager.dialogRegion.show(view);
+                                if (!saveCheck) {
+                                    view.triggerMethod("form:data:invalid", newContact.validationError);
+                                }
+
+
+                        });
+
+                        AppManager.dialogRegion.show(view);
+                    });
                 });
-              });
 
               contactsListView.on("childview:contact:show", function(childView, args){
                   console.log(args.model.get("_id"));

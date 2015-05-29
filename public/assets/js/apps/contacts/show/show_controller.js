@@ -11,7 +11,7 @@ define(["app", "apps/contacts/show/show_view"], function(AppManager, View){
 
           var fetchingContact = AppManager.request("contact:entity", id);
           $.when(fetchingContact).done(function(contact){
-              console.log('Show Contact:' +JSON.stringify(contact));
+           //   console.log('Show Contact:' +JSON.stringify(contact));
             var contactView;
             if(contact != undefined){
               contactView = new View.Contact({
@@ -19,7 +19,7 @@ define(["app", "apps/contacts/show/show_view"], function(AppManager, View){
               });
 
               contactView.on("contact:edit", function(contact){
-                AppManager.trigger("contact:edit", contact.get("_id"));
+                AppManager.trigger("contact:edit", contact.get("id"));
               });
             }
             else{

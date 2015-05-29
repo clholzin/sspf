@@ -133,6 +133,13 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
             url: "http:localhost:8000/api/notify",
             model: Entities.Notify,
             comparator: "contractId"
+            /**filterBy: function(attribute,year) {
+                var model = this.model;
+                filtered = _.filter(function(model) {
+                    return model.get(attribute) < year;
+                });
+                return new this.collection(filtered);
+            }**/
         });
         Entities.NotifyCollectionId = Backbone.Collection.extend({
             initialize: function(models, options) {

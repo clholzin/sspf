@@ -1,8 +1,8 @@
 define(["app",
-        "tpl!apps/contacts/list/templates/layout.tpl",
-        "tpl!apps/contacts/list/templates/panel.tpl",
-        "tpl!apps/contacts/list/templates/none.tpl",
-        "tpl!apps/contacts/list/templates/list.tpl",
+        "tpl!apps/contacts/list/templates/layout.html",
+        "tpl!apps/contacts/list/templates/panel.html",
+        "tpl!apps/contacts/list/templates/none.html",
+        "tpl!apps/contacts/list/templates/list.html",
         "tpl!apps/contacts/list/templates/list_item.html"],
        function(AppManager, layoutTpl, panelTpl, noneTpl, listTpl, listItemTpl){
   AppManager.module("ContactsApp.List.View", function(View, AppManager, Backbone, Marionette, $, _){

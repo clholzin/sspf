@@ -94,16 +94,16 @@ define(["app", "apps/contracts/common/views",
             var eDate = this.model.get('endDate'),
                 sDate = this.model.get('startDate'),
             //updated_at = this.model.get('updated_at'),
-                test = Moment.utc().format('YYYY/MM/DD'),
-                endD = Moment.utc(eDate).format('YYYY/MM/DD'),
-                startD = Moment.utc(sDate).format('YYYY/MM/DD');
+                test = Moment.utc().format('MM/DD/YYYY'),
+                endD = Moment.utc(eDate).format('YYYY-MM-DD'),
+                startD = Moment.utc(sDate).format('YYYY-MM-DD');
             console.log(test);
             var contract = this.model.get('contract');
             return {
                 value: numeral(contract.amount).format('0.00'),
                 endDate: endD,
                 startDate: startD,
-                updated_at: Moment().format('YYYY/MM/DD, h:mm:ss a')
+                updated_at: Moment().format('YYYY-MM-DD, h:mm:ss a')
             }
         },
         onRender: function(){

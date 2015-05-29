@@ -41,6 +41,14 @@ a#headerId{
     background: none !important;
     color: #FFF !important;
 }
+.bg-white{
+    background-color:white !important;
+    color:#3d3d3d;
+    border:none;
+    border-bottom:thin solid #CCC;
+    margin-top:0;
+    margin-bottom:0;
+}
 .white  {
     color: #FFF ; /*Change active text color here*/
 }
@@ -134,11 +142,12 @@ Main Panel Region
     height:55px;
     width:100%;
     top:80px;
-    z-index:1005;
     background-color:#FFF;
 }
 #top-left-controls{
-    margin:-15px -15px 0 -15px;
+    position:relative;
+    margin:-18px -18px 0 -18px;
+    z-index:99999;
 }
 #contacts-region{
     padding:20px 0 0 0;
@@ -160,8 +169,15 @@ Main Panel Region
  * Sidebar
  */
 /** Side Nav**/
-#left-panel, #right-panel{
+#left-panel{
+    position:relative;
   font-size: 100%;
+    z-index: 1000;
+
+}
+#right-panel{
+    font-size: 100%;
+    z-index: 1000;
 
 }
 .left .right{
@@ -178,7 +194,7 @@ Main Panel Region
         height:100vh;
         bottom: 0;
         left: 0;
-        z-index: 1000;
+        z-index:1000;
         display: block;
         padding: 15px;
         overflow-x: hidden;
@@ -218,11 +234,12 @@ body::-webkit-scrollbar{
     margin-right: -21px; /* 20px padding + 1px border */
     margin-bottom: 20px;
     margin-left: -20px;
+
 }
 .nav-sidebar > li > a {
     padding-right: 25px;
     padding-left: 25px;
-    font-size:125%;
+    font-size:115%;
     border-bottom:thin solid #ccc;
 }
 .nav-sidebar > .active > a,
@@ -268,4 +285,8 @@ body::-webkit-scrollbar{
 }
 .caption{
     border-top:thin solid #2e2e2e;
+}
+
+.raise-up{
+    z-index:2000;
 }

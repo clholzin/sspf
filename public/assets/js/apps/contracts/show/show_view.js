@@ -8,12 +8,13 @@ define(["app",
         "tpl!apps/contracts/show/templates/missing.html",
         "tpl!apps/contracts/show/templates/view.html",
         "tpl!apps/contracts/show/templates/exportView.html",
-        "vendor/moment","apps/contracts/common/views",
-        "jszip","backbone.syphon","vendor/kendoUI/kendo.all.min","kendo.backbone"
-            ],
+        "apps/contracts/common/views","vendor/moment",
+        "jszip","kendo.backbone","vendor/KendoUI/kendo.all.min",
+        "vendor/numeral","backbone.syphon"
+            ],//"vendor/KendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
-             rightItem, missingTpl, mainView,exportView,Moment,
-             CommonViews,jszip){
+             rightItem, missingTpl, mainView,exportView,CommonViews,Moment,
+             jszip){
         AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
 
             View.Regions = Marionette.LayoutView.extend({
@@ -86,7 +87,25 @@ define(["app",
                 template: topLeft,
                 triggers: {
                     "click button.js-new": "notify:new"
-                }
+                },
+                events:{
+                    "click li.report": "runFilter",
+                    'click .js-filter-toggle':'showFilter'
+                },
+                runFilter:function(e){
+                    e.preventDefault();
+                    var val = this.$(e.currentTarget).data('id');
+                    console.log('hit TopLeftView trigger filter '+val);
+                    if(val !== undefined){
+                        this.trigger('notify:filterByType',val);
+                    }
+                },
+                showFilter:function(e){
+                e.preventDefault();
+                this.$el.find('.js-notify-controls').toggleClass('hidden');
+                this.$el.find('#filter').toggleClass('hidden fadeInLeft fadeInRight')
+               }
+
             });
 
 
@@ -155,13 +174,31 @@ define(["app",
 
             View.LeftMenu = Marionette.CompositeView.extend({
                 tagName: "ul",
-                className: "nav nav-sidebar",
+                className: "nav nav-sidebar animated slideInLeft",
                 template: leftSide,
                 emptyView: View.MissingContract,
                 childView:  View.Left,
                 emptyViewContainer: "ul",
                 //childViewContainer: "ul",
-                onRender:function(){
+                events:{
+                    'click option':'filterByReport'
+                },
+                initialize: function(){
+                   this.listenTo(this.collection, "reset", function(){
+                        this.attachHtml = function(collectionView, childView, index){
+                            collectionView.$el.append(childView.el);
+                        };
+                    });
+                },
+                onRenderCollection: function(){
+                    this.attachHtml = function(collectionView, childView, index){
+                        collectionView.$el.append(childView.el);
+                    };
+                },
+                onRender:function(options){
+                   // console.log(options);
+                    //$('.nav-sidebar ul.animated').toggleClass('fadeInLeft fadeInRight');
+                    this.$previous = options.previousModels;
                     var self = this;
                     $(document).ready(function(){
                         self.$el.popover();
@@ -169,18 +206,29 @@ define(["app",
                     });
                     //_.sortBy(self.collection.models, 'cid');
                 },
-                initialize: function(e){
-                   this.listenTo(this.collection, "reset", function(){
-                        this.attachHtml = function(collectionView, childView, index){
-                            collectionView.$el.append(childView.el);
-                            //collectionView.$el.popover();
-                        }
+                filterByDate:function(){
+                  /**  var self = this;
+                    var date = Moment().add(1,'y').add(6,'m').unix();
+                    var revisedObj =  self.collection.filter(function(model,num){
+                        var unixModel = Moment(model.get('dateNotify')).unix();
+                        return unixModel < date;//model.get('notifyDate') < year;
                     });
+                    console.log(JSON.stringify(revisedObj));
+                   // self.collection.set(revisedObj);**/
                 },
-                onRenderCollection: function(){
-                    this.attachHtml = function(collectionView, childView, index){
-                        collectionView.$el.prepend(childView.el);
-                    }
+                filterByReport:function(filtered){
+                    console.log('hit filter report method '+ JSON.stringify(filtered.models));
+                   // this.collection = new Backbone.Collection.extend(filtered.models);
+                   /** var blank = Backbone.Collection.extend();
+                    this.blank = new blank(collection.models);
+                    this.filterCollection = this.blank.clone();
+                   var revisedObj = this.filterCollection.findWhere({'contractType':type});
+                  if(_.isEmpty(revisedObj)){
+                        return alert('No Notifications for '+ type);
+                    }**/
+
+                   // console.log(JSON.stringify(revisedObj));
+                   // collection.reset(revisedObj);
                 }
             });
 
@@ -312,25 +360,38 @@ define(["app",
                     this.$form = this.$('form.hidden');
                 },
                 templateHelpers:function(){
-
+                    var pricing = this.model.get('pricing');
                         return {
                         "_id": this.model.get('_id'),
                         "title":this.model.get('title'),
-                        "contract":this.model.get('contract'),
+                        "value":numeral(this.model.get('contract').amount).format('$0,0.00'),
                         "description":{
                             'body':this.model.get('description').body
                         },
                         "startDate":Moment.utc(this.model.get('startDate')).format('L'),
                         "endDate":Moment.utc(this.model.get('endDate')).format('L'),
-                        "updated_at": Moment.utc(this.model.get('updated_at')).format('L'),
+                        "updated_at": Moment.utc(this.model.get('updated_at')).fromNow(),
                         "date_created" : Moment.utc(this.model.get('meta').date_created).format('L'),
                          "businessUnitNames": (this.model.get('businessUnit') != undefined ? this.model.get('businessUnit') : this.na),
-                            "fixedPricing":(this.model.get('pricing').fixedPricing != undefined ? this.model.get('pricing').fixedPricing : this.na),
-                            "estBasedFee":(this.model.get('pricing').estBasedFee != undefined ? this.model.get('pricing').estBasedFee : this.na),
-                            "targetPricing":(this.model.get('pricing').targetPricing != undefined ? this.model.get('pricing').targetPricing : this.na),
-                            "costPlusPricing":(this.model.get('pricing').costPlusPricing != undefined ? this.model.get('pricing').costPlusPricing : this.na),
-                            "firmPricing":(this.model.get('pricing').firmPricing != undefined ? this.model.get('pricing').firmPricing : this.na),
-                            "volDrivenPricing":(this.model.get('pricing').volDrivenPricing != undefined ? this.model.get('pricing').volDrivenPricing : this.na)
+                          /**  "fixedPricing":(this.model.get('pricing').fixedPricing != undefined ? parseInt(this.model.get('pricing').fixedPricing).toFixed(2) : this.na),
+                            "estBasedFee":(this.model.get('pricing').estBasedFee != undefined ? parseInt(this.model.get('pricing').estBasedFee).toFixed(2) : this.na),
+                            "targetPricing":(this.model.get('pricing').targetPricing != undefined ? parseInt(this.model.get('pricing').targetPricing).toFixed(2) : this.na),
+                            "costPlusPricing":(this.model.get('pricing').costPlusPricing != undefined ? parseInt(this.model.get('pricing').costPlusPricing).toFixed(2) : this.na),
+                            "firmPricing":(this.model.get('pricing').firmPricing != undefined ? parseInt(this.model.get('pricing').firmPricing).toFixed(2) : this.na),
+                            "volDrivenPricing":(this.model.get('pricing').volDrivenPricing != undefined ? parseInt(this.model.get('pricing').volDrivenPricing).toFixed(2) : this.na)**/
+                          "fixedPricing":numeral(pricing.fixedPricing).format('$0,0.00'),
+                            "estBasedFee":numeral(pricing.estBasedFee).format('$0,0.00'),
+                            "targetPricing":numeral(pricing.targetPricing).format('$0,0.00'),
+                            "costPlusPricing":numeral(pricing.costPlusPricing).format('$0,0.00'),
+                            "firmPricing":numeral(pricing.firmPricing).format('$0,0.00'),
+                            "volDrivenPricing":numeral(pricing.volDrivenPricing).format('$0,0.00'),
+
+                            "fixedPricing_edit":numeral(pricing.fixedPricing).format('0.00'),
+                            "estBasedFee_edit":numeral(pricing.estBasedFee).format('0.00'),
+                            "targetPricing_edit":numeral(pricing.targetPricing).format('0.00'),
+                            "costPlusPricing_edit":numeral(pricing.costPlusPricing).format('0.00'),
+                            "firmPricing_edit":numeral(pricing.firmPricing).format('0.00'),
+                            "volDrivenPricing_edit":numeral(pricing.volDrivenPricing).format('0.00')
 
                     };
                 },
@@ -349,13 +410,14 @@ define(["app",
                 Cancel: function () {
                     this.$list.toggleClass('hidden');
                     this.$form.toggleClass('hidden');
-                    this.flash("animated fadeIn bg-success");
+                    this.flash("animated fadeIn");
                 },
                 submitClicked: function(e){
                     e.preventDefault();
                     var data = Backbone.Syphon.serialize(this);
                     console.log('Submited data: '+JSON.stringify(data));
                     this.trigger("price:update",data);
+                    this.flash("animated fadeIn bg-success");
                 },
                 flash: function(cssClass){
                     var $view = this.$list;
@@ -377,7 +439,82 @@ define(["app",
             });
 
 
+            (function($, kendo, _) {
+                "use strict";
 
+                // add a backbone namespace if we need it
+                kendo.Backbone = kendo.Backbone || {};
+
+                // BackboneTransport
+                // -----------------
+                //
+                // Define a transport that will move data between
+                // the kendo DataSource and the Backbone Collection
+                var BackboneTransport = function(collection){
+                    this._collection = collection;
+                };
+
+                // add basic CRUD operations to the transport
+                _.extend(BackboneTransport.prototype, {
+
+                    create: function(options) {
+                        // increment the id
+                        if (!this._currentId) { this._currentId = this._collection.length; }
+                        this._currentId += 1;
+
+                        // set the id on the data provided
+                        var data = options.data;
+                        data.id = this._currentId;
+
+                        // create the model in the collection
+                        this._collection.add(data);
+
+                        // tell the DataSource we're done
+                        options.success(data);
+                    },
+
+                    read: function(options) {
+                        options.success(this._collection.toJSON());
+                    },
+
+                    update: function(options) {
+                        // find the model
+                        var model = this._collection.get(options.data.id);
+
+                        // update the model
+                        model.set(options.data);
+
+                        // tell the DataSource we're done
+                        options.success(options.data);
+                    },
+
+                    destroy: function(options) {
+                        // find the model
+                        var model = this._collection.get(options.data.id);
+
+                        // remove the model
+                        this._collection.remove(model);
+
+                        // tell the DataSource we're done
+                        options.success(options.data);
+                    }
+                });
+
+                // kendo.backbone.BackboneDataSource
+                // -----------------------------------
+
+                // Define the custom data source that uses a Backbone.Collection
+                // as the underlying data store / transport
+                kendo.Backbone.DataSource = kendo.data.DataSource.extend({
+                    init: function(options) {
+                        var bbtrans = new BackboneTransport(options.collection);
+                        _.defaults(options, {transport: bbtrans, autoSync: true});
+
+                        kendo.data.DataSource.fn.init.call(this, options);
+                    }
+                });
+
+            })($, kendo, _);
 
 
             window.JSZip = jszip;
@@ -388,12 +525,16 @@ define(["app",
                 events:{
                     "click button.js-back":"backClicked"
                 },
+                initialize:function(){
+
+                },
                 backClicked:function(e){
                     e.preventDefault();
                     this.trigger('back:clicked');
                 },
                onRender:function(){
-                   var exportData = new kendo.Backbone.DataSource({
+
+                   this.$exportData = new kendo.Backbone.DataSource({
                        collection: this.collection,
                        schema: {
                            model: {
@@ -403,11 +544,10 @@ define(["app",
                                    NameFirst: {type: "text", editable: false, required: true},
                                    NameLast: {type: "text", editable: false, required: true},
                                    SmtpAddr: {type: "text", editable: true, required: true}
-
                                    // id: {type: "number", editable: false},
                                    // done: {type: "boolean", editable: true},
                                    // description: {type: "text", editable: true, required: true}
-                                }
+                               }
                            }
                        }
                    });
@@ -419,7 +559,7 @@ define(["app",
                            //proxyURL: "http://localhost:8000",
                            filterable: true
                        },
-                       dataSource: exportData,
+                       dataSource: this.$exportData,
                        //pageSize: this.collection.length,
                        height: 450,
                        sortable: true,

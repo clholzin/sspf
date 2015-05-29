@@ -1,8 +1,9 @@
-define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppManager, View,Moment){
+define(["app", "apps/contracts/show/show_view",
+    "vendor/moment","backbone.filtered","vendor/KendoUI/kendo.all.min","kendo.backbone"], function(AppManager, View,Moment,FilteredCollection){
     AppManager.module("ContractsApp.Show", function(Show, AppManager, Backbone, Marionette, $, _){
         Show.Controller = {
             showContract: function(id){
-                require(["common/views", "entities/contracts"], function(CommonViews){
+                require(["common/views","entities/common", "entities/contracts"], function(CommonViews,QCRdates){
                     var loadingView = new CommonViews.Loading({
                         title: "Contract",
                         message: "Loading..."
@@ -16,10 +17,9 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                     $.when(fetchingContract).done(function(contract){
                         $.when(fetchingNotify).done(function(notifications) {
                    //console.log('Show Contract:' +JSON.stringify(contract));
-                         var contractView,
+                        var  contractView,
                              LeftView,
                              RightView,
-                             RightList,
                              MainExport,
                              TopLeftView;
                         if(contract instanceof Object){
@@ -27,6 +27,25 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                                 contractView = new View.Contract({
                                     model: contract
                                     });
+
+
+                        /**Add Notification dates for QCR
+                         * Save to notification DB & Copied for backup to contract
+                         **/
+                            console.log(contract.get('newContract') );
+                            if(contract.get('newContract')) {
+                                var startDate = Moment(contract.get('startDate'));//unformated date now
+                                var qcrDates =  AppManager.Entities.QCRdates(startDate,id);
+                                console.log(JSON.stringify(qcrDates));
+                                        _.each(qcrDates, function (value) {
+                                            notifications.create(value);
+                                           // contract.attributes.reports.qcr.occurs.push(qcrDate)
+                                    });
+                                    var update = {reports:{qcr:{occurs:qcrDates}},newContract:false};
+                                    contract.save(update,{wait:true});
+
+                            }//end adding new notify dates
+
 
                             contractView.on("contract:edit", function(model){
                                 AppManager.trigger("contract:edit", model.get("_id"));
@@ -44,8 +63,9 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                                         AppManager.trigger("contract:show", contract.get("_id"));
                                     });
                                     //console.log(JSON.stringify(ursSets));
-                                sideAndMainLayout.mainRegion.show(MainExport);
+                                    sideAndMainLayout.mainRegion.show(MainExport);
                                 });
+
                             });
 
                             contractView.on("price:update",function(data){
@@ -79,7 +99,7 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                               var objData = $.grep(contract.get('comments'), function(item) {
                                   return item;
                               });
-                              console.log(JSON.stringify(objData));
+                              //console.log(JSON.stringify(objData));
                               objData.push(data);
                               console.log(JSON.stringify(objData));
                               //contract.attributes.comments.push(data);
@@ -102,15 +122,68 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                           });
 
 
-                TopLeftView = new View.TopLeftView({
-                //  model: contract
+
+
+                 var filtered = new FilteredCollection(notifications);
+                var date = Moment().add(1,'y').add(6,'m').unix();
+                filtered.filterBy('date', function (model) {
+                    var unixModel = Moment(model.get('dateNotify')).unix();
+                    return unixModel < date;
                 });
 
-                          //  console.log('Notifications: '+JSON.stringify(notifications));
-                LeftView = new View.LeftMenu({
-                    collection: notifications,
-                    contractId: contract.get("_id")
+                TopLeftView = new View.TopLeftView({
+                    templateHelpers:function(){
+                        return{
+                            'notifyCount': filtered.length
+                        }
+                    }
+                });
+
+                TopLeftView.on("notify:filterByType", function(type) {
+                    switch (type) {
+                        case 'ccr':
+                            filtered.filterBy('contractType', function (model) {
+                                return model.get('contractType') === type;
+                            });
+                            break;
+                        case 'ccs':
+                            filtered.filterBy('contractType', function (model) {
+                                return model.get('contractType') === type;
+                            });
+                            break;
+                        case 'qcr':
+                            filtered.filterBy('contractType', function (model) {
+                                return model.get('contractType') === type;
+                            });
+                            break;
+                        case 'icr':
+                            filtered.filterBy('contractType', function (model) {
+                                return model.get('contractType') === type;
+                            });
+                            break;
+                        case 'crp':
+                            filtered.filterBy('contractType', function (model) {
+                                return model.get('contractType') === type;
+                            });
+                            break;
+                        case 'cnr':
+                            filtered.filterBy('contractType', function (model) {
+                                return model.get('contractType') === type;
+                            });
+                            break;
+                        case 'default':
+                            filtered.removeFilter('contractType');
+                            filtered.refilter();
+                            break;
+                    }
+                   // view  = new LeftView({ collection: filtered });
+                   // sideAndMainLayout.leftRegion.show(view);
+                });
+                    LeftView = new View.LeftMenu({
+                        collection: filtered,
+                        contractId: contract.get("_id")
                     });
+
 
                 TopLeftView.on("notify:new", function(){
                     console.log('hit topleftView on event');
@@ -214,7 +287,7 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                             LeftView.on("childview:notify:delete", function(childView, args){
                                 console.log(args.model.get('_id'));
                                 var title = args.model.get('contractType').toUpperCase();
-                                if(confirm('Are you sure you want to '+title+' Delete')){
+                                if(confirm('Are you sure you want to Delete '+title)){
                                     childView.flash("animated fadeOutLeft bg-danger");
                                     args.model.destroy();
                                     AppManager.execute("alert:show",({type:"info",message:'Deleted '+title}));
