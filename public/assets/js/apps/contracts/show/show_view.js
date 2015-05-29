@@ -9,13 +9,13 @@ define(["app",
         "tpl!apps/contracts/show/templates/view.html",
         "tpl!apps/contracts/show/templates/exportView.html",
         "apps/contracts/common/views","vendor/moment",
-        "jszip","vendor/KendoUI/kendo.all.min","kendo.backbone",
+        "jszip","kendo.backbone",
         "vendor/numeral","backbone.syphon"
             ],//"vendor/KendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
              rightItem, missingTpl, mainView,exportView,CommonViews,Moment,
              jszip){
-        AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
+        AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _,kendo){
 
             View.Regions = Marionette.LayoutView.extend({
                 template: layoutTpl,
