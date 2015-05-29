@@ -8,7 +8,7 @@ define(["app", "apps/contracts/common/views",
     "tpl!apps/contracts/edit/templates/category/pricing.html",
     "tpl!apps/contracts/edit/templates/category/deliverables.html",
 
-    "vendor/moment","vendor/Numeral"], function(AppManager,
+    "vendor/moment","vendor/numeral"], function(AppManager,
                    CommonViews, listTpl, listItemTpl,missingTpl,layoutTpl,
                    reportsTpl,pricingTpl,deliverablesTpl,
                    Moment,Numeral){
