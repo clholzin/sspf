@@ -9,7 +9,7 @@ define(["app",
         "tpl!apps/contracts/show/templates/view.html",
         "tpl!apps/contracts/show/templates/exportView.html",
         "apps/contracts/common/views","vendor/moment",
-        "jszip","kendo.backbone","vendor/KendoUI/kendo.all.min",
+        "jszip","vendor/KendoUI/kendo.all.min","kendo.backbone",
         "vendor/numeral","backbone.syphon"
             ],//"vendor/KendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
