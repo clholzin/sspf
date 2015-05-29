@@ -103,12 +103,13 @@ div#alertsRegion{
 
 
 
-.black  .navbar .navbar-default .editNav{
+.black .navbar .navbar-default .editNav{
     padding-right:20px;
     color:#333 !important;
 }
-.editNav  .dropdown > li{
+.editNav .dropdown > li{
     color:#333;
+    z-index:99999;
 }
 
 .editNav > li{
@@ -134,11 +135,12 @@ Main Panel Region
     top:80px;
     height:65px;
     padding:10px 9% 0 0;
-    z-index: 1005;
+    z-index: 1020;
     background-color:#FFF;
 }
 #top-panel{
     position:fixed !important;
+    z-index:1020;
     height:55px;
     width:100%;
     top:80px;
@@ -149,10 +151,7 @@ Main Panel Region
     margin:-18px -18px 0 -18px;
     z-index:99999;
 }
-#contacts-region{
-    padding:20px 0 0 0;
-    top:65px;
-}
+
 #contracts-region{
     padding:20px 0 0 0;
     position: relative;
@@ -162,6 +161,8 @@ Main Panel Region
 
 #edit-panel{
     top:57px;
+    position:relative;
+    z-index:5;
     bottom:100px;
     padding:0 10% 55px 10%;
  }
@@ -234,7 +235,6 @@ body::-webkit-scrollbar{
     margin-right: -21px; /* 20px padding + 1px border */
     margin-bottom: 20px;
     margin-left: -20px;
-
 }
 .nav-sidebar > li > a {
     padding-right: 25px;
