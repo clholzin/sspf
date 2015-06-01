@@ -1,4 +1,4 @@
-define(["app", "backbone.picky","vendor/kendoUI/kendo.all.min"], function(AppManager){
+define(["app", "backbone.picky"], function(AppManager){
   AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
     Entities.Header = Backbone.Model.extend({
 
