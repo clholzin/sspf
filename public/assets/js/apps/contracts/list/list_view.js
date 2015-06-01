@@ -38,8 +38,8 @@ define(["app",
       },
       excelExport:function(){
 
-          alert('downloading');
-          return window.location.open='http://localhost:8000/api/contract/export';
+          alert('Downloading');
+          return window.location.open= window.location.origin+'/api/contract/export';
           /**$.ajax({
               url:'http://localhost:8000/api/contract/export',
               method:'GET',
@@ -237,7 +237,7 @@ define(["app",
                   _.toArray(self.$old);
                   _.each(self.$old,function(item,index){
                     //  console.log(index+'   '+item._id);
-                      var model = self.collection.get(item._id);
+                      var model = self.collection.get(item.id);
                       if(model){
                           self.collection.remove(model);
                           self.collection.add(item,{at:index});
