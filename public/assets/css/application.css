@@ -151,12 +151,19 @@ Main Panel Region
     margin:-18px -18px 0 -18px;
     z-index:99999;
 }
-
-#contracts-region{
-    padding:20px 0 0 0;
-    position: relative;
+#contacts-region{
+    position:relative;
     top:65px;
     bottom:100px;
+    padding:20px 0 0 0;
+
+}
+#contracts-region{
+    position:relative;
+    top:80px;
+    bottom:100px;
+    padding:20px 0 0 0;
+
 }
 
 #edit-panel{
