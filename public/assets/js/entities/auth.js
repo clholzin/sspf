@@ -4,16 +4,16 @@
 define(["app", "backbone.picky"], function(AppManager){
     AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
         Entities.Login = Backbone.Model.extend({
-            urlRoot:'http://localhost:8000/login'
+            urlRoot:window.location.origin+'/login'
             //idAttribute: "_id",
 
         });
         Entities.Logout = Backbone.Model.extend({
-            urlRoot:'http://localhost:8000/logout'
+            urlRoot:window.location.origin+'/logout'
 
         });
         Entities.Register = Backbone.Model.extend({
-            urlRoot:'http://localhost:8000/register',
+            urlRoot:window.location.origin+'/register',
             validate: function(attrs, options) {
                 var errors = {};
                 if (! attrs.username) {
@@ -31,7 +31,7 @@ define(["app", "backbone.picky"], function(AppManager){
         });
 
         Entities.LoginCollection = Backbone.Collection.extend({
-            url:'http://localhost:8000/login',
+            url: window.location.origin+'/login',
             model: Entities.Login
 
         });
