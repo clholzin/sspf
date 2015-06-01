@@ -1,7 +1,7 @@
 define(["app", "apps/config/storage/localstorage"], function(AppManager){
   AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
     Entities.Contact = Backbone.Model.extend({
-      urlRoot: "http://localhost:8000/admin/users",
+      urlRoot: window.location.origin+"/admin/users",
         idAttribute: "_id"
       /**defaults: {
         firstName: "",
@@ -31,7 +31,7 @@ define(["app", "apps/config/storage/localstorage"], function(AppManager){
     //Entities.configureStorage(Entities.Contact);
 
     Entities.ContactCollection = Backbone.Collection.extend({
-      url: "http://localhost:8000/admin/users",
+      url: window.location.origin+"/admin/users",
       model: Entities.Contact,
       comparator: "username"
     });
