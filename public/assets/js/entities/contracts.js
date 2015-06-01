@@ -4,7 +4,7 @@
 define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppManager,Moment){
     AppManager.module("Entities", function(Entities, AppManager, Backbone, Marionette, $, _){
         Entities.Contract = Backbone.Model.extend({
-            urlRoot: "http://localhost:8000/api/contract",
+            urlRoot: window.location.origin+"/api/contract",
             idAttribute: "_id",
             na:'N/A',
            defaults: {
@@ -77,7 +77,7 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
       }
         });
         Entities.Notify = Backbone.Model.extend({
-            urlRoot: "http://localhost:8000/api/notify",
+            urlRoot: window.location.origin+"/api/notify",
             idAttribute: "_id",
             defaults:{
                 contractType:'Default',
@@ -119,18 +119,18 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
 
         Entities.UsrSet = Backbone.Model.extend({
             idAttribute:'Persnumber',
-            urlRoot:'http://localhost:8000/sap/ZUSER_SRV/USR01Set'
+            urlRoot:window.location.origin+'/sap/ZUSER_SRV/USR01Set'
         });
         //Entities.configureStorage(Entities.Contact);
 
         Entities.ContractCollection = Backbone.Collection.extend({
-            url: "http://localhost:8000/api/contract",
+            url: window.location.origin+"/api/contract",
             model: Entities.Contract
             //,
            // comparator: "username"
         });
         Entities.NotifyCollection = Backbone.Collection.extend({
-            url: "http:localhost:8000/api/notify",
+            url: window.location.origin+"/api/notify",
             model: Entities.Notify,
             comparator: "contractId"
             /**filterBy: function(attribute,year) {
@@ -143,7 +143,7 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
         });
         Entities.NotifyCollectionId = Backbone.Collection.extend({
             initialize: function(models, options) {
-                this.url = 'http://localhost:8000/api/notify/' + options.id;
+                this.url = window.location.origin+'/api/notify/' + options.id;
             },
             model: Entities.Notify,
             comparator: function(model) {
@@ -154,7 +154,7 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
 
         Entities.UsrSets = Backbone.Collection.extend({
             model: Entities.UsrSet,
-            url: 'http://localhost:8000/sap/ZUSER_SRV/USR01Set',
+            url: window.location.origin+'/sap/ZUSER_SRV/USR01Set',
            parse:function(response){
                 return response.d.results;
             }
