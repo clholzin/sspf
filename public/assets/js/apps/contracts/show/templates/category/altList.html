@@ -1,0 +1,17 @@
+<div class="" style="max-height:300px;min-width:300px;overflow-y:scroll;">
+<ul class="list-group">
+    <li class="list-group-item">
+        <span class="badge"><%-altlength%></span>
+        Records
+    </li>
+<% _.each(guid,function(value, key, list){ %>
+<li class="list-group-item">NodeId: <%-value.attributes.NodeId%>
+    <div class="btn-group">
+        <a class="btn btn-default js-sap" title="show mod project structure" data-id="<%-value.attributes.NodeId%>">
+            <i class="glyphicon glyphicon-list"></i>
+        </a>
+    </div>
+</li>
+<% });%>
+</ul>
+</div>
