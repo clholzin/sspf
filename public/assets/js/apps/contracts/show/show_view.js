@@ -12,7 +12,7 @@ define(["app",
         "tpl!apps/contracts/show/templates/category/altList.html",
         "tpl!apps/contracts/show/templates/category/dpsList.html",
         "apps/contracts/common/views",
-        "vendor/moment","jszip","vendor/KendoUI/kendo.all.min","kendo.backbone",
+        "vendor/moment","jszip","vendor/kendoUI/kendo.all.min","kendo.backbone",
         "vendor/numeral","backbone.syphon"
             ],//"vendor/KendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
