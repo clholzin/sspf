@@ -13,13 +13,13 @@ define(["app",
         "tpl!apps/contracts/show/templates/category/dpsList.html",
         "apps/contracts/common/views",
         "vendor/moment","jszip","kendo.backbone",
-        "vendor/KendoUI/kendo.all.min",
+        //"vendor/KendoUI/kendo.all.min",
         "vendor/numeral","backbone.syphon"
             ],//"vendor/KendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
              rightItem, missingTpl,mainView,exportView,guidList,altList,dpsList,CommonViews,Moment,
              jszip){
-        AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
+        AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _,kendo){
 
             View.Regions = Marionette.LayoutView.extend({
                 template: layoutTpl,
