@@ -1,26 +1,32 @@
 <div class="row">
-<div class="col-md-4 col-sm-5">
+
+<div class="col-md-4 col-sm-4">
 <div class="btn-group" role="group" aria-label="...">
     <a href="#" title="Back" class="btn btn-default js-back">
-        <i class="glyphicon glyphicon-arrow-left"></i></a>
+        <!--<i class="glyphicon glyphicon-arrow-left"></i>--> Contract List</a>
     <a href="#contracts/<%- _id %>/edit" class="btn btn-primary  js-edit">
         <i class="glyphicon glyphicon-edit"></i> Edit </a>
 </div>
     </div>
-<div class="col-md-6 col-sm-4">
+<div class="col-md-4 col-sm-4">
 <div class="btn-group" role="group" aria-label="...">
-    <h4 class="center-block text-muted">Contract View</h4>
+    <h4 class="center-block text-muted">Contract Details</h4>
 </div>
     </div>
 
-<div class="col-md-2 col-sm-3">
-<div class="btn-group pull-right" role="group" aria-label="...">
-    <a href="#" class="btn btn-default  js-export">
-        <i class="glyphicon glyphicon-export"></i> Export </a>
-</div>
-    </div>
+<div class="col-md-4 col-sm-4">
+    <div class="btn-group pull-right" role="group" aria-label="...">
+        <a href="#" type="button" class="btn btn-default js-guid">
+           Projects </a>
 
-    </div><!--end row-->
+    <a href="#" type="button" title="UrsSet Test" class="btn btn-default js-export">
+        <i class="glyphicon glyphicon-export"></i> </a>
+</div>
+
+</div>
+
+
+</div><!--end row-->
 
 <div class="row">
 <div class="well well-lg bg-white">
@@ -32,89 +38,120 @@
     </div>
 
 
-<div class="row">
-    <div class="well well-lg bg-white">
-    <dl class="dl-horizontal">
-        <dt>Value: </dt><dd><%-value%></dd>
-        <dt>Start: </dt><dd><%- startDate%></dd>
-        <dt>End: </dt><dd><%- endDate%></dd>
-        <dt>Assigned to: </dt><dd><%- user.username %></dd>
-        <dt>Created: </dt><dd><%- date_created %></dd>
-       <!-- <dt>Last Updated: </dt><dd><%- updated_at %></dd>-->
-    </dl>
+
+
+<div class="row" style="padding:0 4%;">
+    <div class="well well-lg bg-white" style=" min-height:175px;">
+<div class="col-md-1 col-sm-1">
+    <h3 style="font-size:2em; margin:-45px 0 0 -35px;"><i class="glyphicon glyphicon-info-sign"></i></h3>
+</div>
+<div class="col-md-6 col-sm-6">
+
+            <dl class="dl-horizontal">
+                <dt>Value: </dt><dd><%-value%></dd>
+                <dt>Start: </dt><dd><%- startDate%></dd>
+                <dt>End: </dt><dd><%- endDate%></dd>
+                <dt>Assigned to: </dt><dd><%- user.username %></dd>
+                <dt>Created: </dt><dd><%- date_created %></dd>
+                <!-- <dt>Last Updated: </dt><dd><%- updated_at %></dd>-->
+            </dl>
         </div>
+    </div>
 </div>
 
 
-<div class="row">
-<div class="well  bg-white">
-    <table class="table table-striped table-bordered small js-dbclick">
-        <thead><tr><td>Pricing List</td><td></td></tr></thead>
-        <tbody>
-       <tr><td>Fixed Pricing:</td><td><%-fixedPricing%></td></tr>
-        <tr><td>Estimated Based Fee:</td><td><%-estBasedFee%></td></tr>
-        <tr><td>Target Pricing:</td><td><%-targetPricing%></td></tr>
-        <tr><td>Cost Plus Pricing:</td><td><%- costPlusPricing%></td></tr>
-        <tr><td>Firm Pricing:</td><td><%-firmPricing%></td></tr>
-        <tr><td>Volume Driven Pricing:</td><td><%-volDrivenPricing%></td></tr>
-        </tbody>
-    </table>
-
-
-    <form class="form hidden">
-        <div class="btn-group btn-group-horizontal top-right" role="group" aria-label="..." >
-            <div class="btn-group" role="group">
-                <button class="btn btn-warning btn-sm js-cancel " title="cancel" type="button">
-                    <i class="glyphicon glyphicon-remove-circle"></i></button>
-            </div>
-            <div class="btn-group" role="group">
-                <button type="submit" class="btn btn-success btn-sm js-submit" title="save"><i class="glyphicon glyphicon-save"></i></button>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-body">
-        <div class="form-group">
-        <label for="fixedPricing" class="control-label">Fixed Pricing</label>
-        <input type="number" class="form-control input-sm" name="pricing[fixedPricing]" id="fixedPricing" value="<%-fixedPricing_edit%>"/>
-        </div>
-
-        <div class="form-group">
-        <label for="estBasedFee" class="control-label">Estimated Based Fee</label>
-        <input type="number" class="form-control input-sm" name="pricing[estBasedFee]" id="estBasedFee" value="<%-estBasedFee_edit%>"/>
-        </div>
-
-        <div class="form-group">
-        <label for="targetPricing" class="control-label">Target Pricing</label>
-        <input type="number" class="form-control input-sm" name="pricing[targetPricing]" id="targetPricing" value="<%-targetPricing_edit%>"/>
-        </div>
-
-        <div class="form-group">
-        <label for="costPlusPricing" class="control-label">Cost Plus Pricing</label>
-        <input type="number" class="form-control input-sm" name="pricing[costPlusPricing]" id="costPlusPricing" value="<%-costPlusPricing_edit%>"/>
-        </div>
-
-        <div class="form-group">
-        <label for="firmPricing" class="control-label">Firm Pricing</label>
-        <input type="number" class="form-control input-sm" name="pricing[firmPricing]" id="firmPricing" value="<%-firmPricing_edit%>"/>
-        </div>
-        <div class="form-group">
-            <label for="volDrivenPricing" class="control-label">volDrivenPricing</label>
-            <input type="number" class="form-control input-sm" name="pricing[volDrivenPricing]" id="volDrivenPricing" value="<%-volDrivenPricing_edit%>"/>
-        </div>
-            </div>
-        </div>
-    </form>
-</div>
-    </div><!--end row-->
-<div class="row">
-<div class="well">Business Units:
-    <ul class="list-group">
-        <% $.each(businessUnitNames,function(key,value){ %>
-            <li class="list-group-item"><%-value.name%></li>
-        <% }); %>
+<div role="tabpanel">
+    <!-- Nav tabs -->
+    <ul class="nav nav-pills" role="tablist" id="contract-view-tabs">
+        <li role="presentation" class="active"><a href="#pricing-tab-id" aria-controls="pricing-tab-id" role="tab" data-toggle="tab">Pricing List</a></li>
+        <li role="presentation"><a href="#bsunits-tab-id" aria-controls="bsunits-tab-id" role="tab" data-toggle="tab">Business Units</a></li>
     </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="pricing-tab-id">
+
+            <div class="row">
+                <div class="well  bg-white">
+                    <table class="table table-striped table-bordered small js-dbclick">
+                        <thead><tr><td>Pricing List</td><td></td></tr></thead>
+                        <tbody>
+                        <tr><td>Fixed Pricing:</td><td><%-fixedPricing%></td></tr>
+                        <tr><td>Estimated Based Fee:</td><td><%-estBasedFee%></td></tr>
+                        <tr><td>Target Pricing:</td><td><%-targetPricing%></td></tr>
+                        <tr><td>Cost Plus Pricing:</td><td><%- costPlusPricing%></td></tr>
+                        <tr><td>Firm Pricing:</td><td><%-firmPricing%></td></tr>
+                        <tr><td>Volume Driven Pricing:</td><td><%-volDrivenPricing%></td></tr>
+                        </tbody>
+                    </table>
+
+
+                    <form class="form hidden">
+                        <div class="btn-group btn-group-horizontal top-right" role="group" aria-label="..." >
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-warning btn-sm js-cancel " title="cancel" type="button">
+                                    <i class="glyphicon glyphicon-remove-circle"></i></button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="submit" class="btn btn-success btn-sm js-submit" title="save"><i class="glyphicon glyphicon-save"></i></button>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="fixedPricing" class="control-label">Fixed Pricing</label>
+                                    <input type="number" class="form-control input-sm" name="pricing[fixedPricing]" id="fixedPricing" value="<%-fixedPricing_edit%>"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="estBasedFee" class="control-label">Estimated Based Fee</label>
+                                    <input type="number" class="form-control input-sm" name="pricing[estBasedFee]" id="estBasedFee" value="<%-estBasedFee_edit%>"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="targetPricing" class="control-label">Target Pricing</label>
+                                    <input type="number" class="form-control input-sm" name="pricing[targetPricing]" id="targetPricing" value="<%-targetPricing_edit%>"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="costPlusPricing" class="control-label">Cost Plus Pricing</label>
+                                    <input type="number" class="form-control input-sm" name="pricing[costPlusPricing]" id="costPlusPricing" value="<%-costPlusPricing_edit%>"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="firmPricing" class="control-label">Firm Pricing</label>
+                                    <input type="number" class="form-control input-sm" name="pricing[firmPricing]" id="firmPricing" value="<%-firmPricing_edit%>"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="volDrivenPricing" class="control-label">volDrivenPricing</label>
+                                    <input type="number" class="form-control input-sm" name="pricing[volDrivenPricing]" id="volDrivenPricing" value="<%-volDrivenPricing_edit%>"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div><!--end row-->
+        </div><!--end pricing tag-->
+
+
+
+        <div role="tabpanel" class="tab-pane" id="bsunits-tab-id">
+        <div class="row">
+        <div class="well">Business Units:
+            <ul class="list-group">
+                        <% $.each(businessUnitNames,function(key,value){ %>
+                        <li class="list-group-item"><%-value.name%></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            </div><!--end row-->
+        </div><!--end Business Unit Tab-->
+    </div>
+
 </div>
-</div><!--end row-->
+
+
+
 
 
 </div>
