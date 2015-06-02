@@ -13,7 +13,11 @@ body {
     position:relative;
     margin-bottom:200px;
 }
-
+#spinner{
+    position: relative;
+    top:50%;
+    left:50%;
+}
 footer{
     position: fixed;
     bottom: 0;
@@ -165,7 +169,10 @@ Main Panel Region
     padding:20px 0 0 0;
 
 }
+.contracts-details{
+    margin-bottom:100px;
 
+}
 #edit-panel{
     top:57px;
     position:relative;
