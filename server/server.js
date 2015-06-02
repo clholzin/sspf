@@ -87,11 +87,29 @@ passport.deserializeUser(Account.deserializeUser());
 var user = require('./routes/routes.js');
 app.use(user);
 var contracts = require('./routes/contracts.js');
+//var gateway = require('./routes/gateway.js');
 var notify = require('./routes/contracts_notify.js');
 //console.log(router);
 app.use('/api/', [contracts,notify]);
 
+//http://localhost/sap/opu/odata/DSN/SSPF_01_SRV/GuidSet?$filter=GuidType eq '+Id+'&$format=json
+
+
 app.use('/sap/ZUSER_SRV/USR01Set', proxy(url.parse('http://localhost:9000/sap/opu/odata/sap/ZUSER_SRV/USR01Set')));
+
+
+
+
+
+app.use('/sap/SSPF_01_SRV/GuidSet', proxy(url.parse('http://localhost:8002/sap/opu/odata/DSN/SSPF_01_SRV/GuidSet')));
+
+
+
+
+app.use('/sap/SSPF_01_SRV/HierMapSet', proxy(url.parse('http://localhost:8002/sap/opu/odata/DSN/SSPF_01_SRV/HierMapSet')));
+app.use('/sap/SSPF_01_SRV/CostValuesSet', proxy(url.parse('http://localhost:8002/sap/opu/odata/DSN/SSPF_01_SRV/CostValuesSet')));
+app.use('/sap/SSPF_01_SRV/ALTSet', proxy(url.parse('http://localhost:8002/sap/opu/odata/DSN/SSPF_01_SRV/ALTSet')));
+app.use('/sap/SSPF_01_SRV/DPSSet', proxy(url.parse('http://localhost:8002/sap/opu/odata/DSN/SSPF_01_SRV/DPSSet')));
 
 var allowCrossDomain = function(req, res, next) {
 
