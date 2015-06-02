@@ -8,12 +8,16 @@ define(["app",
         "tpl!apps/contracts/show/templates/missing.html",
         "tpl!apps/contracts/show/templates/view.html",
         "tpl!apps/contracts/show/templates/exportView.html",
-        "apps/contracts/common/views","vendor/moment",
-        "jszip","kendo.backbone",
+        "tpl!apps/contracts/show/templates/category/guidList.html",
+        "tpl!apps/contracts/show/templates/category/altList.html",
+        "tpl!apps/contracts/show/templates/category/dpsList.html",
+        "apps/contracts/common/views",
+        "vendor/moment","jszip","kendo.backbone",
+        "vendor/KendoUI/kendo.all.min",
         "vendor/numeral","backbone.syphon"
             ],//"vendor/KendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
-             rightItem, missingTpl, mainView,exportView,CommonViews,Moment,
+             rightItem, missingTpl,mainView,exportView,guidList,altList,dpsList,CommonViews,Moment,
              jszip){
         AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
 
@@ -206,27 +210,8 @@ define(["app",
                     });
                     //_.sortBy(self.collection.models, 'cid');
                 },
-                filterByDate:function(){
-                  /**  var self = this;
-                    var date = Moment().add(1,'y').add(6,'m').unix();
-                    var revisedObj =  self.collection.filter(function(model,num){
-                        var unixModel = Moment(model.get('dateNotify')).unix();
-                        return unixModel < date;//model.get('notifyDate') < year;
-                    });
-                    console.log(JSON.stringify(revisedObj));
-                   // self.collection.set(revisedObj);**/
-                },
                 filterByReport:function(filtered){
                     console.log('hit filter report method '+ JSON.stringify(filtered.models));
-                   // this.collection = new Backbone.Collection.extend(filtered.models);
-                   /** var blank = Backbone.Collection.extend();
-                    this.blank = new blank(collection.models);
-                    this.filterCollection = this.blank.clone();
-                   var revisedObj = this.filterCollection.findWhere({'contractType':type});
-                  if(_.isEmpty(revisedObj)){
-                        return alert('No Notifications for '+ type);
-                    }**/
-
                    // console.log(JSON.stringify(revisedObj));
                    // collection.reset(revisedObj);
                 }
@@ -340,8 +325,10 @@ define(["app",
 
             View.Contract = Marionette.ItemView.extend({
                 template: mainView,
+                className:'contracts-details',
                 na:'N/A',
                 events: {
+                    'click #contract-view-tabs a':'changeTab',
                     "click a.js-edit": "editClicked",
                     'dblclick .js-dbclick': 'Edit',
                     'click .js-cancel': 'Cancel',
@@ -349,13 +336,15 @@ define(["app",
                     "click a.js-back":"backClicked",
                     "click a.js-export":"exportClicked"
                 },
+                triggers:{
+                    "click a.js-guid":"contract:guidSet"
+                },
                 initialize: function () {
                     this.listenTo(this.model, 'change', this.render);
                     //this.listenTo(this.model, 'destroy', this.remove);
                     //this.listenTo(this.model, 'visible', this.toggleVisible);
                 },
                 onRender:function(){
-
                     this.$list = this.$('.js-dbclick');
                     this.$form = this.$('form.hidden');
                 },
@@ -368,10 +357,10 @@ define(["app",
                         "description":{
                             'body':this.model.get('description').body
                         },
-                        "startDate":Moment.utc(this.model.get('startDate')).format('L'),
-                        "endDate":Moment.utc(this.model.get('endDate')).format('L'),
+                        "startDate":Moment.utc(this.model.get('startDate')).format('YYYY/MM/DD'),
+                        "endDate":Moment.utc(this.model.get('endDate')).format('YYYY/MM/DD'),
                         "updated_at": Moment.utc(this.model.get('updated_at')).fromNow(),
-                        "date_created" : Moment.utc(this.model.get('meta').date_created).format('L'),
+                        "date_created" : Moment.utc(this.model.get('meta').date_created).format('YYYY/MM/DD'),
                          "businessUnitNames": (this.model.get('businessUnit') != undefined ? this.model.get('businessUnit') : this.na),
                           /**  "fixedPricing":(this.model.get('pricing').fixedPricing != undefined ? parseInt(this.model.get('pricing').fixedPricing).toFixed(2) : this.na),
                             "estBasedFee":(this.model.get('pricing').estBasedFee != undefined ? parseInt(this.model.get('pricing').estBasedFee).toFixed(2) : this.na),
@@ -394,6 +383,10 @@ define(["app",
                             "volDrivenPricing_edit":numeral(pricing.volDrivenPricing).format('0.00')
 
                     };
+                },
+                changeTab:function(){
+                    this.$el.tab('show');
+
                 },
                 // Switch this view into `"editing"` mode, displaying the input field.
                 Edit: function (e) {
@@ -439,6 +432,108 @@ define(["app",
             });
 
 
+
+
+
+            View.GuidSet = Marionette.ItemView.extend({
+                template: guidList,
+                triggers: {
+                 // "click button.js-new": "notify:new"
+                },
+                events:{
+                    "click a.js-sap":"guidList"
+                    // "click li.report": "runFilter",
+                    //  'click .js-filter-toggle':'showFilter'
+                },
+                initialize: function(){
+                    this.title = this.collection.length+" Projects:";
+                },
+                onRender: function(){
+                    if(this.options.generateTitle){
+                        var $title = $("<p>", { text: this.title });
+                        this.$el.prepend($title);
+                    }
+                },
+                templateHelpers:function(){
+                    var models = this.collection.models;
+                    return {
+                        guid: models,
+                        Guidlength:this.collection.length
+                    };
+                },
+                guidList:function(e){
+                    e.preventDefault();
+                   var id =  this.$(e.currentTarget).data('id');
+                    console.log(id);
+                    this.trigger('contract:altSet',id)
+                }
+
+            });
+
+            View.AltSet = Marionette.ItemView.extend({
+                template: altList,
+                triggers: {
+                    // "click button.js-new": "notify:new"
+                },
+                events:{
+                    "click a.js-sap":"guidList"
+                },
+                initialize: function(){
+                    this.title = "Alt Heirarchy Map: "+ this.collection.length;
+                },
+                onRender: function(){
+                    if(this.options.generateTitle){
+                        var $title = $("<p>", { text: this.title });
+                        this.$el.prepend($title);
+                    }
+                },
+                templateHelpers:function(){
+                    var models = this.collection.models;
+                    return {
+                        guid: models,
+                        altlength:this.collection.length
+                    };
+                },
+                guidList:function(e){
+                    e.preventDefault();
+                    var id =  this.$(e.currentTarget).data('id');
+                    console.log(id);
+                     this.trigger('contract:dpsSet',id)
+                }
+
+            });
+            View.DpsSet = Marionette.ItemView.extend({
+                template: dpsList,
+                triggers: {
+                    // "click button.js-new": "notify:new"
+                },
+                events:{
+                    "click a.js-sap":"guidList"
+                },
+                initialize: function(){
+                    this.title = "MOD Structure: "+ this.collection.length;
+                },
+                onRender: function(){
+                    if(this.options.generateTitle){
+                        var $title = $("<p>", { text: this.title });
+                        this.$el.prepend($title);
+                    }
+                },
+                templateHelpers:function(){
+                    var models = this.collection.models;
+                    return {
+                        guid: models,
+                        dpslength:this.collection.length
+                    };
+                },
+                guidList:function(e){
+                    e.preventDefault();
+                    var id =  this.$(e.currentTarget).data('id');
+                    console.log(id);
+                    //this.trigger('')
+                }
+
+            });
             (function($, kendo, _) {
                 "use strict";
 
@@ -518,21 +613,23 @@ define(["app",
 
 
             window.JSZip = jszip;
-
-
             View.ContractExport = Marionette.ItemView.extend({
                 template:exportView,
                 events:{
                     "click button.js-back":"backClicked"
                 },
                 initialize:function(){
-
+                    this.title = this.collection.length+" People:";
                 },
                 backClicked:function(e){
                     e.preventDefault();
                     this.trigger('back:clicked');
                 },
                onRender:function(){
+                   if(this.options.generateTitle){
+                       var $title = $("<p>", { text: this.title });
+                       this.$el.prepend($title);
+                   }
 
                    this.$exportData = new kendo.Backbone.DataSource({
                        collection: this.collection,
@@ -554,7 +651,7 @@ define(["app",
                    this.$el.kendoGrid({
                        toolbar: ["excel"],
                        excel: {
-                           fileName: "URS SetList.xlsx",
+                           fileName: "URS_SetList.xlsx",
                            //proxyURL: "http://demos.telerik.com/kendo-ui/service/export",
                            //proxyURL: "http://localhost:8000",
                            filterable: true
