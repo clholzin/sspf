@@ -3,7 +3,7 @@ define(["app", "apps/contracts/show/show_view",
     AppManager.module("ContractsApp.Show", function(Show, AppManager, Backbone, Marionette, $, _){
         Show.Controller = {
             showContract: function(id){
-                require(["common/views","entities/common", "entities/contracts"], function(CommonViews,QCRdates){
+                require(["common/views","entities/common", "entities/contracts","entities/gateway"], function(CommonViews,QCRdates){
                     var loadingView = new CommonViews.Loading({
                         title: "Contract",
                         message: "Loading..."
@@ -54,16 +54,72 @@ define(["app", "apps/contracts/show/show_view",
                                 AppManager.trigger("contracts:list");
                             });
                             contractView.on("contract:export", function(contract){
-                                var fetchingUsrSets = AppManager.request("urs:entities");
-                                $.when(fetchingUsrSets).done(function(ursSets) {
+                                var view = new CommonViews.Loading({
+                                    title: "URS List",
+                                    message: "Loading..."
+                                });
+                                AppManager.dialogRegion.show(view);
+                                var fetchingUrsSet= AppManager.request("urs:entities");
+                                $.when(fetchingUrsSet).done(function(ursSet) {
                                     MainExport = new View.ContractExport({
-                                        collection: ursSets
+                                        collection: ursSet
                                     });
                                     MainExport.on("back:clicked",function(){
                                         AppManager.trigger("contract:show", contract.get("_id"));
                                     });
-                                    //console.log(JSON.stringify(ursSets));
-                                    sideAndMainLayout.mainRegion.show(MainExport);
+                                    //console.log(JSON.stringify(ursSet));
+                                    AppManager.dialogRegion.show(MainExport);
+                                });
+
+                            });
+                            contractView.on("contract:guidSet", function(contract){
+                                var view = new CommonViews.Loading({
+                                    title: "Project List",
+                                    message: "Loading..."
+                                });
+                                AppManager.dialogRegion.show(view);
+                                var id = '5';
+                                var fetchingGuidSets = AppManager.request("guidSet:entities",id);
+
+                                $.when(fetchingGuidSets).done(function(guidSet) {
+                                    view = new View.GuidSet({
+                                        collection: guidSet
+                                    });
+
+                                    view.on("contract:altSet", function(pid){
+                                        var view = new CommonViews.Loading({
+                                            title: "Alternative Heirarchy List",
+                                            message: "Loading..."
+                                        });
+                                        AppManager.dialogRegion.show(view);
+                                        console.log('trigger: '+ id);
+                                        var fetchingAltSets = AppManager.request("altSet:entities",pid);
+                                        $.when(fetchingAltSets).done(function(altSet) {
+                                           var altset = new View.AltSet({
+                                                collection: altSet
+                                            });
+                                            altset.on("contract:dpsSet", function(did){
+                                                var view = new CommonViews.Loading({
+                                                    title: "MOD Project Structure",
+                                                    message: "Loading..."
+                                                });
+                                                AppManager.dialogRegion.show(view);
+                                                console.log('trigger: '+ id);
+                                                var fetchingDpsSets = AppManager.request("dpsSet:entities",did);
+                                                $.when(fetchingDpsSets).done(function(dpsSet) {
+                                                    var dpsset = new View.DpsSet({
+                                                        collection: dpsSet
+                                                    });
+
+                                                    AppManager.dialogRegion.show(dpsset);//dpsSet View
+                                                });
+                                            });
+
+                                           AppManager.dialogRegion.show(altset);//altSet View
+                                        });
+                                    });
+
+                                    AppManager.dialogRegion.show(view);//guidSet View
                                 });
 
                             });
