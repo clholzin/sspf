@@ -59,7 +59,7 @@ define(["app"], function(AppManager){
 
 
         Entities.CostSet = Backbone.Model.extend({
-            idAttribute:'NodeId',
+           // idAttribute:'RunId',
             urlRoot: window.location.origin+'/sap/SSPF_01_SRV/CostValuesSet'
         });
 

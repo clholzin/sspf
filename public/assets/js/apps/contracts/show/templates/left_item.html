@@ -1,9 +1,9 @@
 <a id="infotoshow" data-toggle="tooltip" data-placement="right" title="Notification Date: <%-dateNotify%>">
-    <button id="btnPopover" tabindex="0" data-placement="left" data-trigger="focus" class="top-right btn btn-xs btn-default" data-toggle="popover" title="Actions" data-content="">
+    <button id="btnPopover" tabindex="0" data-placement="left" data-trigger="focus" class="top-right btn btn-xs btn-default" data-toggle="popover"   data-content="">
         <i class="glyphicon glyphicon-option-horizontal"></i></button>
     <div class="h4"><%-contractType.toUpperCase()%></div>
     <div class="h6">Due: <%-timeTill%></div>
-
+    <button class="btn btn-sm btn-default js-report" data-id="<%-_id%>">Begin Report</button>
 </a>
 
 

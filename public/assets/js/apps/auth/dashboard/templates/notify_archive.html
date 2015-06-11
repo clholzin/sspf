@@ -1,0 +1,24 @@
+
+
+<div>
+    <div class="wrap-overflay-white"></div><!--end overlay-->
+    <h2 class="text-blue"><%-titleReports%></h2>
+</div>
+<table class="table bkg-white">
+   <% $.each(notifications,function(key,value){ %>
+   <tr><!--class="list-group-item"-->
+       <td id="infotoshow" data-toggle="tooltip" data-placement="left" title="Due: <%-String(value.attributes.dateNotify).substr(0,10)%>">
+           <div class="h4"><%-String(value.attributes.contractType).toUpperCase()%>
+           </div>
+        </td>
+   <td>
+       <div class="h4"><small>Due: <%-String(value.attributes.dateNotify).substr(0,10)%></small></div>
+        </td>
+       <td>
+           <button id="btnPopover" data-type="<%-value.attributes.contractType%>" data-due="<%-value.attributes.dateNotify%>" data-contract="<%-value.attributes.contractId%>" tabindex="0" data-placement="right" data-trigger="focus" class="top-right js-popover btn btn-xs btn-default" data-toggle="popover" data-content="" >
+               <i class="glyphicon glyphicon-option-horizontal"></i></button>
+       </td>
+   </tr>
+   <!--<li class="list-group-item" data-id="<%-value.attributes._id%>"><%-value.attributes.contractType%></li>-->
+<% }); %>
+</table>

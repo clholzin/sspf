@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+            <a id="headerId" class="navbar-brand" href="#auth"><img id="brandImg" src="http://dassian.com/images/img-logo.png" /></a>
+        </div>
+    </div>
+
+
+    <div class="mainNavid">
+    <div class="collapse navbar-collapse" id="navbar mainNav collapseExample">
+    <ul class="nav navbar-nav">
+    <li class="homeBtn"><a href="#auth"><i class="glyphicon glyphicon-home"></i></a></li>
+    <li class="backBtn"><a href="#"><i class="glyphicon glyphicon-arrow-left"></i></a></li>
+     <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tools <span class="caret"></span></a>
+        <ul class="dropdown-menu inner-dropdown" role="menu">
+            <li class="previous"><a href="#"><i class="glyphicon glyphicon-arrow-up"></i> Previous</a></li>
+            <li class="info"><a href="#"><i class="glyphicon glyphicon-info-sign text-info"></i> Info</a></li>
+            <li class="exit"><a href="#"><i class="glyphicon glyphicon-remove-circle text-danger"></i> Exit</a></li>
+    </ul>
+    </li>
+
+        <li class="pull-right" style="padding: 10px 15px;">
+            <select class="span1 js-change-language" style="margin-bottom: 0">
+                    <option>EN</option>
+                    <option>FR</option>
+                <!--
+                <% _.each(ContactManager.i18n.acceptedLanguages, function(lang){ %>
+                <% var selected = ContactManager.i18n.currentLanguage === lang ? 'selected="selected"' : ''; %>
+                <option <%- selected %> value="<%- lang %>"><%- lang %></option>
+                <% }); %>-->
+            </select>
+        </li>
+        </ul>
+    <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> User <span class="caret"></span></a>
+        <ul class="dropdown-menu ulNavBar inner-dropdown" role="menu">
+
+        </ul>
+    <!--<li><a href="#auth"><i class="glyphicon glyphicon-user"></i> <span class="currentUser">User</span>  <span class="sr-only">(current)</span></a></li>-->
+    </ul>
+
+
+     </div><!--/.nav-collapse -->
+        </div>

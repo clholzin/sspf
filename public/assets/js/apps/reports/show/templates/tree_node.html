@@ -1,0 +1,34 @@
+<li class="list-group-item">
+
+<table class="table">
+    <thead>
+        <tr class="active">
+            <td>Name</td><td>Total</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="success">
+            <td><%-description%></td><td><%-totalVal%></td>
+        </tr>
+        <tr>
+
+            <table class="table">
+                <thead>
+                <tr class="warning">
+                    <td>Year</td><td>Total Value</td>
+                </tr>
+                </thead>
+                <tbody>
+
+            <%$.each(yearVals,function(key,value){%>
+            <tr class="info"><td><%-value.fiscalYear%></td><td><%-value.totalValue%></td></tr>
+            <%});%>
+                </tbody>
+            </table>
+
+
+        </tr>
+    </tbody>
+</table>
+
+</li>

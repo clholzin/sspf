@@ -1,0 +1,275 @@
+{
+  "!ref":"A1:L37",
+  "A1":{
+    "t":"s",
+    "v":"H",
+    "f":"IF(VLOOKUP($B$2,Sheet_Table,Sheet_Visibility_ColX,FALSE),\"S\",\"H\")",
+    "h":"H",
+    "w":"H"
+  },
+  "B2":{
+    "t":"s",
+    "v":"Cover_Sheet_CNR",
+    "f":"MID(CELL(\"filename\",A1),1+FIND(\"]\",CELL(\"filename\",A1)),50)",
+    "h":"Cover_Sheet_CNR",
+    "w":"Cover_Sheet_CNR"
+  },
+  "E6":{
+    "t":"e",
+    "v":29,
+    "f":"Sys_SSPRLogo",
+    "w":"#NAME?"
+  },
+  "H6":{
+    "t":"s",
+    "v":"Contract: TBC",
+    "f":"Sys_ReportingEntityAsTitle",
+    "h":"Contract: TBC",
+    "w":"Contract: TBC"
+  },
+  "F7":{
+    "t":"s",
+    "v":"Contract Notification Report",
+    "r":"<t>Contract Notification Report</t>",
+    "h":"Contract Notification Report",
+    "w":"Contract Notification Report"
+  },
+  "G9":{
+    "t":"s",
+    "v":"Cover Sheet",
+    "r":"<t>Cover Sheet</t>",
+    "h":"Cover Sheet",
+    "w":"Cover Sheet"
+  },
+  "F11":{
+    "t":"s",
+    "v":"Report Overview",
+    "r":"<t>Report Overview</t>",
+    "h":"Report Overview",
+    "w":"Report Overview"
+  },
+  "G13":{
+    "t":"s",
+    "v":"Report Name",
+    "r":"<t>Report Name</t>",
+    "h":"Report Name",
+    "w":"Report Name"
+  },
+  "H13":{
+    "t":"s",
+    "v":"Contract Notification Report",
+    "r":"<t>Contract Notification Report</t>",
+    "h":"Contract Notification Report",
+    "w":"Contract Notification Report"
+  },
+  "G14":{
+    "t":"s",
+    "v":"Statutory Reference",
+    "r":"<t>Statutory Reference</t>",
+    "h":"Statutory Reference",
+    "w":"Statutory Reference"
+  },
+  "H14":{
+  "t":"s",
+  "v":"The Single Source Contract Regulations 2014 Part 5 Reports on qualifying defence contracts: Regulation 25",
+  "r":"<t>The Single Source ContractRegulations 2014 Part 5 Reports on qualifying defence contracts: Regulation 25</t>",
+  "h":"The Single Source Contract Regulations 2014 Part 5 Reports on qualifying defence contracts: Regulation 25",
+  "w":"The Single Source Contract Regulations2014 Part 5 Reports on qualifying defence contracts: Regulation 25"
+},
+"G15":{
+"t":"s",
+"v":"Acronym",
+"r":"<t>Acronym</t>",
+"h":"Acronym",
+"w":"Acronym"
+},
+"H15":{
+"t":"s",
+"v":"CNR",
+"r":"<t>CNR</t>",
+"h":"CNR",
+"w":"CNR"
+},
+"G16":{
+"t":"s",
+"v":"Applicability",
+"r":"<t>Applicability</t>",
+"h":"Applicability",
+"w":"Applicability"
+},
+"H16":{
+"t":"s",
+"v":"Qualifying defence contracts ",
+"r":"<t xml:space=\"preserve\">Qualifying defence contracts </t>",
+"h":"Qualifying defence contracts ",
+"w":"Qualifying defence contracts "
+},
+"G17":{
+"t":"s",
+"v":"Summary Description",
+"r":"<t>Summary Description</t>",
+"h":"Summary Description",
+"w":"Summary Description"
+},
+"H17":{
+"t":"s",
+"v":"The report provides initial contract information including a list ofdeliverables, the associated output metrics, the defined pricing structure andestimated cost recovery bases.",
+"r":"<t>The report provides initial contract information including a list of deliverables, the associated output metrics, the defined pricing structure and estimated cost recovery bases.</t>",
+"h":"The reportprovides initial contract information including a list of deliverables, the associated output metrics, the defined pricing structure and estimated cost recoverybases.",
+"w":"The report provides initial contract information including a listof deliverables, the associated output metrics, the defined pricing structure and estimated cost recovery bases."
+},
+"H18":{
+"t":"s",
+"v":"The report records the following information:-",
+"r":"<t>The report records the following information:-</t>",
+"h":"The report records the following information:-",
+"w":"The report recordsthe following information:-"
+},
+"H19":{
+"t":"s",
+"v":"A list of key deliverables asspecified in the contract, with a brief description and the associated output metrics.",
+"r":"<t>A list of key deliverables as specified in the contract, with abrief description and the associated output metrics.</t>",
+"h":"A list of key deliverables as specified in the contract, with a brief description and the associated output metrics.",
+"w":"A list of key deliverables as specified in the contract, with a brief description and the associated output metrics."
+},
+"H20":{
+"t":"s",
+"v":"An annual profile of the following which were used in determining  the contract price:-",
+"r":"<t>An annual profile of the following which were used in determining  the contract price:-</t>",
+"h":"An annual profile of the following whichwere used in determining  the contract price:-",
+"w":"An annual profile of the following which were used in determining  the contract price:-"
+},
+"H21":{
+"t":"s",
+"v":"Any risk contingency element",
+"r":"<t>Any risk contingency element</t>",
+"h":"Any risk contingency element",
+"w":"Any risk contingency element"
+},
+"H22":{
+"t":"s",
+"v":"Planned profit",
+"r":"<t>Planned profit</t>",
+"h":"Planned profit",
+"w":"Planned profit"
+},
+"H23":{
+"t":"s",
+"v":"Maximum profit resulting from any adjustments",
+"r":"<t>Maximum profit resulting from any adjustments</t>",
+"h":"Maximum profitresulting from any adjustments",
+"w":"Maximum profit resulting from any adjustments"
+},
+"H24":{
+"t":"s",
+"v":"Estimated costs split by defined pricing structure at the time the contract was let or amendment made",
+"r":"<t>Estimated costs split bydefined pricing structure at the time the contract was let or amendment made</t>",
+"h":"Estimated costs split by defined pricing structure at the time the contract was let or amendment made",
+"w":"Estimated costs split by defined pricing structure at the time the contract was let or amendment made"
+},
+"H25":{
+"t":"s",
+"v":"Total amount of allowable costs (non recurring) split by defined pricing structure",
+"r":"<t>Total amount of allowable costs (non recurring) split by defined pricing structure</t>",
+"h":"Total amount of allowable costs (non recurring) split by defined pricing structure",
+"w":"Total amount of allowable costs (non recurring) split by defined pricing structure"
+},
+"H26":{
+"t":"s",
+"v":"The estimated amountof each cost recovery base set out in the contract reporting plan",
+"r":"<t>The estimated amount of each cost recovery base set out in the contract reporting plan</t>",
+"h":"The estimated amount of each cost recovery base set out in the contract reporting plan",
+"w":"The estimated amount of each cost recovery base set outin the contract reporting plan"
+},
+"H27":{
+"t":"s",
+"v":"A list of all anticipatedpayments exceeding £100,000 or 1% of the contract value expected to be made andthe payment amount and the date of payment and currency.",
+"r":"<t>A list of allanticipated payments exceeding A£100,000 or 1% of the contract value expected tobe made and the payment amount and the date of payment and currency.</t>",
+"h":"A list of all anticipated payments exceeding £100,000 or 1% of the contract value expected to be made and the payment amount and the date of payment and currency.",
+"w":"A list of all anticipated payments exceeding £100,000 or 1% of the contract value expected to be made and the payment amount and the date of payment and currency."
+},
+"H28":{
+"t":"s",
+"v":"A list of all deliverable milestones set out in the contract and dates where applicable.",
+"r":"<t>A list of all deliverable milestones set out in the contract and dates where applicable.</t>",
+"h":"A list ofall deliverable milestones set out in the contract and dates where applicable.",
+"w":"A list of all deliverable milestones set out in the contract and dates where applicable."
+},
+"H29":{
+"t":"s",
+"v":"A list of actual or intended sub contractswhich the primary contractor has entered into or expects to with a value not less than £1,000,000 or top 20 sub contractors if more than 20 subcontractors.    ",
+"r":"<t xml:space=\"preserve\">A list of actual or intended sub contracts whichthe primary contractor has entered into or expects to with a value not less than A£1,000,000 or top 20 sub contractors if more than 20 subcontractors.    </t>",
+"h":"A list of actual or intended sub contracts which the primary contractor has entered into or expects to with a value not less than £1,000,000 or top 20 subcontractors if more than 20 subcontractors.    ",
+"w":"A list of actual or intended sub contracts which the primary contractor has entered into or expects to with a value not less than £1,000,000 or top 20 sub contractors if more than 20 subcontractors.    "
+},
+"G30":{
+"t":"s",
+"v":"Purpose of report",
+"r":"<t>Purpose of report</t>",
+"h":"Purpose of report",
+"w":"Purpose of report"
+},
+"H30":{
+"t":"s",
+"v":"The CNR, together with the contact reporting plan and the contract pricing statement is part of the initial reporting following the contract being signed. It establishes the contract management baseline and provides metric information whichcan be compared with the interim contract report and contract completion report.",
+"r":"<t xml:space=\"preserve\">The CNR, together with the contact reporting plan and the contract pricing statement is part of the initial reporting following the contract being signed. It establishes the contract management baseline andprovides metric information which can be compared with the interim contract report and contract completion report. </t>",
+"h":"The CNR, together with the contact reporting plan and the contract pricing statement is part of the initial reporting following the contract being signed. It establishes the contract managementbaseline and provides metric information which can be compared with the interimcontract report and contract completion report. ",
+"w":"The CNR, together with the contact reporting plan and the contract pricing statement is part of the initial reporting following the contract being signed. It establishes the contract management baseline and provides metric information which can be compared with the interim contract report and contract completion report. "
+},
+"H31":{
+"t":"s",
+"v":"The CNR supports the development of benchmark and parametric information.  TheCNR is split in a standard way, via the defined pricing structures to allow comparison across projects.",
+"r":"<t>The CNR supports the development of benchmark and parametric information.  The CNR is split in a standard way, via the definedpricing structures to allow comparison across projects.</t>",
+"h":"The CNR supports the development of benchmark and parametric information.  The CNR is split ina standard way, via the defined pricing structures to allow comparison across projects.",
+"w":"The CNR supports the development of benchmark and parametric information.  The CNR is split in a standard way, via the defined pricing structuresto allow comparison across projects."
+},
+"G32":{
+"t":"s",
+"v":"Responsibility for submission",
+"r":"<t>Responsibility for submission</t>",
+"h":"Responsibility for submission",
+"w":"Responsibility for submission"
+},
+"H32":{
+"t":"s",
+"v":"The contractor",
+"r":"<t>The contractor</t>",
+"h":"The contractor",
+"w":"The contractor"
+},
+"G33":{
+"t":"s",
+"v":"Timing of submission",
+"r":"<t>Timing of submission</t>",
+"h":"Timing of submission",
+"w":"Timing of submission"
+},
+"H33":{
+"t":"s",
+"v":"The contractormust provide a CNR for the qualifying defence contract within one month of the contract having been entered into. ",
+"r":"<t xml:space=\"preserve\">The contractor must provide a CNR for the qualifying defence contract within one month of thecontract having been entered into. </t>",
+"h":"The contractor must provide a CNRfor the qualifying defence contract within one month of the contract having been entered into. ",
+"w":"The contractor must provide a CNR for the qualifying defence contract within one month of the contract having been entered into. "
+},
+"!merges":[
+{
+"s":{
+"c":6,
+"r":16
+},
+"e":{
+"c":6,
+"r":28
+}
+},
+{
+"s":{
+"c":6,
+"r":29
+},
+"e":{
+"c":6,
+"r":30
+}
+}]
+}

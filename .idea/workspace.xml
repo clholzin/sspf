@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8fb4d0df-2850-4fb5-9988-a4db61d3ee8c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Node.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/backbone-filter-collection.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/backbone.genetics.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/backbone.kendo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/currency_languages.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/kendo.backbone.map.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/numeral.js" />
+    <list default="true" id="8fb4d0df-2850-4fb5-9988-a4db61d3ee8c" name="Default" comment="added">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/img/subtle_zebra_3d/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/img/subtle_zebra_3d/subtle_zebra_3d.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/img/subtle_zebra_3d/subtle_zebra_3d_@2X.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/img/web_white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/compositeHierarchy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/contract.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/contract.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/edit/edit_controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/edit/edit_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/common/templates/form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/common/templates/form.tpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/routes/gateway.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/kendoUI/kendo.calendar.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/kendoUI/kendo.calendar.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/kendoUI/kendo.core.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/vendor/kendoUI/kendo.core.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/layout.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/list/templates/layout.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/layout.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/list/templates/list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/list/list_controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/list/templates/list_item.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/list/list_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/main.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/missing.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/missing.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/new/new_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/list/templates/none.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/notify.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/list/templates/panel.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/img/subtle_zebra_3d/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/common/templates/register.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/report.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/category/report_popover_draft.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/reports.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/reports_app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/routes/run.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/models/runId.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/show_controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/show_controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/show_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/show_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/top.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/top.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/tree_node.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/js/apps/reports/common/views.js" />
       <change type="DELETED" beforePath="C:\wamp\www\SSPF\node_modules\.bin\express" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\SSPF\node_modules\.bin\express.cmd" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\SSPF\node_modules\express\bin\express" afterPath="" />
@@ -951,8 +990,6 @@
       <change type="DELETED" beforePath="C:\wamp\www\SSPF\node_modules\uglify-js\test\compress\sequences.js" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\SSPF\node_modules\uglify-js\test\compress\switch.js" afterPath="" />
       <change type="DELETED" beforePath="C:\wamp\www\SSPF\node_modules\uglify-js\test\run-tests.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSPF\public\assets\js\apps\contacts\list\templates\list_item.tpl" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\SSPF\server\templates\template.xlsx" afterPath="" />
       <change type="MOVED" beforePath="C:\wamp\www\SSPF\node_modules\mongoose\node_modules\mongodb\Readme.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/.npmignore" afterPath="$PROJECT_DIR$/node_modules/mongoose/.npmignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.npmignore" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.npmignore" />
@@ -977,13 +1014,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/README.md" afterPath="$PROJECT_DIR$/node_modules/uglify-js/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/README.md" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/Readme.md" afterPath="$PROJECT_DIR$/node_modules/express/Readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/about/about_app.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/about/about_app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/aggregate.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/aggregate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/app.js" afterPath="$PROJECT_DIR$/public/assets/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/application.css" afterPath="$PROJECT_DIR$/public/assets/css/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/lib/application.js" afterPath="$PROJECT_DIR$/node_modules/express/lib/application.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/array.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/array.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/types/array.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/types/array.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/lib/ast.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/lib/ast.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/entities/auth.js" afterPath="$PROJECT_DIR$/public/assets/js/entities/auth.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/passport-local-mongoose/lib/badrequesterror.js" afterPath="$PROJECT_DIR$/node_modules/passport-local-mongoose/lib/badrequesterror.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/lib/source-map/base64-vlq.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/lib/source-map/base64-vlq.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/lib/source-map/binary-search.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/lib/source-map/binary-search.js" />
@@ -994,15 +1032,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/cast.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/cast.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cnr_qnr_dates.js" afterPath="$PROJECT_DIR$/cnr_qnr_dates.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/entities/common.js" afterPath="$PROJECT_DIR$/public/assets/js/entities/common.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/lib/compress.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/lib/compress.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/connection.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/connection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/contract_notify_model.js" afterPath="$PROJECT_DIR$/server/models/contract_notify_model.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/contractbegin.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/contractbegin.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/entities/contracts.js" afterPath="$PROJECT_DIR$/public/assets/js/entities/contracts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/contracts.js" afterPath="$PROJECT_DIR$/server/routes/contracts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/contracts_app.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/contracts_app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/contracts_notify.js" afterPath="$PROJECT_DIR$/server/routes/contracts_notify.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/date.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/date.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/deliverables.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/deliverables.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/config/marionette/regions/dialog.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/config/marionette/regions/dialog.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/divergentArray.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/divergentArray.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/document.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/document.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/documentarray.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/documentarray.js" />
@@ -1011,27 +1050,35 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/types/embedded.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/types/embedded.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/lib/express.js" afterPath="$PROJECT_DIR$/node_modules/express/lib/express.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/form_edit.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/form_edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/entities/gateway.js" afterPath="$PROJECT_DIR$/public/assets/js/entities/gateway.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/category/guidList.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/category/guidList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/entities/header.js" afterPath="$PROJECT_DIR$/public/assets/js/entities/header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/header/header_app.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/header/header_app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/lib/router/index.js" afterPath="$PROJECT_DIR$/node_modules/express/lib/router/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/index.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/index.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/lib/index.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/lib/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/index.js" afterPath="$PROJECT_DIR$/server/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/vendor/kendo.backbone.js" afterPath="$PROJECT_DIR$/public/assets/js/vendor/kendo.backbone.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/layout.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/layout.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/layout.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/layout.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_item.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_item.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_side_top.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_side_top.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/list.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/list_controller.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/list_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/list.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/header/list/templates/list.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/header/list/templates/list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_controller.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/header/list/list_controller.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/header/list/list_controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/list_view.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/list_view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_view.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/header/list/list_view.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/header/list/list_view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/common/templates/loading.tpl" afterPath="$PROJECT_DIR$/public/assets/js/common/templates/loading.tpl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/auth/login_app.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/login_app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/auth/login/login_controller.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/login/login_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/auth/login/login_view.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/login/login_view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/messages.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/messages.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/missingSchema.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/missingSchema.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/mixed.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/mixed.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/model.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/config/marionette/regions/model.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/config/marionette/regions/model.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/lib/mozilla-ast.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/lib/mozilla-ast.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/tools/node.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/tools/node.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/nprogress.css" afterPath="$PROJECT_DIR$/public/assets/css/nprogress.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/number.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/number.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/objectid.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/objectid.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/objectid.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/objectid.js" />
@@ -1056,12 +1103,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/passport/node_modules/pause/package.json" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/pause/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/package.json" afterPath="$PROJECT_DIR$/node_modules/uglify-js/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/package.json" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/panel.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/panel.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/panel.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/panel.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/lib/parse.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/lib/parse.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/passport-local-mongoose/lib/passport-local-mongoose.js" afterPath="$PROJECT_DIR$/node_modules/passport-local-mongoose/lib/passport-local-mongoose.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/passport-local-mongoose/lib/passport-local-mongoose_extraMethods.js" afterPath="$PROJECT_DIR$/node_modules/passport-local-mongoose/lib/passport-local-mongoose_extraMethods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/pricing.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/pricing.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/test/promise.domain.test.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/test/promise.domain.test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/promise.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/promise.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/lib/promise.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/lib/promise.js" />
@@ -1072,13 +1117,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/lib/request.js" afterPath="$PROJECT_DIR$/node_modules/express/lib/request.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/require_main.js" afterPath="$PROJECT_DIR$/public/assets/js/require_main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/lib/response.js" afterPath="$PROJECT_DIR$/node_modules/express/lib/response.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/right_item.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/right_item.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/lib/router/route.js" afterPath="$PROJECT_DIR$/node_modules/express/lib/router/route.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schematype.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schematype.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/lib/scope.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/lib/scope.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contacts/show/show_controller.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/contacts/show/show_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_controller.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/about/show/show_view.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/about/show/show_view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_view.js" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_view.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/lib/source-map/source-map-consumer.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/lib/source-map/source-map-consumer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/lib/source-map/source-map-generator.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/lib/source-map/source-map-generator.js" />
@@ -1086,6 +1131,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/lib/sourcemap.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/lib/sourcemap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/statemachine.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/statemachine.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/string.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/string.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/vendor/kendoUI/telerik.kendoui.professional.2015.1.408.trial/examples/calendar/template.html" afterPath="$PROJECT_DIR$/public/assets/js/vendor/kendoUI/telerik.kendoui.professional.2015.1.408.trial/examples/calendar/template.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/test/source-map/test-base64-vlq.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/test/source-map/test-base64-vlq.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/test/source-map/test-binary-search.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/test/source-map/test-binary-search.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/test/source-map/test-source-map-consumer.js" afterPath="$PROJECT_DIR$/node_modules/uglify-js/node_modules/source-map/test/source-map/test-source-map-consumer.js" />
@@ -1102,8 +1148,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validation.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validator.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validator.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/version.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/version.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/view.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/apps/auth/login/templates/view.html" afterPath="$PROJECT_DIR$/public/assets/js/apps/auth/login/templates/view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/lib/view.js" afterPath="$PROJECT_DIR$/node_modules/express/lib/view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/common/views_spin.js" afterPath="$PROJECT_DIR$/public/assets/js/common/views_spin.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="structuring-backbone-with-requirejs-and-marionette.iws" />
@@ -1131,28 +1178,88 @@
       <file leaf-file-name="application.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assets/css/application.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="5049">
-              <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2984" max-vertical-offset="7582">
+              <caret line="183" column="10" selection-start-line="183" selection-start-column="10" selection-end-line="183" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/routes/run.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+              <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contracts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/entities/contracts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2145" max-vertical-offset="7837">
+              <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="show_controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_controller.js">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/show_controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5729">
-              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1564">
+              <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="show_view.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_view.js">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/show_view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5865237" vertical-offset="8321" max-vertical-offset="10166">
-              <caret line="512" column="74" selection-start-line="512" selection-start-column="74" selection-end-line="512" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.36447167" vertical-offset="697" max-vertical-offset="2839">
+              <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tree_node.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/tree_node.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="663">
+              <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="357">
+              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="node.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/node.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="1428">
+              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="report.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/report.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="221">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -1162,61 +1269,64 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/list.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/config/polyglot_configText.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/edit_controller.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/layout.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/layout.tpl" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/list.tpl" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/list_item.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_view.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/entities/auth.js" />
-        <option value="$PROJECT_DIR$/server/routes/index.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contacts/show/show_controller.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contacts/list/list_controller.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contacts/list/list_view.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/list_item.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/list.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/layout.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/panel.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/common/views.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/edit/edit_controller.js" />
         <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/panel.html" />
-        <option value="$PROJECT_DIR$/server/routes/xlsx_test.json" />
-        <option value="$USER_HOME$/AppData/Local/Temp/sheet1.xml" />
-        <option value="$USER_HOME$/AppData/Local/Temp/styles.xml" />
-        <option value="$PROJECT_DIR$/demo_qcrM_out/xl/styles.xml" />
-        <option value="$USER_HOME$/AppData/Local/Temp/[Content_Types].xml" />
-        <option value="$PROJECT_DIR$/node_modules/xlsx/xlsx.js" />
-        <option value="$PROJECT_DIR$/server/routes/contracts.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/vendor/currency_languages.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/vendor/numeral.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/right_item.html" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/contractbegin.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/pricing.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/deliverables.html" />
         <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_controller.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_controller_archive.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/edit/edit_view.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/entities/common.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/entities/contracts.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/vendor/backbone_filter_collection.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/vendor/backbone.genetics.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/layout.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_view.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/list/templates/layout.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/list/list_view.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/list/templates/none.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/list/list_controller.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/list/templates/panel.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/main.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/notify.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/reports.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/contract.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/layout.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/show_controller.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/header/header_app.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/login/login_controller.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/header/list/list_view.js" />
+        <option value="$PROJECT_DIR$/server/models/contract_notify_model.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/header/list/list_controller.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/entities/header.js" />
         <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_item.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/layout.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_side_top.html" />
-        <option value="$PROJECT_DIR$/public/assets/css/application.css" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/view.html" />
-        <option value="$PROJECT_DIR$/public/assets/js/vendor/kendo.backbone.map.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_controller.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/vendor/backbone.kendo.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/require_main.js" />
         <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_view.js" />
-        <option value="$PROJECT_DIR$/Node.gitignore" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/missing.html" />
+        <option value="$PROJECT_DIR$/server/routes/contracts_notify.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/login_app.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/view.html" />
+        <option value="C:/nginx/html/index.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_controller.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/app.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/contracts/contracts_app.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/reports_app.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/show_view.js" />
+        <option value="$PROJECT_DIR$/public/assets/css/application.css" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/top.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/contract.html" />
+        <option value="$PROJECT_DIR$/server/models/contract.js" />
+        <option value="$PROJECT_DIR$/server/routes/runId.js" />
+        <option value="$PROJECT_DIR$/server/server.js" />
+        <option value="$PROJECT_DIR$/server/models/runId.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/report.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/node.json" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/layout.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/contacts/list/list_view.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/compositeHierarchy.html" />
+        <option value="$PROJECT_DIR$/server/routes/run.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/entities/contracts.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/show_controller.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/tree_node.html" />
+        <option value="$PROJECT_DIR$/public/assets/js/apps/reports/show/show_view.js" />
       </list>
     </option>
   </component>
@@ -1228,8 +1338,7 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="91" />
-    <option name="width" value="1176" />
+    <option name="width" value="1091" />
     <option name="height" value="826" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -1283,7 +1392,327 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="show" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="show" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="list" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="structuring-backbone-with-requirejs-and-marionette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SSPF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1293,7 +1722,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.lastSelected" value="configurable.group.appearance" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -1305,14 +1734,15 @@
     <property name="LayoutCode.rearrangeEntriesJSON" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="LayoutCode.rearrangeEntriesXML" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJavaScript 1.5" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp\www\SSPF\public\assets\js\vendor" />
-      <recent name="C:\wamp\www\SSPF\public\assets\js\apps\contracts\list" />
-      <recent name="C:\wamp\www\SSPF\public\assets\js\apps\contacts\list\templates" />
-      <recent name="C:\wamp\www\SSPF\public\assets\js\apps\contracts\list\templates" />
-      <recent name="C:\wamp\www\SSPF\public\assets\js\apps\contracts\edit\templates" />
+      <recent name="C:\wamp\www\SSPF\server\routes" />
+      <recent name="C:\wamp\www\SSPF\server\models" />
+      <recent name="C:\wamp\www\SSPF\public\assets\js\apps\reports\show\templates" />
+      <recent name="C:\wamp\www\SSPF\public\assets\js\apps\reports" />
+      <recent name="C:\wamp\www\SSPF\public\assets\js\vendor\kendoUI" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp\www\SSPF\public\assets\js" />
@@ -1356,10 +1786,14 @@
       <ConfigurationWrapper RunnerId="debuggableProgram" />
       <method />
     </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -1367,10 +1801,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -1492,7 +1922,187 @@
       <option name="project" value="LOCAL" />
       <updated>1432797274159</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updated contract view">
+      <created>1432928825091</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1432928825091</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added excel routes">
+      <created>1432928853542</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1432928853542</updated>
+    </task>
+    <task id="LOCAL-00016" summary="git ignore node_modules">
+      <created>1432930040035</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1432930040035</updated>
+    </task>
+    <task id="LOCAL-00017" summary="changed order of dependencies">
+      <created>1432930873258</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1432930873258</updated>
+    </task>
+    <task id="LOCAL-00018" summary="removed kendo, may fix on dev">
+      <created>1432932455135</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1432932455135</updated>
+    </task>
+    <task id="LOCAL-00019" summary="typo">
+      <created>1432933005733</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1432933005733</updated>
+    </task>
+    <task id="LOCAL-00020" summary="removed kendo path from define">
+      <created>1432933117724</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1432933117724</updated>
+    </task>
+    <task id="LOCAL-00021" summary="removed kendo from define">
+      <created>1432933486078</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1432933486078</updated>
+    </task>
+    <task id="LOCAL-00022" summary="z-index update to top-panel">
+      <created>1432935443269</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1432935443269</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fixed removed css property">
+      <created>1433138802780</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1433138802780</updated>
+    </task>
+    <task id="LOCAL-00024" summary="removed dependency">
+      <created>1433140432232</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1433140432232</updated>
+    </task>
+    <task id="LOCAL-00025" summary="updated location to agnostic">
+      <created>1433140468847</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1433140468847</updated>
+    </task>
+    <task id="LOCAL-00026" summary="updated location to agnostic">
+      <created>1433140480709</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1433140480709</updated>
+    </task>
+    <task id="LOCAL-00027" summary="updated location to agnostic">
+      <created>1433140496596</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1433140496596</updated>
+    </task>
+    <task id="LOCAL-00028" summary="updated location to agnostic">
+      <created>1433140514102</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1433140514102</updated>
+    </task>
+    <task id="LOCAL-00029" summary="updated contracts list template">
+      <created>1433142699120</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1433142699120</updated>
+    </task>
+    <task id="LOCAL-00030" summary="added templates">
+      <created>1433279553224</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279553224</updated>
+    </task>
+    <task id="LOCAL-00031" summary="revised layout">
+      <created>1433279576126</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279576126</updated>
+    </task>
+    <task id="LOCAL-00032" summary="updated layout">
+      <created>1433279665114</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279665114</updated>
+    </task>
+    <task id="LOCAL-00033" summary="added new gateway views">
+      <created>1433279691115</created>
+      <option name="number" value="00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279691115</updated>
+    </task>
+    <task id="LOCAL-00034" summary="added new gateway views">
+      <created>1433279713177</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279713177</updated>
+    </task>
+    <task id="LOCAL-00035" summary="added spinner">
+      <created>1433279738588</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279738588</updated>
+    </task>
+    <task id="LOCAL-00036" summary="changed layout">
+      <created>1433279770770</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279770770</updated>
+    </task>
+    <task id="LOCAL-00037" summary="added spinner image">
+      <created>1433279817993</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279817993</updated>
+    </task>
+    <task id="LOCAL-00038" summary="added gateway services proxy">
+      <created>1433279849306</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279849306</updated>
+    </task>
+    <task id="LOCAL-00039" summary="new gateway models + controllers + reqres">
+      <created>1433279904420</created>
+      <option name="number" value="00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279904420</updated>
+    </task>
+    <task id="LOCAL-00040" summary="added spinner">
+      <created>1433279940862</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1433279940862</updated>
+    </task>
+    <task id="LOCAL-00041" summary="change to dependencies">
+      <created>1433284008089</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1433284008089</updated>
+    </task>
+    <task id="LOCAL-00042" summary="changed dependencies again v2">
+      <created>1433284136390</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1433284136390</updated>
+    </task>
+    <task id="LOCAL-00043" summary="fixing dependencies v3">
+      <created>1433284402868</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1433284402868</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1516,16 +2126,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="91" y="0" width="1176" height="826" extended-state="0" />
+    <frame x="0" y="0" width="1091" height="826" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853025" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13226745" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25746924" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27635327" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3988355" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1887608" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1533,15 +2142,17 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853025" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36887607" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.tpl" />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1559,19 +2170,32 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Changes to Contact roles" />
-    <MESSAGE value="Created Contracts directory: initial commit" />
-    <MESSAGE value="Working Copy of Auth, Role Creation, Contracts, and KendoUI export SAP remote url proxy through backbone" />
-    <MESSAGE value="final prototype dev" />
-    <MESSAGE value="updated css" />
-    <MESSAGE value="top panels change" />
-    <MESSAGE value="top panels change v2" />
-    <MESSAGE value="contact templates update to html" />
-    <MESSAGE value="removed inline style attr" />
-    <MESSAGE value="fix new data bug" />
-    <MESSAGE value="re-ordered main page display" />
-    <MESSAGE value="updated css left side menu / right side menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated css left side menu / right side menu" />
+    <MESSAGE value="updated contract view" />
+    <MESSAGE value="added excel routes" />
+    <MESSAGE value="git ignore node_modules" />
+    <MESSAGE value="changed order of dependencies" />
+    <MESSAGE value="removed kendo, may fix on dev" />
+    <MESSAGE value="typo" />
+    <MESSAGE value="removed kendo path from define" />
+    <MESSAGE value="removed kendo from define" />
+    <MESSAGE value="z-index update to top-panel" />
+    <MESSAGE value="fixed removed css property" />
+    <MESSAGE value="removed dependency" />
+    <MESSAGE value="updated location to agnostic" />
+    <MESSAGE value="updated contracts list template" />
+    <MESSAGE value="added templates" />
+    <MESSAGE value="revised layout" />
+    <MESSAGE value="updated layout" />
+    <MESSAGE value="added new gateway views" />
+    <MESSAGE value="changed layout" />
+    <MESSAGE value="added spinner image" />
+    <MESSAGE value="added gateway services proxy" />
+    <MESSAGE value="new gateway models + controllers + reqres" />
+    <MESSAGE value="added spinner" />
+    <MESSAGE value="change to dependencies" />
+    <MESSAGE value="changed dependencies again v2" />
+    <MESSAGE value="fixing dependencies v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing dependencies v3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1580,415 +2204,419 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contacts/list/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="640">
-          <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4338118" vertical-offset="0" max-vertical-offset="627">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/workbook.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="653">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
-          <caret line="1" column="92" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="106352" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo_qcrM_out/xl/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02603369" vertical-offset="0" max-vertical-offset="653">
-          <caret line="1" column="106256" selection-start-line="1" selection-start-column="106256" selection-end-line="1" selection-end-column="106256" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/sheet1.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46860644" vertical-offset="0" max-vertical-offset="969">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/[Content_Types].xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02603369" vertical-offset="0" max-vertical-offset="1122">
-          <caret line="1" column="63" selection-start-line="1" selection-start-column="63" selection-end-line="1" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/xlsx/xlsx.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="192701" max-vertical-offset="198254">
-          <caret line="11359" column="1" selection-start-line="11359" selection-start-column="1" selection-end-line="11359" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/excel-report/example/example1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20826952" vertical-offset="0" max-vertical-offset="653">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/excel-report/excelReport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="3162">
-          <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/contracts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5574273" vertical-offset="3002" max-vertical-offset="4488">
-          <caret line="198" column="19" selection-start-line="198" selection-start-column="19" selection-end-line="198" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/xlsx_test.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18979266" vertical-offset="1088" max-vertical-offset="4760">
-          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_view_SAVED_051215.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7429">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/list_item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2169059" vertical-offset="0" max-vertical-offset="627">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/vendor/numeral.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5206738" vertical-offset="7497" max-vertical-offset="11985">
-          <caret line="463" column="25" selection-start-line="463" selection-start-column="25" selection-end-line="463" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/vendor/currency_languages.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19754978" vertical-offset="3747" max-vertical-offset="17221">
-          <caret line="228" column="51" selection-start-line="228" selection-start-column="51" selection-end-line="228" selection-end-column="51" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/right_item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27113238" vertical-offset="0" max-vertical-offset="627">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/form_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="653">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/contractbegin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="714">
-          <caret line="8" column="112" selection-start-line="8" selection-start-column="112" selection-end-line="8" selection-end-column="112" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/edit/edit_controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5313936" vertical-offset="4600" max-vertical-offset="5559">
-          <caret line="291" column="23" selection-start-line="291" selection-start-column="23" selection-end-line="291" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/deliverables.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42882884" vertical-offset="357" max-vertical-offset="1292">
-          <caret line="35" column="51" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/edit/templates/category/pricing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46092504" vertical-offset="0" max-vertical-offset="2193">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/common/behariors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/new/new_view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="653">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/models/contract.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1190">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/models/contract_notify_model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.30584708" vertical-offset="0" max-vertical-offset="667">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_view.js">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5727412" vertical-offset="0" max-vertical-offset="5457">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <marker date="1432225701310" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_controller_archive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.019908117" vertical-offset="1041" max-vertical-offset="2941">
-          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.46019107" vertical-offset="0" max-vertical-offset="628">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/edit/edit_view.js">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/templates/contract.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6051051" vertical-offset="1246" max-vertical-offset="6834">
-          <caret line="97" column="49" selection-start-line="97" selection-start-column="49" selection-end-line="97" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.15912637" vertical-offset="0" max-vertical-offset="663">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_side.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="667">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/list/list_controller.js">
+    <entry file="file://$USER_HOME$/Documents/project/SSPF/data/tests_runIds/runId.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1972">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/vendor/backbone-filter-collection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2863706" vertical-offset="0" max-vertical-offset="5916">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/vendor/backbone.genetics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96784073" vertical-offset="1221" max-vertical-offset="1955">
-          <caret line="109" column="14" selection-start-line="109" selection-start-column="14" selection-end-line="109" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/list/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0265625" vertical-offset="0" max-vertical-offset="640">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/entities/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.31240427" vertical-offset="510" max-vertical-offset="4505">
+        <state vertical-scroll-proportion="0.47737908" vertical-offset="0" max-vertical-offset="641">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/entities/contracts.js">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_item.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2792793" vertical-offset="1905" max-vertical-offset="5865">
-          <caret line="123" column="35" selection-start-line="123" selection-start-column="35" selection-end-line="123" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.24363057" vertical-offset="0" max-vertical-offset="628">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/application.css">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/missing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="5049">
-          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_side_top.html">
+    <entry file="file://$PROJECT_DIR$/server/routes/gateway.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64752793" vertical-offset="36" max-vertical-offset="816">
-          <caret line="26" column="72" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5151515" vertical-offset="0" max-vertical-offset="714">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5151515" vertical-offset="0" max-vertical-offset="986">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/vendor/kendo.backbone.map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02603369" vertical-offset="0" max-vertical-offset="653">
-          <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/vendor/backbone.kendo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.9264264" vertical-offset="3519" max-vertical-offset="6205">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/require_main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23423423" vertical-offset="1340" max-vertical-offset="2006">
-          <caret line="88" column="31" selection-start-line="88" selection-start-column="31" selection-end-line="88" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/vendor/kendo.backbone.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6205">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2550">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/view.html">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/entities/header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32535884" vertical-offset="289" max-vertical-offset="2244">
-          <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.48425788" vertical-offset="0" max-vertical-offset="986">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/entities/gateway.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4938838" vertical-offset="0" max-vertical-offset="5372">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/contracts_notify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58409786" vertical-offset="434" max-vertical-offset="1598">
+          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/about/about_app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/auth/login_app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7538226" vertical-offset="0" max-vertical-offset="1887">
+          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/auth/login/login_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18195719" vertical-offset="2499" max-vertical-offset="3825">
+          <caret line="154" column="14" selection-start-line="154" selection-start-column="14" selection-end-line="154" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contacts/contacts_app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8058104" vertical-offset="0" max-vertical-offset="2193">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/nginx/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.046178345" vertical-offset="940" max-vertical-offset="3570">
+          <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/left_item.html">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/require_main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+        <state vertical-scroll-proportion="-1.911315" vertical-offset="1488" max-vertical-offset="2142">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/contracts_app_broke.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/reports_app_archive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1084" max-vertical-offset="1751">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="667">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/contracts_app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7538226" vertical-offset="663" max-vertical-offset="2329">
+          <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31184408" vertical-offset="268" max-vertical-offset="2312">
+          <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/entities/contact.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8545728" vertical-offset="1237" max-vertical-offset="1904">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/reports_app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54587156" vertical-offset="340" max-vertical-offset="2278">
+          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5729">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        <state vertical-scroll-proportion="11.151376" vertical-offset="0" max-vertical-offset="7956">
+          <caret line="429" column="0" selection-start-line="429" selection-start-column="0" selection-end-line="429" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Node.gitignore">
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/show_view.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5834633" vertical-offset="0" max-vertical-offset="641">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.2293853" vertical-offset="0" max-vertical-offset="5440">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/auth/dashboard/show_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38230884" vertical-offset="561" max-vertical-offset="2482">
+          <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/templates/view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.027070064" vertical-offset="255" max-vertical-offset="2873">
+          <caret line="14" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/application.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2984" max-vertical-offset="7582">
+          <caret line="183" column="10" selection-start-line="183" selection-start-column="10" selection-end-line="183" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/top.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10608424" vertical-offset="0" max-vertical-offset="641">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contracts/show/show_view.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5865237" vertical-offset="8321" max-vertical-offset="10166">
-          <caret line="512" column="74" selection-start-line="512" selection-start-column="74" selection-end-line="512" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.7798165" vertical-offset="5865" max-vertical-offset="14008">
+          <caret line="375" column="41" selection-start-line="375" selection-start-column="41" selection-end-line="375" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/contract.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13535032" vertical-offset="0" max-vertical-offset="1683">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/header/list/list_view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92201835" vertical-offset="672" max-vertical-offset="2601">
+          <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/header/header_app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42428786" vertical-offset="6" max-vertical-offset="731">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/header/list/list_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.7171254" vertical-offset="374" max-vertical-offset="3094">
+          <caret line="165" column="19" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/models/contract.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54122937" vertical-offset="523" max-vertical-offset="1190">
+          <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/contracts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20795107" vertical-offset="0" max-vertical-offset="4488">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/models/runId.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3568216" vertical-offset="0" max-vertical-offset="667">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5061162" vertical-offset="1267" max-vertical-offset="2584">
+          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="221">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contacts/show/show_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33133432" vertical-offset="0" max-vertical-offset="731">
+          <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contacts/show/show_view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="667">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="357">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/node.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="1428">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/contacts/list/list_view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41590214" vertical-offset="2380" max-vertical-offset="3145">
+          <caret line="156" column="24" selection-start-line="156" selection-start-column="24" selection-end-line="156" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/entities/contracts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2145" max-vertical-offset="7837">
+          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/show_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1564">
+          <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/compositeHierarchy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="667">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/templates/tree_node.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/apps/reports/show/show_view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36447167" vertical-offset="697" max-vertical-offset="2839">
+          <caret line="55" column="17" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
           <folding />
         </state>
       </provider>

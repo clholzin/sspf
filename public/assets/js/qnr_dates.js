@@ -1,0 +1,23 @@
+Current quarter:2
+year: 1 Third Quarter QCR Report Submit Date: 30/10/2015 day:5
+year: 1 Fourth Quarter QCR Report Submit Date: 29/01/2016 day:5
+year: 2 First Quarter QCR Report Submit Date: 29/04/2016 day:5
+year: 2 Second Quarter QCR Report Submit Date: 29/07/2016 day:5
+year: 2 Third Quarter QCR Report Submit Date: 28/10/2016 day:5
+year: 2 Fourth Quarter QCR Report Submit Date: 27/01/2017 day:5
+year: 3 First Quarter QCR Report Submit Date: 28/04/2017 day:5
+year: 3 Second Quarter QCR Report Submit Date: 28/07/2017 day:5
+year: 3 Third Quarter QCR Report Submit Date: 27/10/2017 day:5
+year: 3 Fourth Quarter QCR Report Submit Date: 26/01/2018 day:5
+year: 4 First Quarter QCR Report Submit Date: 27/04/2018 day:5
+year: 4 Second Quarter QCR Report Submit Date: 27/07/2018 day:5
+year: 4 Third Quarter QCR Report Submit Date: 26/10/2018 day:5
+year: 4 Fourth Quarter QCR Report Submit Date: 25/01/2019 day:5
+year: 5 First Quarter QCR Report Submit Date: 26/04/2019 day:5
+year: 5 Second Quarter QCR Report Submit Date: 26/07/2019 day:5
+year: 5 Third Quarter QCR Report Submit Date: 25/10/2019 day:5
+year: 5 Fourth Quarter QCR Report Submit Date: 24/01/2020 day:5
+year: 6 First Quarter QCR Report Submit Date: 24/04/2020 day:5
+year: 6 Second Quarter QCR Report Submit Date: 24/07/2020 day:5
+year: 6 Third Quarter QCR Report Submit Date: 30/10/2020 day:5
+year: 6 Fourth Quarter QCR Report Submit Date: 29/01/2021 day:5

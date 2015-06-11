@@ -1,0 +1,102 @@
+<div>
+    <div class="wrap-overflay-white"></div><!--end overlay-->
+    <h3 class="text-blue">Schedule</h3>
+</div>
+<div class="row">
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><div id="calendar-left"></div></div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><div id="calendar"></div></div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><div id="calendar-right"></div></div>
+
+</div>
+<style>
+    #calendar,
+    #calendar-left,
+    #calendar-right {
+        width:100%;
+        margin:10px 5px;
+        text-align: center;
+    }
+    #calendar .k-content,
+    #calendar-left .k-content,
+    #calendar-right .k-content{
+        height: 100%;
+    }
+    #calendar,#calendar-left, #calendar-right,
+    #calendar #calendar-left #calendar-right .k-content,
+    #calendar #calendar-left #calendar-right .k-header,
+    #calendar #calendar-left #calendar-right th,
+    #calendar #calendar-left #calendar-right .k-link,
+    #calendar #calendar-left #calendar-right .k-state-hover,
+    #calendar #calendar-left #calendar-right .k-state-selected,
+    #calendar #calendar-left #calendar-right .k-state-focused {
+       background: transparent;/**#f18367**/
+        border-color: transparent;
+        color: #000;
+        box-shadow: none;
+    }
+    #calendar .k-content .k-state-hover,
+    #calendar-left .k-content .k-state-hover,
+    #calendar-right .k-content .k-state-hover,
+    #calendar .k-content .k-state-focused,
+    #calendar-left .k-content .k-state-focused,
+    #calendar-right .k-content .k-state-focused {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    #calendar #calendar-left #calendar-right .k-state-selected, #calendar .k-state-selected.k-state-focused {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    #calendar .k-content .k-link,
+    #calendar-left .k-content .k-link,
+    #calendar-right .k-content .k-link {
+        padding: 0;
+        min-height: 40px;
+        line-height: 40px;
+    }
+    #calendar #calendar-left #calendar-right th {
+        padding-top: 20px;
+        color: #000;
+    }
+    #calendar #calendar-left #calendar-right td.k-other-month .k-link {
+        color: #EEE;
+    }
+    #calendar th,
+    #calendar-left th,
+    #calendar-right th,
+    #calendar td,
+    #calendar-left td,
+    #calendar-right td {
+        text-align: center;
+    }
+
+    /* Template Days */
+    .exhibition,
+    .party,
+    .cocktail {
+        position: relative;
+        max-width: 75.3333%;
+        min-width: 45.3333%;
+        width: 35px;
+      /**  min-height: 30.3333%;
+        max-height: 50.3333%;**/
+        height: 35px;
+        margin: auto;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 50%;
+        line-height: 40px;
+    }
+    .exhibition {
+        background-color: #ef5350;
+        color: #FFF;
+    }
+    .party {
+        background-color: #70c114;
+        color: #FFF;
+    }
+    .cocktail {
+        background-color: #00a1e8;
+        color: #FFF;
+    }
+</style>

@@ -68,6 +68,11 @@ define(["app",
           }
       });**/
 
+     var NoContactsView = Marionette.ItemView.extend({
+         template: noneTpl,
+         tagName: "tr",
+         className: "alert"
+     });
 
     View.Contact = Marionette.ItemView.extend({
       tagName: "tr",
@@ -145,11 +150,6 @@ define(["app",
       }
     });
 
-    var NoContactsView = Marionette.ItemView.extend({
-      template: noneTpl,
-      tagName: "tr",
-      className: "alert"
-    });
 
     View.Contacts = Marionette.CompositeView.extend({
       tagName: "table",
@@ -158,7 +158,6 @@ define(["app",
       emptyView: NoContactsView,
       childView: View.Contact,
       childViewContainer: "tbody",
-
       initialize: function(){
         this.listenTo(this.collection, "reset", function(){
           this.attachHtml = function(collectionView, childView, index){
@@ -166,7 +165,6 @@ define(["app",
           }
         });
       },
-
       onRenderCollection: function(){
         this.attachHtml = function(collectionView, childView, index){
           collectionView.$el.prepend(childView.el);

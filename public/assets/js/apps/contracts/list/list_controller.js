@@ -52,6 +52,11 @@ define(["app", "apps/contracts/list/list_view"], function(AppManager, View){
                   contractsListLayout.contractsRegion.show(contractsListView);
               });
 
+
+                contractsListPanel.on("reports:list", function(){
+                    AppManager.trigger("reports:list");
+                });
+
                 contractsListPanel.on("contract:new", function(){
                 require(["apps/contracts/new/new_view"], function(NewView){
                   var newContract = AppManager.request("contract:entity:new");

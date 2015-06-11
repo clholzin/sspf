@@ -9,8 +9,8 @@ define(["app", "apps/header/list/list_controller"],
     AppManager.commands.setHandler("set:active:header", function(name){
           ListController.setActiveHeader(name);
     });
-    AppManager.commands.setHandler("set:user", function(name){
-          ListController.setActiveUser(name);
+    AppManager.commands.setHandler("set:user", function(name,id){
+          ListController.setActiveUser(name,id);
      });
     AppManager.commands.setHandler("Reset:user", function(){
           ListController.ResetActiveHeader();

@@ -1,0 +1,34 @@
+<div>
+    <div class="wrap-overflay-white"></div><!--end overlay-->
+    <h3 class="text-blue"><%-titleContract%></h3>
+</div>
+
+<!--<ul class="list-group"></ul>-->
+<div class="row">
+    <% $.each(contracts,function(key,value){ %>
+    <%//console.log(JSON.stringify(value))%>
+
+    <!--col-sm-6 col-md-4-->
+    <div  class="col-md-6 col-sm-6 clearfix">
+        <div class="btn-group top-right" role="group" aria-label="...">
+            <a href="#en/contracts/<%-value.attributes._id %>" class="btn btn-sm btn-default js-show">
+                <i class="glyphicon glyphicon-eye-open"></i></a>
+            <a href="#en/contracts/<%-value.attributes._id %>/edit" class="btn btn-sm btn-default js-edit">
+                <span class="text-success"><i class="glyphicon glyphicon-pencil"></i></span></a>
+        </div>
+        <div class="thumbnail">
+            <div class="caption">
+                <h4>ID: <%-String(value.attributes._id).substr(0,5)%></h5>
+                <div class="h5"><%- value.attributes.title %></div>
+                <div class="small"><%-value.attributes.description.body%></div>
+                <small><%- value.attributes.user.username %></small>
+
+            </div>
+        </div>
+    </div>
+
+
+
+ <!--   <li class="list-group-item" data-id="<%-value.attributes._id%>"><%-value.attributes.title%></li>-->
+    <% }); %>
+</div>

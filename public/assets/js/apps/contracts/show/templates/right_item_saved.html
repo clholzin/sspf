@@ -1,0 +1,9 @@
+<% $.each(comments,function(key,value){%>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <small><%-value.body%></small><br>
+        <small>Date: <%-value.date%></small>
+    </div>
+    <div class="panel-footer"><small>By: <%-value.username%></small></div>
+</div>
+<% }); %>

@@ -61,10 +61,17 @@ define(["app"], function(AppManager) {
         };
 **/
         var executeAction = function (action, args, lang) {
-                AppManager.startSubApp("ContractsApp");
-                console.log(action(JSON.stringify(args)));
-                action(args);
-                AppManager.execute("set:active:header", "contracts");
+
+           if (AppManager.user.loggedIn === 0 || undefined) {
+               AppManager.trigger('auth:login');
+               AppManager.execute("alert:show", {type: "warning", message: "Must be logged in."});
+           } else {
+               AppManager.startSubApp("ContractsApp",args);
+               console.log(JSON.stringify(args));
+               action(args);
+              // AppManager.execute("set:active:header", "contracts");
+           }
+
         };
 
 
@@ -85,9 +92,9 @@ define(["app"], function(AppManager) {
                 });
             }
         };
-        AppManager.commands.setHandler("set:edit:header", function(name){
+       /** AppManager.commands.setHandler("set:edit:header", function(name){
             AppManager.ContractsApp.Edit.Controller.setActiveHeader(name);
-        });
+        });**/
         AppManager.on("contracts:filter", function (criterion) {
             if (criterion) {
                 AppManager.navigate("contracts/filter/criterion:" + criterion);

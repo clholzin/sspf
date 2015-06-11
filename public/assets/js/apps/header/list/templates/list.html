@@ -1,4 +1,8 @@
-<div class="container-fluid">
+
+
+
+
+<div class="container-fluid mainNavid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <span class="sr-only">Toggle navigation</span>
@@ -6,46 +10,45 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-            <a id="headerId" class="navbar-brand" href="#auth"><img id="brandImg" src="http://dassian.com/images/img-logo.png" /></a>
+
+        <a id="headerId" class="navbar-brand homeBtn" href="#auth">
+       <!--    <div class="col-md-2 col-sm-2 col-xs-2"><i class="glyphicon glyphicon-home" style="padding-top:3px;"></i></div>
+            <div class="col-md-5 col-sm-5 col-xs-5"><img id="brandImg" src="assets/img/web_white.png" title="Dassian"/></div>-->
+            <img id="brandImg" src="assets/img/web_white.png" title="Dassian"/></a>
         </div>
-    </div>
 
 
-    <div class="mainNavid">
+
     <div class="collapse navbar-collapse" id="navbar mainNav collapseExample">
     <ul class="nav navbar-nav">
-    <li class="homeBtn"><a href="#auth"><i class="glyphicon glyphicon-home"></i></a></li>
     <li class="backBtn"><a href="#"><i class="glyphicon glyphicon-arrow-left"></i></a></li>
-     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tools <span class="caret"></span></a>
-        <ul class="dropdown-menu  inner-dropdown" role="menu">
-            <li class="previous"><a href="#"><i class="glyphicon glyphicon-arrow-up"></i> Previous</a></li>
-            <li class="info"><a href="#"><i class="glyphicon glyphicon-info-sign text-info"></i> Info</a></li>
-            <li class="exit"><a href="#"><i class="glyphicon glyphicon-remove-circle text-danger"></i> Exit</a></li>
+      <li>
+          <ul class="nav navbar-nav ulNavBar">
+          </ul>
+      </li>
     </ul>
-     </li>
-        <li class="dropdown">
+
+
+    <ul class="nav navbar-nav navbar-right">
+     <!--   <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lang <span class="caret"></span></a>
             <ul class="dropdown-menu  inner-dropdown" role="menu">
                 <li><a id="en" class="js-change-language">English</a></li>
                 <li><a id="fr" class="js-change-language">French</a></li>
                 <li><a id="rs" class="js-change-language">Russian</a></li>
             </ul>
-        </li>
+        </li>-->
+    <li class="dropdown user">
+        <a href="#" class="dropdown-toggle user" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> <span class="user">User</span> <span class="caret"></span></a>
+        <ul class="dropdown-menu  inner-dropdown auth" role="menu">
 
-
+            <li><a href="#" class="Admin">Admin</a></li>
+           <li><a href="#auth" class="Login">Login</a></li>
+            <li><a href="#auth/logout" class="Logout hidden">Logout</a></li>
     </ul>
-
-
-    <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> User <span class="caret"></span></a>
-        <ul class="dropdown-menu ulNavBar inner-dropdown" role="menu">
-
-        </ul>
-    <!--<li><a href="#auth"><i class="glyphicon glyphicon-user"></i> <span class="currentUser">User</span>  <span class="sr-only">(current)</span></a></li>-->
     </ul>
 
 
      </div><!--/.nav-collapse -->
-        </div>
+       <!-- </div>-->
+</div>

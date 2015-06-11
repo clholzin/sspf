@@ -1,0 +1,24 @@
+<td><%- username %></td>
+<td>
+Admin: <i class="<%- admin %>"></i>
+Creator: <i class="<%- creator %>"></i>
+Reviewer: <i class="<%- review %>"></i>
+Approver: <i class="<%- approve %>"></i>
+Supervisor: <i class="<%- supervisor %>"></i>
+</td>
+<td>
+    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+  <a href="#contacts/<%- _id %>" class="btn btn-sm btn-default js-show">
+    <i class="glyphicon glyphicon-eye-open"></i>
+    Show
+  </a>
+  <a href="#contacts/<%- _id %>/edit" class="btn btn-sm btn-default js-edit">
+    <i class="glyphicon glyphicon-pencil"></i>
+      Edit
+  </a>
+  <button class="btn btn-sm btn-danger js-delete">
+    <i class="glyphicon glyphicon-remove-circle"></i>
+    Delete
+  </button>
+        </div>
+</td>

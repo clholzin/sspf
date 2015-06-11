@@ -8,6 +8,15 @@ define(["marionette", "jquery-ui"], function(Marionette){
         modal: true,
         title: view.title,
         width: "auto",
+        class:'animated fadeIn',
+          show: {
+              effect: "fadeIn",
+              duration: 150
+          },
+          hide: {
+              effect: "fadeIn",
+              duration: 100
+          },
         close: function(e, ui){
           self.closeDialog();
         }

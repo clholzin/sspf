@@ -4,27 +4,44 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
             authUsers: function(id){
                 require(["common/views", "entities/auth"], function(CommonViews){
                     var loadingView = new CommonViews.Loading({
-                        title: "Login",
+                        title: "",
                         message: "One sec..."
                     });
                     AppManager.mainRegion.show(loadingView);
-                    //var loginView;
+                    var loginView;
                    var fetchingUser = AppManager.request("login:entity");
                     $.when(fetchingUser).done(function(loginUser) {
                         if (loginUser.attributes.loggedIn === 1) {
+                            console.log(JSON.stringify(loginUser));
+                            //AppManager.navigate("auth/" + loginUser.get('username'));
                             loginView = new View.Show({
                                 model: loginUser
                             });
                             if(AppManager.user.loggedIn === undefined){
-                                AppManager.user.loggedIn = loginUser.get('loggedIn');
+                                AppManager.user = {
+                                    loggedIn:1,
+                                    username:loginUser.get('username'),
+                                    id:loginUser.get('id')
+                                };
                             }
+                            //console.log('1111111111:'+ JSON.stringify(AppManager.user));
+                           /** var userid = loginUser.get("id");
+                            var username = loginUser.get("id");
+                            console.log('User Id:'+userid);
+                            AppManager.execute("set:user", username,userid);**/
+                            AppManager.trigger("auth:dashboard", loginUser.get("username"));
 
-                            AppManager.execute("set:user", loginUser.get("username"));
-                            loginView.on("auth:edit", function (loginUser) {
+                           /** $(document.body).find('ul.auth').find('a.Login').text('Dashboard');
+                            var logout = $(document.body).find('ul.auth').find('a.Logout');
+                            if(logout.hasClass('hidden')) {
+                                logout.toggleClass('hidden');
+                            }**/
+                          /**  loginView.on("auth:edit", function (loginUser) {
                                 AppManager.trigger("auth:edit", loginUser.get("id"));
-                            });
+                            });**/
                         }
                         else {
+                            AppManager.execute("Reset:user");
                             loginView = new View.LoginForm();
                             AppManager.user.loggedIn = 0;
                             console.log('Logout Global Class '+JSON.stringify(AppManager.user.loggedIn));
@@ -42,9 +59,13 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                                         AppManager.user.loggedIn = model.get('loggedIn');
                                         //console.log('Logined Global User attr '+ JSON.stringify(AppManager.user));
                                         AppManager.execute("alert:show",({type:"success",message:"Welcome"}));
-                                        AppManager.execute("set:user", model.get("username"));
-                                        AppManager.trigger("auth:show", model.get("username"));
+                                        var userid = model.get("id");
+                                        var username = model.get("username");
+                                        AppManager.execute("set:user", username,userid);
+                                       // AppManager.execute("set:user", model.get("username"));
+                                        AppManager.trigger("auth:dashboard", model.get("username"));
                                     }else{
+                                        AppManager.execute("Reset:user");
                                         AppManager.execute("alert:show",({type:"warning",message:JSON.stringify(model.attributes.info)}));
                                         AppManager.triggerMethod("form:data:invalid", loginView.validationError);
                                     }
@@ -152,6 +173,9 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                             authView.on("auth:edit", function(user){
                                 AppManager.trigger("auth:edit", user.get("id"));
                             });
+                            authView.on("auth:dashboard", function(id){
+                                AppManager.trigger("auth:dashboard", id);
+                            });
                         }
                         else{
                             authView = new View.NoAuthView();
@@ -165,23 +189,23 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
             logoutUser:function(){
                 require(["common/views", "entities/auth"], function(CommonViews){
                     var loadingView = new CommonViews.Loading({
-                        title: "Logout User",
-                        message: "loading..."
+                        title: "Bye",
+                        message: "Logging out user."
                     });
+                    AppManager.mainRegion.show(loadingView);
                     AppManager.execute("alert:show",({type:"info",message:"Logging out"}));
                     AppManager.execute("Reset:user");
-                    AppManager.execute("set:active:header", "auth/logout");
-                    AppManager.mainRegion.show(loadingView);
+                   // AppManager.execute("set:active:header", "auth/logout");
                     var logout = AppManager.request("login:logout");
                     $.when(logout).done(function(data){
                        // console.log(data);
-                         authView = new View.NoAuthView();
+                         var authView = new View.NoAuthView();
                          AppManager.user.loggedIn = data.attributes.loggedIn;
                         console.log('logout delete attribute:' + JSON.stringify(AppManager.user));
                             AppManager.mainRegion.show(authView);
                         setTimeout(function(){
                             AppManager.trigger("auth:login");
-                        },4000);
+                        },2500);
 
                     });
                 });//end LogoutUser function

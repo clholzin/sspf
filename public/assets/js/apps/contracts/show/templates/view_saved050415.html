@@ -1,0 +1,96 @@
+<div class="jumbotron">
+    <div class="pull-right">
+        <a href="#contracts" title="Back" class="btn btn-default">
+            <i class="glyphicon glyphicon-arrow-left"></i></a>
+
+        <a href="#contracts/<%- _id %>/edit" class="btn btn-primary js-edit">
+            <i class="glyphicon glyphicon-pencil"></i>
+            Edit
+        </a>
+    </div>
+    <h1><%- title %></h1>
+    <h4><%- description.body%></h4>
+    <p>Assigned to: <%- user.username %></p>
+    <p>Created: <%- meta.date_created %><br>
+    Last Updated: <%- updated_at %></p>
+
+
+</div>
+<div class="well well-lg">
+    <ul class="list-group">
+        <li class="list-group-item">startDate: <%- startDate%></li>
+        <li class="list-group-item">endDate: <%- endDate%></li>
+        <li class="list-group-item">fixedPricing: <%- pricing.fixedPricing%></li>
+        <li class="list-group-item">extBasedFee: <%- pricing.extBasedFee%></li>
+        <li class="list-group-item">targetPricing: <%- pricing.targetPricing%></li>
+        <li class="list-group-item">costPlusPricing: <%- pricing.costPlusPricing%></li>
+        <li class="list-group-item">firmPricing: <%- pricing.firmPricing%></li>
+    </ul>
+<div class="well">Business Units: <%-businessUnit.name%></div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Reports</div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">ICR: <br>
+                    <%- icr %>
+                </li>
+                <li class="list-group-item">CCS: <br>
+                    <%- reports.ccs.occurs.type %><br>
+                    <%- reports.ccs.occurs.year%><br>
+                    <%- reports.ccs.occurs.date%>
+                </li>
+                <li class="list-group-item">CCR: <br>
+                    <%- reports.ccr.occurs.type %><br>
+                    <%- reports.ccr.occurs.year%><br>
+                    <%- reports.ccr.occurs.date%>
+                </li>
+                <li class="list-group-item">qcr: <br>
+                    <%- reports.qcr.occurs.type %><br>
+                    <%- reports.qcr.occurs.year%><br>
+                    <%- reports.qcr.occurs.date%>
+                </li>
+                <li class="list-group-item">crp: <br>
+                    <%- reports.crp.occurs.type %><br>
+                    <%- reports.crp.occurs.year%><br>
+                    <%- reports.crp.occurs.date%>
+                </li>
+                <li class="list-group-item">cnr: <br>
+                    <%- reports.cnr.occurs.type %><br>
+                    <%- reports.cnr.occurs.year%><br>
+                    <%- reports.cnr.occurs.date%>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<!--
+{"_id":"5543ca2a4286dc5325e289ee",
+"title":"Test Contract",
+"startDate":"2015-04-30T17:42:40.778Z",
+"endDate":"2015-11-11T17:42:40.000Z",
+"description":"[object Object]",
+"primary":true,"pricing":{"firmPricing":235002,
+"fixedPricing":20000,"costPlusPricing":275000,
+"extBasedFee":125000,"volDrivenPricing":75000,
+"targetPricing":235000},
+
+"reports":{
+"ccs":{"occurs":["[object Object]"]},
+"ccr":{"occurs":["[object Object]"]},
+"icr":{"occurs":["[object Object]"]},
+"qcr":{"occurs":["[object Object]"]},
+"crp":{"occurs":["[object Object]"]},
+"cnr":{"occurs":["[object Object]"]}},
+"businessUnit":["Pratt"],
+"updated_at":"2015-05-01T21:31:56.407Z",
+"meta":{"date_created":"2015-11-11T17:42:40.000Z"},
+"comments":[{"body":"First Comment","username":"clholzin","date":"2015-11-11T17:42:40.000Z"}],
+"user":{"username":"craig","role":[]}}
+
+
+-->
+
+
+
+

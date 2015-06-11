@@ -20,11 +20,12 @@ define(["app", "backbone.picky"], function(AppManager){
 
     var initializeHeaders = function(){
       Entities.headers = new Entities.HeaderCollection([
-        { name: "Contacts", url: "contacts", navigationTrigger: "contacts:list" },
-          { name: "About", url: "about", navigationTrigger: "about:show"},
           { name: "Contracts", url: "contracts", navigationTrigger: "contracts:list" },
-        { name: "Login", url: "auth", navigationTrigger: "auth:login" },
-          { name: "Logout", url: "auth/logout", navigationTrigger: "auth:logout" }
+          { name: "Reports", url: "reports", navigationTrigger: "reports:list" },
+          { name: "About", url: "about", navigationTrigger: "about:show"}
+      /** { name: "Contacts", url: "contacts", navigationTrigger: "contacts:list" },
+       *  { name: "Login", url: "auth", navigationTrigger: "auth:login" },
+          { name: "Logout", url: "auth/logout", navigationTrigger: "auth:logout" }**/
       ]);
     };
 

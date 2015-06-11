@@ -34,7 +34,7 @@ define(["app", "tpl!common/templates/loading.tpl",
           top: "30px", // Top position relative to parent in px
           left: "auto" // Left position relative to parent in px
         };
-        //$("#spinner").spin(opts);
+         $("#spinner").spin(opts);
           NProgress.start();
       },
         onBeforeDestroy: function(){

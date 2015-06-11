@@ -1,5 +1,6 @@
 define(["marionette",
-        "apps/config/marionette/regions/dialog"],
+        "apps/config/marionette/regions/dialog",
+        "apps/config/marionette/regions/model"],
     function(Marionette){
   var AppManager = new Marionette.Application();
 
@@ -26,7 +27,8 @@ define(["marionette",
 
     /**Start Each Sub Module as its own page hash**/
   AppManager.startSubApp = function(appName, args){
-      console.log(appName +': ' + args);
+
+      console.log(appName +': ' +  args );
     var currentApp = appName ? AppManager.module(appName) : null;
     if (AppManager.currentApp === currentApp){ return; }
 
@@ -47,6 +49,9 @@ define(["marionette",
         alertsRegion: "#alertsRegion",
         mainRegion: "#main-region",
         dialogRegion: Marionette.Region.Dialog.extend({
+            el: "#dialog-region"
+        }),
+        modelRegion: Marionette.Region.Model.extend({
             el: "#dialog-region"
         })
     });
@@ -108,11 +113,12 @@ define(["marionette",
             AppManager.i18n.acceptedLanguages = ["en", "fr","rs"];
             //AppManager.user.loggedIn = 0;
             if(Backbone.history){
-                require(["apps/contacts/contacts_app","apps/auth/login_app",
-                    "apps/about/about_app","apps/contracts/contracts_app"], function () {
+                require(["apps/auth/login_app","apps/contacts/contacts_app",
+                    "apps/about/about_app","apps/contracts/contracts_app",
+                    "apps/reports/reports_app"], function () {
                     Backbone.history.start();
 
-                    if(AppManager.getCurrentRoute() === ""){
+                    if(AppManager.getCurrentRoute() ===  ''){///^[en|auth|#|\/]/
                         AppManager.trigger("auth:login");
                     }
                 });

@@ -11,7 +11,7 @@ define(["app", "marionette"], function(AppManager, Marionette){
      AppManager.request("language:change", lang).always(function() {
         AppManager.startSubApp(null);
         ShowController.showAbout();
-        AppManager.execute("set:active:header", "about");
+       // AppManager.execute("set:active:header", "about");
       });
     });
     }

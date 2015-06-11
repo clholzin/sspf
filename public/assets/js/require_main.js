@@ -9,7 +9,11 @@ requirejs.config({
       "backbone.genetics": "vendor/backbone.genetics",
     "backbone.deep.model":"vendor/backbone.deep.model",
     jquery: "vendor/jquery",
+
       "kendo":"vendor/kendoUI/kendo.all.min",
+      "calendar":"vendor/kendoUI/kendo.calendar.min.js",
+      "kendo_core":"vendor/kendoUI/kendo.core.min.js",
+
     "jquery-ui": "vendor/jquery-ui",
     "jszip":"vendor/jszip",
     json2: "vendor/json2",
@@ -37,17 +41,17 @@ requirejs.config({
   },
 
   shim: {
-      "polyglotText": {
-          deps: ["polyglot"],
-          exports: "polyglotText"
-      },
-      "jszip": {
-          exports: "jszip"
-      },
-      "numeral": {
-          deps: ["jquery"],
-          exports: "Numeral"
-      },
+    "polyglotText": {
+      deps: ["polyglot"],
+      exports: "polyglotText"
+    },
+    "jszip": {
+      exports: "jszip"
+    },
+    "numeral": {
+      deps: ["jquery"],
+      exports: "Numeral"
+    },
     handlebars:{
       exports:"Handlebars"
     },
@@ -55,19 +59,19 @@ requirejs.config({
       exports: "_"
     },
     nprogress: {
-        deps: ["jquery"],
+      deps: ["jquery"],
       exports: "NProgress"
     },
-      moment: {
-          exports: "Moment"
-      },
-      "moment-fquarter": {
-          exports: "MomentFquarter"
-      },
-      "precise-range": {
-          exports: "MomentRange"
-      },
-      bootstrap: {
+    moment: {
+      exports: "Moment"
+    },
+    "moment-fquarter": {
+      exports: "MomentFquarter"
+    },
+    "precise-range": {
+      exports: "MomentRange"
+    },
+    bootstrap: {
       deps: ["jquery"],
       exports: "Bootstrap"
     },
@@ -76,9 +80,13 @@ requirejs.config({
       exports: "Backbone"
     },
     kendo: {
-          deps: ["jquery","jszip"],
-          exports: "kendo"
+      deps: ["jquery"],
+      exports: "kendo"
     },
+    /**calendar: {
+      deps: ["jquery"],
+      exports: "kendo_calender"
+    },**/
     "kendo.backbone":["backbone"],
     "backbone.picky": ["backbone"],
     "backbone.deep.model": ["backbone"],

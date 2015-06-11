@@ -25,7 +25,8 @@ define(["app",
       template: panelTpl,
       className:'container-fluid',
       triggers: {
-        "click button.js-new": "contract:new"
+        "click button.js-new": "contract:new",
+        "click .js-reports":"reports:list"
       },
 
       events: {

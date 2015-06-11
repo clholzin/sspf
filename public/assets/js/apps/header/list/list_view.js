@@ -6,6 +6,7 @@ define(["app",
     View.Header = Marionette.ItemView.extend({
       template: listItemTpl,
       tagName: "li",
+
       events: {
           "click a": "navigate",
           "click .Login":"loginBtn",
@@ -52,7 +53,18 @@ define(["app",
       className: "white navbar navbar-default navbar-fixed-top ",
       childView: View.Header,
       childViewContainer: 'div ul.ulNavBar',//ul.ulNavBar
-
+        onRender:function(){
+            this.$el.find('ul.auth').find('a.Login').text('Dashboard');
+          var logout = this.$el.find('ul.auth').find('a.Logout');
+          if(logout.hasClass('hidden')){
+              logout.toggleClass('hidden');
+          }
+        },
+      triggers:{
+            "click a.Login":"homeBtn:clicked",
+            "click a.Logout":"logoutBtn:logout",
+          "click a.Admin":"admin:contacts"
+        },
       events: {
         "click a.navbar-brand": "brandClicked",
           "click .backBtn": "backBtn",
@@ -60,9 +72,21 @@ define(["app",
           "click button.navbar-toggle":"navbarToggle",
           "click  a":"removeMenu",
           "click li.homeBtn":"homeClicked",
-          "change .js-change-language": "changeLanguage"
+          "change .js-change-language": "changeLanguage",
+          "click a.Dashboard":"userDashboard",
+          "click a.Settings":"userSettings"
          // "click a.logout": "logoutClick"
       },
+    userSettings:function(e){
+        e.preventDefault();
+        var id = this.$(e.currentTarget).data('id');
+        this.trigger('settingsBtn:settings',id);
+    },
+    userDashboard:function(e){
+        e.preventDefault();
+        var id = this.$(e.currentTarget).data('id');
+        this.trigger('dashboardBtn:dashboard',id);
+    },
     brandClicked: function(e){
         e.preventDefault();
         this.trigger("brand:clicked");
@@ -87,6 +111,10 @@ define(["app",
     },
     removeMenu: function(e){
         e.preventDefault();
+        var logout =this.$el.find('li.user');
+        if(logout.hasClass('open')){
+            logout.toggleClass('open');
+        }
         //console.log(e.currentTarget);
        // $('body').find('div.collapse').collapse('toggle');
     }

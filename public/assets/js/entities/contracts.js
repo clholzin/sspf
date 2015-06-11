@@ -117,6 +117,58 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
             }
         });
 
+
+        Entities.NotifyOne = Backbone.Model.extend({
+            urlRoot: window.location.origin+"/api/notifyOne",
+            idAttribute: "_id"
+        });
+
+
+
+
+
+
+
+
+
+        Entities.TreeNode = Backbone.Model.extend({
+            initialize: function(){
+               // var hier = this.get('hier');
+              //  console.log(hier);
+                var nodes = this.get('nodes');
+               // console.log(nodes);
+               // var nodes = hier;
+                //console.log('hit model nodes '+nodes);
+                if (nodes){
+                    this.nodes = new Entities.TreeCollection(nodes);
+                    this.unset("nodes");
+                }
+            }
+        });
+
+        Entities.TreeCollection = Backbone.Collection.extend({
+            model: Entities.TreeNode
+        });
+
+        Entities.TreeNodeCollection = Backbone.Collection.extend({
+            initialize: function(models, options) {
+                this.url = window.location.origin+'/api/runId/' + options.id;
+            },
+            //url : window.location.origin+'/api/rundId/',
+            model: Entities.TreeNode,
+            parse:function(response){
+                return response.hierarchy;
+            }
+        });
+
+
+
+
+
+
+
+
+
         Entities.UsrSet = Backbone.Model.extend({
             idAttribute:'Persnumber',
             urlRoot:window.location.origin+'/sap/ZUSER_SRV/USR01Set'
@@ -160,6 +212,15 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
             }
         });
 
+        var initializeTreeNodes = function(id){
+            var trees = new Entities.TreeNodeCollection([],{id: id});
+            trees.fetch();
+            trees.forEach(function(tree){
+                tree.save();
+            });
+            return trees.models;
+        };
+
         var initializeContracts = function(){
             var contracts = new Entities.ContractCollection();
             contracts.fetch();
@@ -177,7 +238,14 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
             });
             return notifies.models;
         };
-
+        var initializeNotifyAll = function(){
+            var notifies = new Entities.NotifyCollection( );
+            notifies.fetch();
+            notifies.forEach(function(notify){
+                notify.save();
+            });
+            return notifies.models;
+        };
         var initializeUsrSet = function(){
             var urs = new Entities.UsrSets();
             urs.fetch();
@@ -188,7 +256,7 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
         };
 
         var API = {
-            getUsrSetEntities: function(id){
+            getUsrSetEntities: function(){
                 var ursSet = new Entities.UsrSets();
                 var defer = $.Deferred();
                 ursSet.fetch({
@@ -281,8 +349,47 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
                 return promise;
             },
 
+            getReportTreeEntity: function(id){
+                var tree = new Entities.TreeNodeCollection([],{id: id});
+                var defer = $.Deferred();
+                tree.fetch({
+                    success: function(data){
+                        defer.resolve(data);
+                    }
+                });
+                var promise = defer.promise();
+                $.when(promise).done(function(tree){
+                    if(tree.length === 0){
+                        console.log('hit empty entities for tree');
+                        // if we don't have any contacts yet, create some for convenience
+                        var models = initializeTreeNodes(id);
+                        tree.reset(models);
+                    }
+                });
+                return promise;
+            },
+            getNotifyEntitiesAll: function(){
+                //console.log('id for getNofityEntities: '+id);
+                var notifies = new Entities.NotifyCollection();
+                var defer = $.Deferred();
+                notifies.fetch({
+                    success: function(data){
+                        defer.resolve(data);
+                    }
+                });
+                var promise = defer.promise();
+                $.when(promise).done(function(notifies){
+                    if(notifies.length === 0){
+                        console.log('hit empty entities for notify');
+                        // if we don't have any contacts yet, create some for convenience
+                        var models = initializeNotifyAll();
+                        notifies.reset(models);
+                    }
+                });
+                return promise;
+            },
             getNotifyEntity: function(id){
-                var notify = new Entities.Notify({_id: id});
+                var notify = new Entities.NotifyOne({_id: id});
                 var defer = $.Deferred();
                 setTimeout(function(){
                     notify.fetch({
@@ -294,7 +401,7 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
                             console.log(data);
                         }
                     });
-                }, 2000);
+                }, 1000);
                 return defer.promise();
             }
         };
@@ -325,13 +432,22 @@ define(["app","vendor/moment","apps/config/storage/localstorage"], function(AppM
             //console.log('reqres: '+id);
             return API.getNotifyEntities(id);
         });
-
+        AppManager.reqres.setHandler("notify:entities:all", function(){
+            return API.getNotifyEntitiesAll();
+        });
         AppManager.reqres.setHandler("notify:entity", function(id){
             return API.getNotifyEntity(id);
         });
-
+        AppManager.reqres.setHandler("report:entity", function(id){
+            return API.getNotifyEntity(id);
+        });
         AppManager.reqres.setHandler("notify:entity:new", function(){
             return new Entities.Notify();
+        });
+
+        /** Report Data**/
+        AppManager.reqres.setHandler("report:tree:entity", function(id){
+            return API.getReportTreeEntity(id);
         });
     });
 

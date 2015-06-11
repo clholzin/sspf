@@ -4,10 +4,10 @@ define(["marionette", "tpl!apps/about/show/templates/message.tpl"], function(Mar
       template: messageTpl,
 
         onShow:function(){
-        this.$el.parent().removeClass('fadeIn').addClass('fadeInDown');
+         this.$el.parent().addClass('fadeIn');
     },
     onBeforeDestroy:function(){
-        this.$el.parent().addClass('fadeIn').removeClass('fadeInDown');
+         this.$el.parent().removeClass('fadeIn').addClass('fadeIn');
     }
     })
   };

@@ -182,9 +182,14 @@ define(["app",
             template: viewTpl,
 
             events: {
-                "click a.js-edit": "editClicked"
+                "click a.js-edit": "editClicked",
+                "click button.js-dashboard": "showDashboard"
             },
-
+            showDashboard: function(e){
+                e.preventDefault();
+                var name = this.$(e.currentTarget).data('id');
+                this.trigger("auth:dashboard", name);
+            },
             editClicked: function(e){
                 e.preventDefault();
                 this.trigger("auth:edit", this.model);

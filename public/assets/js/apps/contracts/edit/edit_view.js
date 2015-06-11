@@ -66,7 +66,7 @@ define(["app", "apps/contracts/common/views",
             template: listTpl,
             className: "black navbar navbar-default navbar-fixed-top",
             childView: View.PanelItem,
-            childViewContainer: 'div ul.ulNavBar',//ul.ulNavBar
+            childViewContainer: 'div ul.ulEditBar',//ul.ulNavBar
 
             events: {
                 "click button.navbar-toggle":"navbarToggle",

@@ -1,5 +1,6 @@
 body {
-  padding-top: 82px;
+  /**padding-top: 82px;**/
+    padding-top: 50px;
     font-size:16px !important;
    /* 60px to make the container make room for the navigation bar */
     /**  display: flex;
@@ -9,75 +10,31 @@ body {
 }
 
 /**          Nav           **/
-#main-region {
-    position:relative;
-    margin-bottom:200px;
-}
 #spinner{
-    position: relative;
-    top:50%;
-    left:50%;
-}
-footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    color:#fff;
-        /* Set the fixed height of the footer here */
-    height: 45px;
-    z-index: 1003;
-    background-color: #3d3d3d;
-}
-.footer a{
-    color:#FFF;
-}
-/**Brand Image**/
-#brandImg{
-    width:90px;
-}
-/**Brand link attribute**/
-a#headerId{
-    padding:4px 0 2px 10px;
-    height:auto;
+    position:fixed;
+    top:35vh;
+    left:40vw;
 }
 
-.navbar .navbar-inner {
-    background: none !important;
-    color: #FFF !important;
-}
-.bg-white{
-    background-color:white !important;
-    color:#3d3d3d;
-    border:none;
-    border-bottom:thin solid #CCC;
-    margin-top:0;
-    margin-bottom:0;
-}
-.white  {
-    color: #FFF ; /*Change active text color here*/
-}
-.white .navbar .navbar-default .mainNav > li > a {
-    color: #FFF !important; /*Change active text color here*/
-}
 
+
+/**
+ul.ulNavBar li.dropdown.open{
+    color:#000  !important;
+}
 div .mainNavid {
     background-color:#3585ba;
     padding-right:20px;
 }
 div .mainNavid ul.inner-dropdown{
     background-color:#3d3d3d !important;
-}
+}**/
 /**#navbar #mainNav
 .mainNav .mainNavid > .dropdown > li > a{
     color:#ffffff;
 }**/
-.mainNavid a{
-    color:#FFFFFF  !important;
-}
-.mainNavid a:hover {
-    color:#000  !important;
-}/**ulNavBarId**/
 
+/**ulNavBarId**/
 div#alertsRegion{
     position:fixed;
     padding:0 25%;
@@ -104,28 +61,101 @@ div#alertsRegion{
 }
 
 
+/** MAIN NAV**/
+/**.white  {
 
-
-
-.black .navbar .navbar-default .editNav{
-    padding-right:20px;
-    color:#333 !important;
+    color:#3585ba !important;
 }
-.editNav .dropdown > li{
-    color:#333;
-    z-index:99999;
+.white .navbar .navbar-default .mainNav > ul > li > a {
+    color: #FFF !important;
 }
 
+.black {
+
+    color:#3585ba !important;
+}**/
+.mainNavid {
+    background-color:#3585ba;
+}
+
+
+/**Brand Image**/
+img#brandImg{
+    width:100px;
+}
+/**Brand link attribute**/
+div.navbar-header > a#headerId{
+    padding:8px 0 2px 10px;
+    color:white;
+    width:130px;/**165px**/
+    height:50px;
+    border-right:thin solid white;
+}
+ul.nav.navbar-nav {
+    color:white;
+}
+/**Edit Nav**/
+ul.nav.navbar-nav.ulEditBar > li > a,
+ul.nav.navbar-nav.ulEditBar > li > a:hover,
+ul.nav.navbar-nav.ulEditBar > li > a:focus {
+    color: #000;
+    background-color: #EEE;
+}
+ul.nav.navbar-nav.ulEditBar > li.active > a,
+ul.nav.navbar-nav.ulEditBar > li.active > a:hover,
+ul.nav.navbar-nav.ulEditBar > li.active > a:focus {
+    color: #000;
+    background-color: #CCC;
+}
+/**End of Edit Nav**/
+
+/**Main Nav**/
+ul.nav.navbar-nav > li > ul.nav.navbar-nav.ulNavBar > li.active > a,
+ul.nav.navbar-nav > li > ul.nav.navbar-nav.ulNavBar > li.active > a:hover,
+ul.nav.navbar-nav > li > ul.nav.navbar-nav.ulNavBar > li.active > a:focus {
+    color: #000;
+    background-color: #428bca;
+}
+ul > li.dropdown.user > a.auth > span.user,
+ul > li.dropdown.user > a.auth:hover > span.user,
+ul > li.dropdown.user > a.auth:focus > span.user {
+    color: #FFF;
+}
+ul > li.dropdown.open > a.auth > span.user,
+ul > li.dropdown.open > a.auth:hover > span.user,
+ul > li.dropdown.open > a.auth:focus > span.user {
+    color: #000;
+    background-color: #428bca;
+}
+.navbar-default .navbar-nav>li>a {
+    color:white;
+}
+/**End Main Nav**/
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color:#fff;
+    /* Set the fixed height of the footer here */
+    height: 45px;
+    z-index: 1003;
+    background-color: #3d3d3d;
+}
+.footer > div > ul > li > a{
+    color:#FFF;
+}
+/**
 .editNav > li{
-    color:#333;
+    color:#3d3d3d;
 }
-.editNav > li.active > a{
-    color:#333;
+.editNav ul > li.active > a{
+    color:#3d3d3d;
 }
 .editNav > li > a:hover{
-    color:#40464b;
+    color:#EEE;
+    ---40464b
 }
-
+**/
 
 
 
@@ -134,9 +164,13 @@ div#alertsRegion{
 /**
 Main Panel Region
 **/
+#main-region {
+    position:relative;
+    margin-bottom:200px;
+}
 #panel-region{
     position:fixed !important;
-    top:80px;
+    top:50px;
     height:65px;
     padding:10px 9% 0 0;
     z-index: 1020;
@@ -145,10 +179,13 @@ Main Panel Region
 #top-panel{
     position:fixed !important;
     z-index:1020;
-    height:55px;
+    height:50px;
     width:100%;
-    top:80px;
+    top:55px;
     background-color:#FFF;
+}
+#topDashboard-panel{
+    position:relative !important;
 }
 #top-left-controls{
     position:relative;
@@ -157,20 +194,25 @@ Main Panel Region
 }
 #contacts-region{
     position:relative;
-    top:65px;
+    top:50px;
     bottom:100px;
     padding:20px 0 0 0;
 
 }
 #contracts-region{
     position:relative;
-    top:80px;
+    top:50px;
     bottom:100px;
     padding:20px 0 0 0;
 
 }
 .contracts-details{
     margin-bottom:100px;
+
+}
+
+#main-panel{
+    position:relative;
 
 }
 #edit-panel{
@@ -205,7 +247,7 @@ Main Panel Region
 @media (min-width: 768px) {
     .sidebar {
         position: fixed;
-        top: 82px;
+        top: 50px;
         height:100vh;
         bottom: 0;
         left: 0;
@@ -224,7 +266,7 @@ Main Panel Region
 }
 .sidebar-right {
     position: fixed;
-    top: 82px;
+    top: 50px;
     height:100vh;
 
     bottom: 0;
@@ -256,6 +298,8 @@ body::-webkit-scrollbar{
     font-size:115%;
     border-bottom:thin solid #ccc;
 }
+
+
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
@@ -303,4 +347,95 @@ body::-webkit-scrollbar{
 
 .raise-up{
     z-index:2000;
+}
+
+
+
+
+
+        /**
+      *
+        *
+            *
+    *Styles
+      *
+            *
+       *
+         **/
+
+.wrap-overflay-white {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#FFF;
+    margin: 0;
+    padding: 0;
+    -khtml-opacity:.50;
+    -moz-opacity:.50;
+    -ms-filter:”alpha(opacity=50)”;
+    filter:alpha(opacity=50);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
+    opacity:.50;
+/**
+    -webkit-filter: blur(15px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+    **/
+}
+.white{
+    background-color:white;
+}
+.text-black{
+    color:#FFF;
+    font-weight: bold;
+    background-color:white;
+    padding:10px;
+}
+.text-orange{
+    color:#f68c1e;
+    font-weight: bold;
+}
+.text-coral{
+    color:#f18367;
+    font-weight: bold;
+}
+.text-blue{
+    color:white;
+    font-weight: bold;
+    background-color:#3585ba;
+    padding:10px;
+}
+.text-purple{
+    color:#5e449b;
+    font-weight: bold;
+}
+.text-black,
+.text-orange,
+.text-coral,
+.text-blue,
+.text-purple{
+    text-shadow: -2px 2px 1px rgba(1, 1, 1, 0.6);
+}
+.bkg-white{
+    background-color:white;
+}
+.bkg-orange{
+    background-color:#f68c1e;
+}
+.bg-white{
+    background-color:white !important;
+    color:#3d3d3d;
+    border:none;
+    border-bottom:thin solid #CCC;
+    margin-top:0;
+    margin-bottom:0;
+}
+
+.margin-left{
+  margin-left:15px;
 }

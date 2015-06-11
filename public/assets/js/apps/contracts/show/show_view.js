@@ -123,7 +123,8 @@ define(["app",
                     "click #notify-edit": "editClicked",
                     "click button#btnPopover": "actions",
                     "hover a#infotoshow": "info",
-                    "click a":"active"
+                    "click a":"active",
+                    "click button.js-report":'report'
                 },
                 onRender:function(){
                     this.trigger("action:popover",this);
@@ -148,6 +149,11 @@ define(["app",
                     e.preventDefault();
                      //$('[data-toggle="popover"]').popover();
                      this.trigger("action:popover",this);
+                },
+                report:function(e){
+                    e.preventDefault();
+                   // var id = this.$(e.currentTarget).data('id');
+                    this.trigger('action:report',this);
                 },
                 editClicked: function(e){
                     e.preventDefault();
@@ -437,12 +443,13 @@ define(["app",
             View.GuidSet = Marionette.ItemView.extend({
                 template: guidList,
                 triggers: {
-                 // "click button.js-new": "notify:new"
+                     "click a.js-costs": "contract:costValueSet",
+                     "click a.js-run": "contract:runid"
                 },
                 events:{
-                    "click a.js-sap":"guidList"
-                    // "click li.report": "runFilter",
-                    //  'click .js-filter-toggle':'showFilter'
+                    "click a.js-sap":"altList",
+                    "click a.js-dps": "dpsSet",
+                    "click a.js-hier": "hier"
                 },
                 initialize: function(){
                     this.title = this.collection.length+" Projects:";
@@ -460,12 +467,26 @@ define(["app",
                         Guidlength:this.collection.length
                     };
                 },
-                guidList:function(e){
+                 altList:function(e){
                     e.preventDefault();
-                   var id =  this.$(e.currentTarget).data('id');
+                    var id =  this.$(e.currentTarget).data('id');
                     console.log(id);
                     this.trigger('contract:altSet',id)
+                },
+                dpsSet:function(e){
+                    e.preventDefault();
+                    var id =  this.$(e.currentTarget).data('id');
+                    console.log(id);
+                    this.trigger('contract:dpsSet',id)
+                },
+                hier:function(e){
+                    e.preventDefault();
+                    var id =  this.$(e.currentTarget).data('id');
+                    console.log(id);
+                    this.trigger('contract:hier',id)
                 }
+
+
 
             });
 
@@ -608,10 +629,119 @@ define(["app",
                     }
                 });
 
+                kendo.Backbone.HierarchicalDataSource = kendo.data.HierarchicalDataSource.extend({
+                    init: function(options) {
+                        var bbtrans = new BackboneTransport(options.collection);
+                        _.defaults(options, {transport: bbtrans, autoSync: true});
+
+                        kendo.data.HierarchicalDataSource.fn.init.call(this, options);
+                    }
+                });
+
             })($, kendo, _);
 
 
             window.JSZip = jszip;
+
+
+
+            View.CostValueView = Marionette.ItemView.extend({
+                template:exportView,
+                events:{
+                    "click button.js-back":"backClicked"
+                },
+                initialize:function(){
+                    this.title = this.collection.length+" Values:";
+                },
+                backClicked:function(e){
+                    e.preventDefault();
+                    this.trigger('back:clicked');
+                },
+                onRender:function(){
+                    if(this.options.generateTitle){
+                        var $title = $("<p>", { text: this.title });
+                        this.$el.prepend($title);
+                    }
+
+                    this.$costData = new kendo.Backbone.DataSource({
+                        collection: this.collection,
+                        schema: {
+                            model: {
+                               // id: "NodeId",
+                                fields: {
+                                    RunId: {type: "string", editable: false},
+                                    NodeId: {type: "string", editable: false},
+                                    TpId: {type: "string", editable: false},
+                                    CostValueType: {type: "string", editable: false},
+                                    CurrencyType: { type: "string", editable: false},
+                                    CostValue: {type: "number", editable: false},
+                                    Currency: {type: "string", editable: false},
+                                    TpDate: {type: "date", editable: false},
+                                    SnDate: {type: "date", editable: false},
+                                    Classification: {type: "number", editable: false}
+                                }
+                            }
+                        },
+                       // pageSize: 7,
+                        /**group: {
+                            field: "RunId", aggregates: [
+                                { field: "CostValue", aggregate: "sum" },
+                                { field: "RunId", aggregate: "count"}
+                               //,
+                               // { field: "UnitsOnOrder", aggregate: "average" },
+                               // { field: "UnitsInStock", aggregate: "count" }
+                            ]
+                        },**/
+                       aggregate: [
+                            { field: "CostValue", aggregate: "sum" }
+                         //   { field: "HireDate", aggregate: "max" }
+                        ]
+                    });
+                    this.$el.kendoGrid({//kendoTreeList
+                      toolbar: ["excel"],
+                        excel: {
+                            fileName: "CostValues.xlsx",
+                            //    fileName: "CostValues_"+Moment.unix()+".xlsx",
+                            //proxyURL: "http://demos.telerik.com/kendo-ui/service/export",
+                            //proxyURL: "http://localhost:8000",
+                            filterable: true
+                        },
+                        dataSource: this.$costData,
+                        pageSize: (this.collection.length / 7),
+                        height: 400,
+                        sortable: true,
+                        scrollable:true,
+                        //pageable: true,
+                        groupable: true,
+                        filterable: true,
+                        //columnMenu: true,
+                        reorderable: true,
+                        resizable: true,
+                        columns: [
+                            { width: 40, field: "RunId", title: "Run Id" },
+                            { width: 40, field: "NodeId", title: "Node Id" },
+                            { width: 40, field: "TpId", title: "Tp Id" },
+                            { width: 20, field: "CostValueType", title: "CostValue Type" },
+                            { width: 20, field: "CurrencyType", title: "Currency Type" },
+                            { width: 50, field: "CostValue", title: "Cost Value",
+                               footerTemplate: "#= sum # Amount"},
+                    //  aggregates: ["max","sum"],groupHeaderTemplate: "Value: #= value  (Total: #= sum#)" },
+                            { width: 40, field: "Currency", title: "Currency" },
+                            { width: 40, field: "TpDate", title: "Tp Date",format: "{0:YYYY/MM/DD}"},
+                            { width: 40, field: "SnDate", title: "Sn Date",format: "{0:YYYY/MM/DD}"//,format: "{0:YYYY/MM/DD}"
+                            },
+                            { width: 50, field: "Classification", title: "Classification" }
+                            //{ command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }
+                        ]
+                        // editable: "inline"
+                    });
+
+
+                }
+
+            });
+
+
             View.ContractExport = Marionette.ItemView.extend({
                 template:exportView,
                 events:{

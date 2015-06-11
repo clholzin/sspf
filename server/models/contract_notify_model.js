@@ -13,7 +13,12 @@ var ContNotify = new Schema({
     "contractType" : String,
     "dateCreated" : {type:Date,default:Date.now},
     "dateNotify" : Date,
-    "year" : Number
+    "year" : Number,
+    status:{
+        reviewed:{ type: Boolean, default: '0'},//send fro approval
+        approved:{ type: Boolean, default: '0'},//reviews
+        submitted:{ type: Boolean, default: '0'}//completed
+    }
 });
 
 module.exports = db.model('contNotify', ContNotify);
