@@ -1,17 +1,23 @@
 define(["app",
         "tpl!apps/header/list/templates/list.html",
-        "tpl!apps/header/list/templates/list_item.tpl"],
-        function(AppManager, listTpl, listItemTpl){
+        "tpl!apps/header/list/templates/list_item.tpl",
+        "tpl!common/templates/footer.html",
+        "vendor/moment", "jszip","vendor/numeral"],
+        function(AppManager, listTpl, listItemTpl,footerTpl){
   AppManager.module("HeaderApp.List.View", function(View, AppManager, Backbone, Marionette, $, _,Bootstrap){
-    View.Header = Marionette.ItemView.extend({
+
+      View.Footer = Marionette.ItemView.extend({
+          template:footerTpl
+      });
+
+
+      View.Header = Marionette.ItemView.extend({
       template: listItemTpl,
       tagName: "li",
-
       events: {
           "click a": "navigate",
           "click .Login":"loginBtn",
           "click .Logout":"logoutBtn"
-
       },
       ui: {
           login: "a.Login",
@@ -22,14 +28,6 @@ define(["app",
                 // add class so Bootstrap will highlight the active entry in the navbar
                 this.$el.addClass("active");
             }
-         /** var text = this.ui.login.text();
-          console.log('login text: '+ text);
-          if(text === 'Login'){
-              this.ui.logout.parent().hide();
-          }else{
-              this.ui.logout.parent().show();
-          }**/
-          //this.ui.logout.hide();
       },
       navigate: function(e){
         e.preventDefault();

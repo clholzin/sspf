@@ -48,6 +48,7 @@ define(["marionette",
         headerRegion: "#header-region",
         alertsRegion: "#alertsRegion",
         mainRegion: "#main-region",
+        footerRegion:"footer",
         dialogRegion: Marionette.Region.Dialog.extend({
             el: "#dialog-region"
         }),

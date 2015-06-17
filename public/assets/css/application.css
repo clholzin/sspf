@@ -76,12 +76,21 @@ div#alertsRegion{
 }**/
 .mainNavid {
     background-color:#3585ba;
+    color:white
 }
 
 
 /**Brand Image**/
 img#brandImg{
     width:100px;
+}
+
+/**header user menu**/
+ul.nav.navbar-right > li.user > ul.dropdown-menu.auth{
+    background-color:#EEE;
+}
+ul.nav.navbar-right > li.user > ul.dropdown-menu.auth > li > a{
+    color: #000;
 }
 /**Brand link attribute**/
 div.navbar-header > a#headerId{
@@ -94,6 +103,8 @@ div.navbar-header > a#headerId{
 ul.nav.navbar-nav {
     color:white;
 }
+
+
 /**Edit Nav**/
 ul.nav.navbar-nav.ulEditBar > li > a,
 ul.nav.navbar-nav.ulEditBar > li > a:hover,
@@ -108,14 +119,24 @@ ul.nav.navbar-nav.ulEditBar > li.active > a:focus {
     background-color: #CCC;
 }
 /**End of Edit Nav**/
-
 /**Main Nav**/
-ul.nav.navbar-nav > li > ul.nav.navbar-nav.ulNavBar > li.active > a,
-ul.nav.navbar-nav > li > ul.nav.navbar-nav.ulNavBar > li.active > a:hover,
-ul.nav.navbar-nav > li > ul.nav.navbar-nav.ulNavBar > li.active > a:focus {
-    color: #000;
-    background-color: #428bca;
+ul.nav.ulNavBar > li{
+    padding-left:10px;
+    color: #FFF;
+    background-color: #3585ba;
 }
+ul.nav.ulNavBar > li > a{
+    color: #FFF;
+    background-color: #3585ba;
+}
+ul.nav.ulNavBar > li > a:hover,
+ul.nav.ulNavBar > li > a:focus {
+    color: #000;
+    background-color: #EEE;
+}
+
+
+/**User Menu**/
 ul > li.dropdown.user > a.auth > span.user,
 ul > li.dropdown.user > a.auth:hover > span.user,
 ul > li.dropdown.user > a.auth:focus > span.user {
@@ -124,9 +145,12 @@ ul > li.dropdown.user > a.auth:focus > span.user {
 ul > li.dropdown.open > a.auth > span.user,
 ul > li.dropdown.open > a.auth:hover > span.user,
 ul > li.dropdown.open > a.auth:focus > span.user {
-    color: #000;
-    background-color: #428bca;
+    color: #FFF;
 }
+
+
+
+/****/
 .navbar-default .navbar-nav>li>a {
     color:white;
 }
@@ -135,15 +159,46 @@ footer{
     position: fixed;
     bottom: 0;
     width: 100%;
-    color:#fff;
     /* Set the fixed height of the footer here */
-    height: 45px;
+    height: 50px;
     z-index: 1003;
     background-color: #3d3d3d;
 }
-.footer > div > ul > li > a{
+footer.footer > div > div > ul > li > a{
     color:#FFF;
+    cursor: pointer;
 }
+footer.footer > div > div > ul > li > a:hover{
+    color:#3d3d3d;
+}
+footer.footer > div > div > ul > li.bg-primary{
+    background-color:#337ab7;
+}
+footer.footer > div > div > ul > li.bg-info{
+    background-color:#5bc0de;
+}
+footer.footer > div > div > ul > li.bg-success{
+    background-color:#5cb85c;
+}
+footer.footer > div > div > ul > li.bg-warning{
+    background-color:#f0ad4e;
+}
+footer.footer > div > div > ul > li.bg-danger{
+    background-color:#d9534f;
+}
+@media (max-width: 768px) {
+    footer.footer > div > div > ul > li {
+        display: inline-block;
+        list-style: inherit;
+        margin:-3px;
+    }
+}
+/**
+.footer > div > div > ul > li#button-control {
+    height: 50px;
+    width:80%;
+    margin: 0 20px;
+}**/
 /**
 .editNav > li{
     color:#3d3d3d;
@@ -176,6 +231,7 @@ Main Panel Region
     z-index: 1020;
     background-color:#FFF;
 }
+
 #top-panel{
     position:fixed !important;
     z-index:1020;
@@ -215,6 +271,8 @@ Main Panel Region
     position:relative;
 
 }
+
+
 #edit-panel{
     top:57px;
     position:relative;
@@ -222,6 +280,12 @@ Main Panel Region
     bottom:100px;
     padding:0 10% 55px 10%;
  }
+#hier-panel{
+    max-height:400px;
+    overflow-y:scroll;
+    border:thin solid #ccc;
+    padding:10px;
+}
 /*
  * Sidebar
  */
@@ -438,4 +502,25 @@ body::-webkit-scrollbar{
 
 .margin-left{
   margin-left:15px;
+}
+.circleBtn{
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.page-header {
+    text-align: center;
+    padding: 10px;
+    margin: 0 0 10px;
+    border-bottom: thick solid #3d3d3d;
+    background-image: -ms-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -moz-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -o-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -webkit-gradient(radial, center center, 0, center center, 413, color-stop(0, #E6E6E6), color-stop(1, #FFFFFF));
+    background-image: -webkit-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: radial-gradient(circle closest-corner at center, #E6E6E6 0%, #FFFFFF 100%);
+}
+.page-header > h1, .page-header > h2 {
+    margin:10px;
+    color:#3d3d3d;
 }

@@ -12,7 +12,11 @@ db.once('open', function (callback) {
 });**/
 
 var runId = new Schema({
-
+    contractId:String,
+    runs:{},
+    sapRunId:String,
+    hierarchy:[],
+    dpsHierarchy:[]
 });
 
 module.exports = db.model('runId', runId,'runId');

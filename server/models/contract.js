@@ -20,6 +20,10 @@ var Contract = new Schema({
     },
     startDate: Date,
     endDate:   Date,
+    project:{
+        id: String,
+        runId: String
+    },
     description: {
         body:String,
         date: Date
@@ -45,21 +49,22 @@ var Contract = new Schema({
         allowable:Number
     },
     deliverables:[],
-    businessUnit:[],//array of names
-    reports:{
+    businessUnit:[]//array of names
+   /** reports:{
         cnr:{occurs:[]//array of type:annual date:date year:year
         },
         crp:{occurs:[]
         },
         qcr:{occurs:[]
         },
-        icr:{occurs:[/**{type:String,year:String,data:Date}**/]
+        icr:{occurs:[//{type:String,year:String,data:Date}
+          ]
         },
         ccr:{occurs:[]
         },
         ccs:{occurs:[]
         }
-    }
+    }**/
 });
 
 module.exports = db.model('Contract', Contract);

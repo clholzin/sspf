@@ -11,8 +11,8 @@ requirejs.config({
     jquery: "vendor/jquery",
 
       "kendo":"vendor/kendoUI/kendo.all.min",
-      "calendar":"vendor/kendoUI/kendo.calendar.min.js",
-      "kendo_core":"vendor/kendoUI/kendo.core.min.js",
+      "calendar":"vendor/kendoUI/kendo.calendar.min",
+      "kendo_core":"vendor/kendoUI/kendo.core.min",
 
     "jquery-ui": "vendor/jquery-ui",
     "jszip":"vendor/jszip",
@@ -23,9 +23,11 @@ requirejs.config({
     "spin.jquery": "vendor/spin.jquery",
     text: "vendor/text",
     tpl: "vendor/underscore-tpl",
+
     handlebars:'vendor/handlebars-v3.0.1',
     marionetteHandlebars:'vendor/marionette.handlebars',
     "hbs":"vendor/hbs",
+
     "i18nprecompile":"vendor/i18nprecompile",
     underscore: "vendor/underscore",
     bootstrap: "vendor/bootstrap.min.3.3.4",
@@ -83,10 +85,6 @@ requirejs.config({
       deps: ["jquery"],
       exports: "kendo"
     },
-    /**calendar: {
-      deps: ["jquery"],
-      exports: "kendo_calender"
-    },**/
     "kendo.backbone":["backbone"],
     "backbone.picky": ["backbone"],
     "backbone.deep.model": ["backbone"],
@@ -104,7 +102,7 @@ requirejs.config({
      tpl: ["text"]
   },
     // hbs config - must duplicate in Gruntfile.js Require build
-    hbs: {
+   hbs: {
         templateExtension: "html",
         helperDirectory: "common/templates/helpers/",
         i18nDirectory: "common/templates/i18n/",

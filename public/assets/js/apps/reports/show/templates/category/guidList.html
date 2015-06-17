@@ -1,0 +1,36 @@
+<div class="" style="max-height:300px;min-width:300px;overflow-y:scroll;">
+    <div class="btn-group" role="group" aria-label="...">
+        <a class="btn btn-default js-costs ">Cost Values</a>
+        <a class="btn btn-default js-sap" title="show Alternative Hierarchy"  data-id="E508A9EDFCA12AF18482005056A46058">
+            Alternative
+        </a>
+        <a class="btn btn-default js-dps" title="show Dps Set"  data-id="E508A9EDFCA12AF18482005056A46058">
+            Dps
+        </a>
+        <a class="btn btn-default js-hier" title="show Hierarchy"  data-id="E50A16DF5DE960F18482005056A46058">
+           Hierarchy
+        </a>
+        <a class="btn btn-default js-run" title="show Run Ids" >
+           Get Run
+        </a>
+    </div>
+
+ <!--   <li class="list-group-item">
+        <span class="badge"><%-Guidlength%></span>
+        Records
+    </li>
+    -->
+    <h3>Select Project</h3>
+    <ul class="list-group" style="max-height:175px;overflow-y:scroll;">
+<% _.each(guid,function(value, key, list){ %>
+    <%//console.log(value.attributes.ExternalName);%>
+<li class="list-group-item"><%-value.attributes.ExternalName%>
+    <div class="btn-group">
+        <a class="btn btn-default js-sap" title="show hierarchy" data-id="<%-value.attributes.Guid%>">
+            <i class="glyphicon glyphicon-list"></i>
+        </a>
+    </div>
+</li>
+<% });%>
+</ul>
+</div>

@@ -1,34 +1,53 @@
 <li class="list-group-item">
-
+    <div class="btn-group-vertical">
+        <button class="btn btn-primary js-costs">Show Costs</button>
+    <!--     <button class="btn btn-primary js-tree"><i class="glyphicon glyphicon-triangle-right"></i> </button>
+        --> </div>
 <table class="table">
     <thead>
         <tr class="active">
-            <td>Name</td><td>Total</td>
+            <td>Name</td>
+            <%$.each(yearVals,function(key,value){%>
+            <td><%-value.fiscalYear%></td>
+            <%});%>
+            <td>Total</td>
         </tr>
     </thead>
+
     <tbody>
         <tr class="success">
-            <td><%-description%></td><td><%-totalVal%></td>
-        </tr>
-        <tr>
-
-            <table class="table">
-                <thead>
-                <tr class="warning">
-                    <td>Year</td><td>Total Value</td>
-                </tr>
-                </thead>
-                <tbody>
+            <td><%-description%></td>
 
             <%$.each(yearVals,function(key,value){%>
-            <tr class="info"><td><%-value.fiscalYear%></td><td><%-value.totalValue%></td></tr>
+             <td><%-value.totalValue%></td>
             <%});%>
-                </tbody>
-            </table>
+
+            <td><%-totalVal%></td>
+        </tr>
+
+
+        <tr>
+
+                    <table class="table costs hidden">
+                        <thead>
+                        <tr class="warning">
+                            <td>Year</td><td>Total Value</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <%$.each(yearVals,function(key,value){%>
+                        <tr class="info">
+                            <td><%-value.fiscalYear%></td><td><%-value.totalValue%></td>
+                        </tr>
+                        <%});%>
+                        </tbody>
+                    </table>
+
 
 
         </tr>
+
+
     </tbody>
 </table>
-
 </li>

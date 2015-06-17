@@ -4,7 +4,8 @@ define(["app",
         "tpl!apps/contracts/list/templates/none.tpl",
         "tpl!apps/contracts/list/templates/list.tpl",
         "tpl!apps/contracts/list/templates/list_item.html",
-        "vendor/kendoUI/kendo.all.min","kendo.backbone","localstorage"],
+        "vendor/moment", "jszip","vendor/numeral",
+        "vendor/kendoUI/kendo.all.min"],
        function(AppManager, layoutTpl, panelTpl, noneTpl, listTpl, listItemTpl){
   AppManager.module("ContractsApp.List.View", function(View, AppManager, Backbone, Marionette, $, _){
     View.Layout = Marionette.LayoutView.extend({
@@ -12,7 +13,7 @@ define(["app",
       regions: {
         panelRegion: "#panel-region",
         contractsRegion: "#contracts-region"
-      },
+        },
         onShow:function(){
             this.$el.parent().removeClass('fadeIn').addClass('fadeIn');
         },
@@ -216,6 +217,27 @@ define(["app",
 
 
     View.Contracts = Marionette.CompositeView.extend({
+          tagName: "div",
+          className: "container-fluid row",
+          template: listTpl,
+          emptyView: NoContractsView,
+          childView: View.Contract,
+          childViewContainer: "#panel",
+      initialize: function(){
+          this.listenTo(this.collection, "reset", function(){
+              this.attachHtml = function(collectionView, childView, index){
+                  collectionView.$el.append(childView.el);
+              }
+          });
+      },
+      onRenderCollection: function(){
+          this.attachHtml = function(collectionView, childView, index){
+              collectionView.$el.find('.sortable').prepend(childView.el);
+          };//end attachHTML
+      }
+  });
+
+  /**  View.Contracts = Marionette.CompositeView.extend({
       tagName: "div",
       className: "container-fluid row",
       template: listTpl,
@@ -232,7 +254,7 @@ define(["app",
               //retrieve local storage data if such is available, else use the default order
               // self.$data = JSON.parse(localStorage.getItem("sortableData")) || self.$initialData;
               self.$old = JSON.parse(localStorage.getItem("sortableData"));
-              console.log(self.$old);
+              //console.log(self.$old);
               var models;
               if(self.$old != [] ){
                   _.toArray(self.$old);
@@ -250,9 +272,9 @@ define(["app",
               }else{
                    models = self.collection.models;
               }
-            /**  var ordered =  _.sortBy(models, function(num) {
-                  return num *-1;
-              });**/
+            // var ordered =  _.sortBy(models, function(num) {
+            //      return num *-1;
+            //  });
 
               self.$data = JSON.parse(localStorage.getItem("sortableData"));
           } else {
@@ -274,9 +296,9 @@ define(["app",
       onRender:function(){
            var self = this;
           //Descending Order:
-         /** _.sortBy(self.collection, function(num) {
-              return num*-1
-          });**/
+                    //_.sortBy(self.collection, function(num) {
+                    //      return num*-1
+                    //  });
             // html = kendo.render(kendo.template($("#tmp").html()), data); //render the HTML with the data
             //$("#sortable").html(html); //append the HTML to the Sortable container
             self.$el.find(".sortable").kendoSortable({ //initialize the sortable widget
@@ -289,14 +311,14 @@ define(["app",
                   localStorage.setItem("sortableData", JSON.stringify(sorted));//set the updated data in the local storage
                   var model = {};
                   _.each(self.$data,function(item,index){
-                      console.log(index+'   '+JSON.stringify(item));
+                      //console.log(index+'   '+JSON.stringify(item));
                       model = self.collection.get(item._id);
                       self.collection.remove(model);
                       self.collection.add(item,{at:index});
                   });
-                /**  _.sortBy(self.collection, function(num) {
-                      return num;
-                  });**/
+                //_.sortBy(self.collection, function(num) {
+                 //     return num;
+                 // });
                 },
                 placeholder: function(element) {
                     return element.clone().css({
@@ -307,7 +329,10 @@ define(["app",
             });
 
         }
-    });
+    });**/
+
+
+
   });
 
   return AppManager.ContractsApp.List.View;

@@ -25,13 +25,13 @@ define(["app"], function(AppManager){
         //Entities.configureStorage(Entities.ContactCollection);
 
 
-        Entities.HierSet = Backbone.Model.extend({
+        Entities.HierSetMap = Backbone.Model.extend({
             idAttribute:'DpsNodeId',
             urlRoot: window.location.origin+'/sap/SSPF_01_SRV/HierMapSet'
         });
 
-        Entities.HierSets = Backbone.Collection.extend({
-            model: Entities.HierSet,
+        Entities.HierSetsMap = Backbone.Collection.extend({
+            model: Entities.HierSetMap,
             initialize: function(models, options) {
                 this.url = window.location.origin+"/sap/SSPF_01_SRV/HierMapSet?$filter=DpsNodeId eq '"+options.id+"'&$format=json";
             },
@@ -41,15 +41,15 @@ define(["app"], function(AppManager){
         });
 
 
-        Entities.AltSet = Backbone.Model.extend({
+        Entities.HierSet = Backbone.Model.extend({
             idAttribute:'DpsNodeId',
-            urlRoot: window.location.origin+'/sap/SSPF_01_SRV/ALTSet'
+            urlRoot: window.location.origin+'/sap/SSPF_01_SRV/HierSet'
         });
 
-        Entities.AltSets = Backbone.Collection.extend({
-            model: Entities.AltSet,
+        Entities.HierSet = Backbone.Collection.extend({
+            model: Entities.HierSet,
             initialize: function(models, options) {
-                this.url = window.location.origin+"/sap/SSPF_01_SRV/ALTSet?$filter=NodeId eq '"+options.id+"'&$format=json";
+                this.url = window.location.origin+"/sap/SSPF_01_SRV/HierSet?$filter=NodeId eq '"+options.id+"'&$format=json";
             },
             parse:function(response){
                 return response.d.results;
@@ -108,8 +108,8 @@ define(["app"], function(AppManager){
             return guids.models;
         };
 
-        var initializeHierSets = function(id){
-            var guids = new Entities.HierSets([],{id: id});
+        var initializeHierSetsMap = function(id){
+            var guids = new Entities.HierSetsMap([],{id: id});
             guids.fetch();
             guids.forEach(function(guid){
                 guid.save();
@@ -117,8 +117,8 @@ define(["app"], function(AppManager){
             return guids.models;
         };
 
-        var initializeAltSets = function(id){
-            var guids = new  Entities.AltSets([],{id: id});
+        var initializeHierSet = function(id){
+            var guids = new  Entities.HierSet([],{id: id});
             guids.fetch();
             guids.forEach(function(guid){
                 guid.save();
@@ -175,9 +175,9 @@ define(["app"], function(AppManager){
                 return promise;
             },
 
-            getHeirSetEntities: function(id){
+            getHeirSetMapEntities: function(id){
                 //console.log('id for getNofityEntities: '+id);
-                var sets = new Entities.HierSets([],{id: id});
+                var sets = new Entities.HierSetsMap([],{id: id});
                 var defer = $.Deferred();
                 sets.fetch({
                     success: function(data){
@@ -189,7 +189,7 @@ define(["app"], function(AppManager){
                     if(sets.length === 0){
                         console.log('hit empty entities for getHeirSetEntities');
                         // if we don't have any contacts yet, create some for convenience
-                        var models = initializeHierSets(id);
+                        var models = initializeHierSetsMap(id);
                         sets.reset(models);
                     }
                 });
@@ -217,9 +217,9 @@ define(["app"], function(AppManager){
                 return promise;
             },
 
-            getAltSetEntities: function(id){
+            getHierSetEntities: function(id){
                 //console.log('id for getNofityEntities: '+id);
-                var sets = new Entities.AltSets([],{id: id});
+                var sets = new Entities.HierSet([],{id: id});
                 var defer = $.Deferred();
                 sets.fetch({
                     success: function(data){
@@ -229,9 +229,9 @@ define(["app"], function(AppManager){
                 var promise = defer.promise();
                 $.when(promise).done(function(sets){
                     if(sets.length === 0){
-                        console.log('hit empty entities getAltSetEntities');
+                        console.log('hit empty entities getHierSetEntities');
                         // if we don't have any contacts yet, create some for convenience
-                        var models = initializeAltSets(id);
+                        var models = initializeHierSet(id);
                         sets.reset(models);
                     }
                 });
@@ -280,8 +280,8 @@ define(["app"], function(AppManager){
          * Entity Sets Above
          *
          Entities.GuidSets
-         Entities.HierSets
-         Entities.AltSets
+         Entities.HierSetsMap
+         Entities.HierSet
          Entities.CostSets
          Entities.DPSSets
          **/
@@ -291,14 +291,14 @@ define(["app"], function(AppManager){
             return API.getGuidSetEntities(id);
         });
 
-        AppManager.reqres.setHandler("hierSet:entities", function(id){
-            return API.getHeirSetEntities(id);
+        AppManager.reqres.setHandler("hierSetMap:entities", function(id){
+            return API.getHeirSetMapEntities(id);
         });
         AppManager.reqres.setHandler("costSet:entities", function(id){
             return API.getCostSetEntities(id);
         });
-        AppManager.reqres.setHandler("altSet:entities", function(id){
-            return API.getAltSetEntities(id);
+        AppManager.reqres.setHandler("hierSet:entities", function(id){
+            return API.getHierSetEntities(id);
         });
         AppManager.reqres.setHandler("dpsSet:entities", function(id){
             return API.getDpsSetEntities(id);

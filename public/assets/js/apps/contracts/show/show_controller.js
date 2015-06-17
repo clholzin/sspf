@@ -42,10 +42,41 @@ define(["app", "apps/contracts/show/show_view",
                                             notifications.create(value);
                                            // contract.attributes.reports.qcr.occurs.push(qcrDate)
                                     });
-                                    var update = {reports:{qcr:{occurs:qcrDates}},newContract:false};
-                                    contract.save(update,{wait:true});
+                                  var update = {newContract:false};
+                                   contract.save(update,{wait:true});
 
                             }//end adding new notify dates
+
+
+
+                            contractView.on('businessUnit:add',function(data){
+                                var objData = $.grep(contract.get('businessUnit'), function(item) {
+                                    return item;
+                                });
+                                //console.log(JSON.stringify(objData));
+                                objData.push(data);
+                                console.log(JSON.stringify(objData));
+                                //contract.attributes.comments.push(data);
+                                contract.set({'businessUnit':objData});
+                                var savingModel = contract.save({"businessUnit":contract.get('businessUnit')});
+                                if(savingModel){
+                                    // console.log('submit data event: ' + JSON.stringify(model));
+                                   // contract.fetch();
+                                    //contractView.render();
+                                    // RightView.flash("animated fadeIn bg-success");
+                                    AppManager.execute("alert:show",({
+                                        type: "success",
+                                        message: "Saved"
+                                    }));
+                                }
+                                else{
+                                    RightView.triggerMethod("form:data:invalid", model.validationError);
+                                    AppManager.execute("alert:show",({type:"danger",message:"Check fields for errors."}));
+                                }
+                            });
+
+
+
 
 
                             contractView.on("contract:edit", function(model){
@@ -148,7 +179,7 @@ define(["app", "apps/contracts/show/show_view",
                                         });
                                     });
 
-                                    view.on("contract:altSet", function(pid){
+                                    view.on("contract:HierSet", function(pid){
                                         var view = new CommonViews.Loading({
                                             title: "",
                                             message: ""
@@ -157,12 +188,12 @@ define(["app", "apps/contracts/show/show_view",
                                         });
                                         AppManager.dialogRegion.show(view);
                                         console.log('trigger: '+ id);
-                                        var fetchingAltSets = AppManager.request("altSet:entities",pid);
-                                        $.when(fetchingAltSets).done(function(altSet) {
-                                           var altset = new View.AltSet({
-                                                collection: altSet
+                                        var fetchingHierSet = AppManager.request("hierSet:entities",pid);
+                                        $.when(fetchingHierSet).done(function(hierData) {
+                                           var hierSet = new View.HierSet({
+                                                collection: hierData
                                             });
-                                            altset.on("contract:dpsSet", function(did){
+                                            hierSet.on("contract:dpsSet", function(did){
                                                 var view = new CommonViews.Loading({
                                                     title: "MOD Project Structure",
                                                     message: "Loading..."
@@ -170,16 +201,16 @@ define(["app", "apps/contracts/show/show_view",
                                                 AppManager.dialogRegion.show(view);
                                                 console.log('trigger: '+ id);
                                                 var fetchingDpsSets = AppManager.request("dpsSet:entities",did);
-                                                $.when(fetchingDpsSets).done(function(dpsSet) {
+                                                $.when(fetchingDpsSets).done(function(dpsData) {
                                                     var dpsset = new View.DpsSet({
-                                                        collection: dpsSet
+                                                        collection: dpsData
                                                     });
 
                                                     AppManager.dialogRegion.show(dpsset);//dpsSet View
                                                 });
                                             });
 
-                                           AppManager.dialogRegion.show(altset);//altSet View
+                                           AppManager.dialogRegion.show(hierSet);//HierSet View
                                         });
                                     });
 

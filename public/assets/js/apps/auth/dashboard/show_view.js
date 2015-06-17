@@ -8,10 +8,9 @@ define(["app",
         "tpl!apps/auth/dashboard/templates/missing.html",
         "apps/auth/common/views",
         "vendor/moment","jszip",
-        "vendor/kendoUI/kendo.core.min",
-         "vendor/kendoUI/kendo.calendar.min",
-       // "vendor/kendoUI/kendo.all.min",
-        //,"vendor/kendo.backbone",
+        "vendor/kendoUI/kendo.all.min",
+        //"vendor/kendoUI/kendo.core.min",
+        //"vendor/kendoUI/kendo.calendar.min",
         "vendor/numeral","backbone.syphon"
             ],
     function(AppManager,layoutTpl,top,main,notify,reports,contract,missingTpl,
@@ -176,7 +175,6 @@ define(["app",
 
             View.Calendar = Marionette.ItemView.extend({
                 template: main,
-                className:'contracts-details',
                 events: {
                 },
                 triggers:{
@@ -187,7 +185,6 @@ define(["app",
                 },
                 onRender:function(){
                     var self = this;
-                    this.$list = this.$('.js-dbclick');
                     this.$form = this.$('form.hidden');
                    // var today = new Date(),
                      //   date = new Date(),
@@ -250,6 +247,7 @@ define(["app",
                         change: onChange,
                         navigate: onNavigate,
                         dates: events,
+                        footer:false,
                         month: {
                             // template for dates in month view
                             content: '# if ($.inArray(+data.date, data.dates) != -1) { #' +

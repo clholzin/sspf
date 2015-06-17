@@ -1,4 +1,5 @@
-define(["app", "tpl!apps/contacts/common/templates/form.html","tpl!apps/contacts/common/templates/register.html", "backbone.syphon"],
+define(["app", "tpl!apps/contacts/common/templates/form.html",
+        "tpl!apps/contacts/common/templates/register.html", "backbone.syphon"],
        function(AppManager, formTpl, loginTpl){
   AppManager.module("ContactsApp.Common.Views", function(Views, AppManager, Backbone, Marionette, $, _){
     Views.Form = Marionette.ItemView.extend({

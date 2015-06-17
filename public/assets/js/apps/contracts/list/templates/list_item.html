@@ -14,7 +14,7 @@
    <div id="chart" style="width:275px;height:275px;max-width:350px;max-height:350px;"></div>
     <div class="caption">
         <h2><%- title %></h2>
-        <div class="small"><%-description.body%></div>
+        <%if(description.body != ''){%><div class="small"><%-description.body%></div><%}else{%><div class="small">No description ...</div><%}%>
         <small><%- user.username %></small>
 
     </div>

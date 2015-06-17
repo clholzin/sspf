@@ -6,18 +6,18 @@ define(["app",
         "tpl!apps/contracts/show/templates/right_side.html",
         "tpl!apps/contracts/show/templates/right_item.html",
         "tpl!apps/contracts/show/templates/missing.html",
-        "tpl!apps/contracts/show/templates/view.html",
+        "tpl!apps/contracts/show/templates/contractView.html",
         "tpl!apps/contracts/show/templates/exportView.html",
         "tpl!apps/contracts/show/templates/category/guidList.html",
-        "tpl!apps/contracts/show/templates/category/altList.html",
+        "tpl!apps/contracts/show/templates/category/hierSet.html",
         "tpl!apps/contracts/show/templates/category/dpsList.html",
         "apps/contracts/common/views",
-        "vendor/moment","jszip","vendor/kendoUI/kendo.all.min","kendo.backbone",
+        "vendor/moment","jszip","vendor/kendoUI/kendo.all.min",
         "vendor/numeral","backbone.syphon"
-            ],//"vendor/KendoUI/kendo.all.min",
+            ],//"vendor/kendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
-             rightItem, missingTpl,mainView,exportView,guidList,altList,dpsList,CommonViews,Moment,
-             jszip,kendo){
+             rightItem, missingTpl,contractView,exportView,guidList,hierSet,dpsList,CommonViews,Moment,
+             jszip){
         AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
 
             View.Regions = Marionette.LayoutView.extend({
@@ -31,7 +31,7 @@ define(["app",
                 onShow:function(){
                     var parent = this.$el.parent();
                     parent.removeClass('fadeIn').addClass('fadeIn');
-                    parent.removeClass('container').addClass('fluid-container');
+                     parent.removeClass('container').addClass('fluid-container');
                 },
                 onBeforeDestroy :function(){
                     var parent = this.$el.parent();
@@ -329,7 +329,7 @@ define(["app",
 
 
             View.Contract = Marionette.ItemView.extend({
-                template: mainView,
+                template: contractView,
                 className:'contracts-details',
                 na:'N/A',
                 events: {
@@ -339,7 +339,13 @@ define(["app",
                     'click .js-cancel': 'Cancel',
                     'click .js-submit': 'submitClicked',
                     "click a.js-back":"backClicked",
-                    "click a.js-export":"exportClicked"
+                    "click a.js-export":"exportClicked",
+
+                    "click .js-business":"addBusiness",
+                    "click .js-removeBusiness":"removeBusiness",
+                    'enter input#business-units': 'updateOnEnter',
+
+                    "click a.circleBtn":"tab"
                 },
                 triggers:{
                     "click a.js-guid":"contract:guidSet"
@@ -352,6 +358,10 @@ define(["app",
                 onRender:function(){
                     this.$list = this.$('.js-dbclick');
                     this.$form = this.$('form.hidden');
+                },
+                tab:function(e){
+                    this.$(e.currentTarget).parent().children().removeClass('btn-primary').addClass('btn-default');
+                    this.$(e.currentTarget).addClass('btn-primary').removeClass('btn-default');
                 },
                 templateHelpers:function(){
                     var pricing = this.model.get('pricing');
@@ -367,12 +377,6 @@ define(["app",
                         "updated_at": Moment.utc(this.model.get('updated_at')).fromNow(),
                         "date_created" : Moment.utc(this.model.get('meta').date_created).format('YYYY/MM/DD'),
                          "businessUnitNames": (this.model.get('businessUnit') != undefined ? this.model.get('businessUnit') : this.na),
-                          /**  "fixedPricing":(this.model.get('pricing').fixedPricing != undefined ? parseInt(this.model.get('pricing').fixedPricing).toFixed(2) : this.na),
-                            "estBasedFee":(this.model.get('pricing').estBasedFee != undefined ? parseInt(this.model.get('pricing').estBasedFee).toFixed(2) : this.na),
-                            "targetPricing":(this.model.get('pricing').targetPricing != undefined ? parseInt(this.model.get('pricing').targetPricing).toFixed(2) : this.na),
-                            "costPlusPricing":(this.model.get('pricing').costPlusPricing != undefined ? parseInt(this.model.get('pricing').costPlusPricing).toFixed(2) : this.na),
-                            "firmPricing":(this.model.get('pricing').firmPricing != undefined ? parseInt(this.model.get('pricing').firmPricing).toFixed(2) : this.na),
-                            "volDrivenPricing":(this.model.get('pricing').volDrivenPricing != undefined ? parseInt(this.model.get('pricing').volDrivenPricing).toFixed(2) : this.na)**/
                           "fixedPricing":numeral(pricing.fixedPricing).format('$0,0.00'),
                             "estBasedFee":numeral(pricing.estBasedFee).format('$0,0.00'),
                             "targetPricing":numeral(pricing.targetPricing).format('$0,0.00'),
@@ -412,7 +416,8 @@ define(["app",
                 },
                 submitClicked: function(e){
                     e.preventDefault();
-                    var data = Backbone.Syphon.serialize(this);
+                   // var data = Backbone.Syphon.serialize(this);
+                    var data = Backbone.Syphon.serialize($("form#pricing")[0]);
                     console.log('Submited data: '+JSON.stringify(data));
                     this.trigger("price:update",data);
                     this.flash("animated fadeIn bg-success");
@@ -433,6 +438,48 @@ define(["app",
                     e.preventDefault();
                     this.trigger("contract:list");
                     console.log('hit back')
+                },
+                addBusiness:function(e){
+                    e.preventDefault();
+                    //var data = Backbone.Syphon.serialize(this);
+                    var data = Backbone.Syphon.serialize($("form#businessUnit")[0]);
+                    console.log(JSON.stringify(data));
+                    this.$('#businessUnit input#business-units').focus().val('');
+                    if(data.body === ''){
+                        return AppManager.execute("alert:show",({
+                            type: "warning",
+                            message: "Comment can't be blank."
+                        }));}
+                    this.trigger("businessUnit:add",data);
+                },
+                removeBusiness:function(e){
+                    e.preventDefault();
+                    var self = this;
+                    var id =  this.$(e.currentTarget).data('id');
+                    console.log(JSON.stringify(id));
+                    if(confirm('Are you sure you want to Delete') === false){
+                        return;
+                    }
+
+                    var objtoDelete = $.grep(self.model.get('businessUnit'), function(item,index) {
+                        return index !==  id;
+                    });
+                    console.log(JSON.stringify(objtoDelete));
+                    self.model.save({'businessUnit':objtoDelete});
+                    self.render();
+                    AppManager.execute("alert:show",({
+                        type: "info",
+                        message: "Removed comment"
+                    }));
+                    self.render();
+                    // target.parent().find('#'+id).fadeOut(500,function(){this.remove()});
+                },
+                // If you hit `enter`, we're through editing the item.
+                updateOnEnter: function (e) {
+                    e.preventDefault();
+                    if (e.which === ENTER_KEY) {
+                        this.addBusiness();
+                    }
                 }
             });
 
@@ -447,7 +494,7 @@ define(["app",
                      "click a.js-run": "contract:runid"
                 },
                 events:{
-                    "click a.js-sap":"altList",
+                    "click a.js-sap":"HierSetList",
                     "click a.js-dps": "dpsSet",
                     "click a.js-hier": "hier"
                 },
@@ -467,11 +514,11 @@ define(["app",
                         Guidlength:this.collection.length
                     };
                 },
-                 altList:function(e){
+                HierSetList:function(e){
                     e.preventDefault();
                     var id =  this.$(e.currentTarget).data('id');
                     console.log(id);
-                    this.trigger('contract:altSet',id)
+                    this.trigger('contract:HierSet',id)
                 },
                 dpsSet:function(e){
                     e.preventDefault();
@@ -490,8 +537,8 @@ define(["app",
 
             });
 
-            View.AltSet = Marionette.ItemView.extend({
-                template: altList,
+            View.HierSet = Marionette.ItemView.extend({
+                template: hierSet,
                 triggers: {
                     // "click button.js-new": "notify:new"
                 },
@@ -499,7 +546,7 @@ define(["app",
                     "click a.js-sap":"guidList"
                 },
                 initialize: function(){
-                    this.title = "Alt Heirarchy Map: "+ this.collection.length;
+                    this.title = "Hier set: "+ this.collection.length;
                 },
                 onRender: function(){
                     if(this.options.generateTitle){
@@ -511,7 +558,7 @@ define(["app",
                     var models = this.collection.models;
                     return {
                         guid: models,
-                        altlength:this.collection.length
+                        hierlength:this.collection.length
                     };
                 },
                 guidList:function(e){

@@ -3,10 +3,12 @@ define(["app", "apps/header/list/list_view"], function(AppManager, View){
     List.Controller = {
       listHeader: function(){
         require(["entities/header"], function(){
-          var links = AppManager.request("header:entities");
+         // var links = AppManager.request("header:entities");
             //var links = AppManager.request("login:logout");
             //console.log(links);
-          var headers = new View.Headers({collection: links});
+          var footer =  new View.Footer({});
+         // var headers = new View.Headers({collection: links});
+            var headers = new View.Headers();
            /** headers.on("show", function(childView){
                 $('body').find('.Logout').hide();
             });**/
@@ -14,43 +16,55 @@ define(["app", "apps/header/list/list_view"], function(AppManager, View){
               AppManager.trigger("language:changed",lang);
           });**/
             headers.on("brand:clicked", function(){
-                AppManager.trigger("auth:login");
-                var menu = this.$el.find('div.collapse');
-                var does = menu.hasClass('in');
+                var navCollapse = this.$el.find('div.navbar-collapse');
+                var does = navCollapse.hasClass('in');
                 if(does) {
-                    menu.collapse('toggle');
+                    navCollapse.collapse('toggle');
                 }
+                AppManager.trigger("auth:login");
             });
-            headers.on("backBtn:clicked", function(childView, model){
+            headers.on("backBtn:clicked", function(){
                 console.log('hit backBtn');
+                var navCollapse = this.$el.find('div.navbar-collapse');
+                var does = navCollapse.hasClass('in');
+                if(does) {
+                    navCollapse.collapse('toggle');
+                }
                 window.history.back();
-                  var menu = this.$el.find('div.collapse');
-                  var does = menu.hasClass('in');
-                  if(does) {
-                      menu.collapse('toggle');
-                  }
             });
             headers.on("homeBtn:clicked", function(){
+                var navCollapse = this.$el.find('div.navbar-collapse');
+                var does = navCollapse.hasClass('in');
+                if(does) {
+                    navCollapse.collapse('toggle');
+                }
                 AppManager.trigger('auth:login');
-               // AppManager.execute("set:active:header");
             });
             headers.on("dashboardBtn:dashboard", function(name){
+                var navCollapse = this.$el.find('div.navbar-collapse');
+                var does = navCollapse.hasClass('in');
+                if(does) {
+                    navCollapse.collapse('toggle');
+                }
                 AppManager.trigger('auth:dashboard',name);
-                //AppManager.execute("set:active:header");
             });
             headers.on("settingsBtn:settings", function(id){
+                var navCollapse = this.$el.find('div.navbar-collapse');
+                var does = navCollapse.hasClass('in');
+                if(does) {
+                    navCollapse.collapse('toggle');
+                }
                 AppManager.trigger('auth:show',id);
-                //AppManager.execute("set:active:header");
             });
 
             headers.on("admin:contacts", function(childView, model){
-                var menu = this.$el.find('li.dropdown');
-                var does = menu.hasClass('open');
-                if(does) {
-                    menu.toggleClass('dropdown');
+                var navCollapse = this.$el.find('div.navbar-collapse');
+                var nav = navCollapse.hasClass('in');
+                if(nav) {
+                    navCollapse.collapse('toggle');
                 }
                 AppManager.trigger('contacts:list');
-                AppManager.execute("set:active:header");
+               // AppManager.execute("set:active:header");
             });
             headers.on("logoutBtn:logout", function(childView, model){
                 var menu = this.$el.find('li.dropdown');
@@ -62,14 +76,14 @@ define(["app", "apps/header/list/list_view"], function(AppManager, View){
                 AppManager.trigger('auth:logout');
             });
             headers.on("childview:navigate", function(childView, model){
-                var trigger = model.get("navigationTrigger");
-                AppManager.trigger(trigger,model.get('id'));
                 //   console.log(childView);
                   var menu = this.$('div.collapse');
                   var does = menu.hasClass('in');
                   if(does) {
                       menu.collapse('toggle');
                   }
+                var trigger = model.get("navigationTrigger");
+                AppManager.trigger(trigger,model.get('id'));
             });
             headers.on("language:change", function(lang){
                 //console.log(lang);
@@ -78,6 +92,7 @@ define(["app", "apps/header/list/list_view"], function(AppManager, View){
             });
 
           AppManager.headerRegion.show(headers);
+            AppManager.footerRegion.show(footer);
         });
       },
 
@@ -97,7 +112,8 @@ define(["app", "apps/header/list/list_view"], function(AppManager, View){
       },
         ResetActiveHeader: function(){
             console.log('hit ResetActiveHeader');
-            var userUl = $(document.body).find('ul.user');
+            var user = $('li span.user');
+            user.text('User');
             var authUl = $(document.body).find('ul.auth');
             var loginBtn = authUl.find('a.Login');
             var dashboardBtn = authUl.find('a.Dashboard');
@@ -117,8 +133,8 @@ define(["app", "apps/header/list/list_view"], function(AppManager, View){
 
         setActiveUser: function(username, id){
             console.log('setActive User '+id+' '+ username);//<i class="glyphicon glyphicon-user"></i> User <span class="caret"></span>
-        // var userUl = $(document.body).find('ul.user');
-        // userUl.find('span.user').text(obj.username);
+         var user = $('li span.user');
+            user.text(String(username).toUpperCase());
         //selectors
          var authUl = $(document.body).find('ul.auth');
          var loginBtn = authUl.find('a.Login');

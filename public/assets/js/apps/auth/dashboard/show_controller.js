@@ -72,6 +72,7 @@ define(["app", "apps/auth/dashboard/show_view",
                             collection:filteredNotify
                         });
 
+
                         NotifyView = new View.LeftMenu({
                             collection:filteredNotify
                         });
@@ -111,6 +112,12 @@ define(["app", "apps/auth/dashboard/show_view",
                             MainLayout.MainPanel.show(MainView);
                             MainLayout.NotifyPanel.show(NotifyView);
                             MainLayout.ContractPanel.show(ContractView);
+
+
+                            var calLeftCurrent = $(document.body).find('td#calendar-left_cell_selected');
+                            var calRightCurrent = $(document.body).find('td#calendar-right_cell_selected');
+                            calLeftCurrent.removeAttr('class');
+                            calRightCurrent.removeAttr('class');
 
                            console.log('hit on show MainLayout');
                         });
