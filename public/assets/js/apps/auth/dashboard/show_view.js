@@ -33,7 +33,10 @@ define(["app",
                     parent.css('background-size','cover');
                     parent.css('background-repeat','no-repeat');
                     parent.css('background-attachment','fixed');
-                    $(document).find('.backBtn').toggleClass('hidden');
+                    var backBtn = $(document).find('.backBtn');
+                    if(!backBtn.hasClass('hidden')){
+                        backBtn.toggleClass('hidden');
+                    }
                     var container = this.$el.parent();
                     if(container.hasClass('container')){
                         container.removeClass('container');

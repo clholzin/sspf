@@ -45,32 +45,31 @@
 
 
 <div class=" patern-tiny-square" style="padding:0 4%;   margin:0 -30px 0px -30px;">
-    <div style="height:210px;
+    <div style="height:235px;
     padding: 24px;
   border-radius: 6px;
   margin:0 0 30px 0;
   background:transparent;">
 
-        <div class="col-md-1 col-sm-1">
+        <div class="col-md-1 col-sm-1 col-xs-1">
             <h2 style="font-size:2em; margin:-45px 0 0 -34px; color:#3d3d3d">
                 <i class="glyphicon glyphicon-info-sign"></i>
             </h2>
         </div>
 
-        <div class="col-md-6 col-sm-6">
-
-            <dl class="dl-horizontal">
-                <dt>Value: </dt><dd><%-value%></dd>
-                <dt>Start: </dt><dd><%- startDate%></dd>
-                <dt>End: </dt><dd><%- endDate%></dd>
-                <dt>Assigned to: </dt><dd><%- user.username %></dd>
-                <dt>Created: </dt><dd><%- date_created %></dd>
-                <!-- <dt>Last Updated: </dt><dd><%- updated_at %></dd>-->
-            </dl>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <table class="table-condensed">
+                <tr><td style="text-align: right; font-weight: bold;">Value: </td><td><%-value%></td></tr>
+                <tr><td style="text-align: right; font-weight: bold;">Start: </td><td><%- startDate%></td></tr>
+                <tr><td style="text-align: right; font-weight: bold;">End: </td><td><%- endDate%></td></tr>
+                <tr><td style="text-align: right; font-weight: bold;">Assigned to: </td><td><%- user.username %></td></tr>
+                <tr><td style="text-align: right; font-weight: bold;">Created: </td><td><%- date_created %></td></tr>
+                <!-- <td>Last Updated: </td><dd><%- updated_at %></dd>-->
+            </table>
         </div>
 
         <!-- Nav tabs -->
-        <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="h2" role="group" aria-label="..." id="contract-view-tabs" >
                 <a href="#pricing-tab-id" style="font-size:1em;" class="btn-lg btn btn-primary circleBtn"  aria-controls="pricing-tab-id" role="tab" data-toggle="tab">
                     <i class=" glyphicon glyphicon-gbp"></i>

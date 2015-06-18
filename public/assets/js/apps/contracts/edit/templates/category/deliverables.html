@@ -1,32 +1,33 @@
-
+<div class="col-md-12">
 <div class="well well-lg">
-    <div class="btn-group btn-group-vertical top-left" role="group" aria-label="..." >
-        <div class="btn-group" role="group">
-            <button class="btn btn-success btn-sm js-new" title="new"><i class="glyphicon glyphicon-plus-sign"></i></button>
-        </div>
+    <div class="btn-group-vertical" role="group" aria-label="..." >
+            <button class="btn btn-default text-success btn-sm js-new" title="new"><i class="glyphicon glyphicon-plus-sign"></i></button>
     </div>
     <form class="hidden" id="deliverablesNew">
-        <div class="btn-group btn-group-vertical top-left" role="group" aria-label="..." >
-            <div class="btn-group" role="group">
+        <div class="btn-group" role="group" aria-label="..." >
+
                 <button class="btn btn-warning btn-sm js-cancelNew" title="cancel" type="button">
                     <i class="glyphicon glyphicon-remove-circle"></i></button>
-            </div>
-            <div class="btn-group" role="group">
-                <button type="submit" class="btn btn-success btn-sm js-submitNew" title="save"><i class="glyphicon glyphicon-save"></i></button>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <input type="text" class="form-control" name="title" id="new-title" value="" placeholder="add Title here" />
+
+                <button type="submit" class="btn btn-success btn-sm js-submitNew" title="save"><i class="glyphicon glyphicon-save"></i></button>
+
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" name="description" id="new-description" value="" placeholder="add description" />
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" name="comment" id="new-comment" value="" placeholder="add comment" />
-            <input type="hidden" class="form-control" name="date_created" id="date_created" value="<%-data_created%>" />
-        </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="title" id="new-title" value="" placeholder="add Title here" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="description" id="new-description" value="" placeholder="add description" />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="comment" id="new-comment" value="" placeholder="add comment" />
+                    <input type="hidden" class="form-control" name="date_created" id="date_created" value="<%-data_created%>" />
+                </div>
     </form>
+    </div>
+</div>
+    <div class="col-md-12">
+        <div class="well well-lg">
     <% if(deliverables){ %>
     <% $.each(deliverables,function(key,value){ %>
     <div class="container-fluid">
@@ -44,14 +45,10 @@
 
 
 <form class="hidden" id="form-<%-key%>">
-    <div class="btn-group btn-group-vertical top-left" role="group" aria-label="..." >
-        <div class="btn-group" role="group">
+    <div class="btn-group " role="group" aria-label="..." >
             <button class="btn btn-warning btn-sm js-cancel" data-id="<%-key%>"  title="cancel" type="button">
                 <i class="glyphicon glyphicon-remove-circle"></i></button>
-        </div>
-        <div class="btn-group" role="group">
             <button type="submit" class="btn btn-success btn-sm js-submit" data-id="<%-key%>"  title="save"><i class="glyphicon glyphicon-save"></i></button>
-        </div>
     </div>
 
     <div class="form-group">
@@ -67,5 +64,5 @@
 </div>
     <% }); %>
     <% } %>
-
+    </div>
 </div>

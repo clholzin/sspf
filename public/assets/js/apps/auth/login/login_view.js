@@ -143,6 +143,7 @@ define(["app",
             },
             initialize: function(){
                 //this.title = "Login";
+                $(document).find('.backBtn').addClass('hidden');
             },
             onRender: function(){
                 if(this.options.generateTitle){

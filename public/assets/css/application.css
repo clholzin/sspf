@@ -272,8 +272,7 @@ Main Panel Region
 #edit-panel{
     position:relative;
     z-index:5;
-    padding:50px 10% 55px 10%;
-    margin-top: 80px;
+    padding:0 10% 55px 10%;
  }
 #hier-panel{
     max-height:400px;
@@ -339,12 +338,20 @@ Main Panel Region
     background-color: #DDD;
     /** -webkit-overflow-scrolling: touch;**/
 }
-/*Entirely optional – just wanted to remove the scrollbar on WebKit browsers as I find them ugly*/
-/**.sidebar-right::-webkit-scrollbar,
-.sidebar::-webkit-scrollbar,
-body::-webkit-scrollbar{
-    display: none;
-}**/
+.sidebar-left {
+    position: relative !important;
+    height:100vh;
+    bottom: 0;
+    left: 0;
+    z-index:1000;
+    display: block;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #DDD;
+    border-right: 1px solid #888;
+    /**  -webkit-overflow-scrolling: touch;**/
+}
 
 /* Sidebar navigation */
 .nav-sidebar {
@@ -352,10 +359,10 @@ body::-webkit-scrollbar{
     margin-bottom: 20px;
     margin-left: -20px;
 }
-.nav-sidebar > li > a {
+.nav-sidebar > li > a{
     padding-right: 25px;
     padding-left: 25px;
-    font-size:115%;
+    font-size: 3vmin;
     border-bottom:thin solid #ccc;
 }
 
@@ -531,4 +538,8 @@ body::-webkit-scrollbar{
   }
 .patern-tiny-square{
     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NsbW39X11dzcgABXAGhgBMJYYKAFltCAXLFyb1AAAAAElFTkSuQmCC) repeat;
+}
+
+.font-percent{
+    font-size: 5.4vw;
 }

@@ -17,9 +17,9 @@ define(["app", "apps/contracts/common/views",
         View.Regions = Marionette.LayoutView.extend({
             template: layoutTpl,
             regions: {
-                panelRegion: "#top-edit-panel",
-                mainRegion: "#edit-panel",
-                rightRegion: "#right-panel"
+                panelRegion: "#left-panel",
+                mainRegion: "#edit-panel"
+                //rightRegion: "#right-panel"
             },
             onShow:function(){
            var parent = this.$el.parent();
@@ -50,13 +50,14 @@ define(["app", "apps/contracts/common/views",
 
             },
             onRender: function(){
-                if(this.model.selected){
                     // add class so Bootstrap will highlight the active entry in the navbar
-                    this.$el.addClass("active");
-                }
             },
             navigate: function(e){
                 e.preventDefault();
+                var li = this.$(e.currentTarget).parent();
+                var siblings  = this.$(e.currentTarget).parent().siblings();
+                siblings.removeClass("active");
+                li.addClass('active');
                 this.trigger("navigate", this.model);
                 //$('body').find('div.collapse').collapse('toggle');
             }
@@ -64,15 +65,17 @@ define(["app", "apps/contracts/common/views",
 
         View.PanelItems = Marionette.CompositeView.extend({
             template: listTpl,
-            className: "black navbar navbar-default navbar-fixed-top",
+            tagName:"ul",
+            className: "nav nav-sidebar animated slideInLeft",
             childView: View.PanelItem,
-            childViewContainer: 'div ul.ulEditBar',//ul.ulNavBar
-
+            //childViewContainer: 'div ul.ulEditBar',//ul.ulNavBar
+            onRender:function(){
+                this.$el.find('li:first').addClass("active");
+            },
             events: {
                 "click button.navbar-toggle":"navbarToggle",
                 "click  a":"removeMenu"
             },
-
             navbarToggle: function(e){
                 e.preventDefault();
                 //console.log(e.currentTarget);
