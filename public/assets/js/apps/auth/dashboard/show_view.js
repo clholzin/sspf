@@ -8,9 +8,8 @@ define(["app",
         "tpl!apps/auth/dashboard/templates/missing.html",
         "apps/auth/common/views",
         "vendor/moment","jszip",
-        "vendor/kendoUI/kendo.all.min",
-        //"vendor/kendoUI/kendo.core.min",
-        //"vendor/kendoUI/kendo.calendar.min",
+       // "vendor/kendoUI/kendo.core.min",
+        "vendor/kendoUI/kendo.calendar",
         "vendor/numeral","backbone.syphon"
             ],
     function(AppManager,layoutTpl,top,main,notify,reports,contract,missingTpl,
@@ -190,8 +189,8 @@ define(["app",
                      //   date = new Date(),
                        // test = new Date(date.getFullYear(), date.getMonth(), 8),
                       var  now = new Date(Moment().format('ddd MMM DD YYYY HH:mm:ss')),
-                        lastmonth = new Date(Moment().subtract(1,'M').format('MMM YYYY HH:mm:ss')),
-                        nextmonth = new Date(Moment().add(1,'M').format('MMM YYYY HH:mm:ss'));
+                        lastmonth = new Date(Moment().subtract(1,'M').format('ddd MMM DD YYYY HH:mm:ss')),
+                        nextmonth = new Date(Moment().add(1,'M').format('ddd MMM DD YYYY HH:mm:ss'));
                     var events = [];
                     $.each(self.collection.models,function(key,value){
                       //  console.log(JSON.stringify(value.attributes.dateNotify));
@@ -219,6 +218,7 @@ define(["app",
 
                    // console.log(lastmonth + '  '+ nextmonth+ ' Now:'+now+' Test:'+ test);
                  //   console.log(JSON.stringify(event));
+                    _.debounce(
                     this.$el.find("#calendar-left").kendoCalendar({
                         value: lastmonth,
                         change: onChange,
@@ -241,7 +241,8 @@ define(["app",
                             '#= data.value #' +
                             '# } #'
                         }
-                    });
+                    }), 300);
+                    _.debounce(
                     this.$el.find("#calendar").kendoCalendar({
                         value: now,
                         change: onChange,
@@ -264,7 +265,8 @@ define(["app",
                             '#= data.value #' +
                             '# } #'
                         }
-                    });
+                    }), 300);
+                    _.debounce(
                     this.$el.find("#calendar-right").kendoCalendar({
                         value: nextmonth,
                         change: onChange,
@@ -287,7 +289,7 @@ define(["app",
                             '#= data.value #' +
                             '# } #'
                         }
-                    });
+                    }), 300);
 
                 },
 

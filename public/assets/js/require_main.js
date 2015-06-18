@@ -1,5 +1,6 @@
 requirejs.config({
   baseUrl: "assets/js",
+  waitSeconds: 20,
   paths: {
     backbone: "vendor/backbone",
     "backbone.role":'vendor/role',
@@ -11,8 +12,8 @@ requirejs.config({
     jquery: "vendor/jquery",
 
       "kendo":"vendor/kendoUI/kendo.all.min",
-      "calendar":"vendor/kendoUI/kendo.calendar.min",
-      "kendo_core":"vendor/kendoUI/kendo.core.min",
+      "kendoCalendar":"vendor/kendoUI/kendo.calendar",
+      "kendoCore":"vendor/kendoUI/kendo.core.min",
 
     "jquery-ui": "vendor/jquery-ui",
     "jszip":"vendor/jszip",
@@ -85,6 +86,14 @@ requirejs.config({
       deps: ["jquery"],
       exports: "kendo"
     },
+      kendoCore: {
+          deps: ["jquery"],
+          exports: "kendoCore"
+      },
+      kendoCalendar: {
+          deps: ["jquery","kendoCore"],
+          exports: "kendoCalendar"
+      },
     "kendo.backbone":["backbone"],
     "backbone.picky": ["backbone"],
     "backbone.deep.model": ["backbone"],
