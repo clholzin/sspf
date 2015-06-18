@@ -20,6 +20,7 @@ define(["app",
 
             View.Regions = Marionette.LayoutView.extend({
                 template: layoutTpl,
+                tagName:'span',
                 regions: {
                     TopPanel: "#topDashboard-panel",
                     MainPanel: "#main-panel",
@@ -32,10 +33,21 @@ define(["app",
                     parent.css('background-size','cover');
                     parent.css('background-repeat','no-repeat');
                     parent.css('background-attachment','fixed');
+                    $(document).find('.backBtn').toggleClass('hidden');
+                    var container = this.$el.parent();
+                    if(container.hasClass('container')){
+                        container.removeClass('container');
+                    }
+                    if(container.hasClass('container-fluid')){
+                        container.removeClass('container-fluid');
+                    }
                 },
                 onBeforeDestroy :function(){
                     var parent = this.$el.parent().parent();
                     parent.removeAttr('style');
+                    var container = this.$el.parent();
+                    container.addClass('container');
+                    $(document).find('.backBtn').toggleClass('hidden');
                 },
                 onRender:function(){
 
@@ -49,6 +61,7 @@ define(["app",
 
             View.Top = Marionette.ItemView.extend({
                 template: top,
+                className:'page-header',
                 triggers: {
                     //"click button.js-new": "notify:new"
                 },

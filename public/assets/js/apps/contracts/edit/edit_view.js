@@ -17,7 +17,7 @@ define(["app", "apps/contracts/common/views",
         View.Regions = Marionette.LayoutView.extend({
             template: layoutTpl,
             regions: {
-                panelRegion: "#top-panel",
+                panelRegion: "#top-edit-panel",
                 mainRegion: "#edit-panel",
                 rightRegion: "#right-panel"
             },
@@ -84,7 +84,7 @@ define(["app", "apps/contracts/common/views",
         View.Edit = CommonViews.ContractEdit.extend({
             //title : 'Edit:',
         initialize: function(){
-            this.title = "Edit:";
+            this.title = "General Info:";
             this.$el.toggleClass('animated fadeIn');
         },
         onBeforeDestroy:function(){

@@ -22,6 +22,13 @@ define(["app",
             regions: {
                 panelRegion: "#panel-region",
                 userRegion: "#user-region"
+            },
+            onRender:function(){
+                this.$('#main-region').toggleClass('container container-fluid');
+                    //.removeClass('container').addClass('container-fluid');
+            },
+            onBeforeDestroy:function(){
+                this.$('#main-region').toggleClass('container container-fluid');
             }
         });
 
@@ -184,6 +191,13 @@ define(["app",
             events: {
                 "click a.js-edit": "editClicked",
                 "click button.js-dashboard": "showDashboard"
+            },
+            onRender:function(){
+               $(document).find('#main-region').removeClass('container').addClass('container-fluid');
+                //.removeClass('container').addClass('container-fluid');
+            },
+            onBeforeDestroy:function(){
+                $(document).find('#main-region').removeClass('container-fluid').addClass('container');
             },
             showDashboard: function(e){
                 e.preventDefault();

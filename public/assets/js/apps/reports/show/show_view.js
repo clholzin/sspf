@@ -27,13 +27,14 @@ define(["app",
                     HierPanel:"#hier-panel"
                 },
                 onShow: function () {
-                    /**  var parent = this.$el.parent().parent();
-                     parent.css('background-image','url(./assets/img/Picture1.jpg)');
+                    this.$el.parent().addClass('container-fluid').removeClass('container');
+                     /**   parent.css('background-image','url(./assets/img/Picture1.jpg)');
                      parent.css('background-size','cover');
                      parent.css('background-repeat','no-repeat');
                      parent.css('background-attachment','fixed');**/
                 },
                 onBeforeDestroy: function () {
+                    this.$el.parent().addClass('container-fluid').removeClass('container');
                     /** var parent = this.$el.parent().parent();
                      parent.removeAttr('style');**/
                     require(["common/views"], function (CommonViews) {

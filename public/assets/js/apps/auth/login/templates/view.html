@@ -1,15 +1,40 @@
-<div class="row"><h1>User Settings</h1>
 
-<div class="row">
-<h3><%- username %></h3>
-    <button class="btn btn-default js-dashboard" data-id="<%- username %>">Dashboard</button></div>
-<ul class="list-group">
-  <li class="list-group-item list-group-item-info">
-        <div class="margin:0 0 10px 0;" style="">Note: the next time you login, it will be with the new password.
-        <a href="#auth/<%- id %>/edit" style="margin-top:-5px;" class="btn btn-default btn-sm js-edit pull-right">
-         <i class="glyphicon glyphicon-pencil"></i> Change Password</a></div>
-        </li>
-    </ul>
-</div>
+    <div class="page-header">
+        <h3>User Settings</h3>
+    </div>
+    <!--  <div class="header clearfix">
+          <nav>
+              <ul class="nav nav-pills pull-right">
+                  <li role="presentation" class="active"><a class="btn btn-default js-dashboard" data-id="<%- username %>">Dashboard</a></li>
+                <li role="presentation"><a href="#">About</a></li>
+                  <li role="presentation"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">User Settings</h3>
+    </div> container-fluid -->
+
+    <div class="container">
+    <div class="jumbotron">
+        <h1>Welcome <small><%- username %></small></h1>
+        <p class="lead">SSPF information panel explaining application user settings.</p>
+      <!--  <p><a href="#" class="btn btn-default js-dashboard" data-id="<%- username %>">Dashboard</a></p>-->
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h4>Username</h4>
+            <p class="bg-info">Note: the next time you login, it will be with the new username.</p>
+                <button class="btn btn-default btn-sm">
+                    <i class="glyphicon glyphicon-pencil"></i> Change Username</button>
+        </div>
+
+        <div class="col-lg-6">
+            <h4>Password</h4>
+            <p>Note: the next time you login, it will be with the new password.</p>
+            <a href="#auth/<%- id %>/edit" class="btn btn-default btn-sm js-edit">
+                <i class="glyphicon glyphicon-pencil"></i> Change Password</a></div>
+        </div>
 
 
+
+</div> <!-- /container -->

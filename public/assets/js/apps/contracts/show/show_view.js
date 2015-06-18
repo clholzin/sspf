@@ -31,12 +31,17 @@ define(["app",
                 onShow:function(){
                     var parent = this.$el.parent();
                     parent.removeClass('fadeIn').addClass('fadeIn');
-                     parent.removeClass('container').addClass('fluid-container');
+                    if(parent.hasClass('container')){
+                        parent.removeClass('container');
+                    }
+                    if(parent.hasClass('container-fluid')){
+                        parent.removeClass('container-fluid');
+                    }
                 },
                 onBeforeDestroy :function(){
                     var parent = this.$el.parent();
                     parent.addClass('fadeIn').removeClass('fadeIn');
-                    parent.removeClass('fluid-container').addClass('container');
+                    parent.addClass('container');
                 },
                 onRender:function(){
                 }
