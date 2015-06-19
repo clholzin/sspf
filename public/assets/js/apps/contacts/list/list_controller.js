@@ -4,8 +4,7 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
       listContacts: function(criterion){
         require(["common/views", "entities/contact"], function(CommonViews){
           var loadingView = new CommonViews.Loading();
-          AppManager.mainRegion.show(loadingView);
-
+            AppManager.loadingRegion.show(loadingView);
           var fetchingContacts = AppManager.request("contact:entities");
 
           var contactsListLayout = new View.Layout();
@@ -147,6 +146,7 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
               });
 
               AppManager.mainRegion.show(contactsListLayout);
+                AppManager.loadingRegion.empty();
             });
           });
         });

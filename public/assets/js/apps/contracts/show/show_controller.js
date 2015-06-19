@@ -8,9 +8,13 @@ define(["app", "apps/contracts/show/show_view",
                         title: "Contract",
                         message: "loading ..."
                     });
-                    AppManager.mainRegion.show(loadingView);
+                  AppManager.loadingRegion.show(loadingView);
 
                     var sideAndMainLayout = new View.Regions();
+
+                    if(id === '' || undefined){
+                        window.history.back();
+                    }
 
                     var fetchingContract = AppManager.request("contract:entity", id);
                     var fetchingNotify = AppManager.request("notify:entities", id);
@@ -22,19 +26,30 @@ define(["app", "apps/contracts/show/show_view",
                              RightView,
                              MainExport,
                              costSetView,
-                             TopLeftView;
+                             TopLeftView,
+                             FooterView;
                         if(contract instanceof Object){
 
                                 contractView = new View.Contract({
                                     model: contract
                                     });
-
+                            /**
+                             *
+                             * @type {View.Footer}
+                             */
+                            FooterView = new View.Footer({
+                                model: contract
+                            });
+                            FooterView.on('footer:contract:edit',function(model){
+                                AppManager.trigger("contract:edit", model.get("_id"));
+                            });
 
                         /**Add Notification dates for QCR
                          * Save to notification DB & Copied for backup to contract
                          **/
-                            console.log(contract.get('newContract') );
-                            if(contract.get('newContract')) {
+                         /**   console.log(contract.get('project') );
+                            var project = contract.get('project');
+                            if(project.id != '' || undefined) {
                                 var startDate = Moment(contract.get('startDate'));//unformated date now
                                 var qcrDates =  AppManager.Entities.QCRdates(startDate,id);
                                 console.log(JSON.stringify(qcrDates));
@@ -47,7 +62,7 @@ define(["app", "apps/contracts/show/show_view",
 
                             }//end adding new notify dates
 
-
+                            **/
 
                             contractView.on('businessUnit:add',function(data){
                                 var objData = $.grep(contract.get('businessUnit'), function(item) {
@@ -460,7 +475,7 @@ define(["app", "apps/contracts/show/show_view",
 
 
 
-
+                            AppManager.footerRegion.show(FooterView);
 
 
                             sideAndMainLayout.on("show", function(){
@@ -478,8 +493,7 @@ define(["app", "apps/contracts/show/show_view",
                             AppManager.mainRegion.show(missing);
                         }
 
-
-
+                        AppManager.loadingRegion.empty();
                         AppManager.mainRegion.show(sideAndMainLayout);
                         });//end of fetching notifications
                     });// end of fetching contract

@@ -14,10 +14,10 @@ var ContNotify = new Schema({
     "dateCreated" : {type:Date,default:Date.now},
     "dateNotify" : Date,
     "year" : Number,
-    status:{
-        reviewed:{ type: Boolean, default: '0'},//send fro approval
-        approved:{ type: Boolean, default: '0'},//reviews
-        submitted:{ type: Boolean, default: '0'}//completed
+    "status":{
+        "reviewed":{ type: Boolean, default: '0'},//send fro approval
+        "approved":{ type: Boolean, default: '0'},//reviews
+        "submitted":{ type: Boolean, default: '0'}//completed
     }
 });
 

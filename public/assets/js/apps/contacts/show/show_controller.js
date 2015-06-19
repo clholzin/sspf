@@ -7,7 +7,7 @@ define(["app", "apps/contacts/show/show_view"], function(AppManager, View){
             title: t("contact.showContact"),
             message: t("loading.message")
           });
-          AppManager.mainRegion.show(loadingView);
+            AppManager.loadingRegion.show(loadingView);
 
           var fetchingContact = AppManager.request("contact:entity", id);
           $.when(fetchingContact).done(function(contact){
@@ -27,6 +27,7 @@ define(["app", "apps/contacts/show/show_view"], function(AppManager, View){
             }
 
             AppManager.mainRegion.show(contactView);
+              AppManager.loadingRegion.empty();
           });
         });
       }

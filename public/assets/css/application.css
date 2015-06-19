@@ -4,11 +4,6 @@ body {
 }
 
 /**          Nav           **/
-#spinner{
-    position:fixed;
-    top:35vh;
-    left:40vw;
-}
 
 
 
@@ -36,7 +31,21 @@ div#alertsRegion{
     width:100%;
     z-index:9999;
 }
+#spinner{
+    position:fixed;
+    top:49vh;
+    left:49vw;
+    z-index:999999
+}
 
+.loadingView{
+    position:fixed;
+    padding:20%;
+    top:0;
+    width:100vw;
+    height:100vh;
+    z-index:9999;
+}
 /*
  * Main content
  */
@@ -48,7 +57,7 @@ div#alertsRegion{
    **/
 }
 .popover{
-    z-index: 1001;
+    z-index: 99999;
 }
 
 
@@ -215,8 +224,7 @@ Main Panel Region
     margin-bottom:200px;
 }
 #panel-region{
-    position:fixed !important;
-    top:50px;
+    position:relative !important;
     height:65px;
     padding:10px 9% 0 0;
     z-index: 1020;
@@ -244,18 +252,16 @@ Main Panel Region
     margin:-18px -18px 0 -18px;
     z-index:99999;
 }
+/**this is CONTACTS**/
 #contacts-region{
     position:relative;
-    top:50px;
-    bottom:100px;
-    padding:20px 0 0 0;
+    margin:30px 0 0 0;
 
 }
+/**this is CONTRACTS**/
 #contracts-region{
     position:relative;
-    top:50px;
-    bottom:100px;
-    padding:20px 0 0 0;
+    margin:30px 0 0 0;
 
 }
 .contracts-details{
@@ -446,13 +452,23 @@ Main Panel Region
     filter:alpha(opacity=50);
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
     opacity:.50;
-/**
-    -webkit-filter: blur(15px);
-    -moz-filter: blur(15px);
-    -o-filter: blur(15px);
-    -ms-filter: blur(15px);
-    filter: blur(15px);
-    **/
+}
+.wrap-overflay-black {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:#3d3d3d;
+    margin: 0;
+    padding: 0;
+    -khtml-opacity:.50;
+    -moz-opacity:.50;
+    -ms-filter:”alpha(opacity=50)”;
+    filter:alpha(opacity=50);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
+    opacity:.50;
 }
 .white{
     background-color:white;
@@ -512,10 +528,35 @@ Main Panel Region
     border-radius: 50%;
     border:thin solid #999;
 }
+
+.thumbnail{
+    background: #FFF;/**#f18367**/
+    border-color: transparent;
+    -khtml-opacity:.99;
+    -moz-opacity:.99;
+    -ms-filter:”alpha(opacity=99)”;
+    filter:alpha(opacity=99);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.9);
+    opacity:.99;
+}
+.thumbnail > .caption{
+    color:#000;
+}
+.thumbnail:hover  > .caption{
+    background: #EEE;/**#f18367**/
+    border-color: transparent;
+    -khtml-opacity:.99;
+    -moz-opacity:.99;
+    -ms-filter:”alpha(opacity=99)”;
+    filter:alpha(opacity=99);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.9);
+    opacity:.99;
+}
+
 .page-header {
     position:relative !important;
     text-align: center;
-    margin: 0 -15px;
+    margin: 0;
     padding-top:5px;
     border-bottom:medium solid #3d3d3d;
     background-image: -ms-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
@@ -543,3 +584,148 @@ Main Panel Region
 .font-percent{
     font-size: 5.4vw;
 }
+
+
+
+
+
+
+/**
+*
+*
+* Kendo Widget Sytles
+*
+*
+*/
+#calendar,
+#calendar-left,
+#calendar-right {
+    width:97%;
+    margin:0;
+    text-align: center;
+    padding:0;
+}
+#calendar .k-content,
+#calendar-left .k-content,
+#calendar-right .k-content{
+    height: 100%;
+    max-height:150px;
+}
+#calendar,#calendar-left, #calendar-right,
+#calendar #calendar-left #calendar-right .k-content,
+#calendar #calendar-left #calendar-right .k-header,
+#calendar #calendar-left #calendar-right th,
+#calendar #calendar-left #calendar-right .k-link,
+#calendar #calendar-left #calendar-right .k-state-hover,
+#calendar #calendar-left #calendar-right .k-state-selected,
+#calendar #calendar-left #calendar-right .k-state-focused {
+    background: transparent;/**#f18367**/
+    border-color: transparent;
+    -khtml-opacity:.85;
+    -moz-opacity:.85;
+    -ms-filter:”alpha(opacity=85)”;
+    filter:alpha(opacity=85);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.8);
+    opacity:.85;
+    color: #000;
+    box-shadow: none;
+}
+#calendar .k-content .k-state-hover,
+#calendar-left .k-content .k-state-hover,
+#calendar-right .k-content .k-state-hover,
+#calendar .k-content .k-state-focused,
+#calendar-left .k-content .k-state-focused,
+#calendar-right .k-content .k-state-focused {
+    font-size: 75%;
+    font-weight: bold;
+}
+#calendar #calendar-left #calendar-right .k-state-selected, #calendar .k-state-selected.k-state-focused {
+    font-size: 24px;
+    font-weight: bold;
+}
+#calendar .k-content .k-link,
+#calendar-left .k-content .k-link,
+#calendar-right .k-content .k-link {
+    padding: 0;
+    min-height: 25px;
+    line-height: 25px;
+}
+#calendar #calendar-left #calendar-right th {
+    padding-top: 20px;
+    color: #000;
+}
+#calendar #calendar-left #calendar-right td.k-other-month .k-link {
+    color: #EEE;
+}
+#calendar th,
+#calendar-left th,
+#calendar-right th,
+#calendar td,
+#calendar-left td,
+#calendar-right td {
+    text-align: center;
+}
+
+
+
+
+/* Template Days */
+.crp, .cnr, .qcr, .icr, .ccr, .ccs {
+    position: relative;
+    padding:5px;
+    min-width:15px;
+    min-height:15px;
+    max-width:20px;
+    max-height:20px;
+    /**  max-width: 75.3333%;
+    min-width: 45.3333%;
+
+    min-height: 30.3333%;
+      max-height: 50.3333%;
+    max-height: 75.3333%;
+    min-height: 45.3333%;**/
+    margin: auto;
+    text-align: center;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 50%;
+   line-height: 15px;
+    color: #FFF;
+}
+.crp {
+    background-color: #f68c1e;
+}
+.qcr {
+    background-color: #70c114;
+}
+.icr {
+    background-color: #ef5350;
+}
+.ccr {
+    background-color: #5e449b;
+}
+.ccs {
+    background-color: #f18367;
+}
+.cnr {
+    background-color: #0757a2;
+}
+.crp-line {
+    border-bottom:medium solid #f68c1e;
+}
+.qcr-line {
+    border-bottom:medium solid #70c114;
+}
+.icr-line {
+    border-bottom:medium solid #ef5350;
+}
+.ccr-line {
+    border-bottom:medium solid #5e449b;
+}
+.ccs-line {
+    border-bottom:medium solid #f18367;
+}
+.cnr-line {
+    border-bottom:medium solid #0757a2;
+}
+

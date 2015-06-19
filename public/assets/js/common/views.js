@@ -1,5 +1,5 @@
 define(["app",
-    "tpl!common/templates/loading.tpl",
+    "tpl!common/templates/loading.html",
     "tpl!common/templates/footer.html",
     "spin.jquery", "nprogress", 'vendor/polyglot'],
     function (AppManager, loadingTpl,footerTpl, spin, NProgress) {

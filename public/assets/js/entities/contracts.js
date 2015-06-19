@@ -56,6 +56,9 @@ define(["app", "vendor/moment", "apps/config/storage/localstorage"], function (A
                 if (!attrs.contract.amount) {
                     errors.contractValue = "Must set a contract value.";
                 }
+                if (!attrs.description.body) {
+                    errors.descriptionBody = "Don't for get a description.";
+                }
                 if (!attrs.obligations.changeDate) {
                     errors.changeDate = "Must set a a date.";
                 }

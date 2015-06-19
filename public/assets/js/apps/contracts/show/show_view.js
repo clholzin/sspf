@@ -11,12 +11,13 @@ define(["app",
         "tpl!apps/contracts/show/templates/category/guidList.html",
         "tpl!apps/contracts/show/templates/category/hierSet.html",
         "tpl!apps/contracts/show/templates/category/dpsList.html",
+        "tpl!common/templates/footer.html",
         "apps/contracts/common/views",
         "vendor/moment","jszip","vendor/kendoUI/kendo.all.min",
         "vendor/numeral","backbone.syphon"
             ],//"vendor/kendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
-             rightItem, missingTpl,contractView,exportView,guidList,hierSet,dpsList,CommonViews,Moment,
+             rightItem, missingTpl,contractView,exportView,guidList,hierSet,dpsList,footerTpl,CommonViews,Moment,
              jszip){
         AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
 
@@ -28,9 +29,12 @@ define(["app",
                     rightRegion: "#right-panel",
                     topLeftRegion:"#top-left-panel"
                 },
-                onShow:function(){
+                onShow:function() {
+                    var body = $('body');
+                    body.animate({ scrollTop: 0 }, "fast");
+
                     var parent = this.$el.parent();
-                    parent.removeClass('fadeIn').addClass('fadeIn');
+                    //parent.removeClass('fadeIn').addClass('fadeIn');
                     if(parent.hasClass('container')){
                         parent.removeClass('container');
                     }
@@ -40,8 +44,17 @@ define(["app",
                 },
                 onBeforeDestroy :function(){
                     var parent = this.$el.parent();
-                    parent.addClass('fadeIn').removeClass('fadeIn');
+                    //parent.addClass('fadeIn').removeClass('fadeIn');
                     parent.addClass('container');
+
+                    var main = $(document).find('#main-region');
+                    main.removeClass('animated fadeInRight fadeInLeft');
+                    main.addClass('animated fadeInLeft');
+
+                    require(["common/views"], function (CommonViews) {
+                        var FooterView = new CommonViews.Footer();
+                        AppManager.footerRegion.show(FooterView);
+                    });
                 },
                 onRender:function(){
                 }
@@ -50,6 +63,36 @@ define(["app",
             View.MissingContract = Marionette.ItemView.extend({
                 template: missingTpl
             });
+
+
+
+            View.Footer = Marionette.ItemView.extend({
+                template: footerTpl,
+                initialize: function () {
+                    this.$el.addClass('animated slideInUp');
+                },
+                onRender: function () {
+                    var controlBtn = this.$('ul#button-control');
+                    //controlBtn.css('border', 'thin solid yellow');
+                    var html = '<li class="bg-info"><a class="js-edit"><i class="glyphicon glyphicon-edit"></i> Edit</a></li><li class="bg-success"><a  class="js-submit"><i class="glyphicon glyphicon-share-alt"></i> </a></li>';
+                    controlBtn.prepend(html);
+                    console.log('!!!!!!!!!!!!!!  hit footer render');
+                },
+                events: {
+                    "click a.js-edit": "editContract",
+                    "click a.js-submit": "submitReport"
+                },
+                editContract: function (e) {
+                        e.preventDefault();
+                        this.trigger("footer:contract:edit",this.model);
+                },
+                submitReport: function () {
+                    console.log('hit footer js-submitReport');
+                    AppManager.execute("alert:show",({type:"success",message:'Shared'}));
+                }
+            });
+
+
 
             View.NotifyNew = CommonViews.NotifyForm.extend({
                 initialize: function(){

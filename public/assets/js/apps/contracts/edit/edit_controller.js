@@ -8,7 +8,7 @@ define(["app", "apps/contracts/edit/edit_view"], function(AppManager, View){
                             title: "Edit Data",
                             message: "Loading"
                         });
-                        AppManager.mainRegion.show(loadingView);
+                        AppManager.loadingRegion.show(loadingView);
 
                         var layoutView = new View.Regions();
                         var panelView,
@@ -21,13 +21,24 @@ define(["app", "apps/contracts/edit/edit_view"], function(AppManager, View){
                             payments,
                             milestones,
                             subcontractors,
-                            loading;
+                            loading,
+                            ReportingDates,
+                            FooterView;
 
 
                         AppManager.execute("set:edit:header", 'Contract');
                         var fetchingContract = AppManager.request("contract:entity", id);
                         $.when(fetchingContract).done(function (contract) {
-
+                            /**
+                             *
+                             * @type {View.Footer}
+                             */
+                            FooterView = new View.Footer({
+                                model:contract
+                            });
+                            FooterView.on('footer:contract:save',function(model){
+                                AppManager.trigger("contract:edit", model.get("_id"));
+                            });
 
                         var fetchingPanelMenu = AppManager.request("editMenu:entities");
                         $.when(fetchingPanelMenu).done(function (menuList) {
@@ -289,8 +300,7 @@ define(["app", "apps/contracts/edit/edit_view"], function(AppManager, View){
                                 layoutView.on("show", function () {
                                     layoutView.panelRegion.show(panelView);
                                     layoutView.mainRegion.show(editView);
-                                    //layoutView.rightRegion.show(ReportingDates);
-                                    layoutView.rightRegion.empty();
+                                    AppManager.loadingRegion.empty();
                                     console.log('hit on show');
                                 });
                             } else {
@@ -299,7 +309,7 @@ define(["app", "apps/contracts/edit/edit_view"], function(AppManager, View){
                                 AppManager.mainRegion.show(missing);
                             }
 
-
+                            AppManager.footerRegion.show(FooterView);
                             AppManager.mainRegion.show(layoutView);
                         });
                     });

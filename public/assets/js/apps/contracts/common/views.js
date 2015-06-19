@@ -7,21 +7,21 @@ define(["app", "tpl!apps/contracts/common/templates/form.html",
     Views.Form = Marionette.ItemView.extend({
       template: formTpl,
       triggers:{
-        "click .js-close":"dialog:close"
+        "click button.js-close":"dialog:checkData"
         },
       events: {
         "click button.js-submit": "submitClicked"
       },
-        onShow:function(){
+      /**  onShow:function(){
          //   this.$el.parent().addClass('fadeInLeft');
         },
         onBeforeDestroy:function(){
          //   this.$el.parent().removeClass('fadeInLeft');
-        },
+        },**/
       submitClicked: function(e){
         e.preventDefault();
         var data = Backbone.Syphon.serialize(this);
-          console.log('Submited data: '+JSON.stringify(data));
+         // console.log('Submited data: '+JSON.stringify(data));
           this.trigger("form:submit",data);
       },
 

@@ -15,10 +15,16 @@ define(["app",
         contractsRegion: "#contracts-region"
         },
         onShow:function(){
-            this.$el.parent().removeClass('fadeIn').addClass('fadeIn');
+            //this.$el.parent().removeClass('fadeIn').addClass('fadeIn');
+            var main = $(document).find('#main-region');
+            main.removeClass('animated fadeInLeft fadeInRight');
+            main.addClass('animated fadeInUp');
         },
         onBeforeDestroy :function(){
-            this.$el.parent().addClass('fadeIn').removeClass('fadeIn');
+            //this.$el.parent().addClass('fadeIn').removeClass('fadeIn');
+            var main = $(document).find('#main-region');
+            main.removeClass('animated fadeInUp fadeInLeft fadeInRight');
+            main.addClass('animated fadeInRight');
         }
     });
 

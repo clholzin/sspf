@@ -10,7 +10,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                         //title: t("contact.showContact"),
                         // message: t("loading.message")
                     });
-                    AppManager.mainRegion.show(loadingView);
+                    AppManager.loadingRegion.show(loadingView);
 
 
                     var ReportView,
@@ -231,9 +231,10 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                 MainLayout.TopPanel.show(TopView);
                                 MainLayout.ReportPanel.show(ReportView);
                                 MainLayout.ReviewPanel.show(ContractView);
-
+                                AppManager.loadingRegion.empty();
                                 console.log('hit on show ReportLayout');
                             });
+
                             AppManager.footerRegion.show(FooterView);
                             AppManager.mainRegion.show(MainLayout);
 

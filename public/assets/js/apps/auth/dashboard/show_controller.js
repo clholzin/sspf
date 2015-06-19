@@ -6,21 +6,22 @@ define(["app", "apps/auth/dashboard/show_view",
                 require(["common/views","entities/common", "entities/auth","entities/contracts"], function(CommonViews){
                 console.log(user);
 
-                    var loadingView = new CommonViews.Loading({
+                var loadingView = new CommonViews.Loading({
                         title: "Dashboard",
                         message: "loading ..."
                     });
 
-                    AppManager.mainRegion.show(loadingView);
+                  AppManager.loadingRegion.show(loadingView);
 
 
-                    var fetchingNotify,
+                     var fetchingNotify,
                         NotifyView,
                         ContractView,
                         filteredContracts,
                         filteredNotify,
                         MainView,
-                        TopView;
+                        TopView,
+                        FooterView;
 
 
                     var fetchingUser = AppManager.request("login:entity");
@@ -73,9 +74,47 @@ define(["app", "apps/auth/dashboard/show_view",
                         });
 
 
-                        NotifyView = new View.LeftMenu({
+                        ContractView = new View.ContractView({
+                            collection:filteredContracts
+                        });
+                        /**
+                         *
+                         * @type {View.Footer}
+                         */
+                        FooterView = new View.Footer({});
+                        FooterView.on('footer:contract:edit',function(model){
+                            AppManager.trigger("contract:edit", model.get("_id"));
+                        });
+
+                            FooterView.on("contract:new", function(){
+                                require(["apps/contracts/new/new_view"], function(NewView){
+                                    var newContract = AppManager.request("contract:entity:new");
+
+                                    var view = new NewView.Contract({
+                                        model: newContract
+                                    });
+                                    view.on("form:submit", function(data){
+                                        console.log('New form data: ' + data);
+                                        if (newContract.save(data)) {
+                                            contracts.unshift(newContract);
+                                            view.trigger("dialog:close");
+                                            AppManager.execute("alert:show", ({type: "success", message: "Contract Added."}));
+                                            ContractView.render();
+                                        } else {
+                                            view.triggerMethod("form:data:invalid", newContract.validationError);
+                                        }
+
+                                    });
+
+                                    AppManager.dialogRegion.show(view);
+                                });
+                            });
+
+
+                            NotifyView = new View.LeftMenu({
                             collection:filteredNotify
                         });
+
                         NotifyView.on('childview:action:popover',function(childview,args){
                             console.log('hit');
                             var model = args.model;
@@ -98,31 +137,35 @@ define(["app", "apps/auth/dashboard/show_view",
                             '<div class="text-primary">Assigned To:'+String(model.get('user').username).toUpperCase()+'</div>'+
                             '<div class="text-primary">Email:'+model.get('user').username+'@dassian.com</div>'+
                             '<div class="text-primary">Schedule:Name</div><br>'+
-                                '<div class="btn btn-primary btn-block">Send for Approval</div>'+
+                                '<div class="btn-group"><div class="btn btn-default js-show" data-id="'+model.get('_id')+'">View</div><div class="btn btn-primary ">Send for Approval</div></div>'+
                             '</div>'+
                             '</div>';
                             childview.$('button#btnPopover').data('content',html).popover(options,'toggle');
                         });
 
-                          ContractView = new View.ContractView({
-                            collection:filteredContracts
-                        });
+
+
+
+
+
                         MainLayout.on("show", function(){
-                            MainLayout.TopPanel.show(TopView);
+                           // MainLayout.TopPanel.show(TopView);
                             MainLayout.MainPanel.show(MainView);
                             MainLayout.NotifyPanel.show(NotifyView);
                             MainLayout.ContractPanel.show(ContractView);
-
 
                             var calLeftCurrent = $(document.body).find('td#calendar-left_cell_selected');
                             var calRightCurrent = $(document.body).find('td#calendar-right_cell_selected');
                             calLeftCurrent.removeAttr('class');
                             calRightCurrent.removeAttr('class');
-
                            console.log('hit on show MainLayout');
                         });
 
-                       AppManager.mainRegion.show(MainLayout);
+
+
+                            AppManager.footerRegion.show(FooterView);
+                            AppManager.loadingRegion.empty();
+                            AppManager.mainRegion.show(MainLayout);
 
                         });//end of fetching notifications
                     });//end of fetching contract

@@ -16,10 +16,11 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                     $.when(fetchingContract).done(function(contract){
                         $.when(fetchingNotify).done(function(notifications) {
                    //console.log('Show Contract:' +JSON.stringify(contract));
-                        var contractView;
-                            var LeftView;
-                            var RightView;
-                            var TopLeftView;
+                    var contractView,
+                    LeftView,
+                    RightView,
+                    TopLeftView,
+                    FooterView;
                         if(contract instanceof Object){
 
                                 contractView = new View.Contract({
@@ -191,7 +192,7 @@ define(["app", "apps/contracts/show/show_view","vendor/moment"], function(AppMan
                         }
 
 
-
+                        AppManager.footerRegion.show(FooterView);
                         AppManager.mainRegion.show(sideAndMainLayout);
                         });//end of fetching notifications
                     });// end of fetching contract

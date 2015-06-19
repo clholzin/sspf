@@ -47,6 +47,7 @@ define(["marionette",
     AppManager.addRegions({
         headerRegion: "#header-region",
         alertsRegion: "#alertsRegion",
+        loadingRegion:"#loadingRegion",
         mainRegion: "#main-region",
         footerRegion:"footer",
         dialogRegion: Marionette.Region.Dialog.extend({

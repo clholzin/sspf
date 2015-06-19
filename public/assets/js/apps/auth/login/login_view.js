@@ -194,6 +194,8 @@ define(["app",
                 "click button.js-dashboard": "showDashboard"
             },
             onRender:function(){
+                var body = $('body');
+                body.animate({ scrollTop: 0 }, "fast");
                $(document).find('#main-region').removeClass('container').addClass('container-fluid');
                 //.removeClass('container').addClass('container-fluid');
             },

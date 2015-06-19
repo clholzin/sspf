@@ -5,23 +5,23 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                 require(["common/views", "entities/auth"], function(CommonViews){
                     var loadingView = new CommonViews.Loading({
                         title: "",
-                        message: "One sec..."
+                        message: ""
                     });
-                    AppManager.mainRegion.show(loadingView);
+                    AppManager.loadingRegion.show(loadingView);
                     var loginView;
                    var fetchingUser = AppManager.request("login:entity");
                     $.when(fetchingUser).done(function(loginUser) {
                         if (loginUser.attributes.loggedIn === 1) {
                             console.log(JSON.stringify(loginUser));
                             //AppManager.navigate("auth/" + loginUser.get('username'));
-                            loginView = new View.Show({
+                          /**  loginView = new View.Show({
                                 model: loginUser
-                            });
+                            });**/
                             if(AppManager.user.loggedIn === undefined){
                                 AppManager.user = {
                                     loggedIn:1,
                                     username:loginUser.get('username'),
-                                    id:loginUser.get('id')
+                                    id:loginUser.get('_id')
                                 };
                             }
                             //console.log('1111111111:'+ JSON.stringify(AppManager.user));
@@ -85,7 +85,7 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
 
                         });
 
-                        loginView.on("form:register", function(data){
+                         /** loginView.on("form:register", function(data){
                             console.log('hit register form: '+ data.username);
                             var registerUser = AppManager.request("login:entity:new");
                             //console.log(registerUser);
@@ -113,9 +113,10 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                                    //alert(JSON.stringify(response.statusText));
                                 }
                             });
-                        });
+                        });**/
 
                         AppManager.mainRegion.show(loginView);
+                        AppManager.loadingRegion.empty();
                     });
                 });
             },
@@ -126,7 +127,7 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                         title: "Edit User",
                         message: "loading..."
                     });
-                    AppManager.mainRegion.show(loadingView);
+                    AppManager.loadingRegion.show(loadingView);
                     var fetchingUser = AppManager.request("login:entity");
                     $.when(fetchingUser).done(function(user){
                         var view;
@@ -150,6 +151,7 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                         }
 
                         AppManager.mainRegion.show(view);
+                        AppManager.loadingRegion.empty();
                     });
                 });
             },
@@ -160,7 +162,7 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                         title: "Display User",
                         message: "loading..."
                     });
-                    AppManager.mainRegion.show(loadingView);
+                    AppManager.loadingRegion.show(loadingView);
                     var fetchingUser = AppManager.request("login:entity");
                     $.when(fetchingUser).done(function(user){
                         var authView;
@@ -182,6 +184,7 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                         }
 
                         AppManager.mainRegion.show(authView);
+                        AppManager.loadingRegion.empty();
                     });
                 });
             },
@@ -192,20 +195,22 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                         title: "Bye",
                         message: "Logging out user."
                     });
-                    AppManager.mainRegion.show(loadingView);
+                    AppManager.loadingRegion.show(loadingView);
                     AppManager.execute("alert:show",({type:"info",message:"Logging out"}));
                     AppManager.execute("Reset:user");
                    // AppManager.execute("set:active:header", "auth/logout");
                     var logout = AppManager.request("login:logout");
                     $.when(logout).done(function(data){
                        // console.log(data);
-                         var authView = new View.NoAuthView();
+                      /**   var authView = new View.NoAuthView();**/
                          AppManager.user.loggedIn = data.attributes.loggedIn;
                         console.log('logout delete attribute:' + JSON.stringify(AppManager.user));
-                            AppManager.mainRegion.show(authView);
-                        setTimeout(function(){
+                         /**   AppManager.mainRegion.show(authView);**/
+                        AppManager.loadingRegion.empty();
+                        AppManager.trigger("auth:login");
+                       /** setTimeout(function(){
                             AppManager.trigger("auth:login");
-                        },2500);
+                        },2500);**/
 
                     });
                 });//end LogoutUser function

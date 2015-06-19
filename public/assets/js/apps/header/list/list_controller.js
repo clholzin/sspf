@@ -67,10 +67,10 @@ define(["app", "apps/header/list/list_view"], function(AppManager, View){
                // AppManager.execute("set:active:header");
             });
             headers.on("logoutBtn:logout", function(childView, model){
-                var menu = this.$el.find('li.dropdown');
-                var does = menu.hasClass('open');
-                if(does) {
-                    menu.toggleClass('dropdown');
+                var navCollapse = this.$el.find('div.navbar-collapse');
+                var nav = navCollapse.hasClass('in');
+                if(nav) {
+                    navCollapse.collapse('toggle');
                 }
                 AppManager.execute("set:active:header");
                 AppManager.trigger('auth:logout');

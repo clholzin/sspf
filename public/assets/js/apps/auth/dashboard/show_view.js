@@ -6,6 +6,7 @@ define(["app",
         "tpl!apps/auth/dashboard/templates/reports.html",
         "tpl!apps/auth/dashboard/templates/contract.html",
         "tpl!apps/auth/dashboard/templates/missing.html",
+        "tpl!common/templates/footer.html",
         "apps/auth/common/views",
         "vendor/moment","jszip",
        // "vendor/kendoUI/kendo.core.min",
@@ -13,7 +14,7 @@ define(["app",
         "vendor/numeral","backbone.syphon"
             ],
     function(AppManager,layoutTpl,top,main,notify,reports,contract,missingTpl,
-             CommonViews,Moment,jszip){
+             footerTpl,CommonViews,Moment,jszip){
         AppManager.module("DashboardApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
 
             window.JSZip = jszip;
@@ -28,6 +29,12 @@ define(["app",
                     ContractPanel: "#contract-panel"
                 },
                 onShow:function(){
+                    var body = $('body');
+                    body.animate({ scrollTop: 0 }, "fast");
+                    var main = $(document).find('#main-region');
+                    main.removeClass('animated fadeIn fadeInLeft fadeInRight');
+                    main.addClass('animated fadeInUp');
+
                     var parent = this.$el.parent().parent();
                     parent.css('background-image','url(./assets/img/Picture1.jpg)');
                     parent.css('background-size','cover');
@@ -51,6 +58,15 @@ define(["app",
                     var container = this.$el.parent();
                     container.addClass('container');
                     $(document).find('.backBtn').toggleClass('hidden');
+
+                    var main = $(document).find('#main-region');
+                    main.removeClass('animated fadeInLeft fadeInRight fadeInUp');
+                    main.addClass('animated fadeInRight');
+
+                    require(["common/views"], function (CommonViews) {
+                        var FooterView = new CommonViews.Footer();
+                        AppManager.footerRegion.show(FooterView);
+                    });
                 },
                 onRender:function(){
 
@@ -74,7 +90,31 @@ define(["app",
 
             });
 
-
+            View.Footer = Marionette.ItemView.extend({
+                template: footerTpl,
+                initialize: function () {
+                    this.$el.addClass('animated slideInUp');
+                },
+                onRender: function () {
+                    var controlBtn = this.$('ul#button-control');
+                    //controlBtn.css('border', 'thin solid yellow');
+                    var html = '<li class="bg-info"><a class="js-new">Create Contract</a></li>';
+                        html += '<li class="bg-success"><a  class="js-report">Create Report</a></li>';
+                    controlBtn.prepend(html);
+                    console.log('!!!!!!!!!!!!!!  hit footer render');
+                },
+                events: {
+                    "click a.js-new": "newContract",
+                    "click a.js-report": "newReport"
+                },
+                newContract: function () {
+                    this.trigger('contract:new');
+                },
+                newReport: function () {
+                    console.log('hit footer js-submitReport');
+                    AppManager.execute("alert:show",({type:"success",message:'Create Report'}));
+                }
+            });
 
             View.NotifyView = Marionette.ItemView.extend({
                 tagName:'tr',
@@ -83,20 +123,20 @@ define(["app",
                 events: {
                    // "mouseout button.js-popover": "iniPopover",
                       "click button.js-popover": "showPopover",
-                    "hover a#infotoshow": "info"
+                    "hover a#infotoshow": "info",
+                    "click div.js-show":"showReport",
+                    "click td#infotoshow":"showReport"
                 },
                 initialize:function(){},
                 onRender:function(){
                     this.trigger("action:popover",this);
                 },
-               /** templateHelpers:function(){
-                  //  console.log(JSON.stringify(this.collection.models));
-                    var total = this.collection.length;
-                    return {
-                        titleReports:total > 1 ? total + ' Reports' : total + ' Report',
-                        notifications:this.collection.models
-                    }
-                },**/
+               showReport:function(e){
+                   e.preventDefault();
+                   console.log('hit show report');
+                   var id = this.$el.find(e.currentTarget).data('id');
+                   AppManager.trigger("report:show",id);
+               },
                 iniPopover:function(){
                     this.$pop.popover();
                     //  this.iniPopover(e);
@@ -122,7 +162,7 @@ define(["app",
             });
             View.LeftMenu = Marionette.CompositeView.extend({
                 tagName: "table",
-                className: "table table-condensed",
+                className: "table table-condensed table-hover",
                 template:reports,
                 emptyView: View.Missing,
                 childView:  View.NotifyView,
@@ -166,8 +206,13 @@ define(["app",
 
             View.ContractView = Marionette.ItemView.extend({
                 template: contract,
+                initialize:function(){
+                    this.listenTo(this.collection,'change',this.render());
+                },
                 events: {
-                    //  "click button.js-new": "addComment"
+                    "click .js-show": "showContract",
+                    "click .js-edit": "editContract",
+                    "hover .thumbnail":"highlight"
                 },
                 templateHelpers:function(){
                     var total = this.collection.length;
@@ -175,6 +220,22 @@ define(["app",
                         contracts:this.collection.models,
                         titleContract: total > 1 ? total + ' Contracts' : total + ' Contract'
                     }
+                },
+                highlight:function(e){
+                    e.preventDefault();
+                    if(this.$(e.currentTarget).hasClass('thumbnail')){
+                        this.$(e.currentTarget).toggleClass('bg-info');
+                    }
+                },
+                showContract:function(e){
+                    e.preventDefault();
+                    var id = this.$(e.currentTarget).data('id');
+                    AppManager.trigger('contract:show',id);
+                },
+                editContract:function(e){
+                    e.preventDefault();
+                    var id = this.$(e.currentTarget).data('id');
+                    AppManager.trigger('contract:edit',id);
                 },
                 flash: function(cssClass){
                     var $view = this.$el;
@@ -209,12 +270,10 @@ define(["app",
                         nextmonth = new Date(Moment().add(1,'M').format('ddd MMM DD YYYY HH:mm:ss'));
                     var events = [];
                     $.each(self.collection.models,function(key,value){
-                      //  console.log(JSON.stringify(value.attributes.dateNotify));
-                       // var type = value.get('contractType');
-                        //var date = +new Date(Moment.utc(value.get('dateNotify')).format('YYYY MM DD'));
+                        events.push(value.get('contractType'));
                        events.push(+new Date(Moment.utc(value.get('dateNotify')).format('YYYY MM DD')));
                     });
-                    console.log(JSON.stringify(events));
+                   console.log(JSON.stringify(events));
                     function onChange() {
                       /**  var changed = Moment(kendo.toString(this.value()));**/
                         console.log("Change :: " + Moment(kendo.toString(this.value())).format('YYYY/MM/DD'));
@@ -233,7 +292,7 @@ define(["app",
                     }
 
                    // console.log(lastmonth + '  '+ nextmonth+ ' Now:'+now+' Test:'+ test);
-                 //   console.log(JSON.stringify(event));
+                 //  console.log(JSON.stringify(events));
                     _.debounce(
                     this.$el.find("#calendar-left").kendoCalendar({
                         value: lastmonth,
@@ -242,16 +301,12 @@ define(["app",
                         dates: events,
                         footer:false,
                         month: {
-                            // template for dates in month view
+                            // template for dates in month view     '# $.each(data.dates,) != -1) { #' +
                             content: '# if ($.inArray(+data.date, data.dates) != -1) { #' +
+                            '# var found = data.dates.indexOf(+data.date) #'+
+                            '# var att = found-1 #'+
                             '<div class="' +
-                            '# if (data.value < 10) { #' +
-                            "exhibition" +
-                            '# } else if ( data.value < 20 ) { #' +
-                            "party" +
-                            '# } else { #' +
-                            "cocktail" +
-                            '# } #' +
+                            "#= data.dates[att] #" +
                             '">#= data.value #</div>' +
                             '# } else { #' +
                             '#= data.value #' +
@@ -268,14 +323,10 @@ define(["app",
                         month: {
                             // template for dates in month view
                             content: '# if ($.inArray(+data.date, data.dates) != -1) { #' +
+                            '# var found = data.dates.indexOf(+data.date) #'+
+                            '# var att = found-1 #'+
                             '<div class="' +
-                            '# if (data.value < 10) { #' +
-                            "exhibition" +
-                            '# } else if ( data.value < 20 ) { #' +
-                            "party" +
-                            '# } else { #' +
-                            "cocktail" +
-                            '# } #' +
+                            "#= data.dates[att] #" +
                             '">#= data.value #</div>' +
                             '# } else { #' +
                             '#= data.value #' +
@@ -292,15 +343,11 @@ define(["app",
                         month: {
                             // template for dates in month view
                             content: '# if ($.inArray(+data.date, data.dates) != -1) { #' +
+                                '# var found = data.dates.indexOf(+data.date) #'+
+                            '# var att = found-1 #'+
                             '<div class="' +
-                            '# if (data.value < 10) { #' +
-                            "exhibition" +
-                            '# } else if ( data.value < 20 ) { #' +
-                            "party" +
-                            '# } else { #' +
-                            "cocktail" +
-                            '# } #' +
-                            '">#= data.value #</div>' +
+                            "#= data.dates[att] #" +
+                           '">#= data.value #</div>' +
                             '# } else { #' +
                             '#= data.value #' +
                             '# } #'

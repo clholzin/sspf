@@ -37,6 +37,11 @@ define(["app",
                     this.$el.parent().addClass('container-fluid').removeClass('container');
                     /** var parent = this.$el.parent().parent();
                      parent.removeAttr('style');**/
+
+                    var main = $(document).find('#main-region');
+                    main.removeClass('animated fadeInLeft fadeInRight');
+                    main.addClass('animated fadeInRight');
+
                     require(["common/views"], function (CommonViews) {
                         var FooterView = new CommonViews.Footer();
                         AppManager.footerRegion.show(FooterView);

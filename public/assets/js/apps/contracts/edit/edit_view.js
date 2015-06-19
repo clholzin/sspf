@@ -3,13 +3,13 @@ define(["app", "apps/contracts/common/views",
     "tpl!apps/contracts/edit/templates/list_item.html",
     "tpl!apps/contracts/edit/templates/missing.html",
     "tpl!apps/contracts/edit/templates/layout.html",
-
+    "tpl!common/templates/footer.html",
     "tpl!apps/contracts/edit/templates/category/reportingdates.html",
     "tpl!apps/contracts/edit/templates/category/pricing.html",
     "tpl!apps/contracts/edit/templates/category/deliverables.html",
 
     "vendor/moment","vendor/numeral"], function(AppManager,
-                   CommonViews, listTpl, listItemTpl,missingTpl,layoutTpl,
+                   CommonViews, listTpl, listItemTpl,missingTpl,layoutTpl,footerTpl,
                    reportsTpl,pricingTpl,deliverablesTpl,
                    Moment,Numeral){
     AppManager.module("ContractsApp.Edit.View", function(View, AppManager, Backbone, Marionette, $, _){
@@ -28,8 +28,10 @@ define(["app", "apps/contracts/common/views",
             },
             onBeforeDestroy :function(){
                 var parent = this.$el.parent();
-               // parent.addClass('fadeIn').removeClass('fadeIn');
                 parent.removeClass('fluid-container').addClass('container');
+                var main = $(document).find('#main-region');
+                main.removeClass('animated fadeInLeft fadeInRight');
+                main.addClass('animated fadeInLeft');
             },
             onRender:function(){
             }
@@ -37,6 +39,33 @@ define(["app", "apps/contracts/common/views",
 
         View.MissingContract = Marionette.ItemView.extend({
             template: missingTpl
+        });
+
+        View.Footer = Marionette.ItemView.extend({
+            template: footerTpl,
+            initialize: function () {
+                this.$el.addClass('animated slideInUp');
+            },
+            onRender: function () {
+                var controlBtn = this.$('ul#button-control');
+                //controlBtn.css('border', 'thin solid yellow');
+                var html = '<li class="bg-info"><a class="js-save"><i class="glyphicon glyphicon-save"></i> Save</a></li>';
+                   html += '<li class="bg-success"><a  class="js-submit"><i class="glyphicon glyphicon-share-alt"></i> </a></li>';
+                controlBtn.prepend(html);
+                console.log('!!!!!!!!!!!!!!  hit footer render');
+            },
+            events: {
+                "click a.js-save": "saveContract",
+                "click a.js-submit": "submitReport"
+            },
+            saveContract: function (e) {
+                e.preventDefault();
+                this.trigger("footer:contract:save",this.model);
+            },
+            submitReport: function () {
+                console.log('hit footer js-submitReport');
+                AppManager.execute("alert:show",({type:"success",message:'Shared'}));
+            }
         });
 
 
