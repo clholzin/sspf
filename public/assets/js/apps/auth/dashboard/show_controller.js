@@ -6,12 +6,7 @@ define(["app", "apps/auth/dashboard/show_view",
                 require(["common/views","entities/common", "entities/auth","entities/contracts"], function(CommonViews){
                 console.log(user);
 
-                var loadingView = new CommonViews.Loading({
-                        title: "Dashboard",
-                        message: "loading ..."
-                    });
 
-                  AppManager.loadingRegion.show(loadingView);
 
 
                      var fetchingNotify,
@@ -23,6 +18,14 @@ define(["app", "apps/auth/dashboard/show_view",
                         TopView,
                         FooterView;
 
+                    FooterView = new CommonViews.Footer();
+                    AppManager.footerRegion.show(FooterView);
+                    var loadingView = new CommonViews.Loading({
+                        title: "Dashboard",
+                        message: "loading ..."
+                    });
+
+                    AppManager.loadingRegion.show(loadingView);
 
                     var fetchingUser = AppManager.request("login:entity");
                     $.when(fetchingUser).done(function(loginUser) {
@@ -96,10 +99,20 @@ define(["app", "apps/auth/dashboard/show_view",
                                     view.on("form:submit", function(data){
                                         console.log('New form data: ' + data);
                                         if (newContract.save(data)) {
-                                            contracts.unshift(newContract);
+
+                                            var fetchingContract = AppManager.request("contract:entities");
+                                            $.when(fetchingContract).done(function(freshContracts) {
+                                                var freshontracts = new FilteredCollection(freshContracts);
+                                                freshontracts.filterBy('contractUser', function (model) {
+                                                    return model.get('user').username === authorizedUser;
+                                                });
+
+                                                ContractView.collection = freshontracts;
+                                                ContractView.render();
+                                            });
+
                                             view.trigger("dialog:close");
                                             AppManager.execute("alert:show", ({type: "success", message: "Contract Added."}));
-                                            ContractView.render();
                                         } else {
                                             view.triggerMethod("form:data:invalid", newContract.validationError);
                                         }
@@ -108,6 +121,63 @@ define(["app", "apps/auth/dashboard/show_view",
 
                                     AppManager.dialogRegion.show(view);
                                 });
+                            });
+
+                            FooterView.on("notify:new", function(){
+                                console.log('hit topleftView on event');
+                                var newNotify = AppManager.request("notify:entity:new");
+                                var view = new View.NotifyNew({
+                                    model: newNotify,
+                                    templateHelpers:function() {
+                                        return {
+                                            "contractId":'',
+                                            "contractType":'',
+                                            "year": Moment().get('year'),
+                                            "dateNotify": Moment().format('YYYY-MM-DD'),
+                                            "user":{ username:''}
+                                        }
+                                    }
+                                });
+                                view.on("form:submit", function(data){
+                                    if(notifications.length > 0){
+                                        //var highestId = _.max(notifications,function(c){ return c.id; }).get("id");
+                                        data.id =  + 1;
+                                    }else{
+                                        data.id = 1;
+                                    }
+                                    if(data.contractId === ''){
+                                        AppManager.execute("alert:show", ({
+                                            type: "danger",
+                                            message: "No Contract id present."
+                                        }));
+                                        return;
+                                    }
+                                    console.log('New form data: '+data);
+                                    var savingNotify = newNotify.save(data);
+                                    if(savingNotify){
+                                        $.when(savingNotify).done(function() {
+                                            notifications.add(newNotify);
+                                            //notifications.reset(notifications.models);
+                                            _.sortBy(notifications.models, 'dateNotify');
+                                            view.trigger("dialog:close");
+                                            var newNotifyView = LeftView.children.findByModel(newNotify);
+                                            // check whether the new view is displayed (it could be
+                                            // invisible due to the current filter criterion)
+                                            if (newNotifyView) {
+                                                newNotifyView.flash("animated fadeInRight bg-success");
+                                                AppManager.execute("alert:show", ({
+                                                    type: "success",
+                                                    message: "Notification Added."
+                                                }));
+                                            }
+                                        });
+                                    }
+                                    else{
+                                        view.triggerMethod("form:data:invalid", newNotify.validationError);
+                                        AppManager.execute("alert:show",({type:"danger",message:"Check fields for errors."}));
+                                    }
+                                });
+                                AppManager.dialogRegion.show(view);
                             });
 
 
@@ -163,10 +233,9 @@ define(["app", "apps/auth/dashboard/show_view",
 
 
 
-                            AppManager.footerRegion.show(FooterView);
                             AppManager.loadingRegion.empty();
                             AppManager.mainRegion.show(MainLayout);
-
+                            AppManager.footerRegion.show(FooterView);
                         });//end of fetching notifications
                     });//end of fetching contract
 
@@ -180,7 +249,10 @@ define(["app", "apps/auth/dashboard/show_view",
                         //  }if user is true continue
                     // });verify user
                     });
+
+
                 });
+
             }
 
         }

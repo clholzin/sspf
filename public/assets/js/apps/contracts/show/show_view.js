@@ -30,31 +30,30 @@ define(["app",
                     topLeftRegion:"#top-left-panel"
                 },
                 onShow:function() {
+
                     var body = $('body');
                     body.animate({ scrollTop: 0 }, "fast");
 
+                    var main = $(document).find('#main-region');
+                    if(!main.hasClass('fadeIn')){
+                        main.removeClass('animated fadeIn');
+                        main.addClass('animated fadeIn');
+                    }
+
                     var parent = this.$el.parent();
-                    //parent.removeClass('fadeIn').addClass('fadeIn');
                     if(parent.hasClass('container')){
                         parent.removeClass('container');
                     }
                     if(parent.hasClass('container-fluid')){
                         parent.removeClass('container-fluid');
                     }
+
                 },
                 onBeforeDestroy :function(){
+
                     var parent = this.$el.parent();
                     //parent.addClass('fadeIn').removeClass('fadeIn');
                     parent.addClass('container');
-
-                    var main = $(document).find('#main-region');
-                    main.removeClass('animated fadeInRight fadeInLeft');
-                    main.addClass('animated fadeInLeft');
-
-                    require(["common/views"], function (CommonViews) {
-                        var FooterView = new CommonViews.Footer();
-                        AppManager.footerRegion.show(FooterView);
-                    });
                 },
                 onRender:function(){
                 }

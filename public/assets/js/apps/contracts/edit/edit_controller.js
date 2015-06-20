@@ -2,33 +2,38 @@ define(["app", "apps/contracts/edit/edit_view"], function(AppManager, View){
     AppManager.module("ContractsApp.Edit", function(Edit, AppManager, Backbone, Marionette, $, _,Moment){
         Edit.Controller = {
             editContract: function(id) {
-                require(["common/views", "entities/contracts", "entities/edit_contract"],
-                    function (CommonViews) {
+                require(["common/views", "entities/contracts", "entities/edit_contract"],function (CommonViews) {
+
+
+
+                        var FooterView = new CommonViews.Footer();
+                        AppManager.footerRegion.show(FooterView);
                         var loadingView = new CommonViews.Loading({
                             title: "Edit Data",
                             message: "Loading"
                         });
                         AppManager.loadingRegion.show(loadingView);
 
-                        var layoutView = new View.Regions();
-                        var panelView,
-                            editView,
-                            reportingDates,
-                            pricing,
-                            deliverables,
-                            metrics,
-                            recoverBases,
-                            payments,
-                            milestones,
-                            subcontractors,
-                            loading,
-                            ReportingDates,
-                            FooterView;
-
 
                         AppManager.execute("set:edit:header", 'Contract');
                         var fetchingContract = AppManager.request("contract:entity", id);
                         $.when(fetchingContract).done(function (contract) {
+                            var panelView,
+                                editView,
+                                editview,
+                                reportingDates,
+                                pricing,
+                                deliverables,
+                                metrics,
+                                recoverBases,
+                                payments,
+                                milestones,
+                                subcontractors,
+                                loading,
+                                ReportingDates,
+                                FooterView;
+
+                            var layoutView = new View.Regions();
                             /**
                              *
                              * @type {View.Footer}

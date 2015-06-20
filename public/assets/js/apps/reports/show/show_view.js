@@ -28,24 +28,21 @@ define(["app",
                 },
                 onShow: function () {
                     this.$el.parent().addClass('container-fluid').removeClass('container');
-                     /**   parent.css('background-image','url(./assets/img/Picture1.jpg)');
-                     parent.css('background-size','cover');
-                     parent.css('background-repeat','no-repeat');
-                     parent.css('background-attachment','fixed');**/
+                    var body = $('body');
+                    body.animate({ scrollTop: 0 }, "fast");
+                    var main = $(document).find('#main-region');
+                    main.removeClass('animated fadeIn');
+                    main.addClass('animated fadeIn');
                 },
                 onBeforeDestroy: function () {
-                    this.$el.parent().addClass('container-fluid').removeClass('container');
-                    /** var parent = this.$el.parent().parent();
-                     parent.removeAttr('style');**/
-
-                    var main = $(document).find('#main-region');
-                    main.removeClass('animated fadeInLeft fadeInRight');
-                    main.addClass('animated fadeInRight');
-
                     require(["common/views"], function (CommonViews) {
                         var FooterView = new CommonViews.Footer();
                         AppManager.footerRegion.show(FooterView);
                     });
+                    this.$el.parent().addClass('container-fluid').removeClass('container');
+                    /** var parent = this.$el.parent().parent();
+                     parent.removeAttr('style');**/
+
                 },
                 onRender: function () {
 

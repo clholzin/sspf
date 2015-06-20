@@ -22,9 +22,7 @@ define(["app",
         },
         onBeforeDestroy :function(){
             //this.$el.parent().addClass('fadeIn').removeClass('fadeIn');
-            var main = $(document).find('#main-region');
-            main.removeClass('animated fadeInUp fadeInLeft fadeInRight');
-            main.addClass('animated fadeInRight');
+
         }
     });
 

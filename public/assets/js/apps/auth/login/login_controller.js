@@ -3,10 +3,12 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
         Login.Controller = {
             authUsers: function(id){
                 require(["common/views", "entities/auth"], function(CommonViews){
-                    var loadingView = new CommonViews.Loading({
+                  var loadingView = new CommonViews.Loading({
                         title: "",
                         message: ""
                     });
+                 var FooterView = new CommonViews.Footer();
+                    AppManager.footerRegion.show(FooterView);
                     AppManager.loadingRegion.show(loadingView);
                     var loginView;
                    var fetchingUser = AppManager.request("login:entity");
@@ -45,6 +47,7 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                             loginView = new View.LoginForm();
                             AppManager.user.loggedIn = 0;
                             console.log('Logout Global Class '+JSON.stringify(AppManager.user.loggedIn));
+                            AppManager.mainRegion.show(loginView);
                         }
 
                         loginView.on("form:submit", function(data){
@@ -115,7 +118,7 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
                             });
                         });**/
 
-                        AppManager.mainRegion.show(loginView);
+
                         AppManager.loadingRegion.empty();
                     });
                 });
@@ -190,12 +193,12 @@ define(["app", "apps/auth/login/login_view"], function(AppManager, View){
             },
 
             logoutUser:function(){
-                require(["common/views", "entities/auth"], function(CommonViews){
-                    var loadingView = new CommonViews.Loading({
+                require(["common/views", "entities/auth"], function(){
+                  /**  var loadingView = new CommonViews.Loading({
                         title: "Bye",
                         message: "Logging out user."
                     });
-                    AppManager.loadingRegion.show(loadingView);
+                    AppManager.loadingRegion.show(loadingView);**/
                     AppManager.execute("alert:show",({type:"info",message:"Logging out"}));
                     AppManager.execute("Reset:user");
                    // AppManager.execute("set:active:header", "auth/logout");

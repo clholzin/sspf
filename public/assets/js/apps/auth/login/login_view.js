@@ -136,6 +136,7 @@ define(["app",
 
         View.LoginForm = CommonViews.Form.extend({
             template:loginForm,
+            className:'animated fadeInUp',
             templateHelpers: function() {
                 return {
                     title: 'Login'

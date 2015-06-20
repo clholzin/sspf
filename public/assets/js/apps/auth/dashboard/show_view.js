@@ -8,13 +8,14 @@ define(["app",
         "tpl!apps/auth/dashboard/templates/missing.html",
         "tpl!common/templates/footer.html",
         "apps/auth/common/views",
+        "apps/contracts/common/views",
         "vendor/moment","jszip",
        // "vendor/kendoUI/kendo.core.min",
         "vendor/kendoUI/kendo.calendar",
         "vendor/numeral","backbone.syphon"
             ],
     function(AppManager,layoutTpl,top,main,notify,reports,contract,missingTpl,
-             footerTpl,CommonViews,Moment,jszip){
+             footerTpl,CommonViews,ContractViews,Moment,jszip){
         AppManager.module("DashboardApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
 
             window.JSZip = jszip;
@@ -31,9 +32,6 @@ define(["app",
                 onShow:function(){
                     var body = $('body');
                     body.animate({ scrollTop: 0 }, "fast");
-                    var main = $(document).find('#main-region');
-                    main.removeClass('animated fadeIn fadeInLeft fadeInRight');
-                    main.addClass('animated fadeInUp');
 
                     var parent = this.$el.parent().parent();
                     parent.css('background-image','url(./assets/img/Picture1.jpg)');
@@ -53,20 +51,13 @@ define(["app",
                     }
                 },
                 onBeforeDestroy :function(){
+
                     var parent = this.$el.parent().parent();
                     parent.removeAttr('style');
                     var container = this.$el.parent();
                     container.addClass('container');
                     $(document).find('.backBtn').toggleClass('hidden');
 
-                    var main = $(document).find('#main-region');
-                    main.removeClass('animated fadeInLeft fadeInRight fadeInUp');
-                    main.addClass('animated fadeInRight');
-
-                    require(["common/views"], function (CommonViews) {
-                        var FooterView = new CommonViews.Footer();
-                        AppManager.footerRegion.show(FooterView);
-                    });
                 },
                 onRender:function(){
 
@@ -103,9 +94,12 @@ define(["app",
                     controlBtn.prepend(html);
                     console.log('!!!!!!!!!!!!!!  hit footer render');
                 },
+                triggers:{
+                    "click a.js-report":"notify:new"
+                },
                 events: {
-                    "click a.js-new": "newContract",
-                    "click a.js-report": "newReport"
+                    "click a.js-new": "newContract"
+
                 },
                 newContract: function () {
                     this.trigger('contract:new');
@@ -115,6 +109,21 @@ define(["app",
                     AppManager.execute("alert:show",({type:"success",message:'Create Report'}));
                 }
             });
+
+            View.NotifyNew = ContractViews.NotifyForm.extend({
+                initialize: function(){
+                    this.title = "Create:";
+                },
+                onRender: function(){
+                    if(this.options.generateTitle){
+                        var $title = $("<p>", { text: this.title });
+                        this.$el.prepend($title);
+                    }
+                    this.$(".js-submit").text("New");
+                }
+
+            });
+
 
             View.NotifyView = Marionette.ItemView.extend({
                 tagName:'tr',

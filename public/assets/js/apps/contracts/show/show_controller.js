@@ -4,6 +4,17 @@ define(["app", "apps/contracts/show/show_view",
         Show.Controller = {
             showContract: function(id){
                 require(["common/views","entities/common", "entities/contracts","entities/gateway"], function(CommonViews,QCRdates){
+                    var  contractView,
+                        LeftView,
+                        RightView,
+                        MainExport,
+                        costSetView,
+                        TopLeftView,
+                        FooterView;
+
+                    FooterView = new CommonViews.Footer();
+                    AppManager.footerRegion.show(FooterView);
+
                     var loadingView = new CommonViews.Loading({
                         title: "Contract",
                         message: "loading ..."
@@ -21,25 +32,17 @@ define(["app", "apps/contracts/show/show_view",
                     $.when(fetchingContract).done(function(contract){
                         $.when(fetchingNotify).done(function(notifications) {
                    //console.log('Show Contract:' +JSON.stringify(contract));
-                        var  contractView,
-                             LeftView,
-                             RightView,
-                             MainExport,
-                             costSetView,
-                             TopLeftView,
-                             FooterView;
+
                         if(contract instanceof Object){
 
-                                contractView = new View.Contract({
-                                    model: contract
-                                    });
-                            /**
-                             *
-                             * @type {View.Footer}
-                             */
+                            contractView = new View.Contract({
+                                model: contract
+                                });
+
                             FooterView = new View.Footer({
                                 model: contract
                             });
+                            AppManager.footerRegion.show(FooterView);
                             FooterView.on('footer:contract:edit',function(model){
                                 AppManager.trigger("contract:edit", model.get("_id"));
                             });
@@ -475,7 +478,6 @@ define(["app", "apps/contracts/show/show_view",
 
 
 
-                            AppManager.footerRegion.show(FooterView);
 
 
                             sideAndMainLayout.on("show", function(){
@@ -486,6 +488,8 @@ define(["app", "apps/contracts/show/show_view",
                                 sideAndMainLayout.topLeftRegion.show(TopLeftView);
                                 console.log('hit on show');
                             });
+
+
                         }
                         else{
 

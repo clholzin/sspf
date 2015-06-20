@@ -1,6 +1,7 @@
 body {
     padding-top: 50px;
     font-size:16px !important;
+
 }
 
 /**          Nav           **/
@@ -77,6 +78,7 @@ div#alertsRegion{
 .mainNavid {
     background-color:#3585ba;
     color:white
+
 }
 
 
@@ -167,6 +169,7 @@ footer{
 footer.footer > div > div > ul > li > a{
     color:#FFF;
     cursor: pointer;
+    z-index: 1003;
 }
 footer.footer > div > div > ul > li > a:hover{
     color:#3d3d3d;
@@ -190,7 +193,6 @@ footer.footer > div > div > ul > li.bg-danger{
     footer.footer > div > div > ul > li {
         display: inline-block;
         list-style: inherit;
-        margin:-3px;
     }
 }
 /**
@@ -221,7 +223,8 @@ Main Panel Region
 **/
 #main-region {
     position:relative;
-    margin-bottom:200px;
+    height:100%;
+    margin-bottom:150px;
 }
 #panel-region{
     position:relative !important;
@@ -304,6 +307,10 @@ Main Panel Region
 .left .right{
     padding:0 0;
 }
+
+/**
+        Side Panels
+**/
 /* Hide for mobile, show later */
 .sidebar {
     display: none;
@@ -569,9 +576,11 @@ Main Panel Region
 .page-header > h1,
 .page-header > h2,
 .page-header > h3{
-    color:#3d3d3d;
+  color:#666;
     margin-top: 12px;
     margin-bottom: 10px;
+
+
 }
 
 .jumbotron{

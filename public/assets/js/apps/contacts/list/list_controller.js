@@ -2,9 +2,9 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
   AppManager.module("ContactsApp.List", function(List, AppManager, Backbone, Marionette, $, _){
     List.Controller = {
       listContacts: function(criterion){
-        require(["common/views", "entities/contact"], function(CommonViews){
-          var loadingView = new CommonViews.Loading();
-            AppManager.loadingRegion.show(loadingView);
+        require(["common/views", "entities/contact"], function(){
+          /**var loadingView = new CommonViews.Loading();
+            AppManager.loadingRegion.show(loadingView);**/
           var fetchingContacts = AppManager.request("contact:entities");
 
           var contactsListLayout = new View.Layout();
