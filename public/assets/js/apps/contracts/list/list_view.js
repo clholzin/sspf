@@ -4,49 +4,54 @@ define(["app",
         "tpl!apps/contracts/list/templates/none.tpl",
         "tpl!apps/contracts/list/templates/list.tpl",
         "tpl!apps/contracts/list/templates/list_item.html",
-        "vendor/moment", "jszip","vendor/numeral",
+        "vendor/moment", "jszip", "vendor/numeral",
         "vendor/kendoUI/kendo.all.min"],
-       function(AppManager, layoutTpl, panelTpl, noneTpl, listTpl, listItemTpl){
-  AppManager.module("ContractsApp.List.View", function(View, AppManager, Backbone, Marionette, $, _){
-    View.Layout = Marionette.LayoutView.extend({
-      template: layoutTpl,
-      regions: {
-        panelRegion: "#panel-region",
-        contractsRegion: "#contracts-region"
-        },
-        onShow:function(){
-            //this.$el.parent().removeClass('fadeIn').addClass('fadeIn');
-            var main = $(document).find('#main-region');
-            main.removeClass('animated fadeInLeft fadeInRight');
-            main.addClass('animated fadeInUp');
-        },
-        onBeforeDestroy :function(){
-            //this.$el.parent().addClass('fadeIn').removeClass('fadeIn');
+    function (AppManager, layoutTpl, panelTpl, noneTpl, listTpl, listItemTpl) {
+        AppManager.module("ContractsApp.List.View", function (View, AppManager, Backbone, Marionette, $, _) {
+            View.Layout = Marionette.LayoutView.extend({
+                template: layoutTpl,
+                regions: {
+                    headerPanel: "#header-panel",
+                    menuPanel: "#menu-panel",
+                    contractsPanel: "#contracts-panel"
+                },
+                onShow: function () {
+                    //this.$el.parent().removeClass('fadeIn').addClass('fadeIn');
+                    var main = $(document).find('#main-region');
+                    main.removeClass('animated fadeInLeft fadeInRight');
+                    main.addClass('animated fadeIn');
+                    if (main.hasClass('container')) {
+                        main.removeClass('container').addClass('container-fluid');
+                    }
+                },
+                onBeforeDestroy: function () {
+                    //this.$el.parent().addClass('fadeIn').removeClass('fadeIn');
 
-        }
-    });
+                }
+            });
 
-    View.Panel = Marionette.ItemView.extend({
-      template: panelTpl,
-      className:'container-fluid',
-      triggers: {
-        "click button.js-new": "contract:new",
-        "click .js-reports":"reports:list"
-      },
+            View.Panel = Marionette.ItemView.extend({
+                template: panelTpl,
+                className: 'container-fluid',
+                triggers: {
+                    "click button.js-new": "contract:new",
+                    "click .js-reports": "reports:list"
+                },
 
-      events: {
-        "submit #filter-form": "filterContracts",
-          "click .js-export": "excelExport"
-      },
+                events: {
+                    "click #filter-form": "filterContracts",
+                    "keyup .js-filter-criterion": "filterContracts",
+                    "click .js-export": "excelExport"
+                },
 
-      ui: {
-        criterion: "input.js-filter-criterion"
-      },
-      excelExport:function(){
+                ui: {
+                    criterion: "input.js-filter-criterion"
+                },
+                excelExport: function () {
 
-          alert('Downloading');
-          return window.location.open= window.location.origin+'/api/contract/export';
-          /**$.ajax({
+                    alert('Downloading');
+                    return window.location.open = window.location.origin + '/api/contract/export';
+                    /**$.ajax({
               url:'http://localhost:8000/api/contract/export',
               method:'GET',
               statusCode: {
@@ -60,19 +65,19 @@ define(["app",
           }).fail(function(response) {
               alert( "error: "+JSON.stringify(response) );
           });**/
-      },
-      filterContracts: function(e){
-        e.preventDefault();
-        var criterion = this.$(".js-filter-criterion").val();
-        this.trigger("contracts:filter", criterion);
-      },
+                },
+                filterContracts: function (e) {
+                    e.preventDefault();
+                    var criterion = this.$(".js-filter-criterion").val();
+                    this.trigger("contracts:filter", criterion);
+                },
 
-      onSetFilterCriterion: function(criterion){
-        this.ui.criterion.val(criterion);
-      }
-    });
+                onSetFilterCriterion: function (criterion) {
+                    this.ui.criterion.val(criterion);
+                }
+            });
 
-     /** var DestroyWarn = Marionette.Behavior.extend({
+            /** var DestroyWarn = Marionette.Behavior.extend({
           // You can set default options
           // just like you can in your Backbone Models.
           // They will be overridden if you pass in an option with the same key.
@@ -83,165 +88,163 @@ define(["app",
           // Behaviors have events that are bound to the views DOM.
           events: {
               "click @ui.destroy": "warnBeforeDestroy"
-          },
+             },
 
-          warnBeforeDestroy: function() {
+             warnBeforeDestroy: function() {
               alert(this.options.message);
               // Every Behavior has a hook into the
               // view that it is attached to.
               this.view.destroy();
           }
-      });**/
-     var NoContractsView = Marionette.ItemView.extend({
-         template: noneTpl,
-         tagName: "tr",
-         className: "alert"
-     });
+             });**/
+            var NoContractsView = Marionette.ItemView.extend({
+                template: noneTpl,
+                tagName: "tr",
+                className: "alert"
+            });
 
 
-
-    View.Contract = Marionette.ItemView.extend({
-      tagName: "div",
-      template: listItemTpl,
-       initialize:function(attributes, options){
-           // console.log(JSON.stringify(attributes.model.attributes));
-            this.options = options;
-        },
-        onRender:function(){
-            var self = this;
-            self.$el.find('#chart').toggleClass('hidden');
-            var cardsAni = self.$el.find('.thumbnail');
-            cardsAni.hide();
-            setTimeout(function(){
-                $.each(cardsAni,function(index, element){
-                    var wait = index+150;
-                    setTimeout(function(){
-                        cardsAni.show().toggleClass('animated fadeIn');
-                    },wait*2);
-                });
-            },500);
-            var pricing = this.model.get('pricing');
-            if(pricing.targetPricing === 0){
-                this.$el.find("#chart").prepend('<div class="well well-sm" style="min-height:200px;">No Pricing Data</div>').removeAttr('style');
-            }else {
-                this.$el.find("#chart").kendoChart({
-                    title: {
-                        position: "top",
-                        text: "Pricing Analysis"
-                    },
-                    legend: {
-                        visible: true,
-                        position: "top"
-                    },
-                    chartArea: {
-                        background: ""
-                    },
-                    seriesDefaults: {
-                        labels: {
-                            visible: false,
-                            position: "outsideEnd",
-                            background: "transparent",
-                            template: "#= category #: \n #= value#%"
-                        }
-                    },
-                    series: [{
-                        type: "pie",
-                        startAngle: 150,
-                        data: [{
-                            category: "Target",
-                            value: pricing.targetPricing,
-                            color: "#ff9800"
-                        }, {
-                            category: "Volume Driven",
-                            value: pricing.volDrivenPricing,
-                            color: "#34d800"
-                        }, {
-                            category: "Fixed",
-                            value: pricing.fixedPricing,
-                            color: "#36bbce"
-                        }, {
-                            category: "Firm",
-                            value: pricing.firmPricing,
-                            color: "#983fd5"
-                        }, {
-                            category: "Estimated",
-                            value: pricing.estBasedFee,
-                            color: "#ff7340"
-                        }]
-                    }],
-                    tooltip: {
-                        visible: true,
-                        format: "${0}"
+            View.Contract = Marionette.ItemView.extend({
+                tagName: "div",
+                template: listItemTpl,
+                initialize: function (attributes, options) {
+                    // console.log(JSON.stringify(attributes.model.attributes));
+                    this.options = options;
+                },
+                onRender: function () {
+                    var self = this;
+                    self.$el.find('#chart').toggleClass('hidden');
+                    var cardsAni = self.$el.find('.thumbnail');
+                    cardsAni.hide();
+                    setTimeout(function () {
+                        $.each(cardsAni, function (index, element) {
+                            var wait = index + 200;
+                            setTimeout(function () {
+                                cardsAni.show().toggleClass('animated fadeInUp');
+                            }, wait * 2);
+                        });
+                    }, 500);
+                    var pricing = this.model.get('pricing');
+                    if (pricing.targetPricing === 0) {
+                        this.$el.find("#chart").prepend('<div class="well well-sm" style="min-height:200px;">No Pricing Data</div>').removeAttr('style');
+                    } else {
+                        this.$el.find("#chart").kendoChart({
+                            title: {
+                                position: "top",
+                                text: "Pricing Analysis"
+                            },
+                            legend: {
+                                visible: true,
+                                position: "top"
+                            },
+                            chartArea: {
+                                background: ""
+                            },
+                            seriesDefaults: {
+                                labels: {
+                                    visible: false,
+                                    position: "outsideEnd",
+                                    background: "transparent",
+                                    template: "#= category #: \n #= value#%"
+                                }
+                            },
+                            series: [{
+                                type: "pie",
+                                startAngle: 150,
+                                data: [{
+                                    category: "Target",
+                                    value: pricing.targetPricing,
+                                    color: "#ff9800"
+                                }, {
+                                    category: "Volume Driven",
+                                    value: pricing.volDrivenPricing,
+                                    color: "#34d800"
+                                }, {
+                                    category: "Fixed",
+                                    value: pricing.fixedPricing,
+                                    color: "#36bbce"
+                                }, {
+                                    category: "Firm",
+                                    value: pricing.firmPricing,
+                                    color: "#983fd5"
+                                }, {
+                                    category: "Estimated",
+                                    value: pricing.estBasedFee,
+                                    color: "#ff7340"
+                                }]
+                            }],
+                            tooltip: {
+                                visible: true,
+                                format: "${0}"
+                            }
+                        });
+                        // this.$el.kendoChart.resize(true);
+                        //http://docs.telerik.com/kendo-ui/using-kendo-in-responsive-web-pages
+                    }//end prcing object check
+                },
+                templateHelpers: function () {
+                    return {
+                        "_id": this.model.get('_id')
+                        //username: this.model.get("username")
                     }
-                });
-               // this.$el.kendoChart.resize(true);
-                //http://docs.telerik.com/kendo-ui/using-kendo-in-responsive-web-pages
-            }//end prcing object check
-        },
-      templateHelpers:function(){
-        return {
-            "_id": this.model.get('_id')
-            //username: this.model.get("username")
-        }
-      },
-      triggers: {
-        "click td a.js-show": "contract:show",
-        "click td a.js-edit": "contract:edit",
-        "click button.js-delete": "contract:delete"
-      },
-      events: {
-        "click": "highlightName",
-          "click button.js-chart": "hideChart"
-      },
-      flash: function(cssClass){
-        var $view = this.$el;
-        $view.hide().toggleClass(cssClass).fadeIn(800, function(){
-          setTimeout(function(){
-            $view.toggleClass(cssClass)
-          }, 500);
-        });
-      },
-      hideChart: function(e){
-        var self = this;
-        var btn = self.$(e.currentTarget);
-        btn.toggleClass('btn-info btn-default');
-        self.$el.find('#chart').toggleClass('hidden animated fadeIn');
-      },
-      highlightName: function(e){
-        this.$el.toggleClass("warning");
-      },
-      remove: function(){
-        var self = this;
-        this.$el.fadeOut(function(){
-          Marionette.ItemView.prototype.remove.call(self);
-        });
-      }
-    });
+                },
+                triggers: {
+                    "click td a.js-show": "contract:show",
+                    "click td a.js-edit": "contract:edit",
+                    "click button.js-delete": "contract:delete"
+                },
+                events: {
+                    "click": "highlightName",
+                    "click button.js-chart": "hideChart"
+                },
+                flash: function (cssClass) {
+                    var $view = this.$el;
+                    $view.hide().toggleClass(cssClass).fadeIn(800, function () {
+                        setTimeout(function () {
+                            $view.toggleClass(cssClass)
+                        }, 500);
+                    });
+                },
+                hideChart: function (e) {
+                    var self = this;
+                    var btn = self.$(e.currentTarget);
+                    btn.toggleClass('btn-info btn-default');
+                    self.$el.find('#chart').toggleClass('hidden animated fadeIn');
+                },
+                highlightName: function (e) {
+                    this.$el.toggleClass("warning");
+                },
+                remove: function () {
+                    var self = this;
+                    this.$el.fadeOut(function () {
+                        Marionette.ItemView.prototype.remove.call(self);
+                    });
+                }
+            });
 
 
+            View.Contracts = Marionette.CompositeView.extend({
+                tagName: "div",
+                className: "container-fluid row",
+                template: listTpl,
+                emptyView: NoContractsView,
+                childView: View.Contract,
+                childViewContainer: "#panel",
+                initialize: function () {
+                    this.listenTo(this.collection, "reset", function () {
+                        this.attachHtml = function (collectionView, childView, index) {
+                            collectionView.$el.append(childView.el);
+                        }
+                    });
+                },
+                onRenderCollection: function () {
+                    this.attachHtml = function (collectionView, childView, index) {
+                        collectionView.$el.find('.sortable').prepend(childView.el);
+                    };//end attachHTML
+                }
+            });
 
-    View.Contracts = Marionette.CompositeView.extend({
-          tagName: "div",
-          className: "container-fluid row",
-          template: listTpl,
-          emptyView: NoContractsView,
-          childView: View.Contract,
-          childViewContainer: "#panel",
-      initialize: function(){
-          this.listenTo(this.collection, "reset", function(){
-              this.attachHtml = function(collectionView, childView, index){
-                  collectionView.$el.append(childView.el);
-              }
-          });
-      },
-      onRenderCollection: function(){
-          this.attachHtml = function(collectionView, childView, index){
-              collectionView.$el.find('.sortable').prepend(childView.el);
-          };//end attachHTML
-      }
-  });
-
-  /**  View.Contracts = Marionette.CompositeView.extend({
+            /**  View.Contracts = Marionette.CompositeView.extend({
       tagName: "div",
       className: "container-fluid row",
       template: listTpl,
@@ -336,10 +339,9 @@ define(["app",
     });**/
 
 
+        });
 
-  });
-
-  return AppManager.ContractsApp.List.View;
-});
+        return AppManager.ContractsApp.List.View;
+    });
 
 

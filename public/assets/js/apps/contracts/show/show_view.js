@@ -17,17 +17,19 @@ define(["app",
         "vendor/numeral","backbone.syphon"
             ],//"vendor/kendoUI/kendo.all.min",
     function(AppManager,layoutTpl,leftSide,leftItem,topLeft,rightSide,
-             rightItem, missingTpl,contractView,exportView,guidList,hierSet,dpsList,footerTpl,CommonViews,Moment,
+             rightItem, missingTpl,contractView,exportView,guidList,hierSet,dpsList,
+             footerTpl,CommonViews,Moment,
              jszip){
         AppManager.module("ContractsApp.Show.View", function(View, AppManager, Backbone, Marionette, $, _){
 
             View.Regions = Marionette.LayoutView.extend({
                 template: layoutTpl,
                 regions: {
-                    leftRegion: "#left-panel",
-                    mainRegion: "#main-panel",
-                    rightRegion: "#right-panel",
-                    topLeftRegion:"#top-left-panel"
+                    headerPanel:"#header-panel",
+                    leftPanel: "#left-panel",
+                    mainPanel: "#main-panel",
+                    rightPanel: "#right-panel",
+                    topLeftPanel:"#top-left-panel"
                 },
                 onShow:function() {
 
@@ -40,20 +42,15 @@ define(["app",
                         main.addClass('animated fadeIn');
                     }
 
-                    var parent = this.$el.parent();
-                    if(parent.hasClass('container')){
-                        parent.removeClass('container');
+                    if(main.hasClass('container')){
+                        main.removeClass('container').addClass('container-fluid');
                     }
-                    if(parent.hasClass('container-fluid')){
-                        parent.removeClass('container-fluid');
-                    }
-
                 },
                 onBeforeDestroy :function(){
 
                     var parent = this.$el.parent();
                     //parent.addClass('fadeIn').removeClass('fadeIn');
-                    parent.addClass('container');
+                    parent.removeClass('container-fluid').addClass('container');
                 },
                 onRender:function(){
                 }
@@ -62,7 +59,6 @@ define(["app",
             View.MissingContract = Marionette.ItemView.extend({
                 template: missingTpl
             });
-
 
 
             View.Footer = Marionette.ItemView.extend({

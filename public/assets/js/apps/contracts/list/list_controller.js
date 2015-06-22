@@ -2,7 +2,7 @@ define(["app", "apps/contracts/list/list_view"], function (AppManager, View) {
     AppManager.module("ContractsApp.List", function (List, AppManager, Backbone, Marionette, $, _) {
         List.Controller = {
             listContracts: function (criterion) {
-                require(["common/views", "entities/contracts"], function (CommonViews) {
+                require(["common/views","entities/auth", "entities/contracts"], function (CommonViews) {
                     /**   var loadingView = new CommonViews.Loading();
                      AppManager.loadingRegion.show(loadingView);**/
                     var FooterView = new CommonViews.Footer();
@@ -39,6 +39,25 @@ define(["app", "apps/contracts/list/list_view"], function (AppManager, View) {
                                 });
                             }
 
+                            var HeaderView = new CommonViews.Header({
+                                title : "Contracts"
+                            });
+
+                            HeaderView.on('header:back',function(){
+                                loadingView = new CommonViews.Loading({
+                                    title: "",
+                                    message: ""
+                                });
+                                AppManager.loadingRegion.show(loadingView);
+                                var fetchingUser = AppManager.request("login:entity");
+                                $.when(fetchingUser).done(function(loginUser) {
+                                    if (loginUser.attributes.loggedIn === 1) {
+                                        AppManager.trigger('auth:dashboard', loginUser.get('username'));
+                                    }else{
+                                        AppManager.trigger('auth:login');
+                                    }
+                                });
+                            });
                             var contractsListView = new View.Contracts({
                                 collection: filteredContracts
                             });
@@ -49,8 +68,9 @@ define(["app", "apps/contracts/list/list_view"], function (AppManager, View) {
                             });
 
                             contractsListLayout.on("show", function () {
-                                contractsListLayout.panelRegion.show(contractsListPanel);
-                                contractsListLayout.contractsRegion.show(contractsListView);
+                                contractsListLayout.headerPanel.show(HeaderView);
+                                contractsListLayout.menuPanel.show(contractsListPanel);
+                                contractsListLayout.contractsPanel.show(contractsListView);
                             });
 
 

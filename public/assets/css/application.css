@@ -58,7 +58,7 @@ div#alertsRegion{
    **/
 }
 .popover{
-    z-index: 99999;
+
 }
 
 
@@ -98,9 +98,9 @@ ul.nav.navbar-right > li.user > ul.dropdown-menu.auth > li > a{
 div.navbar-header > a#headerId{
     padding:8px 0 2px 10px;
     color:white;
-    width:130px;/**165px**/
+    width:165px;/**165px**/
     height:50px;
-    border-right:thin solid white;
+    /**border-right:thin solid white;**/
 }
 ul.nav.navbar-nav {
     color:white;
@@ -222,6 +222,7 @@ footer.footer > div > div > ul > li.bg-danger{
 Main Panel Region
 **/
 #main-region {
+    padding:0;
     position:relative;
     height:100%;
     margin-bottom:150px;
@@ -233,7 +234,14 @@ Main Panel Region
     z-index: 1020;
     background-color:#FFF;
 }
-
+#menu-panel{
+    position:relative !important;
+    height:65px;
+    padding:10px 9% 0 0;
+    margin:0 0 10px 0;
+    z-index: 1020;
+    background-color:#FFF;
+}
 #top-panel{
     position:fixed !important;
     z-index:1020;
@@ -393,29 +401,43 @@ Main Panel Region
     float:right;
     display:block;
     margin:-5px 0 0 0;
-    z-index:1001;
+    z-index:1020;
 }
 .top-left{
     float:left;
     position:relative;
     margin:5px 0 0 -5%;
-    z-index:1001;
+    z-index:1020;
 }
 .bottom-right{
     position:relative;
     display:block;
     margin:-10px 0 0 98%;
-    z-index:1001;
+    z-index:1020;
 }
 
 
 
-/** Bootstrap Tabs**/
+/** Bootstrap Tabs **/
 .tab-pane{
     min-height:200px;
 }
-/** Bootstrap thumbnails**/
+
+
+
+
+/** Bootstrap thumbnails **/
+
+
 .thumbnail{
+    background: #FFF;/**#f18367**/
+    border-color: transparent;
+    -khtml-opacity:.99;
+    -moz-opacity:.99;
+    -ms-filter:”alpha(opacity=99)”;
+    filter:alpha(opacity=99);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.9);
+    opacity:.99;
     box-shadow: 0px 3px 3px 1px rgba(119, 119, 119, 0.69);
     -moz-box-shadow: 0px 3px 3px 1px rgba(119, 119, 119, 0.69);
     -webkit-box-shadow: 0px 3px 3px 1px rgba(119, 119, 119, 0.69);
@@ -429,7 +451,96 @@ Main Panel Region
     z-index:2000;
 }
 
+.thumbnail > .caption{
+    color:#000;
+}
+.thumbnail:hover  > .caption{
+    background: #EEE;/**#f18367**/
+    border-color: transparent;
+    -khtml-opacity:.99;
+    -moz-opacity:.99;
+    -ms-filter:”alpha(opacity=99)”;
+    filter:alpha(opacity=99);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.9);
+    opacity:.99;
+}
 
+/** Page Header Extend **/
+.app-header {
+    position:relative !important;
+    text-align: center;
+    margin: 0;
+    padding-top:5px;
+    border-bottom:medium solid #3d3d3d;
+    background-image: -ms-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -moz-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -o-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -webkit-gradient(radial, center center, 0, center center, 413, color-stop(0, #E6E6E6), color-stop(1, #FFFFFF));
+    background-image: -webkit-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: radial-gradient(circle closest-corner at center, #E6E6E6 0%, #FFFFFF 100%);
+}
+
+.app-navbar-header > a.brand
+{   margin: -12px -15px 0 5px;
+    float: left;
+    height: 50px;
+    padding: 14px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    background:#EEE;
+    color:#3585ba;
+    background:url(
+    data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NsbW39X11dzcgABXAGhgBMJYYKAFltCAXLFyb1AAAAAElFTkSuQmCC
+    ) repeat;
+}
+a.brand:hover,
+a.brand:focus{
+    background:white;
+    color:#3d3d3d;
+}
+.header-text {
+    position:relative !important;
+    text-align: center;
+    margin:0 50px 0 50px;
+
+}
+.header-text > h3{
+    margin:10px 0 15px 0;
+    width:auto;
+}
+
+
+.page-header {
+    position:relative !important;
+    text-align: center;
+    margin: 0;
+    padding-top:5px;
+    border-bottom:medium solid #3d3d3d;
+    background-image: -ms-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -moz-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -o-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: -webkit-gradient(radial, center center, 0, center center, 413, color-stop(0, #E6E6E6), color-stop(1, #FFFFFF));
+    background-image: -webkit-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
+    background-image: radial-gradient(circle closest-corner at center, #E6E6E6 0%, #FFFFFF 100%);
+}
+.page-header > h1,
+.page-header > h2,
+.page-header > h3{
+    color:#666;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+.jumbotron{
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NsbW39X11dzcgABXAGhgBMJYYKAFltCAXLFyb1AAAAAElFTkSuQmCC) repeat;
+}
+.patern-tiny-square{
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NsbW39X11dzcgABXAGhgBMJYYKAFltCAXLFyb1AAAAAElFTkSuQmCC) repeat;
+}
+
+.font-percent{
+    font-size: 5.4vw;
+}
 
 
 
@@ -459,6 +570,9 @@ Main Panel Region
     filter:alpha(opacity=50);
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
     opacity:.50;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 .wrap-overflay-black {
     position: absolute;
@@ -470,15 +584,15 @@ Main Panel Region
     background-color:#3d3d3d;
     margin: 0;
     padding: 0;
-    -khtml-opacity:.50;
-    -moz-opacity:.50;
-    -ms-filter:”alpha(opacity=50)”;
-    filter:alpha(opacity=50);
-    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);
-    opacity:.50;
+    -khtml-opacity:.70;
+    -moz-opacity:.70;
+    -ms-filter:”alpha(opacity=70)”;
+    filter:alpha(opacity=70);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.7);
+    opacity:.70;
 }
-.white{
-    background-color:white;
+.text-white{
+    color:white;
 }
 .text-black{
     color:#FFF;
@@ -525,74 +639,32 @@ Main Panel Region
     margin-top:0;
     margin-bottom:0;
 }
+.white{
+    background-color:white;
+}
+
 
 .margin-left{
   margin-left:15px;
 }
+
+
 .circleBtn{
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
     border:thin solid #999;
 }
-
-.thumbnail{
-    background: #FFF;/**#f18367**/
-    border-color: transparent;
-    -khtml-opacity:.99;
-    -moz-opacity:.99;
-    -ms-filter:”alpha(opacity=99)”;
-    filter:alpha(opacity=99);
-    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.9);
-    opacity:.99;
-}
-.thumbnail > .caption{
-    color:#000;
-}
-.thumbnail:hover  > .caption{
-    background: #EEE;/**#f18367**/
-    border-color: transparent;
-    -khtml-opacity:.99;
-    -moz-opacity:.99;
-    -ms-filter:”alpha(opacity=99)”;
-    filter:alpha(opacity=99);
-    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.9);
-    opacity:.99;
+.loadingCircleW{
+    padding:15px 0 0;
+    width:80px;
+    height:80px;
+    -webkit-box-shadow: 1px 1px 10px 2px #424242;
+    box-shadow: 1px 1px 10px 2px #424242;
 }
 
-.page-header {
-    position:relative !important;
-    text-align: center;
-    margin: 0;
-    padding-top:5px;
-    border-bottom:medium solid #3d3d3d;
-    background-image: -ms-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
-    background-image: -moz-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
-    background-image: -o-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
-    background-image: -webkit-gradient(radial, center center, 0, center center, 413, color-stop(0, #E6E6E6), color-stop(1, #FFFFFF));
-    background-image: -webkit-radial-gradient(center, circle closest-corner, #E6E6E6 0%, #FFFFFF 100%);
-    background-image: radial-gradient(circle closest-corner at center, #E6E6E6 0%, #FFFFFF 100%);
-}
-.page-header > h1,
-.page-header > h2,
-.page-header > h3{
-  color:#666;
-    margin-top: 12px;
-    margin-bottom: 10px;
 
 
-}
-
-.jumbotron{
-      background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NsbW39X11dzcgABXAGhgBMJYYKAFltCAXLFyb1AAAAAElFTkSuQmCC) repeat;
-  }
-.patern-tiny-square{
-    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NsbW39X11dzcgABXAGhgBMJYYKAFltCAXLFyb1AAAAAElFTkSuQmCC) repeat;
-}
-
-.font-percent{
-    font-size: 5.4vw;
-}
 
 
 

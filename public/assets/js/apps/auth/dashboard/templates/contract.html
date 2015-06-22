@@ -1,7 +1,11 @@
 
 <div>
     <div class="wrap-overflay-white"></div><!--end overlay-->
-    <h3 class="text-blue"><%-titleContract%></h3>
+    <h3 class="text-blue"><%-titleContract%>
+        <button style="  margin: -5px;" class="btn btn-default js-all pull-right">
+            <i class="glyphicon glyphicon-th"></i>
+        </button>
+    </h3>
 </div>
 
 <!--<ul class="list-group"></ul>-->
@@ -14,8 +18,8 @@
         <div class="btn-group top-right" role="group" aria-label="...">
             <a href="#" data-id="<%-value.attributes._id %>" class="btn btn-sm btn-default js-show">
                 <i class="glyphicon glyphicon-eye-open"></i></a>
-            <a href="#" data-id="<%-value.attributes._id %>" class="btn btn-sm btn-default js-edit">
-                <span class="text-success"><i class="glyphicon glyphicon-pencil"></i></span></a>
+            <!--<a href="#" data-id="<%-value.attributes._id %>" class="btn btn-sm btn-default js-edit">
+                <span class="text-success"><i class="glyphicon glyphicon-pencil"></i></span></a>-->
         </div>
         <div class="thumbnail">
             <div class="caption">
@@ -26,7 +30,6 @@
 
             </div>
         </div>
-
     </div>
 
 

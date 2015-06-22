@@ -29,11 +29,20 @@ define(["app", "apps/contracts/edit/edit_view"], function(AppManager, View){
                                 payments,
                                 milestones,
                                 subcontractors,
-                                loading,
                                 ReportingDates,
-                                FooterView;
+                                FooterView,
+                                HeaderView;
 
                             var layoutView = new View.Regions();
+
+                            HeaderView = new CommonViews.Header({
+                                title : "Contract Edit"
+                            });
+
+                            HeaderView.on('header:back',function(){
+                                AppManager.trigger("contract:show", contract.get("_id"));
+                            });
+
                             /**
                              *
                              * @type {View.Footer}
@@ -42,7 +51,7 @@ define(["app", "apps/contracts/edit/edit_view"], function(AppManager, View){
                                 model:contract
                             });
                             FooterView.on('footer:contract:save',function(model){
-                                AppManager.trigger("contract:edit", model.get("_id"));
+                               // model.save();
                             });
 
                         var fetchingPanelMenu = AppManager.request("editMenu:entities");
@@ -303,6 +312,7 @@ define(["app", "apps/contracts/edit/edit_view"], function(AppManager, View){
                                 }//end if contract undefined
 
                                 layoutView.on("show", function () {
+                                    layoutView.headerPanel.show(HeaderView);
                                     layoutView.panelRegion.show(panelView);
                                     layoutView.mainRegion.show(editView);
                                     AppManager.loadingRegion.empty();

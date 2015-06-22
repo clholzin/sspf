@@ -3,14 +3,16 @@ define(["app", "apps/contracts/show/show_view",
     AppManager.module("ContractsApp.Show", function(Show, AppManager, Backbone, Marionette, $, _){
         Show.Controller = {
             showContract: function(id){
-                require(["common/views","entities/common", "entities/contracts","entities/gateway"], function(CommonViews,QCRdates){
+                require(["common/views","entities/common", "entities/contracts",
+                    "entities/gateway","entities/auth"], function(CommonViews,QCRdates){
                     var  contractView,
                         LeftView,
                         RightView,
                         MainExport,
                         costSetView,
                         TopLeftView,
-                        FooterView;
+                        FooterView,
+                        HeaderView;
 
                     FooterView = new CommonViews.Footer();
                     AppManager.footerRegion.show(FooterView);
@@ -21,7 +23,7 @@ define(["app", "apps/contracts/show/show_view",
                     });
                   AppManager.loadingRegion.show(loadingView);
 
-                    var sideAndMainLayout = new View.Regions();
+                    var LayoutView = new View.Regions();
 
                     if(id === '' || undefined){
                         window.history.back();
@@ -43,8 +45,29 @@ define(["app", "apps/contracts/show/show_view",
                                 model: contract
                             });
                             AppManager.footerRegion.show(FooterView);
+
                             FooterView.on('footer:contract:edit',function(model){
                                 AppManager.trigger("contract:edit", model.get("_id"));
+                            });
+
+                            HeaderView = new CommonViews.Header({
+                                title : "Contract Details"
+                            });
+
+                            HeaderView.on('header:back',function(){
+                                loadingView = new CommonViews.Loading({
+                                    title: "",
+                                    message: ""
+                                });
+                                AppManager.loadingRegion.show(loadingView);
+                                var fetchingUser = AppManager.request("login:entity");
+                                $.when(fetchingUser).done(function(loginUser) {
+                                    if (loginUser.attributes.loggedIn === 1) {
+                                        AppManager.trigger('auth:dashboard', loginUser.get('username'));
+                                    }else{
+                                        AppManager.trigger('auth:login');
+                                    }
+                                });
                             });
 
                         /**Add Notification dates for QCR
@@ -108,7 +131,7 @@ define(["app", "apps/contracts/show/show_view",
                                     title: "URS List",
                                     message: "Loading..."
                                 });
-                                AppManager.dialogRegion.show(view);
+                                AppManager.loadingRegion.show(view);
                                 var fetchingUrsSet= AppManager.request("urs:entities");
                                 $.when(fetchingUrsSet).done(function(ursSet) {
                                     MainExport = new View.ContractExport({
@@ -119,6 +142,7 @@ define(["app", "apps/contracts/show/show_view",
                                     });
                                     //console.log(JSON.stringify(ursSet));
                                     AppManager.dialogRegion.show(MainExport);
+                                    AppManager.loadingRegion.empty();
                                 });
 
                             });
@@ -129,7 +153,7 @@ define(["app", "apps/contracts/show/show_view",
                                     /**  title: "Project List",
                                     message: "Loading..."**/
                                 });
-                                AppManager.dialogRegion.show(view);
+                                AppManager.loadingRegion.show(view);
                                 var id = '5';
                                 var fetchingGuidSets = AppManager.request("guidSet:entities",id);
 
@@ -154,6 +178,7 @@ define(["app", "apps/contracts/show/show_view",
                                             });
                                             //  AppManager.dialogRegion.show(costSetView);
                                             AppManager.dialogRegion.show(runId);
+                                            AppManager.loadingRegion.empty();
                                         });
                                     });
 
@@ -164,7 +189,7 @@ define(["app", "apps/contracts/show/show_view",
                                             /**  title: "Cost Values List",
                                             message: "Loading..."**/
                                         });
-                                        AppManager.dialogRegion.show(view);
+                                        AppManager.loadingRegion.show(view);
                                         var rid = 'E50A16DF5DE960F18482005056A46058';
                                         console.log('trigger: '+ rid);
                                         var fetchingCostSets = AppManager.request("costSet:entities",rid);
@@ -175,7 +200,9 @@ define(["app", "apps/contracts/show/show_view",
                                             });
                                           //  AppManager.dialogRegion.show(costSetView);
                                             AppManager.dialogRegion.show(costSetView);
+
                                         });
+                                        AppManager.loadingRegion.empty();
                                     });
 
                                     view.on("contract:dpsSet", function(did){
@@ -185,7 +212,7 @@ define(["app", "apps/contracts/show/show_view",
                                             /** title: "MOD Project Structure",
                                             message: "Loading..."**/
                                         });
-                                        AppManager.dialogRegion.show(view);
+                                        AppManager.loadingRegion.show(view);
                                         console.log('trigger: '+ id);
                                         var fetchingDpsSets = AppManager.request("dpsSet:entities",did);
                                         $.when(fetchingDpsSets).done(function(dpsSet) {
@@ -194,6 +221,7 @@ define(["app", "apps/contracts/show/show_view",
                                             });
 
                                             AppManager.dialogRegion.show(dpsset);//dpsSet View
+                                            AppManager.loadingRegion.empty();
                                         });
                                     });
 
@@ -204,7 +232,7 @@ define(["app", "apps/contracts/show/show_view",
                                             /**    title: "Alternative Heirarchy List",
                                             message: "Loading..."**/
                                         });
-                                        AppManager.dialogRegion.show(view);
+                                        AppManager.loadingRegion.show(view);
                                         console.log('trigger: '+ id);
                                         var fetchingHierSet = AppManager.request("hierSet:entities",pid);
                                         $.when(fetchingHierSet).done(function(hierData) {
@@ -216,7 +244,7 @@ define(["app", "apps/contracts/show/show_view",
                                                     title: "MOD Project Structure",
                                                     message: "Loading..."
                                                 });
-                                                AppManager.dialogRegion.show(view);
+                                                AppManager.loadingRegion.show(view);
                                                 console.log('trigger: '+ id);
                                                 var fetchingDpsSets = AppManager.request("dpsSet:entities",did);
                                                 $.when(fetchingDpsSets).done(function(dpsData) {
@@ -225,16 +253,18 @@ define(["app", "apps/contracts/show/show_view",
                                                     });
 
                                                     AppManager.dialogRegion.show(dpsset);//dpsSet View
+                                                    AppManager.loadingRegion.empty();
                                                 });
                                             });
 
                                            AppManager.dialogRegion.show(hierSet);//HierSet View
+                                            AppManager.loadingRegion.empty();
                                         });
                                     });
 
                                     AppManager.dialogRegion.show(view);//guidSet View
+                                    AppManager.loadingRegion.empty();
                                 });
-
                             });
 
                             contractView.on("price:update",function(data){
@@ -347,7 +377,7 @@ define(["app", "apps/contracts/show/show_view",
                             break;
                     }
                    // view  = new LeftView({ collection: filtered });
-                   // sideAndMainLayout.leftRegion.show(view);
+                   // LayoutView.leftRegion.show(view);
                 });
                     LeftView = new View.LeftMenu({
                         collection: filtered,
@@ -477,15 +507,13 @@ define(["app", "apps/contracts/show/show_view",
 
 
 
-
-
-
-                            sideAndMainLayout.on("show", function(){
-                                sideAndMainLayout.leftRegion.show(LeftView);
-                                sideAndMainLayout.mainRegion.show(contractView);
+                            LayoutView.on("show", function(){
+                                LayoutView.leftPanel.show(LeftView);
+                                LayoutView.headerPanel.show(HeaderView);
+                                LayoutView.mainPanel.show(contractView);
                                 loadingView.trigger("dialog:close");
-                                sideAndMainLayout.rightRegion.show(RightView);
-                                sideAndMainLayout.topLeftRegion.show(TopLeftView);
+                                LayoutView.rightPanel.show(RightView);
+                                LayoutView.topLeftPanel.show(TopLeftView);
                                 console.log('hit on show');
                             });
 
@@ -498,7 +526,7 @@ define(["app", "apps/contracts/show/show_view",
                         }
 
                         AppManager.loadingRegion.empty();
-                        AppManager.mainRegion.show(sideAndMainLayout);
+                        AppManager.mainRegion.show(LayoutView);
                         });//end of fetching notifications
                     });// end of fetching contract
 

@@ -2,7 +2,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
     AppManager.module("ReportsApp.Show", function (Show, AppManager, Backbone, Marionette, $, _) {
         Show.Controller = {
             showReport: function (id) {
-                require(["common/views", "entities/contracts", "entities/gateway"], function (CommonViews) {
+                require(["common/views", "entities/contracts","entities/auth", "entities/gateway"], function (CommonViews) {
                     console.log('id:' + id);
                     var loadingView = new CommonViews.Loading({
                         title: 'Report',
@@ -13,13 +13,17 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                     AppManager.loadingRegion.show(loadingView);
 
 
+                    FooterView = new CommonViews.Footer();
+                    AppManager.footerRegion.show(FooterView);
+
                     var ReportView,
                         ContractView,
                         TopView,
                         MainLayout,
                         costSetView,
                         TreeView,
-                        FooterView;
+                        FooterView,
+                        HeaderView;
 
                     MainLayout = new View.Regions();
 
@@ -40,7 +44,25 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                  */
                                 TopView = new View.Top();
 
+                                HeaderView = new CommonViews.Header({
+                                    title : "Create Report"
+                                });
 
+                                HeaderView.on('header:back',function(){
+                                    loadingView = new CommonViews.Loading({
+                                        title: "",
+                                        message: ""
+                                    });
+                                    AppManager.loadingRegion.show(loadingView);
+                                    var fetchingUser = AppManager.request("login:entity");
+                                    $.when(fetchingUser).done(function(loginUser) {
+                                        if (loginUser.attributes.loggedIn === 1) {
+                                            AppManager.trigger('auth:dashboard', loginUser.get('username'));
+                                        }else{
+                                            AppManager.trigger('auth:login');
+                                        }
+                                    });
+                                });
 
                                 /**
                                  *
@@ -76,7 +98,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                     //var fetchingTree = AppManager.request("report:tree:entity", model.get('contractId'));
                                     var project = contract.get('project');
                                     console.log('project id: ' + JSON.stringify(project));
-                                    if (project.id != undefined) {
+                                    if (_.isString(project.id)) {
                                         var fetchingTree = AppManager.request("report:tree:entity", project.id);
                                         $.when(fetchingTree).done(function (treeModel) {
                                             // var collection = treeModel.get('hier');
@@ -111,7 +133,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                         /**  title: "Project List",
                                          message: "Loading..."**/
                                     });
-                                    AppManager.dialogRegion.show(view);
+                                    AppManager.loadingRegion.show(view);
                                     var id = '5';
                                     var fetchingGuidSets = AppManager.request("guidSet:entities", id);
 
@@ -127,7 +149,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                                 /**  title: "Project List",
                                                  message: "Loading..."**/
                                             });
-                                            AppManager.dialogRegion.show(view);
+                                            AppManager.loadingRegion.show(view);
                                             var Runid = '2';
                                             var fetchingGuidSets = AppManager.request("guidSet:entities", Runid);
                                             $.when(fetchingGuidSets).done(function (guidSet) {
@@ -136,6 +158,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                                 });
                                                 //  AppManager.dialogRegion.show(costSetView);
                                                 AppManager.dialogRegion.show(runId);
+                                                AppManager.loadingRegion.empty();
                                             });
                                         });
 
@@ -146,7 +169,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                                 /**  title: "Cost Values List",
                                                  message: "Loading..."**/
                                             });
-                                            AppManager.dialogRegion.show(view);
+                                            AppManager.loadingRegion.show(view);
                                             var rid = 'E50A16DF5DE960F18482005056A46058';
                                             console.log('trigger: ' + rid);
                                             var fetchingCostSets = AppManager.request("costSet:entities", rid);
@@ -157,6 +180,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                                 });
                                                 //  AppManager.dialogRegion.show(costSetView);
                                                 AppManager.dialogRegion.show(costSetView);
+                                                AppManager.loadingRegion.empty();
                                             });
                                         });
 
@@ -167,7 +191,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                                 /** title: "MOD Project Structure",
                                                  message: "Loading..."**/
                                             });
-                                            AppManager.dialogRegion.show(view);
+                                            AppManager.loadingRegion.show(view);
                                             console.log('trigger: ' + id);
                                             var fetchingDpsSets = AppManager.request("dpsSet:entities", did);
                                             $.when(fetchingDpsSets).done(function (dpsSet) {
@@ -176,6 +200,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                                 });
 
                                                 AppManager.dialogRegion.show(dpsset);//dpsSet View
+                                                AppManager.loadingRegion.empty();
                                             });
                                         });
 
@@ -186,7 +211,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                                 /**    title: "Alternative Heirarchy List",
                                                  message: "Loading..."**/
                                             });
-                                            AppManager.dialogRegion.show(view);
+                                            AppManager.loadingRegion.show(view);
                                             console.log('trigger: ' + id);
                                             var fetchingHierSet = AppManager.request("hierSet:entities", pid);
                                             $.when(fetchingHierSet).done(function (hierData) {
@@ -198,22 +223,22 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                                         title: "MOD Project Structure",
                                                         message: "Loading..."
                                                     });
-                                                    AppManager.dialogRegion.show(view);
+                                                    AppManager.loadingRegion.show(view);
                                                     console.log('trigger: ' + id);
                                                     var fetchingDpsSets = AppManager.request("dpsSet:entities", did);
                                                     $.when(fetchingDpsSets).done(function (dpsData) {
                                                         var dpsset = new View.DpsSet({
                                                             collection: dpsData
                                                         });
-
+                                                        AppManager.loadingRegion.empty();
                                                         AppManager.dialogRegion.show(dpsset);//dpsSet View
                                                     });
                                                 });
-
+                                                AppManager.loadingRegion.empty();
                                                 AppManager.dialogRegion.show(hierSet);//HierSet View
                                             });
                                         });
-
+                                        AppManager.loadingRegion.empty();
                                         AppManager.dialogRegion.show(view);//guidSet View
                                     });
 
@@ -228,7 +253,7 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
 
 
                             MainLayout.on("show", function () {
-                                MainLayout.TopPanel.show(TopView);
+                                MainLayout.headerPanel.show(HeaderView);
                                 MainLayout.ReportPanel.show(ReportView);
                                 MainLayout.ReviewPanel.show(ContractView);
                                 AppManager.loadingRegion.empty();

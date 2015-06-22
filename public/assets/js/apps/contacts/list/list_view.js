@@ -10,14 +10,15 @@ define(["app",
       template: layoutTpl,
 
       regions: {
-        panelRegion: "#panel-region",
-        contactsRegion: "#contacts-region"
+        headerPanel: "#header-panel",
+        menuPanel: "#menu-panel",
+        contactsPanel: "#contacts-panel"
       },
         onShow:function(){
-            this.$el.parent().removeClass('fadeIn').addClass('fadeIn');
+            this.$el.parent().removeClass('container fadeIn').addClass('container-fluid fadeIn');
         },
         onBeforeDestroy:function(){
-            this.$el.parent().addClass('fadeIn').removeClass('fadeIn');
+            this.$el.parent().removeClass('container-fluid fadeIn').addClass('container fadeIn');
         }
     });
 

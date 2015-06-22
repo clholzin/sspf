@@ -6,9 +6,6 @@ define(["app", "apps/auth/dashboard/show_view",
                 require(["common/views","entities/common", "entities/auth","entities/contracts"], function(CommonViews){
                 console.log(user);
 
-
-
-
                      var fetchingNotify,
                         NotifyView,
                         ContractView,
@@ -20,6 +17,7 @@ define(["app", "apps/auth/dashboard/show_view",
 
                     FooterView = new CommonViews.Footer();
                     AppManager.footerRegion.show(FooterView);
+
                     var loadingView = new CommonViews.Loading({
                         title: "Dashboard",
                         message: "loading ..."
@@ -80,13 +78,16 @@ define(["app", "apps/auth/dashboard/show_view",
                         ContractView = new View.ContractView({
                             collection:filteredContracts
                         });
+                        ContractView.on("contract:list", function(){
+                            AppManager.trigger("contracts:list");
+                        });
                         /**
                          *
                          * @type {View.Footer}
                          */
                         FooterView = new View.Footer({});
-                        FooterView.on('footer:contract:edit',function(model){
-                            AppManager.trigger("contract:edit", model.get("_id"));
+                        FooterView.on('footer:contract:edit',function(){
+                           // AppManager.trigger("contract:edit", model.get("_id"));
                         });
 
                             FooterView.on("contract:new", function(){
@@ -188,7 +189,7 @@ define(["app", "apps/auth/dashboard/show_view",
                         NotifyView.on('childview:action:popover',function(childview,args){
                             console.log('hit');
                             var model = args.model;
-                            var options = {html:true,placement:'left',title:'Contract Notification Report'};
+                            var options = { viewport:{ "selector": "#viewport", "padding": 0 },html:true,placement:'auto right',title:'Contract Notification Report'};
 
                             var html = '<div style="width:auto;padding:10px;">'+
                             '<div class="row">'+

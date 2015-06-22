@@ -2,7 +2,7 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
   AppManager.module("ContactsApp.List", function(List, AppManager, Backbone, Marionette, $, _){
     List.Controller = {
       listContacts: function(criterion){
-        require(["common/views", "entities/contact"], function(){
+        require(["common/views", "entities/contact"], function(CommonViews){
           /**var loadingView = new CommonViews.Loading();
             AppManager.loadingRegion.show(loadingView);**/
           var fetchingContacts = AppManager.request("contact:entities");
@@ -33,6 +33,30 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
                 });
               }
 
+
+                var HeaderView = new CommonViews.Header({
+                    title : "Registered Users"
+                });
+
+                HeaderView.on('header:back',function(){
+                    loadingView = new CommonViews.Loading({
+                        title: "",
+                        message: ""
+                    });
+                    AppManager.loadingRegion.show(loadingView);
+                    var fetchingUser = AppManager.request("login:entity");
+                    $.when(fetchingUser).done(function(loginUser) {
+                        if (loginUser.attributes.loggedIn === 1) {
+                            AppManager.trigger('auth:dashboard', loginUser.get('username'));
+                        }else{
+                            AppManager.trigger('auth:login');
+                        }
+                    });
+                });
+
+
+
+
               var contactsListView = new View.Contacts({
                 collection: filteredContacts
               });
@@ -43,8 +67,9 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
               });
 
               contactsListLayout.on("show", function(){
-                contactsListLayout.panelRegion.show(contactsListPanel);
-                contactsListLayout.contactsRegion.show(contactsListView);
+                contactsListLayout.headerPanel.show(HeaderView);
+                contactsListLayout.menuPanel.show(contactsListPanel);
+                contactsListLayout.contactsPanel.show(contactsListView);
               });
 
                 contactsListPanel.on("contact:new", function(){

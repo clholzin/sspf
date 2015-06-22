@@ -1,8 +1,9 @@
 define(["app",
     "tpl!common/templates/loading.html",
     "tpl!common/templates/footer.html",
+     "tpl!common/templates/header.html",
     "spin.jquery", "nprogress", 'vendor/polyglot'],
-    function (AppManager, loadingTpl,footerTpl, spin, NProgress) {
+    function (AppManager, loadingTpl,footerTpl,headerTpl, spin, NProgress) {
     AppManager.module("Common.Views", function (Views, AppManager, Backbone, Marionette, $, _) {
         Views.Loading = Marionette.ItemView.extend({
             template: loadingTpl,
@@ -28,6 +29,22 @@ define(["app",
             }
         });
 
+        Views.Header = Marionette.ItemView.extend({
+            title: 'Default',
+            template:headerTpl,
+            triggers:{
+                "click a.brand":"header:back"
+            },
+           // message: t("loading.message"),
+            initialize: function () {
+            },
+            serializeData: function () {
+                return {
+                    title: Marionette.getOption(this, "title")
+                    //message: Marionette.getOption(this, "message")
+                }
+            }
+        });
 
         Views.Footer = Marionette.ItemView.extend({
             template: footerTpl

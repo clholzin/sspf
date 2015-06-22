@@ -17,21 +17,22 @@ define(["app", "apps/contracts/common/views",
         View.Regions = Marionette.LayoutView.extend({
             template: layoutTpl,
             regions: {
+                headerPanel:"#header-panel",
                 panelRegion: "#left-panel",
                 mainRegion: "#edit-panel"
                 //rightRegion: "#right-panel"
             },
             onShow:function(){
-           var parent = this.$el.parent();
+                var main = $(document).find('#main-region');
+                main.removeClass('animated fadeIn');
+                main.addClass('animated fadeIn');
+                 var parent = this.$el.parent();
               //  parent.removeClass('fadeIn').addClass('fadeIn');
                 parent.removeClass('container').addClass('fluid-container');
             },
             onBeforeDestroy :function(){
                 var parent = this.$el.parent();
                 parent.removeClass('fluid-container').addClass('container');
-                var main = $(document).find('#main-region');
-                main.removeClass('animated fadeInLeft fadeInRight');
-                main.addClass('animated fadeInLeft');
             },
             onRender:function(){
             }

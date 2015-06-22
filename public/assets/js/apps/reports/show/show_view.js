@@ -22,6 +22,7 @@ define(["app",
                 template: layoutTpl,
                 regions: {
                     TopPanel: "#top",
+                    headerPanel:"#header-panel",
                     ReportPanel: "#report-panel",
                     ReviewPanel: "#review-panel",
                     HierPanel:"#hier-panel"
@@ -29,16 +30,13 @@ define(["app",
                 onShow: function () {
                     this.$el.parent().addClass('container-fluid').removeClass('container');
                     var body = $('body');
-                    body.animate({ scrollTop: 0 }, "fast");
+                    body.scrollTop(0);
                     var main = $(document).find('#main-region');
                     main.removeClass('animated fadeIn');
                     main.addClass('animated fadeIn');
                 },
                 onBeforeDestroy: function () {
-                    require(["common/views"], function (CommonViews) {
-                        var FooterView = new CommonViews.Footer();
-                        AppManager.footerRegion.show(FooterView);
-                    });
+
                     this.$el.parent().addClass('container-fluid').removeClass('container');
                     /** var parent = this.$el.parent().parent();
                      parent.removeAttr('style');**/
