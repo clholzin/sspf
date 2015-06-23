@@ -10,12 +10,13 @@ requirejs.config({
       "backbone.genetics": "vendor/backbone.genetics",
     "backbone.deep.model":"vendor/backbone.deep.model",
     jquery: "vendor/jquery",
+    "jquery-ui": "vendor/jquery-ui",
+    "jquery-ui-touch": "vendor/jquery.ui.touch",
 
       "kendo":"vendor/kendoUI/kendo.all.min",
       "kendoCalendar":"vendor/kendoUI/kendo.calendar",
       "kendoCore":"vendor/kendoUI/kendo.core.min",
 
-    "jquery-ui": "vendor/jquery-ui",
     "jszip":"vendor/jszip",
     json2: "vendor/json2",
     localstorage: "vendor/backbone.localstorage",
@@ -107,6 +108,7 @@ requirejs.config({
       exports: "Marionette"
     },
     "jquery-ui": ["jquery"],
+    "jquery-ui-touch":["jquery"],
     "spin.jquery": ["spin", "jquery"],
      tpl: ["text"]
   },
