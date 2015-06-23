@@ -34,8 +34,8 @@ div#alertsRegion{
 }
 #spinner{
     position:fixed;
-    top:49vh;
-    left:49vw;
+    top:45%;
+    left:45%;
     z-index:999999
 }
 
@@ -195,24 +195,6 @@ footer.footer > div > div > ul > li.bg-danger{
         list-style: inherit;
     }
 }
-/**
-.footer > div > div > ul > li#button-control {
-    height: 50px;
-    width:80%;
-    margin: 0 20px;
-}**/
-/**
-.editNav > li{
-    color:#3d3d3d;
-}
-.editNav ul > li.active > a{
-    color:#3d3d3d;
-}
-.editNav > li > a:hover{
-    color:#EEE;
-    ---40464b
-}
-**/
 
 
 
@@ -225,7 +207,7 @@ Main Panel Region
     padding:0;
     position:relative;
     height:100%;
-    margin-bottom:150px;
+    margin-bottom:50px;
 }
 #panel-region{
     position:relative !important;
@@ -263,13 +245,20 @@ Main Panel Region
     margin:-18px -18px 0 -18px;
     z-index:99999;
 }
-/**this is CONTACTS**/
-#contacts-region{
+/** CONTACTS**/
+#contacts-panel{
     position:relative;
     margin:30px 0 0 0;
 
 }
-/**this is CONTRACTS**/
+
+
+#main-panel{
+    position:relative;
+
+}
+
+/** CONTRACTS **/
 #contracts-region{
     position:relative;
     margin:30px 0 0 0;
@@ -279,18 +268,12 @@ Main Panel Region
     margin-bottom:100px;
 
 }
-
-#main-panel{
-    position:relative;
-
-}
-
-
 #edit-panel{
     position:relative;
     z-index:5;
     padding:0 10% 55px 10%;
  }
+/** Reports **/
 #hier-panel{
     max-height:400px;
     overflow-y:scroll;
@@ -316,9 +299,32 @@ Main Panel Region
     padding:0 0;
 }
 
-/**
-        Side Panels
-**/
+/** Dashboard **/
+
+#notify-panel,#contract-panel{
+    display: block;
+    padding:5px 15px 15px 15px;
+}
+#notify-panel{
+    width:47%;
+    min-height:55vh;
+}
+#contract-panel{
+    width:49%;
+    min-height:55vh;
+    margin-left:10px;
+}
+@media (max-width: 768px) {
+    #notify-panel,#contract-panel{
+        width:100%;
+        height:auto;
+    }
+    #contract-panel{
+       margin:20px 0 0;
+    }
+}
+
+/**  Side Panels **/
 /* Hide for mobile, show later */
 .sidebar {
     display: none;

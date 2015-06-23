@@ -9,6 +9,8 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
 
           var contactsListLayout = new View.Layout();
           var contactsListPanel = new View.Panel();
+            var FooterView = new CommonViews.Footer();
+            AppManager.footerRegion.show(FooterView);
 
           require(["entities/common"], function(FilteredCollection){
             $.when(fetchingContacts).done(function(contacts){
@@ -53,7 +55,6 @@ define(["app", "apps/contacts/list/list_view"], function(AppManager, View){
                         }
                     });
                 });
-
 
 
 
