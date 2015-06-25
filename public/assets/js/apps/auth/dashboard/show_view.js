@@ -89,8 +89,8 @@ define(["app",
                 onRender: function () {
                     var controlBtn = this.$('ul#button-control');
                     //controlBtn.css('border', 'thin solid yellow');
-                    var html = '<li class="bg-info"><a class="js-new">New Contract</a></li>';
-                    html += '<li class="bg-success"><a  class="js-report">New Report</a></li>';
+                    var html = '<li class="bg-info"><a class="js-new"><span><i class="glyphicon glyphicon-plus-sign"></i></span> Contract</a></li>';
+                    html += '<li class="bg-success"><a  class="js-report"><span><i class="glyphicon glyphicon-plus-sign"></i></span> Report</a></li>';
                     controlBtn.prepend(html);
                     console.log('!!!!!!!!!!!!!!  hit footer render');
                 },

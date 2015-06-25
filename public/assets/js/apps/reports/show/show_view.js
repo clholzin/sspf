@@ -3,19 +3,31 @@ define(["app",
         "tpl!apps/reports/show/templates/top.html",
         "tpl!apps/reports/show/templates/missing.html",
         "tpl!apps/reports/show/templates/report.html",
-        "tpl!apps/reports/show/templates/contract.html",
+
+        "tpl!apps/reports/show/templates/items.html",
+        "tpl!apps/reports/show/templates/contractDetails.html",
+
         "tpl!apps/reports/show/templates/tree_node.html",
         "tpl!apps/reports/show/templates/compositeHierarchy.html",
         "tpl!apps/reports/show/templates/category/guidList.html",
         "tpl!apps/reports/show/templates/category/hierSet.html",
         "tpl!apps/reports/show/templates/category/dpsList.html",
         "tpl!apps/reports/show/templates/category/costValues.html",
+
+        "tpl!apps/reports/common/templates/reporting_plan.html",
+        "tpl!apps/reports/common/templates/contract_report.html",
+        "tpl!apps/reports/common/templates/price_plan.html",
+        "tpl!apps/reports/common/templates/actual_forecast_plan.html",
+        "tpl!apps/reports/common/templates/milestones_review.html",
+
         "tpl!common/templates/footer.html",
         "vendor/moment", "jszip", "vendor/kendoUI/kendo.all.min","vendor/numeral"
     ],
     function (AppManager, layoutTpl, topTpl, missingTpl,
-              reportTpl,contractTpl,nodeTpl,heirTpl,guidList,hierSet,
-              dpsList,costValues,footerTpl, Moment, jszip) {
+              reportTpl,itemsTpl,contractDetailsTpl,
+              nodeTpl,heirTpl,guidList,hierSet,dpsList,costValues,
+              reportingPlanTpl,contractReportTpl,pricePlanTpl,actualForecastTpl,milestonesReviewTpl,
+              footerTpl, Moment, jszip) {
         AppManager.module("ReportsApp.Show.View", function (View, AppManager, Backbone, Marionette, $, _) {
             window.JSZip = jszip;
             View.Regions = Marionette.LayoutView.extend({
@@ -24,7 +36,9 @@ define(["app",
                     TopPanel: "#top",
                     headerPanel:"#header-panel",
                     ReportPanel: "#report-panel",
+                    ContractPanel:"#details-panel",
                     ReviewPanel: "#review-panel",
+                        ChildView:"#items-panel",
                     HierPanel:"#hier-panel"
                 },
                 onShow: function () {
@@ -85,6 +99,96 @@ define(["app",
                     AppManager.execute("alert:show",({type:"success",message:'Report Submited.'}));
                 }
             });
+
+            View.Menu = Marionette.ItemView.extend({
+                template: itemsTpl,
+                classNmae:'anmimated slideInLeft',
+                events: {
+                    "click button.js-open": "openView",
+                    "click button.js-change":"updateStatus"
+                },
+                initialize:function(){
+                    //this.listenTo(this.model,"change", this.render);
+                },
+                onRender: function () {
+                   // this.listenTo(this.model,"change", this.render);
+                },
+                templateHelpers:function(){
+                    //console.log(JSON.stringify(this.model.get('completed')));
+                    return {
+                        completed: this.model.get('completed')
+                    }
+                },
+                openView:function(e){
+                    e.preventDefault();
+                    var id = this.$(e.currentTarget).data('trigger');
+                    console.log('hit openView'+id);
+                    this.trigger(id);
+
+                },
+                updateStatus:function(e){
+                    e.preventDefault();
+                    var id = this.$(e.currentTarget).data('id');
+                    var value = this.$(e.currentTarget).data('checked');
+
+                    var completed = this.model.get('completed');
+                    var withOutOne = $.grep(this.model.get('completed'), function(item) {
+                        return item._id != id;
+                    });
+                    var changeObj = $.grep(this.model.get('completed'),function(item){
+                        return item._id === id;
+                    });
+                    if(changeObj[0].checked === 1){
+                        changeObj[0].checked = 0;
+                    }else{
+                        changeObj[0].checked = 1;
+                    }
+                    console.log(changeObj);
+                    withOutOne.push(changeObj[0]);
+                      this.model.save({"completed":_.sortBy(withOutOne, '_id')});
+                      this.render();
+                }
+            });
+
+            View.ReportingPlan = Marionette.ItemView.extend({
+                template: reportingPlanTpl,
+                className:'animated fadeInRight',
+                triggers:{
+                    "click button.js-back":"menu:back"
+                }
+            });
+            View.ContractReport = Marionette.ItemView.extend({
+                template: contractReportTpl,
+                className:'animated fadeInRight',
+                triggers:{
+                    "click button.js-back":"menu:back"
+                }
+            });
+            View.PricePlan = Marionette.ItemView.extend({
+                template: pricePlanTpl,
+                className:'animated fadeInRight',
+                triggers:{
+                    "click button.js-back":"menu:back"
+                }
+            });
+            View.ActualForecast = Marionette.ItemView.extend({
+                template: actualForecastTpl,
+                className:'animated fadeInRight',
+                triggers:{
+                    "click button.js-back":"menu:back"
+                }
+            });
+            View.MilestonesReview = Marionette.ItemView.extend({
+                template: milestonesReviewTpl,
+                className:'animated fadeInRight',
+                triggers:{
+                    "click button.js-back":"menu:back"
+                }
+            });
+
+
+
+
             /****/
             View.HeirarchyModelView = Marionette.ItemView.extend({
                 template: nodeTpl,
@@ -183,8 +287,8 @@ define(["app",
                 }
             });
 
-            View.Contract = Marionette.ItemView.extend({
-                template: contractTpl,
+            View.ContractDetails = Marionette.ItemView.extend({
+                template: contractDetailsTpl,
                 events: {
                     //  "click a.js-edit": "editClicked"
                 },
@@ -211,6 +315,7 @@ define(["app",
                     }
                 }
             });
+
 
 
 

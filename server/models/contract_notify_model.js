@@ -18,7 +18,35 @@ var ContNotify = new Schema({
         "reviewed":{ type: Boolean, default: '0'},//send fro approval
         "approved":{ type: Boolean, default: '0'},//reviews
         "submitted":{ type: Boolean, default: '0'}//completed
-    }
+    },
+    "completed":[
+       /** {
+            "title":{ type: String, default: 'Reporting Plan'},
+            "description":{ type: String, default: 'List of reporting data.'},
+            "checked":{ type: Boolean, default: '0'}
+        },
+        {
+            "title":{ type: String, default: 'Contract'},
+            "description":{ type: String, default: 'Contract basic data.'},
+            "checked":{ type: Boolean, default: '0'}
+        },
+        {
+            "title":{ type: String, default: 'Price'},
+            "description":{ type: String, default: 'Baseline plan cost.'},
+            "checked":{ type: Boolean, default: '0'}
+        },
+        {
+            "title":{ type: String, default: 'Actual Forecast'},
+            "description":{ type: String, default: 'Actual and Forecast cost.'},
+            "checked":{ type: Boolean, default: '0'}
+        },
+        {
+            "title":{ type: String, default: 'Milestones'},
+            "description":{ type: String, default: 'Milestones'},
+            "checked":{ type: Boolean, default: '0'}
+        }**/
+    ]
+
 });
 
-module.exports = db.model('contNotify', ContNotify);
+module.exports = db.model('contNotify', ContNotify,'contnotifies');

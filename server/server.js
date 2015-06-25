@@ -76,7 +76,7 @@ app.use(function(err, req, res, next) {
 });
 
 // passport config
-var Account = require('./models/account.js');
+var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
@@ -84,14 +84,14 @@ passport.deserializeUser(Account.deserializeUser());
 
 
 
-var user = require('./routes/routes.js');
+var user = require('./routes/routes');
 app.use(user);
-var contracts = require('./routes/contracts.js');
-var rundId = require('./routes/run.js');
+var contracts = require('./routes/contracts');
+var runId = require('./routes/run');
 //var gateway = require('./routes/gateway.js');
-var notify = require('./routes/contracts_notify.js');
+var notify = require('./routes/contracts_notify');
 //console.log(router);
-app.use('/api/', [contracts,notify,rundId]);
+app.use('/api/', [contracts,notify,runId]);
 
 //http://localhost/sap/opu/odata/DSN/SSPF_01_SRV/GuidSet?$filter=GuidType eq '+Id+'&$format=json
 

@@ -51,6 +51,7 @@ router.get('/notify/:id',function(req, res){
     });
 });
 
+
 router.get('/notifyOne/:id',function(req, res){
     console.log('get collection from mongo by id');
     console.log('id for notify '+req.params.id);//.where('contractId').equals(req.params.id)
@@ -61,6 +62,15 @@ router.get('/notifyOne/:id',function(req, res){
         res.json(contractNotify);
     });
 });
+router.put('/notifyOne/:id',function(req, res){
+    console.log(req.body);
+    console.log('put collection by id to mongo');
+    ContNotify.where({"_id" : req.params.id}).update({ $set:req.body }, function(err, contractNotify) {
+        res.status(200).json(contractNotify);
+    });
+});
+
+
 
 router.put('/notify/:id',function(req, res){
     console.log(req.body);

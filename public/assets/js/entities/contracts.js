@@ -44,7 +44,9 @@ define(["app", "vendor/moment", "apps/config/storage/localstorage"], function (A
                     "comment": "Add Comment",
                     "date_created": Moment()
                 },
-                "comments": []
+                "comments": [
+
+                ]
             },
             validate: function (attrs, options) {
                 var errors = {};
@@ -94,7 +96,35 @@ define(["app", "vendor/moment", "apps/config/storage/localstorage"], function (A
                 year: Moment().format('YYYY'),
                 user: {
                     username: ''
-                }
+                },
+                completed:[
+                    {
+                        "_id":0,
+                        "title":"Reporting Plan",
+                        "description":"List of reporting data.",
+                        "checked":0
+                    },
+                    {   "_id":1,
+                        "title":"Contract",
+                        "description":"Contract basic data.",
+                        "checked":0
+                    },
+                    {   "_id":2,
+                        "title":"Price",
+                        "description":"Baseline plan cost.",
+                        "checked":0
+                    },
+                    {   "_id":3,
+                        "title":"Actual Forecast",
+                        "description":"Actual and Forecast cost.",
+                        "checked":0
+                    },
+                    {   "_id":4,
+                        "title":"Milestones",
+                        "description":"Milestones",
+                        "checked":0
+                    }
+                ]
             },
             validate: function (attrs, options) {
                 var now = Moment().format('YYYY/MM/DD');

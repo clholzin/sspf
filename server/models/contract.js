@@ -67,4 +67,4 @@ var Contract = new Schema({
     }**/
 });
 
-module.exports = db.model('Contract', Contract);
+module.exports = db.model('Contract', Contract,'contracts');

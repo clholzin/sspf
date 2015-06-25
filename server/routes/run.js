@@ -13,6 +13,19 @@ router.param('id', function (req, res, next, id) {
     next();
 });
 
+function lookUp(arr, id){
+    arr = [].concat(arr);
+    for(var i = 0; i<arr.length; i++){
+        if(arr[i].NodeId == id){
+            return arr[i];
+        }else{
+            if(arr[i].nodes.length){
+                return lookUp(arr[i].nodes, id);
+            }
+        }
+    }
+    return false;
+}
 
 router.get('/runId/:id',function(req, res){
     console.log('put collection by id to mongo');
@@ -21,7 +34,9 @@ router.get('/runId/:id',function(req, res){
             console.log(err);
         }
         console.log('rundId data:'+ runData);
-        res.status(200).json(runData);
+
+      var flat_but_in_hierarchical = selfref.toFlatHier({childrenKey: 'nodes'}, runData.hierarchy);
+        res.status(200).json(flat_but_in_hierarchical);
     });
 });
 
@@ -33,6 +48,8 @@ router.post('/runId',function(req, res){
         res.status(200).json(data);
     });
 });
+
+
 
 router.put('/runIdHier/:id',function(req, res){
     console.log('put collection by id to mongo');

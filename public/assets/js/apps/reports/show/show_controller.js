@@ -17,13 +17,16 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                     AppManager.footerRegion.show(FooterView);
 
                     var ReportView,
-                        ContractView,
+                        view,
+                        Menu,
                         TopView,
                         MainLayout,
                         costSetView,
                         TreeView,
                         FooterView,
-                        HeaderView;
+                        HeaderView,
+                        ContractDetails,
+                        ReportingPlan, ContractReport, PricePlan, ActualForecast, MilestonesReview;
 
                     MainLayout = new View.Regions();
 
@@ -73,9 +76,61 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
 
                                 /**
                                  *
-                                 * @type {View.Contract}
+                                 * @type {View.Menu}
                                  */
-                                ContractView = new View.Contract({
+                                Menu = new View.Menu({
+                                    model: report
+                                });
+                                 ReportingPlan = new View.ReportingPlan({});
+                                 ContractReport = new View.ContractReport({});
+                                 PricePlan = new View.PricePlan({});
+                                 ActualForecast = new View.ActualForecast({});
+                                 MilestonesReview = new View.MilestonesReview({});
+                               Menu.on('toggle:complete',function(id,value,model){
+                                   model.save({"completed":{"_id":id,"checked":value}});
+                               });
+                               Menu.on('open:0',function(){
+                                   ReportingPlan = new View.ReportingPlan({});
+                                   ReportingPlan.on('menu:back',function(){
+                                       MainLayout.ChildView.reset();
+                                   });
+                                   MainLayout.ChildView.show(ReportingPlan);
+                               });
+                                Menu.on('open:1',function(){
+                                    ContractReport = new View.ContractReport({});
+                                    ContractReport.on('menu:back',function(){
+                                        MainLayout.ChildView.reset();
+                                    });
+                                    MainLayout.ChildView.show(ContractReport);
+                                });
+                                Menu.on('open:2',function(){
+                                    PricePlan = new View.PricePlan({});
+                                    PricePlan.on('menu:back',function(){
+                                        MainLayout.ChildView.reset();
+                                    });
+                                    MainLayout.ChildView.show(PricePlan);
+                                });
+                                Menu.on('open:3',function(){
+                                    ActualForecast = new View.ActualForecast({});
+                                    ActualForecast.on('menu:back',function(){
+                                        MainLayout.ChildView.reset();
+                                    });
+                                    MainLayout.ChildView.show(ActualForecast);
+                                });
+                                Menu.on('open:4',function(){
+                                    MilestonesReview = new View.MilestonesReview({});
+                                    MilestonesReview.on('menu:back',function(){
+                                        MainLayout.ChildView.reset();
+                                    });
+                                    MainLayout.ChildView.show(MilestonesReview);
+                                });
+
+
+                                /**
+                                 *
+                                 * @type {View.ContractDetails}
+                                 */
+                                ContractDetails = new View.ContractDetails({
                                     model: contract
                                 });
 
@@ -88,13 +143,15 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                 ReportView = new View.Report({
                                     model: report
                                 });
+
+
                                 ReportView.on("report:tree", function (model) {
                                     // var model = args.model;
                                     var loadingView = new CommonViews.Loading({
                                         title: 'Hierarchy',
                                         message: t("loading.message")
                                     });
-                                    MainLayout.HierPanel.show(loadingView);
+                                    AppManager.loadingRegion.show(loadingView);
                                     //var fetchingTree = AppManager.request("report:tree:entity", model.get('contractId'));
                                     var project = contract.get('project');
                                     console.log('project id: ' + JSON.stringify(project));
@@ -102,11 +159,12 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
                                         var fetchingTree = AppManager.request("report:tree:entity", project.id);
                                         $.when(fetchingTree).done(function (treeModel) {
                                             // var collection = treeModel.get('hier');
-                                            //console.log(treeModel);
+                                            console.log(JSON.stringify(treeModel));
                                             TreeView = new View.HeirarchyRoot({
                                                 collection: treeModel
                                             });
                                             MainLayout.HierPanel.show(TreeView);
+                                            AppManager.loadingRegion.empty();
                                             var hierPanel = $(document.body).find('#hier-panel');
                                             if (hierPanel.hasClass('hidden')) {
                                                 hierPanel.toggleClass('hidden');
@@ -254,8 +312,9 @@ define(["app", "apps/reports/show/show_view", "vendor/kendoUI/kendo.all.min"], f
 
                             MainLayout.on("show", function () {
                                 MainLayout.headerPanel.show(HeaderView);
+                                MainLayout.ContractPanel.show(ContractDetails);
                                 MainLayout.ReportPanel.show(ReportView);
-                                MainLayout.ReviewPanel.show(ContractView);
+                                MainLayout.ReviewPanel.show(Menu);
                                 AppManager.loadingRegion.empty();
                                 console.log('hit on show ReportLayout');
                             });

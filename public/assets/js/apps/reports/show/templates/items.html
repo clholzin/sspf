@@ -1,0 +1,37 @@
+
+<!--glyphicon glyphicon-ok-->
+<!--glyphicon glyphicon-ban-circle-->
+<div class="table-responsive">
+<table class="table">
+    <thead>
+        <tr>
+            <td>Report Page</td><td>Description</td><td>Checked</td><td></td>
+        </tr>
+    </thead>
+
+    <tbody>
+  <%  if(completed != undefined) { %>
+  <% $.each(completed,function(key,value){ %>
+  <tr valign="top">
+      <td><%-value.title%></td>
+      <td><%-value.description%></td>
+      <% if(value.checked){ %>
+      <td><button data-id="<%-value._id%>" data-check="<%-value.checked%>" class="btn btn-success btn-block js-change"><i class="glyphicon glyphicon-ok"></i></button></td>
+      <% }else{ %>
+      <td><button data-id="<%-value._id%>" data-check="<%-value.checked%>" class="btn btn-danger btn-block js-change"><i class="glyphicon glyphicon-ban-circle"></i></button></td>
+      <% } %>
+      <td valign="top"><button data-id="<%-value._id%>" data-trigger="open:<%-value._id%>" class="btn btn-default js-open"><h4><i class="glyphicon glyphicon-chevron-right"></i></h4></button></td>
+  </tr>
+  <% }); %>
+    <% }else{ %>
+        <tr>
+            <td colspan="4">Please Updated Notification in the contract details. Return after updated.</td>
+        </tr>
+    <% } %>
+
+    </tbody>
+
+
+
+</table>
+    </div>
